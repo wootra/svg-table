@@ -21,14 +21,17 @@ const App = () => {
 			borderPatterns: [
 				[4, 0.1],
 				[2, 0.1],
-				[0, 3],
+				[0.3, 3],
 				[0.1, 3],
 			],
 		},
 		rows: [
 			{
 				cells: [
-					{ content: 'Header 1', style: { bgColor: '#f0f0f0' } },
+					{
+						content: 'Header 1',
+						style: { bgColor: '#f0f0f0', paddings: [10, 4, 0, 0] },
+					},
 					{
 						content: 'Header 2',
 						colSpan: 2,

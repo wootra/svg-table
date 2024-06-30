@@ -46,7 +46,7 @@ export const PathOnArea = memo(
 				)}
 				{rightWid && (
 					<path
-						d={`M ${width - rightWid / 2} ${topWid / 2} L ${width - rightWid / 2} ${height - bottomWid / 2}`}
+						d={`M${width - rightWid / 2} ${topWid / 2} L${width - rightWid / 2},${height - bottomWid / 2}`}
 						strokeWidth={rightWid}
 						stroke={getColor(borderColors, 'right')}
 						strokeDasharray={getDashArray(borderPatterns, 'right')}
@@ -59,7 +59,7 @@ export const PathOnArea = memo(
 				)}
 				{topWid && (
 					<path
-						d={`M 0 0 L ${width} 0`}
+						d={`M${leftWid / 2},${topWid / 2} L${width - rightWid / 2},${topWid / 2}`}
 						strokeWidth={topWid}
 						stroke={getColor(borderColors, 'top')}
 						strokeDasharray={getDashArray(borderPatterns, 'top')}
@@ -72,7 +72,7 @@ export const PathOnArea = memo(
 				)}
 				{bottomWid && (
 					<path
-						d={`M 0 ${height} L ${width} ${height}`}
+						d={`M${leftWid / 2} ${height - bottomWid / 2} L ${width - rightWid / 2} ${height - bottomWid / 2}`}
 						strokeWidth={bottomWid}
 						stroke={getColor(borderColors, 'bottom')}
 						strokeDasharray={getDashArray(borderPatterns, 'bottom')}

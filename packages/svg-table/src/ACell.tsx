@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { CalculatedCellProps, CellStyle } from './types';
-import { getRectStyle, isBorderRect } from './utils';
+import { getRectStyle, getWid, isBorderRect } from './utils';
 import { PathOnArea } from './PathOnArea';
 import FilledArea from './FilledArea';
 
@@ -30,6 +30,10 @@ export const ACell = memo(
 			paddings,
 			textColor,
 		} = styleToUse;
+		const padLeft = getWid(paddings, 'left');
+		const padTop = getWid(paddings, 'top');
+		const padRight = getWid(paddings, 'right');
+		const padBottom = getWid(paddings, 'bottom');
 
 		return (
 			<g transform={`translate(${x}, ${y})`}>
@@ -42,15 +46,21 @@ export const ACell = memo(
 					borderPatterns={borderPatterns}
 					borderShapes={borderShapes}
 				/>
-				<text
-					x={width / 2}
-					y={height / 2}
-					textAnchor='middle'
-					dominantBaseline='middle'
-					fill={textColor}
-				>
-					{content}
-				</text>
+				<g transform={`translate(${padLeft}, ${padTop})`}>
+					{typeof content === 'string' && (
+						<g transform={`translate(-${padRight}, -${padBottom})`}>
+							<text
+								x={width / 2}
+								y={height / 2}
+								textAnchor='middle'
+								dominantBaseline='middle'
+								fill={textColor}
+							>
+								{content}
+							</text>
+						</g>
+					)}
+				</g>
 			</g>
 		);
 	}

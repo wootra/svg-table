@@ -113,10 +113,6 @@ export const SVGTable: React.FC<TableProps> = ({
 		const rowContent = [] as JSX.Element[];
 
 		for (const cell of row.cells) {
-			// if (cell._ignored) {
-			// 	continue;
-			// }
-
 			rowContent.push(
 				<ACell
 					key={idx}

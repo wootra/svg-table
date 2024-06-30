@@ -38,7 +38,7 @@ export type CellStyle = {
 
 export type CellProps = {
 	style?: Partial<CellStyle>;
-	content: string | JSX.Element;
+	content: SVGSVGElement | SVGElement | string | undefined | number | null;
 	colSpan?: number;
 	rowSpan?: number;
 };
