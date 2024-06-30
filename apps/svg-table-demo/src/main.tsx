@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import BasicDemo from './BasicDemo.tsx';
+import EmbeddedTable from './EmbeddedTable.tsx';
+import './main.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<App />
+		<div className='main'>
+			<BasicDemo />
+			<EmbeddedTable />
+		</div>
 	</React.StrictMode>
 );

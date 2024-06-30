@@ -4,10 +4,10 @@ const Rect = () => {
 	return <rect x={0} y={0} width={100} height={100} fill='cyan' />;
 };
 
-const App = () => {
+const BasicDemo = ({ width = 500 }: { width?: number }) => {
 	const tableProps: TableProps = {
-		columnWidths: [100, 200, 300],
-		width: 500,
+		columnWidths: [100, 300, 200],
+		width: width,
 		defaultRowStyle: {
 			bgColor: 'yellow',
 			height: 50,
@@ -74,16 +74,7 @@ const App = () => {
 		],
 	};
 
-	return (
-		<div
-			style={{
-				width: 500,
-				overflow: 'visible',
-			}}
-		>
-			<SVGTable {...tableProps} />
-		</div>
-	);
+	return <SVGTable {...tableProps} />;
 };
 
-export default App;
+export default BasicDemo;

@@ -59,7 +59,7 @@ export type RowStyle = {
 };
 
 export type RowProps = {
-	style?: RowStyle;
+	style?: Partial<RowStyle>;
 	cells: CellProps[];
 };
 
