@@ -7,7 +7,8 @@ import type {
 } from './types';
 import { ACell } from './ACell';
 import { calculateRows } from './calculateRows';
-import { convertToColorArrays, convertToWidthArrays, getWid } from './utils';
+import { getWid } from './utils';
+import FilledArea from './FilledArea';
 
 const getTotalCells = (cells: CellProps[]) => {
 	return cells.reduce((total, cell) => {
@@ -18,16 +19,17 @@ const getTotalCells = (cells: CellProps[]) => {
 	}, 0);
 };
 
-const parsedTableStyle = (style?: Partial<TableStyle>) => {
+const parsedTableStyle = (style?: Partial<TableStyle>): TableStyle => {
 	return {
 		rowGaps: 0,
 		colGaps: 0,
 		bgColor: 'transparent',
 		borderWidths: 1,
 		borderPatterns: undefined,
+		borderShapes: undefined,
 		...style,
-		borderColors: convertToColorArrays(style?.borderColors ?? '#000'),
-		margins: convertToWidthArrays(style?.margins ?? 0, 0),
+		borderColors: style?.borderColors ?? '#000',
+		margins: style?.margins ?? 0,
 	};
 };
 
@@ -38,7 +40,8 @@ const parseDefaultCellStyle = (
 		bgColor: 'transparent',
 		borderColors: '#000',
 		borderWidths: 1,
-		borderPatterns: [4],
+		borderPatterns: undefined,
+		borderShapes: 'butt',
 		paddings: [1, 1, 1, 1],
 		textColor: '#000',
 		...defaultCellStyle,
@@ -134,24 +137,26 @@ export const SVGTable: React.FC<TableProps> = ({
 		) + allRowGaps;
 
 	return (
-		<div
-			style={{
-				outline: '1px solid green',
-				width,
-			}}
+		<svg
+			width={width}
+			height={height}
+			style={{ overflow: 'visible' }}
+			viewBox={`0 0 ${width} ${height}`}
 		>
-			<svg
+			<FilledArea
 				width={width}
 				height={height}
-				// viewBox={`-${getWid(tableStyle.margins, 'left')} -${getWid(tableStyle.margins, 'top')} ${width} ${height}`}
-				style={{ overflow: 'visible' }}
+				bgColor={tableStyle.bgColor}
+				borderWidths={tableStyle.borderWidths}
+				borderColors={tableStyle.borderColors}
+				borderPatterns={tableStyle.borderPatterns}
+				borderShapes={tableStyle.borderShapes}
+			/>
+			<g
+				transform={`translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`}
 			>
-				<g
-					transform={`translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`}
-				>
-					{rowsContent}
-				</g>
-			</svg>
-		</div>
+				{rowsContent}
+			</g>
+		</svg>
 	);
 };

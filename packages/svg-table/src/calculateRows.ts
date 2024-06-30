@@ -1,16 +1,10 @@
 import type {
 	CalculatedCellProps,
 	CalculatedRowProps,
-	CellStyle,
-	ParsedCellStyle,
 	RowProps,
 	TableStyle,
 } from './types';
-import {
-	convertToColorArrays,
-	convertToPatternArrays,
-	convertToWidthArrays,
-} from './utils';
+import { simpleValue } from './utils';
 
 let debugObj = {};
 
@@ -20,7 +14,6 @@ const getCellWidth = (
 	colSpan: number,
 	colGap: number
 ) => {
-	console.log({ cellWidths, startCol, colSpan, colGap });
 	if (cellWidths.length < startCol + colSpan - 1) {
 		console.error(
 			'Not enough column widths provided. check colSpan of the cell data. startCol: ' +
@@ -29,11 +22,11 @@ const getCellWidth = (
 			JSON.parse(JSON.stringify(debugObj))
 		);
 	}
-	return (
+	return simpleValue(
 		cellWidths
 			.slice(startCol, startCol + colSpan)
 			.reduce((total, width) => total + width, 0) +
-		colGap * (colSpan - 1)
+			colGap * (colSpan - 1)
 	);
 };
 
@@ -69,23 +62,6 @@ const insertIgnoredCell = (row: CalculatedRowProps, colIndex: number) => {
 	];
 };
 
-const parseCellStyle = (cellStyle?: Partial<CellStyle>): ParsedCellStyle => {
-	return {
-		bgColor: cellStyle?.bgColor || 'transparent',
-		borderColors: convertToColorArrays(
-			cellStyle?.borderColors ?? '#000',
-			'#000'
-		),
-		borderWidths: convertToWidthArrays(cellStyle?.borderWidths || 1, 1),
-		borderPatterns: convertToPatternArrays(
-			cellStyle?.borderPatterns || undefined,
-			undefined
-		),
-		paddings: convertToWidthArrays(cellStyle?.paddings ?? 0, 0),
-		textColor: cellStyle?.textColor || '#000',
-	};
-};
-
 export const calculateRows = (
 	cellWidths: number[],
 	rowHeights: number[],
@@ -93,7 +69,6 @@ export const calculateRows = (
 	style?: TableStyle
 ) => {
 	let currentY = 0;
-	console.log('rows:', rows);
 	const calcRows: CalculatedRowProps[] = rows.map(row => ({
 		...row,
 		x: -1,
@@ -105,7 +80,6 @@ export const calculateRows = (
 				cell =>
 					({
 						...cell,
-						style: parseCellStyle(cell.style),
 						x: -1,
 						y: -1,
 						height: -1,
@@ -163,8 +137,8 @@ export const calculateRows = (
 				cell.rowSpan ?? 1,
 				style?.rowGaps ?? 0
 			);
-			cell.x = currentX;
-			cell.y = currentY;
+			cell.x = simpleValue(currentX);
+			cell.y = simpleValue(currentY);
 
 			currentX += cellWidth + (style?.colGaps ?? 0);
 			idx += 1;

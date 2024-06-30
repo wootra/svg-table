@@ -15,6 +15,15 @@ const App = () => {
 			rowGaps: 10,
 			colGaps: 10,
 			margins: [10, 10, 10, 10],
+			bgColor: 'transparent',
+			borderWidths: [2, 2, 2, 2],
+			borderColors: ['red', 'green', 'blue', 'purple'],
+			borderPatterns: [
+				[4, 0.1],
+				[2, 0.1],
+				[0, 3],
+				[0.1, 3],
+			],
 		},
 		rows: [
 			{
@@ -23,7 +32,16 @@ const App = () => {
 					{
 						content: 'Header 2',
 						colSpan: 2,
-						style: { bgColor: '#f0f0f0' },
+						style: {
+							bgColor: '#cccccc',
+							borderColors: ['red', 'green', 'blue', 'purple'],
+							borderPatterns: [
+								[4, 0.1],
+								[2, 0.1],
+								[0.1, 3],
+								[0.1, 3],
+							],
+						},
 					},
 				],
 			},
@@ -43,7 +61,16 @@ const App = () => {
 		],
 	};
 
-	return <SVGTable {...tableProps} />;
+	return (
+		<div
+			style={{
+				width: 500,
+				overflow: 'visible',
+			}}
+		>
+			<SVGTable {...tableProps} />
+		</div>
+	);
 };
 
 export default App;

@@ -1,3 +1,5 @@
+import { SVGAttributes } from 'react';
+
 export type Widths =
 	| [number, number] // top/bottom, left/right
 	| [number, number, number, number] // top, right, bottom, left
@@ -14,14 +16,25 @@ export type PatternArrays =
 	| number[]
 	| undefined;
 
-export type CellStyle = {
-	bgColor: string;
-	paddings: Widths;
+export type PatternShape = SVGAttributes<SVGPathElement>['strokeLinecap'];
+
+export type PatternShapes =
+	| [PatternShape, PatternShape]
+	| [PatternShape, PatternShape, PatternShape, PatternShape]
+	| PatternShape;
+
+export type BorderStyles = {
 	borderWidths: Widths;
 	borderColors: ColorsOnWidth;
 	borderPatterns: PatternArrays;
-	textColor: string;
+	borderShapes: PatternShapes;
 };
+
+export type CellStyle = {
+	bgColor: string;
+	paddings: Widths;
+	textColor: string;
+} & BorderStyles;
 
 export type CellProps = {
 	style?: Partial<CellStyle>;
@@ -30,21 +43,8 @@ export type CellProps = {
 	rowSpan?: number;
 };
 
-export type ParsedCellStyle = Omit<
-	CellStyle,
-	'paddings' | 'borderWidths' | 'borderColors' | 'borderPatterns'
-> & {
-	paddings: [number, number, number, number] | number;
-	borderWidths: [number, number, number, number] | number;
-	borderColors: [string, string, string, string] | string;
-	borderPatterns:
-		| [number[], number[], number[], number[]]
-		| number[]
-		| undefined;
-};
-
 export type CalculatedCellProps =
-	| (Omit<CellProps, 'style'> & { style: ParsedCellStyle } & {
+	| (CellProps & {
 			_ignored: false;
 			x: number;
 			y: number;
@@ -72,23 +72,11 @@ export type CalculatedRowProps = Omit<RowProps, 'cells'> & {
 };
 
 export type TableStyle = {
-	borderWidths: Widths;
-	borderColors: ColorsOnWidth;
-	borderPatterns: PatternArrays;
 	margins: Widths;
 	bgColor: string;
 	colGaps: number;
 	rowGaps: number;
-};
-
-export type ParsedTableStyle = Omit<
-	TableStyle,
-	'borderColors' | 'borderPatterns' | 'borderWidths'
-> & {
-	borderWidths: [number, number, number, number] | number;
-	borderColors: [string, string, string, string] | string;
-	borderPatterns: [number[], number[], number[], number[]] | number[];
-};
+} & BorderStyles;
 
 export type TableProps = {
 	width: number; // total size of the svg in px.
