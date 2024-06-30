@@ -1,81 +1,79 @@
-# Turborepo starter
+# SVG Table Component Documentation
 
-This is an official starter Turborepo.
+## Overview
 
-## Using this example
+The SVG Table Component is a versatile, TypeScript-based component designed for rendering tables using Scalable Vector Graphics (SVG). It is part of the larger Turborepo project, which includes a variety of applications and packages aimed at providing a comprehensive development ecosystem.
 
-Run the following command:
+## Installation
 
-```sh
-npx create-turbo@latest
+Before you begin, ensure that your development environment is set up according to the Turborepo starter guide. The SVG Table Component is located within the `packages/svg-table` directory of the Turborepo.
+
+To get started with the SVG Table Component:
+
+1. Clone the Turborepo project to your local machine.
+2. Navigate to the root directory of the Turborepo and run `pnpm install` to install all necessary dependencies.
+
+## Usage
+
+To use the SVG Table Component in your application, import it from the `@repo/svg-table` package:
+
+```typescript
+import SVGTable from '@repo/svg-table';
 ```
 
-## What's inside?
+Next, define the properties for your table, including rows, column widths, and any default styles:
 
-This Turborepo includes the following packages/apps:
+```typescript
+const tableProps = {
+  // Example properties
+  width: 600,
+  rows: [
+    // Define your rows and cells here
+  ],
+  columnWidths: [100, 200, 300],
+  defaultCellStyle: {
+    // Default cell styles
+  },
+  style: {
+    // Table-wide styles
+  },
+};
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+<SVGTable {...tableProps} />
 ```
 
-### Develop
+## Component API
 
-To develop all apps and packages, run the following command:
+### Props
 
-```
-cd my-turborepo
-pnpm dev
-```
+- rows: An array of row objects, each containing cell data and optional styling.
+- width: The total width of the SVG table.
+- columnWidths: An optional array specifying the width of each column.
+- defaultCellStyle: Default styling applied to all cells, unless overridden by - individual cell styles.
+- defaultRowStyle: Default styling applied to all rows.
+- style: Additional styling options for the overall table layout.
 
-### Remote Caching
+### Interfaces
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+- TableProps: Describes the complete set of properties accepted by the SVGTable - component.
+- CellProps: Describes the properties and styling options for individual table - cells.
+- RowProps: Describes the properties and styling options for table rows.
+- CellStyle: Describes the styling options available for cells.
+- RowStyle: Describes the styling options available for rows.
+- TableStyle: Describes the styling options available for the overall table.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+### Development
 
-```
-cd my-turborepo
-npx turbo login
-```
+To contribute to the SVG Table Component or to modify it for your purposes:
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+1.Navigate to the packages/svg-table directory.
+2.Make your changes to the component's source code.
+3.Use pnpm dev to test your changes in a development environment.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Support
 
-```
-npx turbo link
-```
+For support, questions, or to report issues related to the SVG Table Component, please use the GitHub Issues page of the Turborepo project.
 
-## Useful Links
+### License
 
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+The SVG Table Component is MIT License.

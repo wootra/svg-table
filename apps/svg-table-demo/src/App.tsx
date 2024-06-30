@@ -19,7 +19,11 @@ const App = () => {
 			{
 				cells: [
 					{ content: 'Header 1', style: { bgColor: '#f0f0f0' } },
-					{ content: 'Header 2', style: { bgColor: '#f0f0f0' } },
+					{
+						content: 'Header 2',
+						colSpan: 2,
+						style: { bgColor: '#f0f0f0' },
+					},
 				],
 			},
 			{

@@ -20,6 +20,7 @@ const getCellWidth = (
 	colSpan: number,
 	colGap: number
 ) => {
+	console.log({ cellWidths, startCol, colSpan, colGap });
 	if (cellWidths.length < startCol + colSpan - 1) {
 		console.error(
 			'Not enough column widths provided. check colSpan of the cell data. startCol: ' +
@@ -64,7 +65,7 @@ const insertIgnoredCell = (row: CalculatedRowProps, colIndex: number) => {
 		{
 			_ignored: true,
 		},
-		...row.cells.slice(colIndex + 1),
+		...row.cells.slice(colIndex),
 	];
 };
 
@@ -92,6 +93,7 @@ export const calculateRows = (
 	style?: TableStyle
 ) => {
 	let currentY = 0;
+	console.log('rows:', rows);
 	const calcRows: CalculatedRowProps[] = rows.map(row => ({
 		...row,
 		x: -1,
@@ -125,16 +127,26 @@ export const calculateRows = (
 				row: row,
 				cell: cell,
 			};
+
 			if (cell._ignored) {
+				const widToSkip = getCellWidth(
+					cellWidths,
+					idx,
+					1,
+					style?.colGaps ?? 0
+				);
 				idx += 1;
+				currentX += widToSkip + (style?.colGaps ?? 0);
 				continue;
 			}
+
 			const cellWidth = getCellWidth(
 				cellWidths,
 				idx,
 				cell.colSpan ?? 1,
 				style?.colGaps ?? 0
 			);
+
 			if (cell.rowSpan) {
 				// find same index of the below rows and add an empty cell with _ignored: true attribute.
 				for (let i = 1; i < cell.rowSpan; i++) {

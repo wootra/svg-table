@@ -1,14 +1,5 @@
 import { memo } from 'react';
-import type {
-	CalculatedCellProps,
-	CalculatedRowProps,
-	CellProps,
-	CellStyle,
-	PatternArrays,
-	RowProps,
-	RowStyle,
-	TableProps,
-} from './types';
+import type { CalculatedCellProps, CellStyle, PatternArrays } from './types';
 
 const isBorderRect = (style: CellStyle) => {
 	const { borderWidths, borderColors, borderPatterns } = style;
