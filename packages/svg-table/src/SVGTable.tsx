@@ -65,6 +65,7 @@ export const SVGTable: React.FC<TableProps> = ({
 	defaultRowStyle,
 	columnWidths,
 	style,
+	className,
 }) => {
 	// Calculate the total width and height of the table
 
@@ -138,8 +139,10 @@ export const SVGTable: React.FC<TableProps> = ({
 			height={height}
 			style={{ overflow: 'visible' }}
 			viewBox={`0 0 ${width} ${height}`}
+			className={`svg-table ${className ?? ''}`}
 		>
 			<FilledArea
+				className='filled-area-behind-table'
 				width={width}
 				height={height}
 				bgColor={tableStyle.bgColor}

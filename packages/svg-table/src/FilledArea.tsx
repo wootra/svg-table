@@ -10,6 +10,7 @@ type Props = {
 	borderColors: ColorsOnWidth;
 	borderPatterns: PatternArrays;
 	borderShapes: PatternShapes;
+	className?: string;
 };
 
 const FilledArea = (props: Props) => {
@@ -21,16 +22,18 @@ const FilledArea = (props: Props) => {
 		borderColors,
 		borderPatterns,
 		borderShapes,
+		className,
 	} = props;
 	const isBorderOnRect = isBorderRect(props);
 	const rectStyleProps = isBorderOnRect
 		? getRectStyle(props)
 		: { fill: bgColor };
 	return (
-		<>
+		<g className={`filled-area ${className ?? ''}`}>
 			<rect width={width} height={height} {...rectStyleProps} />
 			{!isBorderOnRect && (
 				<PathOnArea
+					className='paths-on-area-for-filled-area'
 					width={width}
 					height={height}
 					borderWidths={borderWidths}
@@ -39,7 +42,7 @@ const FilledArea = (props: Props) => {
 					borderShapes={borderShapes}
 				/>
 			)}
-		</>
+		</g>
 	);
 };
 

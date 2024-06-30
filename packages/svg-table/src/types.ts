@@ -79,6 +79,7 @@ export type TableStyle = {
 } & BorderStyles;
 
 export type TableProps = {
+	className?: string;
 	width: number; // total size of the svg in px.
 	columnWidths?: number[]; // width of each column in pt of the svg. it does not match with px if colGaps in style is given.
 	defaultCellStyle?: Partial<CellStyle>;

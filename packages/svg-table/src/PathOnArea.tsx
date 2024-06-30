@@ -15,6 +15,7 @@ export const PathOnArea = memo(
 		borderColors: ColorsOnWidth;
 		borderPatterns: PatternArrays;
 		borderShapes: PatternShapes;
+		className?: string;
 	}) => {
 		const {
 			width,
@@ -23,6 +24,7 @@ export const PathOnArea = memo(
 			borderColors,
 			borderPatterns,
 			borderShapes,
+			className,
 		} = props;
 		const leftWid = getWid(borderWidths, 'left');
 		const rightWid = getWid(borderWidths, 'right');
@@ -30,9 +32,10 @@ export const PathOnArea = memo(
 		const bottomWid = getWid(borderWidths, 'bottom');
 
 		return (
-			<g>
+			<g className={`paths-on-area ${className ?? ''}`}>
 				{leftWid && (
 					<path
+						className='left-path'
 						d={`M${leftWid / 2},${topWid / 2} L${leftWid / 2},${height - bottomWid / 2}`}
 						strokeWidth={leftWid}
 						stroke={getColor(borderColors, 'left')}
@@ -46,6 +49,7 @@ export const PathOnArea = memo(
 				)}
 				{rightWid && (
 					<path
+						className='right-path'
 						d={`M${width - rightWid / 2} ${topWid / 2} L${width - rightWid / 2},${height - bottomWid / 2}`}
 						strokeWidth={rightWid}
 						stroke={getColor(borderColors, 'right')}
@@ -59,6 +63,7 @@ export const PathOnArea = memo(
 				)}
 				{topWid && (
 					<path
+						className='top-path'
 						d={`M${leftWid / 2},${topWid / 2} L${width - rightWid / 2},${topWid / 2}`}
 						strokeWidth={topWid}
 						stroke={getColor(borderColors, 'top')}
@@ -72,6 +77,7 @@ export const PathOnArea = memo(
 				)}
 				{bottomWid && (
 					<path
+						className='bottom-path'
 						d={`M${leftWid / 2} ${height - bottomWid / 2} L ${width - rightWid / 2} ${height - bottomWid / 2}`}
 						strokeWidth={bottomWid}
 						stroke={getColor(borderColors, 'bottom')}

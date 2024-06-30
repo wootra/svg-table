@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import type { CalculatedCellProps, CellStyle } from './types';
-import { getRectStyle, getWid, isBorderRect } from './utils';
-import { PathOnArea } from './PathOnArea';
+import { getWid } from './utils';
 import FilledArea from './FilledArea';
 
 export const ACell = memo(
@@ -36,7 +35,7 @@ export const ACell = memo(
 		const padBottom = getWid(paddings, 'bottom');
 
 		return (
-			<g transform={`translate(${x}, ${y})`}>
+			<g transform={`translate(${x}, ${y})`} className='cell-wrapper'>
 				<FilledArea
 					width={width}
 					height={height}
