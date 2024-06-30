@@ -30,10 +30,16 @@ export type BorderStyles = {
 	borderShapes: PatternShapes;
 };
 
+export type TextHAlign = 'left' | 'center' | 'right';
+export type TextVAlign = 'top' | 'center' | 'bottom';
+
+export type TextStyle = SVGAttributes<SVGTextElement>;
+
 export type CellStyle = {
 	bgColor: string;
 	paddings: Widths;
 	textColor: string;
+	textStyle?: TextStyle;
 } & BorderStyles;
 
 export type CellProps = {

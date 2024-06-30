@@ -28,6 +28,7 @@ export const ACell = memo(
 			borderShapes,
 			paddings,
 			textColor,
+			textStyle,
 		} = styleToUse;
 		const padLeft = getWid(paddings, 'left');
 		const padTop = getWid(paddings, 'top');
@@ -54,6 +55,7 @@ export const ACell = memo(
 								textAnchor='middle'
 								dominantBaseline='middle'
 								fill={textColor}
+								{...textStyle}
 							>
 								{content}
 							</text>
