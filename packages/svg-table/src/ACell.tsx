@@ -83,6 +83,7 @@ export const ACell = memo(
 			borderColors,
 			borderPatterns,
 			paddings,
+			textColor,
 		} = styleToUse;
 
 		const rectStyleProps = isBorderRect(styleToUse)
@@ -97,7 +98,7 @@ export const ACell = memo(
 					y={height / 2}
 					textAnchor='middle'
 					dominantBaseline='middle'
-					fill='white'
+					fill={textColor}
 				>
 					{content}
 				</text>

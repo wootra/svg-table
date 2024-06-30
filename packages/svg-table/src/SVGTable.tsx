@@ -7,7 +7,7 @@ import type {
 } from './types';
 import { ACell } from './ACell';
 import { calculateRows } from './calculateRows';
-import { convertToColorArrays, convertToWidthArrays } from './utils';
+import { convertToColorArrays, convertToWidthArrays, getWid } from './utils';
 
 const getTotalCells = (cells: CellProps[]) => {
 	return cells.reduce((total, cell) => {
@@ -44,6 +44,17 @@ const parseDefaultCellStyle = (
 		...defaultCellStyle,
 	};
 };
+
+const adjustColumnWidths = (
+	columnWidths: number[],
+	tableWidthWithoutGaps: number
+) => {
+	const totalWidth = columnWidths.reduce((total, width) => total + width, 0);
+	const ratio = tableWidthWithoutGaps / totalWidth;
+	if (ratio > 0.99 && ratio <= 1.01) return columnWidths;
+	return columnWidths.map(width => width * ratio);
+};
+
 export const SVGTable: React.FC<TableProps> = ({
 	rows,
 	width = 500,
@@ -61,9 +72,21 @@ export const SVGTable: React.FC<TableProps> = ({
 		rows.reduce((max, row) => Math.max(max, getTotalCells(row.cells)), 0),
 		1
 	);
+	const tableStyle: TableStyle = parsedTableStyle(style);
 
-	const cellWidths =
-		columnWidths ?? Array(maxColumns).fill(width / maxColumns);
+	const allColGaps =
+		(maxColumns - 1) * tableStyle.colGaps +
+		getWid(tableStyle.margins, 'left') +
+		getWid(tableStyle.margins, 'right');
+
+	const allRowGaps =
+		(rows.length - 1) * tableStyle.rowGaps +
+		getWid(tableStyle.margins, 'top') +
+		getWid(tableStyle.margins, 'bottom');
+
+	const cellWidths = columnWidths
+		? adjustColumnWidths(columnWidths, width - allColGaps)
+		: Array(maxColumns).fill((width - allColGaps) / maxColumns);
 
 	const defaultStyleForRow: RowStyle = {
 		bgColor: 'transparent',
@@ -71,16 +94,9 @@ export const SVGTable: React.FC<TableProps> = ({
 		...defaultRowStyle,
 	};
 
-	const height = rows.reduce(
-		(h, row) => h + (row.style?.height ?? defaultStyleForRow.height),
-		0
-	);
-
 	const rowHeights = rows.map(
 		row => row.style?.height ?? defaultStyleForRow.height
 	);
-
-	const tableStyle: TableStyle = parsedTableStyle(style);
 
 	const calculatedRows = calculateRows(
 		cellWidths,
@@ -111,17 +127,30 @@ export const SVGTable: React.FC<TableProps> = ({
 		return <g key={rowIndex}>{rowContent}</g>;
 	});
 
-	const h = height + (rows.length - 1) * (style?.rowGaps ?? 0);
-	const w = width + (maxColumns - 1) * (style?.colGaps ?? 0);
+	const height =
+		rows.reduce(
+			(h, row) => h + (row.style?.height ?? defaultStyleForRow.height),
+			0
+		) + allRowGaps;
+
 	return (
-		<div style={{ outline: '1px solid green', width, height }}>
+		<div
+			style={{
+				outline: '1px solid green',
+				width,
+			}}
+		>
 			<svg
 				width={width}
 				height={height}
-				viewBox={`0 0 ${w} ${h}`}
+				// viewBox={`-${getWid(tableStyle.margins, 'left')} -${getWid(tableStyle.margins, 'top')} ${width} ${height}`}
 				style={{ overflow: 'visible' }}
 			>
-				{rowsContent}
+				<g
+					transform={`translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`}
+				>
+					{rowsContent}
+				</g>
 			</svg>
 		</div>
 	);

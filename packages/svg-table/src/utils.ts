@@ -18,6 +18,48 @@ export const convertToWidthArrays = (
 	return defaultWid;
 };
 
+export const getWid = (
+	widths: Widths,
+	pos: 'left' | 'right' | 'top' | 'bottom'
+) => {
+	if (typeof widths === 'number') return widths;
+	if (Array.isArray(widths)) {
+		if (widths.length === 4) {
+			switch (pos) {
+				case 'left':
+					return widths[3];
+				case 'right':
+					return widths[1];
+				case 'top':
+					return widths[0];
+				case 'bottom':
+					return widths[2];
+				default:
+					break;
+			}
+		} else if (widths.length === 2) {
+			switch (pos) {
+				case 'left':
+					return widths[1];
+				case 'right':
+					return widths[1];
+				case 'top':
+					return widths[0];
+				case 'bottom':
+					return widths[0];
+				default:
+					break;
+			}
+		}
+	}
+	console.error(
+		'Invalid widths type: ',
+		widths,
+		' should be number or [number, number, number, number] or [number, number]'
+	);
+	return 0;
+};
+
 export const convertToColorArrays = (
 	colors: ColorsOnWidth,
 	defaultColor = 'black'

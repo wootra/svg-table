@@ -14,6 +14,7 @@ const App = () => {
 		style: {
 			rowGaps: 10,
 			colGaps: 10,
+			margins: [10, 10, 10, 10],
 		},
 		rows: [
 			{
