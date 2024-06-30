@@ -1,4 +1,4 @@
-import { SVGAttributes } from 'react';
+import { ReactNode, SVGAttributes } from 'react';
 
 export type Widths =
 	| [number, number] // top/bottom, left/right
@@ -38,7 +38,7 @@ export type CellStyle = {
 
 export type CellProps = {
 	style?: Partial<CellStyle>;
-	content: SVGSVGElement | SVGElement | string | undefined | number | null;
+	content: ReactNode;
 	colSpan?: number;
 	rowSpan?: number;
 };

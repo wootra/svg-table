@@ -60,6 +60,7 @@ export const ACell = memo(
 							</text>
 						</g>
 					)}
+					{typeof content !== 'string' && content}
 				</g>
 			</g>
 		);
