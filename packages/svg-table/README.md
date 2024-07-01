@@ -12,7 +12,7 @@ I realized that creating a table form in SVG is a tedious job, so created this l
 Especially, if you want to use PDFMake and want to create more advanced table like experience in the PDF, it is a time consuming process.
 If you can make the table with SVG and reuse the same code for both browser and PDF, it will be easier to manage.
 
-this library support below use cases. Please check out the (demo)[] code to have more idea of using this library.
+this library support below use cases. Please check out the [demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo) code to have more idea of using this library.
 
 ### Basic table
 
@@ -54,12 +54,7 @@ you can easily add gaps between rows or columns.
 
 ### table in table
 
-since this is just an svg, you can use another svg even svg-table.
-But becareful. the columnWidths given is used just to calculate ratio of each columns. when you give colGaps, each columns' sizes are calculated excluding gaps (and margins).
-so you should give widths for internal table considering of the gaps.
-for example, if width of the table is 900, and 3 columns, the internal object's size cannot be more than 300.
-but if you add colGaps as 10, then 900-20 = 880 is your total available size.
-so each column will have 880/3 = 293 will be the available cell's width.
+Since this is just an svg, you can use another svg even svg-table.
 
 ![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/embedded-tables.png)
 
@@ -137,18 +132,20 @@ const tableProps = {
 - RowStyle: Describes the styling options available for rows.
 - TableStyle: Describes the styling options available for the overall table.
 
-### Development
+## Development
 
 To contribute to the SVG Table Component or to modify it for your purposes:
 
-1.Navigate to the packages/svg-table directory.
-2.Make your changes to the component's source code.
-3.Use pnpm dev to test your changes in a development environment.
+1. if you never setup turbo repo environment, please run `pnpm i` in the workspace directory
+2. Navigate to the packages/svg-table directory.
+3. Make your changes to the component's source code.
+4. Navigate to the `apps/svg-table-demo` directory.
+5. run `pnpm dev` to run dev server.
 
-### Support
+## Support
 
-For support, questions, or to report issues related to the SVG Table Component, please use the GitHub Issues page of the Turborepo project.
+For support, questions, or to report issues related to the SVG Table Component, please use the GitHub [Issues page](https://github.com/wootra/svg-table/issues) of the Turborepo project.
 
-### License
+## License
 
 The SVG Table Component is MIT License.
