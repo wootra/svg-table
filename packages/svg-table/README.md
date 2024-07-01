@@ -3,414 +3,56 @@
 this library is written in typescript and ESM.
 also create the module using React.js.
 
-demo code is [here](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo)
+demo code and the documentations are [here](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo)
 
-## Basic table
+## Introduction
+
+`@shjeon0730/svg-table` library is made to support a case that HTML table cannot be used but svg is needed.
+I realized that creating a table form in SVG is a tedious job, so created this library to make the table shape in svg easier and manageable.
+Especially, if you want to use PDFMake and want to create more advanced table like experience in the PDF, it is a time consuming process.
+If you can make the table with SVG and reuse the same code for both browser and PDF, it will be easier to manage.
+
+this library support below use cases. Please check out the (demo)[] code to have more idea of using this library.
+
+### Basic table
 
 simply creating row/cells object and pass it to SVGTable element to create a svg table.
 
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-
-const Rect = () => {
- return (
-  <g>
-   <rect x={10} y={5} width={100} height={15} fill='cyan' />
-   <text x={10} y={15}>
-    hi
-   </text>
-  </g>
- );
-};
-
-const BasicDemo = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  width: width,
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: <Rect /> },
-     { content: 'Row 1, Cell 2', rowSpan: 2 },
-     { content: 'Row 1, Cell 3' },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default BasicDemo;
-
-```
-
 ![basic demo](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/basic-demo.png)
 
-## No border Table
+### No border Table
 
 you can remove all borders.
 
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-
-const NoBorderTableDemo = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  width: width,
-  defaultCellStyle: {
-   borderWidths: 0,
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'test' },
-     { content: 'Row 1, Cell 2', rowSpan: 2 },
-     { content: 'Row 1, Cell 3' },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default NoBorderTableDemo;
-
-
-```
-
 ![no border table](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/no-border-table.png)
 
-## table border
+### table border
 
 you can wrap the table with border
-
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-
-const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  width: width,
-  defaultCellStyle: {
-   borderWidths: 0,
-  },
-  style: {
-   borderWidths: 1,
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'test' },
-     { content: 'Row 1, Cell 2', rowSpan: 2 },
-     { content: 'Row 1, Cell 3' },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default OnlyTableBolder;
-
-
-```
 
 ![only border around table](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/only-around-table-border.png)
 
 Or you can add margin between table cells and table border
 
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-
-const TableBolderWithMargin = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  width: width,
-
-  style: {
-   borderWidths: 1,
-   margins: 10,
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'test' },
-     { content: 'Row 1, Cell 2', rowSpan: 2 },
-     { content: 'Row 1, Cell 3' },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default TableBolderWithMargin;
-
-```
-
 ![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/table-border-with-margin.png)
 
-## table border styles
+### table border styles
 
 you can customize the shape and color of the borders
 
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-
-const TableBorderStyles = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  width: width,
-  defaultCellStyle: {
-   borderWidths: [0, 1, 1, 0], // since default border is black, should be hide before customize some borders.
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-      style: {
-       borderColors: 'blue',
-      },
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-      style: {
-       borderWidths: [0, 0, 3, 0], // cell level style will override default style.
-       borderColors: 'orange',
-       borderPatterns: [6, 5],
-       borderShapes: 'round',
-      },
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'test' },
-     { content: 'Row 1, Cell 2', rowSpan: 2 },
-     { content: 'Row 1, Cell 3' },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default TableBorderStyles;
-
-```
-
 ![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/table-border-styles.png)
 
-## background and text color change
-
-you can change background of the cells and table. Also, the text color can be changed as well
-
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-const Gradients = () => {
- return (
-  <>
-   <linearGradient id='red-to-blue' x1='0' x2='0' y1='0' y2='1'>
-    <stop offset='0%' stop-color='red' />
-    <stop offset='100%' stop-color='blue' />
-   </linearGradient>
-   <linearGradient id='cyan-to-white' x1='0' x2='0' y1='0' y2='1'>
-    <stop offset='0%' stop-color='cyan' />
-    <stop offset='100%' stop-color='white' />
-   </linearGradient>
-  </>
- );
-};
-const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  width: width,
-  defs: <Gradients />,
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-
-      style: {
-       textColor: 'blue',
-      },
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-      style: {
-       bgColor: 'orange',
-       textColor: 'white',
-      },
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'test' },
-     {
-      content: 'Row 1, Cell 2',
-      rowSpan: 2,
-      style: {
-       bgColor: 'url(#red-to-blue)',
-       textColor: 'white',
-      },
-     },
-     {
-      content: 'Row 1, Cell 3',
-      style: {
-       bgColor: 'url(#cyan-to-white)',
-      },
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default BgColorAndTextColor;
-
-
-```
+### background and text color change
 
 ![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/bgcolor-and-txtcolor.png)
 
-## Gaps between columns and rows
+### Gaps between columns and rows
 
 you can easily add gaps between rows or columns.
 
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-
-const Gaps = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  width: width,
-  style: {
-   colGaps: 4,
-   rowGaps: 10,
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'test' },
-     { content: 'Row 1, Cell 2', rowSpan: 2 },
-     { content: 'Row 1, Cell 3' },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default Gaps;
-
-```
-
 ![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/gaps.png)
 
-## table in table
+### table in table
 
 since this is just an svg, you can use another svg even svg-table.
 But becareful. the columnWidths given is used just to calculate ratio of each columns. when you give colGaps, each columns' sizes are calculated excluding gaps (and margins).
@@ -419,79 +61,9 @@ for example, if width of the table is 900, and 3 columns, the internal object's 
 but if you add colGaps as 10, then 900-20 = 880 is your total available size.
 so each column will have 880/3 = 293 will be the available cell's width.
 
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-import BasicDemo from './BasicDemo';
-import BgColorAndTextColor from './BgColorAndTextColor';
-import Gaps from './Gaps';
-import NoBorderTableDemo from './NoBorderTableDemo';
-import OnlyTableBolder from './OnlyTableBolder';
-import TableBorderStyles from './TableBorderStyles';
-
-const EmbeddedTable = () => {
- const tableProps: TableProps = {
-  columnWidths: [1, 1, 1], // this is just ratio.
-  width: 900,
-  defaultRowStyle: {
-   bgColor: 'yellow',
-   height: 50,
-  },
-
-  style: {
-   rowGaps: 10,
-   colGaps: 10,
-  },
-  rows: [
-   {
-    style: {
-     height: 30,
-    },
-    cells: [
-     {
-      content: 'Header 1',
-     },
-     {
-      content: 'Header 2',
-     },
-     {
-      content: 'Header3',
-     },
-    ],
-   },
-   {
-    style: {
-     height: 200,
-    },
-    cells: [
-     { content: <BgColorAndTextColor width={300} /> }, // since there is gaps added, it will be overflow.
-     { content: <BasicDemo width={293} /> },
-     { content: <Gaps width={293} /> },
-    ],
-   },
-   {
-    style: {
-     height: 200,
-    },
-    cells: [
-     { content: <NoBorderTableDemo width={293} /> },
-     { content: <OnlyTableBolder width={293} /> },
-     { content: <TableBorderStyles width={293} /> },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default EmbeddedTable;
-
-
-```
-
 ![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/embedded-tables.png)
 
-## text override
+### text override
 
 svg-table has class names for individual elements. so you can add css.
 but also, you can control individual text's attributes since the attributes are passed by `style.textStyle` option. All possible attributes can be passed to text elements.
@@ -500,158 +72,83 @@ using this behavior, we can override text's position, layout, and much more beha
 
 in this example, I just overrode the positions of text.
 
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-
-const textLeftTop = {
- textAnchor: 'start',
- dominantBaseline: 'hanging',
- x: 0,
- y: 0,
-};
-
-const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  columnWidths: [100, 300, 200],
-  width: width,
-  defaultCellStyle: {
-   textColor: '#ff0000',
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-      style: {
-       bgColor: '#f0f0f0',
-       paddings: [10, 4, 0, 0],
-       textColor: 'blue',
-       textStyle: {
-        textAnchor: 'middle',
-        dominantBaseline: 'auto',
-        fontSize: 10,
-       },
-      },
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-      style: {
-       textStyle: {
-        textAnchor: 'middle',
-        dominantBaseline: 'middle',
-       },
-      },
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'test' },
-     {
-      content: 'Row 1, Cell 2',
-      rowSpan: 2,
-      style: {
-       textStyle: {
-        fontSize: 30,
-        fontFamily: 'sans-serif',
-       },
-      },
-     },
-     {
-      content: 'Row 1, Cell 3',
-      style: {
-       textStyle: textLeftTop,
-      },
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default TextStyleOverride;
-
-```
-
 ![text style override](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/text-style-override.png)
 
-## Play with styles even more
+### Play with styles even more
 
 you can set more advanced styles on your svg.
-
-```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-
-const Circle = () => {
- return <ellipse cx={15} cy={15} rx={30} ry={30} fill='cyan' />;
-};
-
-const TableStyles = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  columnWidths: [100, 300, 200],
-  width: width,
-
-  defaultRowStyle: {
-   bgColor: 'yellow',
-   height: 50,
-  },
-
-  style: {
-   // table's border customizations
-   rowGaps: 10,
-   colGaps: 10,
-   margins: [10, 10, 10, 10],
-   bgColor: 'lime',
-   borderWidths: [2, 2, 2, 2],
-   borderColors: ['red', 'green', 'blue', 'purple'],
-   borderPatterns: [
-    [4, 4],
-    [4, 6],
-    [0, 6],
-    [0, 6],
-   ],
-   borderShapes: ['butt', 'butt', 'round', 'square'],
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: <Circle />,
-      style: {
-       svgStyle: {
-        overflow: 'visible', // override internal svg's style
-       },
-      },
-     },
-     { content: 'Row 1, Cell 2', rowSpan: 2 },
-     { content: 'Row 1, Cell 3' },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
-};
-
-export default TableStyles;
-
-```
 
 by setting `overflow: visible` on the inner svg, we can make the content intentionally overflow.
 
 ![text style override](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/table-advanced-styles.png)
+
+## Installation
+
+To get started with the SVG Table Component:
+
+1. install the module by running `pnpm install @shjeon0730/svg-table`.
+
+## Usage
+
+To use the SVG Table Component in your application, import it from the `@shjeon0730/svg-table` package:
+
+```typescript
+import SVGTable from '@shjeon0730/svg-table';
+```
+
+Next, define the properties for your table, including rows, column widths, and any default styles:
+
+```typescript
+const tableProps = {
+  // Example properties
+  width: 600,
+  rows: [
+    // Define your rows and cells here
+  ],
+  columnWidths: [100, 200, 300],
+  defaultCellStyle: {
+    // Default cell styles
+  },
+  style: {
+    // Table-wide styles
+  },
+};
+
+<SVGTable {...tableProps} />
+```
+
+## Component API
+
+### Props (TableProps)
+
+- rows: An array of row objects, each containing cell data and optional styling.
+- width: The total width of the SVG table.
+- columnWidths: An optional array specifying the width RATIO of each column. this value is just RATIOS of columns, so [1,2,1] means the second column has 2x bigger size than the 1st and 3rd columns. You can just pass the anticipated sizes of columns.
+- defaultCellStyle: Default styling applied to all cells, unless overridden by - individual cell style.
+- defaultRowStyle: Default styling applied to all rows, unless overridden by individual row's style.
+- style: the style of `table` level svg. This includes, border, bgColor, margins, colGaps, rowGaps, and additional style for `svg` element for the table.
+
+### Interfaces
+
+- TableProps: Describes the complete set of properties accepted by the SVGTable - component.
+- CellProps: Describes the properties and styling options for individual table - cells.
+- RowProps: Describes the properties and styling options for table rows.
+- CellStyle: Describes the styling options available for cells.
+- RowStyle: Describes the styling options available for rows.
+- TableStyle: Describes the styling options available for the overall table.
+
+### Development
+
+To contribute to the SVG Table Component or to modify it for your purposes:
+
+1.Navigate to the packages/svg-table directory.
+2.Make your changes to the component's source code.
+3.Use pnpm dev to test your changes in a development environment.
+
+### Support
+
+For support, questions, or to report issues related to the SVG Table Component, please use the GitHub Issues page of the Turborepo project.
+
+### License
+
+The SVG Table Component is MIT License.
