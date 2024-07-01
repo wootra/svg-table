@@ -10,7 +10,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"svg-table": "workspace:*",
+		"@shjeon0730/svg-table": "workspace:*",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},

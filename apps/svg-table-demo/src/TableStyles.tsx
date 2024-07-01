@@ -1,4 +1,4 @@
-import SVGTable, { TableProps } from 'svg-table';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
 const Circle = () => {
 	return <ellipse cx={15} cy={15} rx={30} ry={30} fill='cyan' />;

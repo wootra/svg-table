@@ -1,4 +1,4 @@
-import SVGTable, { TableProps } from 'svg-table';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
 const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
 	const tableProps: TableProps = {

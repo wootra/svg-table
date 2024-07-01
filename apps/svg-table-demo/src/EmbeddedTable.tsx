@@ -1,4 +1,4 @@
-import SVGTable, { TableProps } from 'svg-table';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 import BasicDemo from './BasicDemo';
 import BgColorAndTextColor from './BgColorAndTextColor';
 import Gaps from './Gaps';

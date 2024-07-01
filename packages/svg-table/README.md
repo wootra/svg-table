@@ -1,4 +1,9 @@
-# Demo for svg-table
+# svg-table
+
+this library is written in typescript and ESM.
+also create the module using React.js.
+
+demo code is [here](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo)
 
 ## Basic table
 
@@ -56,7 +61,7 @@ export default BasicDemo;
 
 ```
 
-![basic demo](README.assets/basic-demo.png)
+![basic demo](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/basic-demo.png)
 
 ## No border Table
 
@@ -107,7 +112,7 @@ export default NoBorderTableDemo;
 
 ```
 
-![no border table](README.assets/no-border-table.png)
+![no border table](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/no-border-table.png)
 
 ## table border
 
@@ -161,7 +166,7 @@ export default OnlyTableBolder;
 
 ```
 
-![only border around table](README.assets/only-around-table-border.png)
+![only border around table](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/only-around-table-border.png)
 
 Or you can add margin between table cells and table border
 
@@ -211,7 +216,7 @@ export default TableBolderWithMargin;
 
 ```
 
-![table border with margin](README.assets/table-border-with-margin.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/table-border-with-margin.png)
 
 ## table border styles
 
@@ -270,7 +275,7 @@ export default TableBorderStyles;
 
 ```
 
-![table border with margin](README.assets/table-border-styles.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/table-border-styles.png)
 
 ## background and text color change
 
@@ -352,7 +357,7 @@ export default BgColorAndTextColor;
 
 ```
 
-![table border with margin](README.assets/bgcolor-and-txtcolor.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/bgcolor-and-txtcolor.png)
 
 ## Gaps between columns and rows
 
@@ -403,7 +408,7 @@ export default Gaps;
 
 ```
 
-![table border with margin](README.assets/gaps.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/gaps.png)
 
 ## table in table
 
@@ -484,7 +489,7 @@ export default EmbeddedTable;
 
 ```
 
-![table border with margin](README.assets/embedded-tables.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/embedded-tables.png)
 
 ## text override
 
@@ -577,7 +582,7 @@ export default TextStyleOverride;
 
 ```
 
-![text style override](README.assets/text-style-override.png)
+![text style override](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/text-style-override.png)
 
 ## Play with styles even more
 
@@ -649,4 +654,4 @@ export default TableStyles;
 
 by setting `overflow: visible` on the inner svg, we can make the content intentionally overflow.
 
-![text style override](README.assets/table-advanced-styles.png)
+![text style override](https://raw.githubusercontent.com/wootra/svg-table/main/apps/svg-table-demo/README.assets/table-advanced-styles.png)
