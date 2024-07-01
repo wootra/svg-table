@@ -54,11 +54,11 @@ const getCellHeight = (
 
 const insertIgnoredCell = (row: CalculatedRowProps, colIndex: number) => {
 	row.cells = [
-		...row.cells.slice(0, colIndex),
+		...(row.cells.slice(0, colIndex) ?? []),
 		{
 			_ignored: true,
 		},
-		...row.cells.slice(colIndex),
+		...(row.cells.slice(colIndex) ?? []),
 	];
 };
 
@@ -124,10 +124,22 @@ export const calculateRows = (
 			if (cell.rowSpan) {
 				// find same index of the below rows and add an empty cell with _ignored: true attribute.
 				for (let i = 1; i < cell.rowSpan; i++) {
-					insertIgnoredCell(
-						calcRows[idx + i] as CalculatedRowProps,
-						idx
-					);
+					if (calcRows[ri + i]) {
+						insertIgnoredCell(
+							calcRows[ri + i] as CalculatedRowProps,
+							idx
+						);
+					} else {
+						console.error(
+							'row is not found at index: ' + (idx + i),
+							'your cell is:',
+							cell,
+							'your rows are',
+							calcRows,
+							'idx is',
+							idx
+						);
+					}
 				}
 			}
 			cell.width = cellWidth;

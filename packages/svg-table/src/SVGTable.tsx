@@ -28,8 +28,8 @@ const parsedTableStyle = (style?: Partial<TableStyle>): TableStyle => {
 		borderPatterns: undefined,
 		borderShapes: undefined,
 		borderColors: style?.borderWidths ? '#000' : undefined,
+		svgStyle: { overflow: 'visible' },
 		...style,
-		// borderColors: style?.borderColors ?? '#000',
 		margins: style?.margins ?? 0,
 	};
 };
@@ -139,7 +139,7 @@ export const SVGTable: React.FC<TableProps> = ({
 		<svg
 			width={width}
 			height={height}
-			style={{ overflow: 'visible' }}
+			style={tableStyle.svgStyle}
 			viewBox={`0 0 ${width} ${height}`}
 			className={`svg-table ${className ?? ''}`}
 		>

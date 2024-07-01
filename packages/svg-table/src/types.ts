@@ -1,4 +1,4 @@
-import { ReactNode, SVGAttributes } from 'react';
+import { HTMLAttributes, ReactNode, SVGAttributes } from 'react';
 
 export type Widths =
 	| [number, number] // top/bottom, left/right
@@ -40,6 +40,7 @@ export type CellStyle = {
 	paddings: Widths;
 	textColor: string;
 	textStyle?: TextStyle;
+	svgStyle?: HTMLAttributes<SVGSVGElement>['style'];
 } & Partial<BorderStyles>;
 
 export type CellProps = {
@@ -82,6 +83,7 @@ export type TableStyle = {
 	bgColor: string;
 	colGaps: number;
 	rowGaps: number;
+	svgStyle: HTMLAttributes<SVGSVGElement>['style'];
 } & Partial<BorderStyles>;
 
 export type TableProps = {

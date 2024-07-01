@@ -27,6 +27,7 @@ export const ACell = memo(
 			borderPatterns,
 			borderShapes,
 			paddings,
+			svgStyle,
 			textColor,
 			textStyle,
 		} = styleToUse;
@@ -36,7 +37,12 @@ export const ACell = memo(
 		const padBottom = getWid(paddings, 'bottom');
 
 		return (
-			<g transform={`translate(${x}, ${y})`} className='cell-wrapper'>
+			<g
+				transform={`translate(${x}, ${y})`}
+				className='cell-wrapper'
+				width={width}
+				height={height}
+			>
 				<FilledArea
 					width={width}
 					height={height}
@@ -46,23 +52,25 @@ export const ACell = memo(
 					borderPatterns={borderPatterns}
 					borderShapes={borderShapes}
 				/>
-				<g transform={`translate(${padLeft}, ${padTop})`}>
-					{typeof content === 'string' && (
+				<svg width={width} height={height} style={svgStyle}>
+					<g transform={`translate(${padLeft}, ${padTop})`}>
 						<g transform={`translate(-${padRight}, -${padBottom})`}>
-							<text
-								x={width / 2}
-								y={height / 2}
-								textAnchor='middle'
-								dominantBaseline='middle'
-								fill={textColor}
-								{...textStyle}
-							>
-								{content}
-							</text>
+							{typeof content === 'string' && (
+								<text
+									x={width / 2}
+									y={height / 2}
+									textAnchor='middle'
+									dominantBaseline='middle'
+									fill={textColor}
+									{...textStyle}
+								>
+									{content}
+								</text>
+							)}
+							{typeof content !== 'string' && content}
 						</g>
-					)}
-					{typeof content !== 'string' && content}
-				</g>
+					</g>
+				</svg>
 			</g>
 		);
 	}
