@@ -24,11 +24,12 @@ const parsedTableStyle = (style?: Partial<TableStyle>): TableStyle => {
 		rowGaps: 0,
 		colGaps: 0,
 		bgColor: 'transparent',
-		borderWidths: 1,
+		borderWidths: undefined,
 		borderPatterns: undefined,
 		borderShapes: undefined,
+		borderColors: style?.borderWidths ? '#000' : undefined,
 		...style,
-		borderColors: style?.borderColors ?? '#000',
+		// borderColors: style?.borderColors ?? '#000',
 		margins: style?.margins ?? 0,
 	};
 };
@@ -38,8 +39,8 @@ const parseDefaultCellStyle = (
 ): CellStyle => {
 	return {
 		bgColor: 'transparent',
-		borderColors: '#000',
 		borderWidths: 1,
+		borderColors: '#000',
 		borderPatterns: undefined,
 		borderShapes: 'butt',
 		paddings: [1, 1, 1, 1],
@@ -66,6 +67,7 @@ export const SVGTable: React.FC<TableProps> = ({
 	columnWidths,
 	style,
 	className,
+	defs,
 }) => {
 	// Calculate the total width and height of the table
 
@@ -141,6 +143,7 @@ export const SVGTable: React.FC<TableProps> = ({
 			viewBox={`0 0 ${width} ${height}`}
 			className={`svg-table ${className ?? ''}`}
 		>
+			{defs && <defs>{defs}</defs>}
 			<FilledArea
 				className='filled-area-behind-table'
 				width={width}

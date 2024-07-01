@@ -1,17 +1,14 @@
 import { getRectStyle, isBorderRect } from './utils';
-import { ColorsOnWidth, PatternArrays, PatternShapes, Widths } from './types';
+import { BorderStyles } from './types';
 import { PathOnArea } from './PathOnArea';
 
 type Props = {
 	width: number;
 	height: number;
 	bgColor: string;
-	borderWidths: Widths;
-	borderColors: ColorsOnWidth;
-	borderPatterns: PatternArrays;
-	borderShapes: PatternShapes;
+
 	className?: string;
-};
+} & Partial<BorderStyles>;
 
 const FilledArea = (props: Props) => {
 	const {
@@ -28,6 +25,7 @@ const FilledArea = (props: Props) => {
 	const rectStyleProps = isBorderOnRect
 		? getRectStyle(props)
 		: { fill: bgColor };
+	console.log('rectStleProps', rectStyleProps);
 	return (
 		<g className={`filled-area ${className ?? ''}`}>
 			<rect width={width} height={height} {...rectStyleProps} />

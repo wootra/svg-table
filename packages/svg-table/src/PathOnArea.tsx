@@ -1,22 +1,16 @@
 import { memo } from 'react';
-import type {
-	ColorsOnWidth,
-	PatternArrays,
-	PatternShapes,
-	Widths,
-} from './types';
+import type { BorderStyles } from './types';
 import { getBorderShape, getColor, getDashArray, getWid } from './utils';
 
 export const PathOnArea = memo(
-	(props: {
-		width: number;
-		height: number;
-		borderWidths: Widths;
-		borderColors: ColorsOnWidth;
-		borderPatterns: PatternArrays;
-		borderShapes: PatternShapes;
-		className?: string;
-	}) => {
+	(
+		props: {
+			width: number;
+			height: number;
+
+			className?: string;
+		} & Partial<BorderStyles>
+	) => {
 		const {
 			width,
 			height,

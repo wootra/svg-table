@@ -1,57 +1,38 @@
 import SVGTable, { TableProps } from 'svg-table';
 import BasicDemo from './BasicDemo';
+import BgColorAndTextColor from './BgColorAndTextColor';
+import Gaps from './Gaps';
+import NoBorderTableDemo from './NoBorderTableDemo';
+import OnlyTableBolder from './OnlyTableBolder';
+import TableBorderStyles from './TableBorderStyles';
 
 const EmbeddedTable = () => {
 	const tableProps: TableProps = {
-		columnWidths: [100, 300, 200],
-		width: 800,
+		columnWidths: [1, 1, 1], // this is just ratio.
+		width: 900,
 		defaultRowStyle: {
 			bgColor: 'yellow',
 			height: 50,
 		},
-		defaultCellStyle: {
-			textColor: '#ff0000',
-		},
+
 		style: {
 			rowGaps: 10,
 			colGaps: 10,
-			margins: [10, 10, 10, 10],
-			bgColor: 'transparent',
-			borderWidths: [2, 2, 2, 2],
-			borderColors: ['red', 'green', 'blue', 'purple'],
-			borderPatterns: [
-				[4, 4],
-				[4, 6],
-				[0, 6],
-				[0, 6],
-			],
-			borderShapes: ['butt', 'butt', 'round', 'square'],
 		},
 		rows: [
 			{
+				style: {
+					height: 30,
+				},
 				cells: [
 					{
 						content: 'Header 1',
-						style: {
-							bgColor: '#f0f0f0',
-							paddings: [10, 4, 0, 0],
-							textColor: 'blue',
-						},
 					},
 					{
 						content: 'Header 2',
-						colSpan: 2,
-						style: {
-							bgColor: '#cccccc',
-							borderColors: ['red', 'green', 'blue', 'purple'],
-							borderPatterns: [
-								[4, 0.1],
-								[2, 0.1],
-								[0.1, 3],
-								[0.1, 3],
-							],
-							borderShapes: ['butt', 'butt', 'round', 'square'],
-						},
+					},
+					{
+						content: 'Header3',
 					},
 				],
 			},
@@ -60,15 +41,19 @@ const EmbeddedTable = () => {
 					height: 200,
 				},
 				cells: [
-					{ content: 'sample' },
-					{ content: <BasicDemo width={300} />, rowSpan: 2 },
-					{ content: 'Row 1, Cell 3' },
+					{ content: <BgColorAndTextColor width={300} /> }, // since there is gaps added, it will be overflow.
+					{ content: <BasicDemo width={293} /> },
+					{ content: <Gaps width={293} /> },
 				],
 			},
 			{
+				style: {
+					height: 200,
+				},
 				cells: [
-					{ content: 'Row 2, Cell 1' },
-					{ content: 'Row 2, Cell 3' },
+					{ content: <NoBorderTableDemo width={293} /> },
+					{ content: <OnlyTableBolder width={293} /> },
+					{ content: <TableBorderStyles width={293} /> },
 				],
 			},
 		],

@@ -1,43 +1,38 @@
 import SVGTable, { TableProps } from 'svg-table';
-
-const textLeftTop = {
-	textAnchor: 'start',
-	dominantBaseline: 'hanging',
-	x: 0,
-	y: 0,
+const Gradients = () => {
+	return (
+		<>
+			<linearGradient id='red-to-blue' x1='0' x2='0' y1='0' y2='1'>
+				<stop offset='0%' stop-color='red' />
+				<stop offset='100%' stop-color='blue' />
+			</linearGradient>
+			<linearGradient id='cyan-to-white' x1='0' x2='0' y1='0' y2='1'>
+				<stop offset='0%' stop-color='cyan' />
+				<stop offset='100%' stop-color='white' />
+			</linearGradient>
+		</>
+	);
 };
-
-const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
+const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
 	const tableProps: TableProps = {
-		columnWidths: [100, 300, 200],
 		width: width,
-		defaultCellStyle: {
-			textColor: '#ff0000',
-		},
+		defs: <Gradients />,
 		rows: [
 			{
 				cells: [
 					{
 						content: 'Header 1',
+
 						style: {
-							bgColor: '#f0f0f0',
-							paddings: [10, 4, 0, 0],
 							textColor: 'blue',
-							textStyle: {
-								textAnchor: 'middle',
-								dominantBaseline: 'auto',
-								fontSize: 10,
-							},
 						},
 					},
 					{
 						content: 'Header 2',
 						colSpan: 2,
 						style: {
-							textStyle: {
-								textAnchor: 'middle',
-								dominantBaseline: 'middle',
-							},
+							bgColor: 'orange',
+							textColor: 'white',
 						},
 					},
 				],
@@ -49,16 +44,14 @@ const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
 						content: 'Row 1, Cell 2',
 						rowSpan: 2,
 						style: {
-							textStyle: {
-								fontSize: 30,
-								fontFamily: 'sans-serif',
-							},
+							bgColor: 'url(#red-to-blue)',
+							textColor: 'white',
 						},
 					},
 					{
 						content: 'Row 1, Cell 3',
 						style: {
-							textStyle: textLeftTop,
+							bgColor: 'url(#cyan-to-white)',
 						},
 					},
 				],
@@ -75,4 +68,4 @@ const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} />;
 };
 
-export default TextStyleOverride;
+export default BgColorAndTextColor;

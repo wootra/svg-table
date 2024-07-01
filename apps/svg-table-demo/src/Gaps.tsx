@@ -1,19 +1,12 @@
 import SVGTable, { TableProps } from 'svg-table';
 
-const Rect = () => {
-	return (
-		<g>
-			<rect x={10} y={5} width={100} height={15} fill='cyan' />
-			<text x={10} y={15}>
-				hi
-			</text>
-		</g>
-	);
-};
-
-const BasicDemo = ({ width = 500 }: { width?: number }) => {
+const Gaps = ({ width = 500 }: { width?: number }) => {
 	const tableProps: TableProps = {
 		width: width,
+		style: {
+			colGaps: 4,
+			rowGaps: 10,
+		},
 		rows: [
 			{
 				cells: [
@@ -28,7 +21,7 @@ const BasicDemo = ({ width = 500 }: { width?: number }) => {
 			},
 			{
 				cells: [
-					{ content: <Rect /> },
+					{ content: 'test' },
 					{ content: 'Row 1, Cell 2', rowSpan: 2 },
 					{ content: 'Row 1, Cell 3' },
 				],
@@ -45,4 +38,4 @@ const BasicDemo = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} />;
 };
 
-export default BasicDemo;
+export default Gaps;

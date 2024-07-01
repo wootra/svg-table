@@ -7,9 +7,10 @@ import {
 } from './types';
 
 export const getWid = (
-	widths: Widths,
+	widths: Widths | undefined,
 	pos: 'left' | 'right' | 'top' | 'bottom'
 ) => {
+	if (widths === undefined) return 0;
 	if (typeof widths === 'number') return widths;
 	if (Array.isArray(widths)) {
 		if (widths.length === 4) {
@@ -49,9 +50,10 @@ export const getWid = (
 };
 
 export const getColor = (
-	colors: ColorsOnWidth,
+	colors: ColorsOnWidth | undefined,
 	pos: 'left' | 'right' | 'top' | 'bottom'
 ) => {
+	if (!colors) return undefined;
 	if (typeof colors === 'string') return colors;
 	if (Array.isArray(colors)) {
 		if (colors.length === 4) {
@@ -257,9 +259,9 @@ export const getBorderShape = (
 };
 
 export const isBorderRect = (style: {
-	borderWidths: Widths;
-	borderColors: ColorsOnWidth;
-	borderPatterns: PatternArrays;
+	borderWidths?: Widths;
+	borderColors?: ColorsOnWidth;
+	borderPatterns?: PatternArrays;
 }) => {
 	const { borderWidths, borderColors, borderPatterns } = style;
 
@@ -274,9 +276,9 @@ export const isBorderRect = (style: {
 
 export const getRectStyle = (style: {
 	bgColor: string;
-	borderWidths: Widths;
-	borderColors: ColorsOnWidth;
-	borderPatterns: PatternArrays;
+	borderWidths?: Widths;
+	borderColors?: ColorsOnWidth;
+	borderPatterns?: PatternArrays;
 }) => {
 	if (!isBorderRect(style)) return null;
 

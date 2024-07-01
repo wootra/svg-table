@@ -40,7 +40,7 @@ export type CellStyle = {
 	paddings: Widths;
 	textColor: string;
 	textStyle?: TextStyle;
-} & BorderStyles;
+} & Partial<BorderStyles>;
 
 export type CellProps = {
 	style?: Partial<CellStyle>;
@@ -82,10 +82,11 @@ export type TableStyle = {
 	bgColor: string;
 	colGaps: number;
 	rowGaps: number;
-} & BorderStyles;
+} & Partial<BorderStyles>;
 
 export type TableProps = {
 	className?: string;
+	defs?: ReactNode;
 	width: number; // total size of the svg in px.
 	columnWidths?: number[]; // width of each column in pt of the svg. it does not match with px if colGaps in style is given.
 	defaultCellStyle?: Partial<CellStyle>;
