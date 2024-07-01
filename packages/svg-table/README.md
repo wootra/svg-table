@@ -14,6 +14,8 @@ If you can make the table with SVG and reuse the same code for both browser and 
 
 this library support below use cases. Please check out the [demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo) code to have more idea of using this library.
 
+here is Next.js [server side demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo-next) as well.
+
 ### Basic table
 
 simply creating row/cells object and pass it to SVGTable element to create a svg table.

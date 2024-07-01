@@ -43,7 +43,7 @@ const parseDefaultCellStyle = (
 		borderWidths: 1,
 		borderColors: '#000',
 		borderPatterns: undefined,
-		borderShapes: 'butt',
+		borderShapes: undefined,
 		paddings: [1, 1, 1, 1],
 		textColor: '#000',
 		...defaultCellStyle,
@@ -140,7 +140,6 @@ export const SVGTable: React.FC<TableProps> = memo(
 					h + (row.style?.height ?? defaultStyleForRow.height),
 				0
 			) + allRowGaps;
-
 		return (
 			<svg
 				width={width}

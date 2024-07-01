@@ -25,7 +25,6 @@ const FilledArea = (props: Props) => {
 	const rectStyleProps = isBorderOnRect
 		? getRectStyle(props)
 		: { fill: bgColor };
-	console.log('rectStleProps', rectStyleProps);
 	return (
 		<g className={`filled-area ${className ?? ''}`}>
 			<rect width={width} height={height} {...rectStyleProps} />

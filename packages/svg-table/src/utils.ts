@@ -46,11 +46,13 @@ export const getWid = (widths: Widths | undefined, pos: WidthPos) => {
 	if (typeof widths === 'number') return widths;
 	if (Array.isArray(widths)) {
 		const val = getValFromArr<number>(widths, pos);
-		if (val) return val;
+		if (val !== undefined) return val;
 	}
 	console.error(
 		'Invalid widths type: ',
 		widths,
+		'for',
+		pos,
 		' should be number or [number, number, number, number] or [number, number]'
 	);
 	return 0;
@@ -61,7 +63,7 @@ export const getColor = (colors: ColorsOnWidth | undefined, pos: WidthPos) => {
 	if (typeof colors === 'string') return colors;
 	if (Array.isArray(colors)) {
 		const val = getValFromArr<string>(colors, pos);
-		if (val) return val;
+		if (val !== undefined) return val;
 	}
 	console.error(
 		'Invalid colors type: ',
@@ -100,7 +102,7 @@ export const getDashArray = (dashArrays: PatternArrays, pos: WidthPos) => {
 			| [number[], number[]]
 			| [number[], number[], number[], number[]];
 		const val = getValFromArr<number[]>(arr, pos);
-		if (val) return val.map(a => a.toString()).join(' ');
+		if (val !== undefined) return val.map(a => a.toString()).join(' ');
 	}
 	console.error(
 		'Invalid dashArrays type: ',
@@ -114,6 +116,7 @@ const validatedBorderShape = (
 	borderShape: PatternShape,
 	dashArrays?: string
 ) => {
+	if (!dashArrays && !borderShape) return undefined; // ignore without warning.
 	if (!dashArrays) {
 		console.warn(
 			'border shape does not have any effect without dash arrays. automatically ignoring it.'
@@ -150,7 +153,7 @@ export const getBorderShape = (
 		);
 	if (Array.isArray(borderShapes)) {
 		const val = getValFromArr<PatternShape>(borderShapes, pos);
-		if (val) {
+		if (val !== undefined) {
 			return validatedBorderShape(val, getDashArray(dashArrays, pos));
 		}
 	}

@@ -26,6 +26,8 @@ const Path = memo(
 		borderShapes?: PatternShapes;
 		pos: WidthPos;
 	}) => {
+		if (width === 0) return null;
+
 		return (
 			<path
 				className={`${pos}-path`} // left-path | right-path | top-path | bottom-path

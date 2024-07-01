@@ -9,31 +9,12 @@ import BgColorAndTextColor from './BgColorAndTextColor';
 import Gaps from './Gaps';
 import TableStyles from './TableStyles';
 import { useState } from 'react';
-const App = () => {
-	const [width, setWidth] = useState(500);
-	const onChange = (e: any) => {
-		setWidth(e.target.value);
-	};
+import './main.css';
+
+const ServerComponents = async () => {
+	const width = 500;
 	return (
-		<div className='main'>
-			<div
-				style={{
-					position: 'sticky',
-					top: 0,
-					height: '40px',
-					background: 'white',
-				}}
-			>
-				{width}
-				<input
-					type='range'
-					min='300'
-					max='900'
-					value={width}
-					id='myRange'
-					onChange={onChange}
-				/>
-			</div>
+		<>
 			<BasicDemo width={width} />
 			<NoBorderTableDemo width={width} />
 			<OnlyTableBolder width={width} />
@@ -44,8 +25,8 @@ const App = () => {
 			<EmbeddedTable />
 			<TextStyleOverride width={width} />
 			<TableStyles width={width} />
-		</div>
+		</>
 	);
 };
 
-export default App;
+export default ServerComponents;
