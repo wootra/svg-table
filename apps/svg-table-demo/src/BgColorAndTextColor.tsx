@@ -13,59 +13,54 @@ const Gradients = () => {
 		</>
 	);
 };
+const tableProps: Omit<TableProps, 'width'> = {
+	defs: <Gradients />,
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+
+					style: {
+						textColor: 'blue',
+					},
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+					style: {
+						bgColor: 'orange',
+						textColor: 'white',
+					},
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'test' },
+				{
+					content: 'Row 1, Cell 2',
+					rowSpan: 2,
+					style: {
+						bgColor: 'url(#red-to-blue)',
+						textColor: 'white',
+					},
+				},
+				{
+					content: 'Row 1, Cell 3',
+					style: {
+						bgColor: 'url(#cyan-to-white)',
+					},
+				},
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
 const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
-	const tableProps: TableProps = {
-		width: width,
-		defs: <Gradients />,
-		rows: [
-			{
-				cells: [
-					{
-						content: 'Header 1',
-
-						style: {
-							textColor: 'blue',
-						},
-					},
-					{
-						content: 'Header 2',
-						colSpan: 2,
-						style: {
-							bgColor: 'orange',
-							textColor: 'white',
-						},
-					},
-				],
-			},
-			{
-				cells: [
-					{ content: 'test' },
-					{
-						content: 'Row 1, Cell 2',
-						rowSpan: 2,
-						style: {
-							bgColor: 'url(#red-to-blue)',
-							textColor: 'white',
-						},
-					},
-					{
-						content: 'Row 1, Cell 3',
-						style: {
-							bgColor: 'url(#cyan-to-white)',
-						},
-					},
-				],
-			},
-			{
-				cells: [
-					{ content: 'Row 2, Cell 1' },
-					{ content: 'Row 2, Cell 3' },
-				],
-			},
-		],
-	};
-
-	return <SVGTable {...tableProps} />;
+	return <SVGTable {...tableProps} width={width} />;
 };
 
 export default BgColorAndTextColor;

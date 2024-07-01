@@ -1,7 +1,49 @@
-import { memo } from 'react';
-import type { BorderStyles } from './types';
+import { memo, useMemo } from 'react';
+import type {
+	BorderStyles,
+	ColorsOnWidth,
+	PatternArrays,
+	PatternShapes,
+	WidthPos,
+} from './types';
 import { getBorderShape, getColor, getDashArray, getWid } from './utils';
 
+const Path = memo(
+	({
+		startPt,
+		endPt,
+		width,
+		borderColors,
+		borderPatterns,
+		borderShapes,
+		pos,
+	}: {
+		startPt: `${number},${number}`;
+		endPt: `${number},${number}`;
+		width: number;
+		borderColors?: ColorsOnWidth;
+		borderPatterns?: PatternArrays;
+		borderShapes?: PatternShapes;
+		pos: WidthPos;
+	}) => {
+		return (
+			<path
+				className={`${pos}-path`} // left-path | right-path | top-path | bottom-path
+				d={`M${startPt} L${endPt}`}
+				strokeWidth={width}
+				stroke={getColor(borderColors, pos)}
+				strokeDasharray={getDashArray(borderPatterns, pos)}
+				strokeLinecap={getBorderShape(
+					borderShapes,
+					borderPatterns,
+					pos
+				)}
+			/>
+		);
+	}
+);
+
+type PtStr = `${number},${number}`;
 export const PathOnArea = memo(
 	(
 		props: {
@@ -20,67 +62,68 @@ export const PathOnArea = memo(
 			borderShapes,
 			className,
 		} = props;
-		const leftWid = getWid(borderWidths, 'left');
-		const rightWid = getWid(borderWidths, 'right');
-		const topWid = getWid(borderWidths, 'top');
-		const bottomWid = getWid(borderWidths, 'bottom');
+		const leftWid = useMemo(
+			() => getWid(borderWidths, 'left'),
+			[borderWidths]
+		);
+		const rightWid = useMemo(
+			() => getWid(borderWidths, 'right'),
+			[borderWidths]
+		);
+		const topWid = useMemo(
+			() => getWid(borderWidths, 'top'),
+			[borderWidths]
+		);
+		const bottomWid = useMemo(
+			() => getWid(borderWidths, 'bottom'),
+			[borderWidths]
+		);
+		const leftTop: PtStr = `${leftWid / 2},${topWid / 2}`;
+		const leftBottom: PtStr = `${leftWid / 2},${height - bottomWid / 2}`;
+		const rightTop: PtStr = `${width - rightWid / 2},${topWid / 2}`;
+		const rightBottom: PtStr = `${width - rightWid / 2},${height - bottomWid / 2}`;
+		const PathProps = {
+			borderColors,
+			borderPatterns,
+			borderShapes,
+		};
 
 		return (
 			<g className={`paths-on-area ${className ?? ''}`}>
 				{leftWid && (
-					<path
-						className='left-path'
-						d={`M${leftWid / 2},${topWid / 2} L${leftWid / 2},${height - bottomWid / 2}`}
-						strokeWidth={leftWid}
-						stroke={getColor(borderColors, 'left')}
-						strokeDasharray={getDashArray(borderPatterns, 'left')}
-						strokeLinecap={getBorderShape(
-							borderShapes,
-							borderPatterns,
-							'left'
-						)}
+					<Path
+						startPt={leftTop}
+						endPt={leftBottom}
+						width={leftWid}
+						{...PathProps}
+						pos='left'
 					/>
 				)}
 				{rightWid && (
-					<path
-						className='right-path'
-						d={`M${width - rightWid / 2} ${topWid / 2} L${width - rightWid / 2},${height - bottomWid / 2}`}
-						strokeWidth={rightWid}
-						stroke={getColor(borderColors, 'right')}
-						strokeDasharray={getDashArray(borderPatterns, 'right')}
-						strokeLinecap={getBorderShape(
-							borderShapes,
-							borderPatterns,
-							'right'
-						)}
+					<Path
+						startPt={rightTop}
+						endPt={rightBottom}
+						width={rightWid}
+						{...PathProps}
+						pos='right'
 					/>
 				)}
 				{topWid && (
-					<path
-						className='top-path'
-						d={`M${leftWid / 2},${topWid / 2} L${width - rightWid / 2},${topWid / 2}`}
-						strokeWidth={topWid}
-						stroke={getColor(borderColors, 'top')}
-						strokeDasharray={getDashArray(borderPatterns, 'top')}
-						strokeLinecap={getBorderShape(
-							borderShapes,
-							borderPatterns,
-							'top'
-						)}
+					<Path
+						startPt={leftTop}
+						endPt={rightTop}
+						width={topWid}
+						{...PathProps}
+						pos='top'
 					/>
 				)}
 				{bottomWid && (
-					<path
-						className='bottom-path'
-						d={`M${leftWid / 2} ${height - bottomWid / 2} L ${width - rightWid / 2} ${height - bottomWid / 2}`}
-						strokeWidth={bottomWid}
-						stroke={getColor(borderColors, 'bottom')}
-						strokeDasharray={getDashArray(borderPatterns, 'bottom')}
-						strokeLinecap={getBorderShape(
-							borderShapes,
-							borderPatterns,
-							'bottom'
-						)}
+					<Path
+						startPt={leftBottom}
+						endPt={rightBottom}
+						width={bottomWid}
+						{...PathProps}
+						pos='bottom'
 					/>
 				)}
 			</g>

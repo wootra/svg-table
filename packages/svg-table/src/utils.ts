@@ -3,43 +3,50 @@ import {
 	PatternArrays,
 	PatternShape,
 	PatternShapes,
+	WidthPos,
 	Widths,
 } from './types';
 
-export const getWid = (
-	widths: Widths | undefined,
-	pos: 'left' | 'right' | 'top' | 'bottom'
+const getValFromArr = <T = unknown>(
+	arr: [T, T, T, T] | [T, T],
+	pos: WidthPos
 ) => {
+	if (arr.length === 4) {
+		switch (pos) {
+			case 'left':
+				return arr[3];
+			case 'right':
+				return arr[1];
+			case 'top':
+				return arr[0];
+			case 'bottom':
+				return arr[2];
+			default:
+				break;
+		}
+	} else if (arr.length === 2) {
+		switch (pos) {
+			case 'left':
+				return arr[1];
+			case 'right':
+				return arr[1];
+			case 'top':
+				return arr[0];
+			case 'bottom':
+				return arr[0];
+			default:
+				break;
+		}
+	}
+	return;
+};
+
+export const getWid = (widths: Widths | undefined, pos: WidthPos) => {
 	if (widths === undefined) return 0;
 	if (typeof widths === 'number') return widths;
 	if (Array.isArray(widths)) {
-		if (widths.length === 4) {
-			switch (pos) {
-				case 'left':
-					return widths[3];
-				case 'right':
-					return widths[1];
-				case 'top':
-					return widths[0];
-				case 'bottom':
-					return widths[2];
-				default:
-					break;
-			}
-		} else if (widths.length === 2) {
-			switch (pos) {
-				case 'left':
-					return widths[1];
-				case 'right':
-					return widths[1];
-				case 'top':
-					return widths[0];
-				case 'bottom':
-					return widths[0];
-				default:
-					break;
-			}
-		}
+		const val = getValFromArr<number>(widths, pos);
+		if (val) return val;
 	}
 	console.error(
 		'Invalid widths type: ',
@@ -49,40 +56,12 @@ export const getWid = (
 	return 0;
 };
 
-export const getColor = (
-	colors: ColorsOnWidth | undefined,
-	pos: 'left' | 'right' | 'top' | 'bottom'
-) => {
+export const getColor = (colors: ColorsOnWidth | undefined, pos: WidthPos) => {
 	if (!colors) return undefined;
 	if (typeof colors === 'string') return colors;
 	if (Array.isArray(colors)) {
-		if (colors.length === 4) {
-			switch (pos) {
-				case 'left':
-					return colors[3];
-				case 'right':
-					return colors[1];
-				case 'top':
-					return colors[0];
-				case 'bottom':
-					return colors[2];
-				default:
-					break;
-			}
-		} else if (colors.length === 2) {
-			switch (pos) {
-				case 'left':
-					return colors[1];
-				case 'right':
-					return colors[1];
-				case 'top':
-					return colors[0];
-				case 'bottom':
-					return colors[0];
-				default:
-					break;
-			}
-		}
+		const val = getValFromArr<string>(colors, pos);
+		if (val) return val;
 	}
 	console.error(
 		'Invalid colors type: ',
@@ -111,10 +90,7 @@ export const isValidate2DArrayType = (
 	);
 };
 
-export const getDashArray = (
-	dashArrays: PatternArrays,
-	pos: 'left' | 'right' | 'top' | 'bottom'
-) => {
+export const getDashArray = (dashArrays: PatternArrays, pos: WidthPos) => {
 	if (dashArrays === undefined) return undefined;
 	if (isValidateArrayType(dashArrays, 'number')) {
 		return dashArrays.map(a => a.toString()).join(' ');
@@ -123,33 +99,8 @@ export const getDashArray = (
 		const arr = dashArrays as
 			| [number[], number[]]
 			| [number[], number[], number[], number[]];
-		if (arr.length === 4) {
-			switch (pos) {
-				case 'left':
-					return arr[3].map(a => a.toString()).join(' ');
-				case 'right':
-					return arr[1].map(a => a.toString()).join(' ');
-				case 'top':
-					return arr[0].map(a => a.toString()).join(' ');
-				case 'bottom':
-					return arr[2].map(a => a.toString()).join(' ');
-				default:
-					break;
-			}
-		} else if (arr.length === 2) {
-			switch (pos) {
-				case 'left':
-					return arr[1].map(a => a.toString()).join(' ');
-				case 'right':
-					return arr[1].map(a => a.toString()).join(' ');
-				case 'top':
-					return arr[0].map(a => a.toString()).join(' ');
-				case 'bottom':
-					return arr[0].map(a => a.toString()).join(' ');
-				default:
-					break;
-			}
-		}
+		const val = getValFromArr<number[]>(arr, pos);
+		if (val) return val.map(a => a.toString()).join(' ');
 	}
 	console.error(
 		'Invalid dashArrays type: ',
@@ -185,7 +136,7 @@ const validatedBorderShape = (
 export const getBorderShape = (
 	borderShapes: PatternShapes,
 	dashArrays: PatternArrays,
-	pos: 'left' | 'right' | 'top' | 'bottom'
+	pos: WidthPos
 ): PatternShape => {
 	if (!borderShapes)
 		return validatedBorderShape(
@@ -198,56 +149,9 @@ export const getBorderShape = (
 			getDashArray(dashArrays, pos)
 		);
 	if (Array.isArray(borderShapes)) {
-		if (borderShapes.length === 4) {
-			switch (pos) {
-				case 'left':
-					return validatedBorderShape(
-						borderShapes[3],
-						getDashArray(dashArrays, pos)
-					);
-				case 'right':
-					return validatedBorderShape(
-						borderShapes[1],
-						getDashArray(dashArrays, pos)
-					);
-				case 'top':
-					return validatedBorderShape(
-						borderShapes[0],
-						getDashArray(dashArrays, pos)
-					);
-				case 'bottom':
-					return validatedBorderShape(
-						borderShapes[2],
-						getDashArray(dashArrays, pos)
-					);
-				default:
-					break;
-			}
-		} else if (borderShapes.length === 2) {
-			switch (pos) {
-				case 'left':
-					return validatedBorderShape(
-						borderShapes[1],
-						getDashArray(dashArrays, pos)
-					);
-				case 'right':
-					return validatedBorderShape(
-						borderShapes[1],
-						getDashArray(dashArrays, pos)
-					);
-				case 'top':
-					return validatedBorderShape(
-						borderShapes[0],
-						getDashArray(dashArrays, pos)
-					);
-				case 'bottom':
-					return validatedBorderShape(
-						borderShapes[0],
-						getDashArray(dashArrays, pos)
-					);
-				default:
-					break;
-			}
+		const val = getValFromArr<PatternShape>(borderShapes, pos);
+		if (val) {
+			return validatedBorderShape(val, getDashArray(dashArrays, pos));
 		}
 	}
 	console.error(

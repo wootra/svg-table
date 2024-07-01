@@ -96,3 +96,5 @@ export type TableProps = {
 	rows: RowProps[];
 	style?: Partial<TableStyle>;
 };
+
+export type WidthPos = 'left' | 'right' | 'top' | 'bottom';
