@@ -1,0 +1,337 @@
+import {
+    BasicDemo,
+    BasicWithElement,
+    BasicWithProps,
+    BasicWithPropsAllowingOverflow,
+    BasicWithPropsAllowingOverflowOnlyOneCell,
+    NoBorderTableDemo,
+    EmbeddedTable,
+    TextStyleOverride,
+    OnlyTableBolder,
+    TableBolderWithMargin,
+    TableBorderStyles,
+    BgColorAndTextColor,
+    Gaps,
+    OutboundLabels,
+    TableStyles,
+} from '@repo/demo-components'
+
+### Basic Demo
+
+Here is a simple 3x3 table with with colSpan and rowSpan
+```typescript
+    
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Col Span',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'Row 1, Cell 1' },
+				{ content: 'Row Span', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+
+export const BasicDemo = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className="demo-container">
+    <BasicDemo />
+</div>
+
+
+
+### Table With Custom Element
+
+you can add an SVG Element as you want. Its position will start from left-top if you don't use callback function.
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const Rect = () => {
+	return (
+		<g>
+			<rect x={10} y={5} width={100} height={15} fill='cyan' />
+			<text x={10} y={15}>
+				hi
+			</text>
+		</g>
+	);
+};
+const tableProps: Omit<TableProps, 'width'> = {
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Col Span',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: <Rect /> },
+				{ content: 'Row Span', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+
+export const BasicWithElement = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className="demo-container">
+    <BasicWithElement />
+</div>
+
+
+### Custom Element With Props
+
+Do you want to adjust the element based on the center position? No problem! Use callback function.
+
+```typescript
+import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
+
+// this props will have an extensive amount of attributes that you can use for customization
+const adjustedText: ContentAsFunc = props => {
+	return (
+		<text x={props.x + 10} y={props.y + 10}>
+			Adjusted Text
+		</text>
+	);
+};
+
+const tableProps: Omit<TableProps, 'width'> = {
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: adjustedText },
+				{ content: 'Row Span', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+
+export const BasicWithProps = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className="demo-container">
+    <BasicWithProps />
+</div>
+
+
+### Allow Contents Overflow
+
+For the clean look and feel, the default behavior of the cell does not allow overflow of the content. But you can set them to allow overflow with one line. This is useful for debugging. (You know, content is hiding and have no idea where it is...)
+
+```typescript
+import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
+
+// this props will have an extensive amount of attributes that you can use for customization
+const adjustedText: ContentAsFunc = props => {
+	return (
+		<text x={props.x + 10} y={props.y + 10}>
+			This should overflow Because it is so long!!
+		</text>
+	);
+};
+
+const tableProps: Omit<TableProps, 'width'> = {
+	defaultCellStyle: {
+		allowOverflow: true,
+	},
+	rows: [
+		{
+			cells: [
+				{
+					content: adjustedText,
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: adjustedText },
+				{ content: 'Row Span', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+
+export const BasicWithPropsAllowingOverflow = ({
+	width = 500,
+}: {
+	width?: number;
+}) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className="demo-container">
+    <BasicWithPropsAllowingOverflow />
+</div>
+
+
+### Control Overflow behavior individually
+
+You can make only some cell to overflow as well.
+This allow you to control the table look granually.
+
+```typescript
+import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
+
+// this props will have an extensive amount of attributes that you can use for customization
+const adjustedText: ContentAsFunc = props => {
+	return (
+		<text x={props.x + 10} y={props.y + 10}>
+			This should overflow Because it is so long!!
+		</text>
+	);
+};
+
+const tableProps: Omit<TableProps, 'width'> = {
+	rows: [
+		{
+			cells: [
+				{
+					style: {
+						allowOverflow: true,
+					},
+					content: adjustedText,
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: adjustedText },
+				{ content: 'Row Span', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+
+export const BasicWithPropsAllowingOverflowOnlyOneCell = ({
+	width = 500,
+}: {
+	width?: number;
+}) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className="demo-container">
+    <BasicWithPropsAllowingOverflowOnlyOneCell />
+</div>
+
+
+## Gaps between columns and rows
+
+You can easily add gaps between rows or columns.
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	style: {
+		colGaps: 4,
+		rowGaps: 10,
+	},
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'test' },
+				{ content: 'Row 1, Cell 2', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+export const Gaps = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+
+```
+
+<div className='demo-container'>
+	<Gaps />
+</div>

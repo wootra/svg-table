@@ -1,0 +1,352 @@
+<html>
+	<head>
+		<base href="https://websim.ai/docs/svg-table/" />
+		<style>
+			:root {
+				--color-primary: #087ea4;
+				--color-secondary: #149eca;
+				--color-background: #23272f;
+				--color-text: #f6f7f9;
+				--color-code-background: #292d3e;
+				--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+					Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+					'Segoe UI Emoji', 'Segoe UI Symbol';
+				--font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono',
+					Menlo, Courier, monospace;
+			}
+
+			body {
+				font-family: var(--font-sans);
+				background-color: var(--color-background);
+				color: var(--color-text);
+				line-height: 1.6;
+				margin: 0;
+				padding: 0;
+			}
+
+			.container {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 2rem;
+			}
+
+			h1,
+			h2,
+			h3 {
+				color: var(--color-secondary);
+			}
+
+			h1 {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+			}
+
+			h2 {
+				font-size: 1.8rem;
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+			}
+
+			h3 {
+				font-size: 1.4rem;
+				margin-top: 1.5rem;
+				margin-bottom: 0.5rem;
+			}
+
+			p {
+				margin-bottom: 1rem;
+			}
+
+			a {
+				color: var(--color-secondary);
+				text-decoration: none;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			pre {
+				background-color: var(--color-code-background);
+				padding: 1rem;
+				border-radius: 4px;
+				overflow-x: auto;
+			}
+
+			code {
+				font-family: var(--font-mono);
+				font-size: 0.9rem;
+			}
+
+			.highlight {
+				background-color: rgba(20, 158, 202, 0.1);
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+			}
+
+			.example-container {
+				background-color: #2c313a;
+				border-radius: 8px;
+				padding: 1rem;
+				margin-bottom: 1.5rem;
+			}
+
+			.demo-container {
+				background-color: white;
+				border-radius: 8px;
+				padding: 1rem;
+				margin-bottom: 1.5rem;
+			}
+
+			.example-title {
+				font-size: 1.2rem;
+				color: var(--color-secondary);
+				margin-bottom: 0.5rem;
+			}
+
+			.example-description {
+				margin-bottom: 1rem;
+			}
+
+			.example-code {
+				background-color: var(--color-code-background);
+				padding: 1rem;
+				border-radius: 4px;
+				overflow-x: auto;
+			}
+
+			.section {
+				margin-bottom: 2rem;
+			}
+
+			.features-list {
+				list-style-type: none;
+				padding-left: 0;
+			}
+
+			.features-list li {
+				margin-bottom: 0.5rem;
+				display: flex;
+				align-items: center;
+			}
+
+			.features-list li::before {
+				content: '✓';
+				color: var(--color-secondary);
+				margin-right: 0.5rem;
+				font-weight: bold;
+			}
+
+			.note {
+				background-color: rgba(20, 158, 202, 0.1);
+				border-left: 4px solid var(--color-secondary);
+				padding: 1rem;
+				margin: 1rem 0;
+				border-radius: 0 4px 4px 0;
+			}
+
+			.note-title {
+				font-weight: bold;
+				color: var(--color-secondary);
+				margin-bottom: 0.5rem;
+			}
+		</style>
+		<title>SVG Table Documentation</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1>SVG Table</h1>
+			<p>
+				SVG Table is a powerful and flexible library for creating
+				dynamic, interactive tables using SVG. It provides a simple API
+				to generate complex table structures with customizable styles
+				and behaviors.
+			</p>
+
+			<div class="section">
+				<h2>Features</h2>
+				<ul class="features-list">
+					<li>
+						Create tables using SVG for maximum flexibility and
+						styling options
+					</li>
+					<li>
+						Support for both horizontal and vertical table layouts
+					</li>
+					<li>
+						Customizable cell contents, including text, shapes, and
+						nested SVG elements
+					</li>
+					<li>
+						Easy-to-use API for defining table structure and styling
+					</li>
+					<li>
+						Built-in support for responsive design and mobile
+						optimization
+					</li>
+					<li>
+						Lightweight and performant, with minimal dependencies
+					</li>
+				</ul>
+			</div>
+
+			<div class="section">
+				<h2>Installation</h2>
+				<p>
+					To install SVG Table, run the following command in your
+					project directory:
+				</p>
+				<pre><code>npm install @wootra/svg-table</code></pre>
+			</div>
+
+			<div class="section">
+				<h2>Basic Usage</h2>
+				<p>
+					Here's a simple example of how to create a basic table using
+					SVG Table:
+				</p>
+
+				<div class="example-container">
+					<div class="example-title">Basic Table Example</div>
+					<div class="example-description">
+						This example creates a 3x3 table with alternating
+						background colors.
+					</div>
+					<pre
+						class="example-code"
+					><code>import { SvgTable, TableCell } from '@wootra/svg-table';
+
+const table = new SvgTable({
+  width: 300,
+  height: 200,
+  columns: 3,
+  rows: 3
+});
+
+table.cells.forEach((cell, index) => {
+  cell.setText(`Cell ${index + 1}`);
+  cell.setStyle({
+    fill: index % 2 === 0 ? '#f0f0f0' : '#e0e0e0',
+    stroke: '#000000',
+    'stroke-width': 1
+  });
+});
+
+document.body.appendChild(table.getSvgElement());</code></pre>
+				</div>
+			</div>
+
+			<div class="section">
+				<h2>Advanced Features</h2>
+				<h3>Custom Cell Content</h3>
+				<p>
+					SVG Table allows you to customize cell content with any
+					valid SVG elements. Here's an example of adding a circle to
+					a cell:
+				</p>
+
+				<div class="example-container">
+					<div class="example-title">Custom Cell Content Example</div>
+					<pre
+						class="example-code"
+					><code>import { SvgTable, TableCell } from '@wootra/svg-table';
+
+const table = new SvgTable({
+  width: 300,
+  height: 100,
+  columns: 3,
+  rows: 1
+});
+
+const cell = table.getCell(0, 1);
+cell.setContent(
+  '&lt;circle cx="50" cy="50" r="40" fill="red" /&gt;'
+);
+
+document.body.appendChild(table.getSvgElement());</code></pre>
+				</div>
+
+				<h3>Responsive Tables</h3>
+				<p>
+					SVG Table supports responsive design out of the box. You can
+					create tables that automatically adjust to different screen
+					sizes:
+				</p>
+
+				<div class="example-container">
+					<div class="example-title">Responsive Table Example</div>
+					<pre
+						class="example-code"
+					><code>import { SvgTable, TableCell } from '@wootra/svg-table';
+
+const table = new SvgTable({
+  width: '100%',
+  height: 'auto',
+  columns: 3,
+  rows: 3,
+  responsive: true
+});
+
+// Add content to cells...
+
+document.body.appendChild(table.getSvgElement());</code></pre>
+				</div>
+			</div>
+
+			<div class="section">
+				<h2>API Reference</h2>
+				<h3>SvgTable</h3>
+				<p>The main class for creating and managing SVG tables.</p>
+				<pre><code>new SvgTable(options: TableOptions)</code></pre>
+				<p>Options include:</p>
+				<ul>
+					<li><code>width</code>: number | string</li>
+					<li><code>height</code>: number | string</li>
+					<li><code>columns</code>: number</li>
+					<li><code>rows</code>: number</li>
+					<li><code>responsive</code>: boolean (optional)</li>
+				</ul>
+
+				<h3>TableCell</h3>
+				<p>Represents an individual cell in the table.</p>
+				<pre><code>cell.setText(text: string)
+cell.setContent(svgContent: string)
+cell.setStyle(styles: object)</code></pre>
+			</div>
+
+			<div class="note">
+				<div class="note-title">Note</div>
+				<p>
+					SVG Table is designed to work seamlessly with modern
+					JavaScript frameworks like React and Vue.js. For
+					framework-specific integration guides, please refer to the
+					respective sections in our documentation.
+				</p>
+			</div>
+
+			<div class="section">
+				<h2>Contributing</h2>
+				<p>
+					We welcome contributions to SVG Table! Please check out our
+					<a
+						href="https://github.com/wootra/svg-table/blob/main/CONTRIBUTING.md"
+						>contribution guidelines</a
+					>
+					for more information on how to get started.
+				</p>
+			</div>
+
+			<div class="section">
+				<h2>License</h2>
+				<p>
+					SVG Table is released under the MIT License. See the
+					<a
+						href="https://github.com/wootra/svg-table/blob/main/LICENSE"
+						>LICENSE</a
+					>
+					file for more details.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

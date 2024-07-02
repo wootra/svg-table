@@ -1,0 +1,292 @@
+import {
+	BasicDemo,
+	BasicWithElement,
+	BasicWithProps,
+	BasicWithPropsAllowingOverflow,
+	BasicWithPropsAllowingOverflowOnlyOneCell,
+	NoBorderTableDemo,
+	EmbeddedTable,
+	TextStyleOverride,
+	OnlyTableBolder,
+	TableBolderWithMargin,
+	TableBorderStyles,
+	BgColorAndTextColor,
+	Gaps,
+	OutboundLabels,
+	TableStyles,
+} from '@repo/demo-components';
+
+## No border Table
+
+you can remove all borders.
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	defaultCellStyle: {
+		borderWidths: 0,
+	},
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'test' },
+				{ content: 'Row 1, Cell 2', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+export const NoBorderTableDemo = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className='demo-container'>
+	<NoBorderTableDemo />
+</div>
+
+## table border
+
+You can wrap the table with border.
+This is useful when you want to wrap another element with a border line.
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	defaultCellStyle: {
+		borderWidths: 0,
+	},
+	style: {
+		borderWidths: 1,
+	},
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'test' },
+				{ content: 'Row 1, Cell 2', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className='demo-container'>
+	<OnlyTableBolder />
+</div>
+
+In this example, the table border is wrapping the content of the table.
+Imagine you have different sections as table cells and you have to wrap it once more.
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	defaultCellStyle: {
+		borderWidths: 0,
+	},
+	style: {
+		borderWidths: 1,
+	},
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'test' },
+				{ content: 'Row 1, Cell 2', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className='demo-container'>
+	<TableBolderWithMargin />
+</div>
+
+## Table border styles
+
+You can customize the shapes and colors of each border line.
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+const propsDefault: Omit<TableProps, 'width'> = {
+	defaultCellStyle: {
+		borderWidths: [0, 1, 1, 0], // since default border is black, should be hide before customize some borders.
+	},
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+					style: {
+						borderColors: 'blue',
+						borderWidths: [0, 0, 1, 0], // cell level style will override default style.
+					},
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+					style: {
+						borderWidths: [0, 0, 3, 0], // cell level style will override default style.
+						borderColors: 'orange',
+						borderPatterns: [6, 5],
+						borderShapes: 'round',
+					},
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'test' },
+				{ content: 'Row 1, Cell 2', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+
+export const TableBorderStyles = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...propsDefault} width={width} />;
+};
+
+```
+
+<div className='demo-container'>
+	<TableBorderStyles />
+</div>
+
+## Background and Text Color change
+
+You can change background of the cells and table.
+If you want to even more customize it, you can add some defs
+through props. In this example, You will see gradients.
+You can also change the text color simply.
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+const Gradients = () => {
+	return (
+		<>
+			<linearGradient id='red-to-blue' x1='0' x2='0' y1='0' y2='1'>
+				<stop offset='0%' stopColor='red' />
+				<stop offset='100%' stopColor='blue' />
+			</linearGradient>
+			<linearGradient id='cyan-to-white' x1='0' x2='0' y1='0' y2='1'>
+				<stop offset='0%' stopColor='cyan' />
+				<stop offset='100%' stopColor='white' />
+			</linearGradient>
+		</>
+	);
+};
+const tableProps: Omit<TableProps, 'width'> = {
+	defs: <Gradients />,
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+
+					style: {
+						textColor: 'blue',
+					},
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+					style: {
+						bgColor: 'orange',
+						textColor: 'white',
+					},
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'test' },
+				{
+					content: 'Row 1, Cell 2',
+					rowSpan: 2,
+					style: {
+						bgColor: 'url(#red-to-blue)',
+						textColor: 'white',
+					},
+				},
+				{
+					content: 'Row 1, Cell 3',
+					style: {
+						bgColor: 'url(#cyan-to-white)',
+					},
+				},
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+export const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className='demo-container'>
+	<BgColorAndTextColor />
+</div>
