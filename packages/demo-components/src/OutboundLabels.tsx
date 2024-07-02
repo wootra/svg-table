@@ -69,8 +69,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-const OutboundLabels = ({ width = 500 }: { width?: number }) => {
+export const OutboundLabels = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default OutboundLabels;

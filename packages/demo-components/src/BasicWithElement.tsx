@@ -1,9 +1,16 @@
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
+const Rect = () => {
+	return (
+		<g>
+			<rect x={10} y={5} width={100} height={15} fill='cyan' />
+			<text x={10} y={15}>
+				hi
+			</text>
+		</g>
+	);
+};
 const tableProps: Omit<TableProps, 'width'> = {
-	defaultCellStyle: {
-		borderWidths: 0,
-	},
 	rows: [
 		{
 			cells: [
@@ -11,15 +18,15 @@ const tableProps: Omit<TableProps, 'width'> = {
 					content: 'Header 1',
 				},
 				{
-					content: 'Header 2',
+					content: 'Col Span',
 					colSpan: 2,
 				},
 			],
 		},
 		{
 			cells: [
-				{ content: 'test' },
-				{ content: 'Row 1, Cell 2', rowSpan: 2 },
+				{ content: <Rect /> },
+				{ content: 'Row Span', rowSpan: 2 },
 				{ content: 'Row 1, Cell 3' },
 			],
 		},
@@ -28,8 +35,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 		},
 	],
 };
-const NoBorderTableDemo = ({ width = 500 }: { width?: number }) => {
+
+export const BasicWithElement = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default NoBorderTableDemo;

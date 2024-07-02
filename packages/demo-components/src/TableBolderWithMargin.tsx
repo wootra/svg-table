@@ -29,8 +29,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 		},
 	],
 };
-const TableBolderWithMargin = ({ width = 500 }: { width?: number }) => {
+export const TableBolderWithMargin = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default TableBolderWithMargin;

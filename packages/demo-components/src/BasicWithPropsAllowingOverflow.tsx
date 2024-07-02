@@ -38,12 +38,10 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-const BasicWithPropsAllowingOverflow = ({
+export const BasicWithPropsAllowingOverflow = ({
 	width = 500,
 }: {
 	width?: number;
 }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default BasicWithPropsAllowingOverflow;

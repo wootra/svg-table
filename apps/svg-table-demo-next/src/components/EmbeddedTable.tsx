@@ -58,8 +58,6 @@ const tableProps: TableProps = {
 	],
 };
 
-const EmbeddedTable = () => {
+export const EmbeddedTable = () => {
 	return <SVGTable {...tableProps} />;
 };
-
-export default EmbeddedTable;

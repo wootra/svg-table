@@ -48,8 +48,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 		},
 	],
 };
-const TableStyles = ({ width = 500 }: { width?: number }) => {
+export const TableStyles = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default TableStyles;

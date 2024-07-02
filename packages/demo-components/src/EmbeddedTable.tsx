@@ -1,10 +1,10 @@
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-import BasicDemo from './BasicDemo';
-import BgColorAndTextColor from './BgColorAndTextColor';
-import Gaps from './Gaps';
-import NoBorderTableDemo from './NoBorderTableDemo';
-import OnlyTableBolder from './OnlyTableBolder';
-import TableBorderStyles from './TableBorderStyles';
+import { BasicDemo } from './BasicDemo';
+import { BgColorAndTextColor } from './BgColorAndTextColor';
+import { Gaps } from './Gaps';
+import { NoBorderTableDemo } from './NoBorderTableDemo';
+import { OnlyTableBolder } from './OnlyTableBolder';
+import { TableBorderStyles } from './TableBorderStyles';
 
 const tableProps: TableProps = {
 	columnWidths: [1, 1, 1], // this is just ratio.
@@ -58,8 +58,6 @@ const tableProps: TableProps = {
 	],
 };
 
-const EmbeddedTable = () => {
+export const EmbeddedTable = () => {
 	return <SVGTable {...tableProps} />;
 };
-
-export default EmbeddedTable;

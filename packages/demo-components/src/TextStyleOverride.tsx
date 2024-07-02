@@ -66,8 +66,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 		},
 	],
 };
-const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
+export const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default TextStyleOverride;

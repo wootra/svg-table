@@ -31,8 +31,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 		},
 	],
 };
-const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
+export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default OnlyTableBolder;

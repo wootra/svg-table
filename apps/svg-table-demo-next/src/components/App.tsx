@@ -30,7 +30,7 @@ const App = () => {
 				/>
 			</div>
 			<Suspense fallback={<div>Loading...</div>}>
-				<ServerComponents />
+				<ServerComponents width={width} />
 			</Suspense>
 		</div>
 	);

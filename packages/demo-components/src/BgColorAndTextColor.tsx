@@ -59,8 +59,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 		},
 	],
 };
-const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
+export const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default BgColorAndTextColor;

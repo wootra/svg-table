@@ -1,6 +1,10 @@
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
 const tableProps: Omit<TableProps, 'width'> = {
+	style: {
+		colGaps: 4,
+		rowGaps: 10,
+	},
 	rows: [
 		{
 			cells: [
@@ -8,15 +12,15 @@ const tableProps: Omit<TableProps, 'width'> = {
 					content: 'Header 1',
 				},
 				{
-					content: 'Col Span',
+					content: 'Header 2',
 					colSpan: 2,
 				},
 			],
 		},
 		{
 			cells: [
-				{ content: 'Row 1, Cell 1' },
-				{ content: 'Row Span', rowSpan: 2 },
+				{ content: 'test' },
+				{ content: 'Row 1, Cell 2', rowSpan: 2 },
 				{ content: 'Row 1, Cell 3' },
 			],
 		},
@@ -25,9 +29,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 		},
 	],
 };
-
-const BasicDemo = ({ width = 500 }: { width?: number }) => {
+export const Gaps = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default BasicDemo;

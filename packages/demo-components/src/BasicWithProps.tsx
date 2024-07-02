@@ -35,8 +35,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-const BasicWithProps = ({ width = 500 }: { width?: number }) => {
+export const BasicWithProps = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
-
-export default BasicWithProps;

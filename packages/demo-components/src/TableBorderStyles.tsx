@@ -38,8 +38,6 @@ const propsDefault: Omit<TableProps, 'width'> = {
 	],
 };
 
-const TableBorderStyles = ({ width = 500 }: { width?: number }) => {
+export const TableBorderStyles = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...propsDefault} width={width} />;
 };
-
-export default TableBorderStyles;

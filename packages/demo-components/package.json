@@ -1,0 +1,51 @@
+{
+	"name": "@repo/demo-components",
+	"version": "0.1.0",
+	"private": false,
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"scripts": {
+		"lint": "eslint . --max-warnings 0",
+		"generate:component": "turbo gen react-component",
+		"publish": "npm publish --access public"
+	},
+	"devDependencies": {
+		"@repo/eslint-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"@turbo/gen": "^1.12.4",
+		"@types/node": "^20.11.24",
+		"@types/eslint": "^8.56.5",
+		"@types/react": "^18.2.61",
+		"@types/react-dom": "^18.2.19",
+		"eslint": "^8.57.0",
+		"typescript": "^5.3.3"
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"@shjeon0730/svg-table": "workspace:*"
+	},
+	"peerDependencies": {
+		"react": "^18",
+		"react-dom": "^18"
+	},
+	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wootra/svg-table.git#main"
+	},
+	"keywords": [
+		"svg",
+		"table",
+		"react",
+		"svg-table"
+	],
+	"author": "Songhyeon Jun (shjeon0730@gmail.com)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/wootra/svg-table/issues"
+	},
+	"homepage": "https://github.com/wootra/svg-table/tree/main#readme"
+}
