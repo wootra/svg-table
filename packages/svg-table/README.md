@@ -22,45 +22,45 @@ here is Next.js [server side demo](https://github.com/wootra/svg-table/tree/main
 
 simply creating row/cells object and pass it to SVGTable element to create a svg table.
 
-![basic demo](../../packages/demo-components/README.assets/basic-demo.png)
+![basic demo](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/basic-demo.png)
 
 ### No border Table
 
 you can remove all borders.
 
-![no border table](../../packages/demo-components/README.assets/no-border-table.png)
+![no border table](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/no-border-table.png)
 
 ### table border
 
 you can wrap the table with border
 
-![only border around table](../../packages/demo-components/README.assets/only-around-table-border.png)
+![only border around table](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/only-around-table-border.png)
 
 Or you can add margin between table cells and table border
 
-![table border with margin](../../packages/demo-components/README.assets/table-border-with-margin.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/table-border-with-margin.png)
 
 ### table border styles
 
 you can customize the shape and color of the borders
 
-![table border with margin](../../packages/demo-components/README.assets/table-border-styles.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/table-border-styles.png)
 
 ### background and text color change
 
-![table border with margin](../../packages/demo-components/README.assets/bgcolor-and-txtcolor.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/bgcolor-and-txtcolor.png)
 
 ### Gaps between columns and rows
 
 you can easily add gaps between rows or columns.
 
-![table border with margin](../../packages/demo-components/README.assets/gaps.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/gaps.png)
 
 ### table in table
 
 Since this is just an svg, you can use another svg even svg-table.
 
-![table border with margin](../../packages/demo-components/README.assets/embedded-tables.png)
+![table border with margin](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/embedded-tables.png)
 
 ### text override
 
@@ -71,7 +71,7 @@ using this behavior, we can override text's position, layout, and much more beha
 
 in this example, I just overrode the positions of text.
 
-![text style override](../../packages/demo-components/README.assets/text-style-override.png)
+![text style override](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/text-style-override.png)
 
 ### Play with styles even more
 
@@ -79,7 +79,7 @@ you can set more advanced styles on your svg.
 
 by setting `overflow: visible` on the inner svg, we can make the content intentionally overflow.
 
-![text style override](../../packages/demo-components/README.assets/table-advanced-styles.png)
+![text style override](https://raw.githubusercontent.com/wootra/svg-table/main/packages/demo-components/README.assets/table-advanced-styles.png)
 
 ## Installation
 
