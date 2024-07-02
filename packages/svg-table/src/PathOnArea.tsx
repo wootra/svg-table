@@ -80,10 +80,10 @@ export const PathOnArea = memo(
 			() => getWid(borderWidths, 'bottom'),
 			[borderWidths]
 		);
-		const leftTop: PtStr = `${leftWid / 2},${topWid / 2}`;
-		const leftBottom: PtStr = `${leftWid / 2},${height - bottomWid / 2}`;
-		const rightTop: PtStr = `${width - rightWid / 2},${topWid / 2}`;
-		const rightBottom: PtStr = `${width - rightWid / 2},${height - bottomWid / 2}`;
+		const leftTop: PtStr = `0,0`;
+		const leftBottom: PtStr = `0,${height}`;
+		const rightTop: PtStr = `${width},0`;
+		const rightBottom: PtStr = `${width},${height}`;
 		const PathProps = {
 			borderColors,
 			borderPatterns,
