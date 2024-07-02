@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table",
-	"version": "1.0.3",
+	"version": "1.1.0",
 	"private": false,
 	"exports": {
 		".": "./src/index.ts"
