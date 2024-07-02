@@ -30,12 +30,16 @@ export const ACell = memo(
 			svgStyle,
 			textColor,
 			textStyle,
+			allowOverflow,
 		} = styleToUse;
 		const padLeft = getWid(paddings, 'left');
 		const padTop = getWid(paddings, 'top');
 		const padRight = getWid(paddings, 'right');
 		const padBottom = getWid(paddings, 'bottom');
-
+		const svgStyleToUse = {
+			...svgStyle,
+			...(allowOverflow ? { overflow: 'visible' } : {}),
+		};
 		return (
 			<g
 				transform={`translate(${x}, ${y})`}
@@ -46,13 +50,13 @@ export const ACell = memo(
 				<FilledArea
 					width={width}
 					height={height}
-					bgColor={bgColor}
 					borderWidths={borderWidths}
 					borderColors={borderColors}
 					borderPatterns={borderPatterns}
 					borderShapes={borderShapes}
+					{...(bgColor ? { bgColor } : {})}
 				/>
-				<svg width={width} height={height} style={svgStyle}>
+				<svg width={width} height={height} style={svgStyleToUse}>
 					<g transform={`translate(${padLeft}, ${padTop})`}>
 						<g transform={`translate(-${padRight}, -${padBottom})`}>
 							{typeof content === 'string' && (

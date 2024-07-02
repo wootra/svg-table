@@ -5,7 +5,7 @@ import { PathOnArea } from './PathOnArea';
 type Props = {
 	width: number;
 	height: number;
-	bgColor: string;
+	bgColor?: string;
 
 	className?: string;
 } & Partial<BorderStyles>;
@@ -21,13 +21,16 @@ const FilledArea = (props: Props) => {
 		borderShapes,
 		className,
 	} = props;
-	const isBorderOnRect = isBorderRect(props);
+	const isBgColorVisible = bgColor && bgColor !== 'transparent';
+	const isBorderOnRect = isBgColorVisible && isBorderRect(props);
 	const rectStyleProps = isBorderOnRect
 		? getRectStyle(props)
 		: { fill: bgColor };
 	return (
 		<g className={`filled-area ${className ?? ''}`}>
-			<rect width={width} height={height} {...rectStyleProps} />
+			{isBgColorVisible && (
+				<rect width={width} height={height} {...rectStyleProps} />
+			)}
 			{!isBorderOnRect && (
 				<PathOnArea
 					className='paths-on-area-for-filled-area'

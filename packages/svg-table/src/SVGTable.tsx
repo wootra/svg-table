@@ -24,7 +24,6 @@ const parsedTableStyle = (style?: Partial<TableStyle>): TableStyle => {
 	return {
 		rowGaps: 0,
 		colGaps: 0,
-		bgColor: 'transparent',
 		borderWidths: undefined,
 		borderPatterns: undefined,
 		borderShapes: undefined,
@@ -39,7 +38,7 @@ const parseDefaultCellStyle = (
 	defaultCellStyle?: Partial<CellStyle>
 ): CellStyle => {
 	return {
-		bgColor: 'transparent',
+		allowOverflow: false,
 		borderWidths: 1,
 		borderColors: '#000',
 		borderPatterns: undefined,
@@ -100,7 +99,6 @@ export const SVGTable: React.FC<TableProps> = memo(
 			: Array(maxColumns).fill((width - allColGaps) / maxColumns);
 
 		const defaultStyleForRow: RowStyle = {
-			bgColor: 'transparent',
 			height: 30,
 			...defaultRowStyle,
 		};

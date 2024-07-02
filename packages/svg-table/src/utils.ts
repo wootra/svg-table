@@ -166,12 +166,13 @@ export const getBorderShape = (
 };
 
 export const isBorderRect = (style: {
+	bgColor?: string;
 	borderWidths?: Widths;
 	borderColors?: ColorsOnWidth;
 	borderPatterns?: PatternArrays;
 }) => {
-	const { borderWidths, borderColors, borderPatterns } = style;
-
+	const { borderWidths, borderColors, borderPatterns, bgColor } = style;
+	if (!bgColor) return false;
 	return (
 		typeof borderWidths === 'number' &&
 		typeof borderColors === 'string' &&
@@ -182,7 +183,7 @@ export const isBorderRect = (style: {
 };
 
 export const getRectStyle = (style: {
-	bgColor: string;
+	bgColor?: string;
 	borderWidths?: Widths;
 	borderColors?: ColorsOnWidth;
 	borderPatterns?: PatternArrays;
@@ -192,7 +193,7 @@ export const getRectStyle = (style: {
 	const { bgColor, borderWidths, borderColors, borderPatterns } = style;
 	// when one of these
 	return {
-		fill: bgColor,
+		...(bgColor ? { fill: bgColor } : {}),
 		stroke: borderColors as string,
 		strokeWidth: borderWidths as number,
 		strokeDasharray: getDashArray(borderPatterns, 'left'),
