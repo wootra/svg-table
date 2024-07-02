@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import type { CalculatedCellProps, CellStyle } from './types';
+import type { CalculatedCellProps, CellStyle, ContentProps } from './types';
 import { getWid } from './utils';
 import FilledArea from './FilledArea';
 
@@ -13,7 +13,7 @@ export const ACell = memo(
 	}) => {
 		if (cellOpt._ignored) return null;
 
-		const { content, x, y, width, height, style } = cellOpt;
+		const { content, x, y, width, height, style, before, after } = cellOpt;
 
 		const styleToUse = {
 			...defaultStyle,
@@ -40,6 +40,20 @@ export const ACell = memo(
 			...svgStyle,
 			...(allowOverflow ? { overflow: 'visible' } : {}),
 		};
+		const propsToPass: ContentProps = {
+			x: width / 2,
+			y: height / 2,
+			width,
+			height,
+			textColor,
+			textStyle: {
+				textAnchor: 'middle',
+				dominantBaseline: 'middle',
+				...textStyle,
+			},
+		};
+		const contentTouse =
+			typeof content === 'function' ? content(propsToPass) : content;
 		return (
 			<g
 				transform={`translate(${x}, ${y})`}
@@ -59,7 +73,10 @@ export const ACell = memo(
 				<svg width={width} height={height} style={svgStyleToUse}>
 					<g transform={`translate(${padLeft}, ${padTop})`}>
 						<g transform={`translate(-${padRight}, -${padBottom})`}>
-							{typeof content === 'string' && (
+							{before && typeof before === 'function'
+								? before(propsToPass)
+								: before}
+							{typeof contentTouse === 'string' && (
 								<text
 									x={width / 2}
 									y={height / 2}
@@ -68,10 +85,13 @@ export const ACell = memo(
 									fill={textColor}
 									{...textStyle}
 								>
-									{content}
+									{contentTouse}
 								</text>
 							)}
-							{typeof content !== 'string' && content}
+							{typeof contentTouse !== 'string' && contentTouse}
+							{after && typeof after === 'function'
+								? after(propsToPass)
+								: after}
 						</g>
 					</g>
 				</svg>

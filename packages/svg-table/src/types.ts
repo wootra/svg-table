@@ -96,6 +96,17 @@ export type CellStyle = {
 	svgStyle?: HTMLAttributes<SVGSVGElement>['style'];
 } & Partial<BorderStyles>;
 
+export type ContentProps = {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+	textColor: string;
+	textStyle: TextStyle;
+};
+
+export type ContentAsFunc = (props: ContentProps) => ReactNode;
+
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
@@ -103,7 +114,9 @@ export type CellProps = {
 	/** Optional custom style for the cell, overriding default styles. */
 	style?: Partial<CellStyle>;
 	/** The content to be displayed within the cell, can be any React node. */
-	content: ReactNode;
+	content: ReactNode | ContentAsFunc;
+	before?: ReactNode | ContentAsFunc;
+	after?: ReactNode | ContentAsFunc;
 	/** Optional. Specifies the number of columns a cell should span across. */
 	colSpan?: number;
 	/** Optional. Specifies the number of rows a cell should span across. */
