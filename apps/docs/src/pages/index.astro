@@ -3,9 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Basic from './(examples)/basic.mdx';
 import Custom from './(examples)/custom.mdx';
 import Advanced from './(examples)/advanced.mdx';
-
-import Responsive from './(examples)/responsive.html';
-import TableCells from './(examples)/table-cells.html';
+import ApiRefs from './(examples)/api-refs.mdx';
+import Responsive from './(examples)/responsive.mdx';
 ---
 <Layout title="Welcome to Astro.">
 	<main>
@@ -65,21 +64,8 @@ import TableCells from './(examples)/table-cells.html';
 		  
 			<div class="section">
 			  <h2>API Reference</h2>
-			  <h3>SvgTable</h3>
-			  <p>The main class for creating and managing SVG tables.</p>
-			  <pre><code>new SvgTable(options: TableOptions)</code></pre>
-			  <p>Options include:</p>
-			  <ul>
-				<li><code>width</code>: number | string</li>
-				<li><code>height</code>: number | string</li>
-				<li><code>columns</code>: number</li>
-				<li><code>rows</code>: number</li>
-				<li><code>responsive</code>: boolean (optional)</li>
-			  </ul>
-		  
-			  <h3>TableCell</h3>
-			  <p>Represents an individual cell in the table.</p>
-			  <TableCells />
+			  <ApiRefs />
+			  
 			</div>
 		  
 			<div class="note">
