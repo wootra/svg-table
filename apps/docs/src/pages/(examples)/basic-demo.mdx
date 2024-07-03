@@ -1,26 +1,20 @@
 import {
-    BasicDemo,
-    BasicWithElement,
-    BasicWithProps,
-    BasicWithPropsAllowingOverflow,
-    BasicWithPropsAllowingOverflowOnlyOneCell,
-    NoBorderTableDemo,
-    EmbeddedTable,
-    TextStyleOverride,
-    OnlyTableBolder,
-    TableBolderWithMargin,
-    TableBorderStyles,
-    BgColorAndTextColor,
-    Gaps,
-    OutboundLabels,
-    TableStyles,
-} from '@repo/demo-components'
+	BasicDemo,
+	BasicWithElement,
+	BasicWithProps,
+	BasicWithPropsAllowingOverflow,
+	BasicWithPropsAllowingOverflowOnlyOneCell,
+	Gaps,
+	// Margins,
+	// Paddings,
+} from '@repo/demo-components';
 
 ### Basic Demo
 
 Here is a simple 3x3 table with with colSpan and rowSpan
+
 ```typescript
-    
+
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
 const tableProps: Omit<TableProps, 'width'> = {
@@ -55,11 +49,9 @@ export const BasicDemo = ({ width = 500 }: { width?: number }) => {
 
 ```
 
-<div className="demo-container">
-    <BasicDemo />
+<div className='demo-container'>
+	<BasicDemo />
 </div>
-
-
 
 ### Table With Custom Element
 
@@ -110,10 +102,9 @@ export const BasicWithElement = ({ width = 500 }: { width?: number }) => {
 
 ```
 
-<div className="demo-container">
-    <BasicWithElement />
+<div className='demo-container'>
+	<BasicWithElement />
 </div>
-
 
 ### Custom Element With Props
 
@@ -163,10 +154,9 @@ export const BasicWithProps = ({ width = 500 }: { width?: number }) => {
 
 ```
 
-<div className="demo-container">
-    <BasicWithProps />
+<div className='demo-container'>
+	<BasicWithProps />
 </div>
-
 
 ### Allow Contents Overflow
 
@@ -223,10 +213,9 @@ export const BasicWithPropsAllowingOverflow = ({
 
 ```
 
-<div className="demo-container">
-    <BasicWithPropsAllowingOverflow />
+<div className='demo-container'>
+	<BasicWithPropsAllowingOverflow />
 </div>
-
 
 ### Control Overflow behavior individually
 
@@ -284,10 +273,9 @@ export const BasicWithPropsAllowingOverflowOnlyOneCell = ({
 
 ```
 
-<div className="demo-container">
-    <BasicWithPropsAllowingOverflowOnlyOneCell />
+<div className='demo-container'>
+	<BasicWithPropsAllowingOverflowOnlyOneCell />
 </div>
-
 
 ## Gaps between columns and rows
 

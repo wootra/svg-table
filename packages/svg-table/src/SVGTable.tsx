@@ -129,7 +129,11 @@ export const SVGTable: React.FC<TableProps> = memo(
 				idx += 1;
 			}
 
-			return <g key={rowIndex}>{rowContent}</g>;
+			return (
+				<g key={rowIndex} className={`row-${rowIndex}`}>
+					{rowContent}
+				</g>
+			);
 		});
 
 		const height =
@@ -158,6 +162,7 @@ export const SVGTable: React.FC<TableProps> = memo(
 					borderShapes={tableStyle.borderShapes}
 				/>
 				<g
+					className='content-area'
 					transform={`translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`}
 				>
 					{rowsContent}

@@ -72,27 +72,25 @@ export const ACell = memo(
 				/>
 				<svg width={width} height={height} style={svgStyleToUse}>
 					<g transform={`translate(${padLeft}, ${padTop})`}>
-						<g transform={`translate(-${padRight}, -${padBottom})`}>
-							{before && typeof before === 'function'
-								? before(propsToPass)
-								: before}
-							{typeof contentTouse === 'string' && (
-								<text
-									x={width / 2}
-									y={height / 2}
-									textAnchor='middle'
-									dominantBaseline='middle'
-									fill={textColor}
-									{...textStyle}
-								>
-									{contentTouse}
-								</text>
-							)}
-							{typeof contentTouse !== 'string' && contentTouse}
-							{after && typeof after === 'function'
-								? after(propsToPass)
-								: after}
-						</g>
+						{before && typeof before === 'function'
+							? before(propsToPass)
+							: before}
+						{typeof contentTouse === 'string' && (
+							<text
+								x={width / 2}
+								y={height / 2}
+								textAnchor='middle'
+								dominantBaseline='middle'
+								fill={textColor}
+								{...textStyle}
+							>
+								{contentTouse}
+							</text>
+						)}
+						{typeof contentTouse !== 'string' && contentTouse}
+						{after && typeof after === 'function'
+							? after(propsToPass)
+							: after}
 					</g>
 				</svg>
 			</g>
