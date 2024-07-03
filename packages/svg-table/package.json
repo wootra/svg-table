@@ -33,7 +33,7 @@
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/wootra/svg-table.git#main"
+		"url": "git+https://github.com/wootra/svg-table.git#main/packages/svg-table"
 	},
 	"keywords": [
 		"svg",
@@ -46,5 +46,5 @@
 	"bugs": {
 		"url": "https://github.com/wootra/svg-table/issues"
 	},
-	"homepage": "https://github.com/wootra/svg-table/tree/main#readme"
+	"homepage": "https://svg-table.vercel.app/"
 }
