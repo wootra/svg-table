@@ -13,13 +13,12 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		<li><a {...linkOrSelected('/')}>Introduction</a></li>
 		{selected === '/' && (<ul class="sub">
 			<li><a href='#features'>Features</a></li>
-<li><a href='#installation'>Installation</a></li>
-<li><a href='#note'>Note</a></li>
-<li><a href='#contributing'>Contributing</a></li>
-<li><a href='#license'>License</a></li>
-
-			
+			<li><a href='#installation'>Installation</a></li>
+			<li><a href='#note'>Note</a></li>
+			<li><a href='#contributing'>Contributing</a></li>
+			<li><a href='#license'>License</a></li>
 		</ul>)}
+
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
 		{selected === '/basic-usage' && (<ul class="sub">
 			<li><a href='#basic-demo'>Basic Demo</a></li>
@@ -30,8 +29,8 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 			<li><a href='#gaps-between-columns-and-rows'>Gaps between columns and rows</a></li>
 			<li><a href='#text-position-adjustment'>Text position adjustment</a></li>
 		</ul>)}
-		<li><a {...linkOrSelected('/custom-tables')}>Custom Tables</a></li>
 
+		<li><a {...linkOrSelected('/custom-tables')}>Custom Tables</a></li>
 		{selected === '/custom-tables' && (<ul class="sub">
 			<li><a href='#no-border-table'>No border table</a></li>
 			<li><a href='#table-border'>No border table</a></li>
@@ -41,17 +40,17 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 		
 		<li><a {...linkOrSelected('/advanced-usage')}>Advanced Usage</a></li>
-
 		{selected === '/advanced-usage' && (<ul class="sub">
 			<li><a href='#tables-in-a-table'>Tables in a table</a></li>
 			<li><a href='#auto-aligned-embeded-tables'>Auto aligned embeded tables</a></li>
 			<li><a href='#text-override'>Text override</a></li>
 			<li><a href='#play-with-styles-even-more'>Play with styles even more</a></li>
 		</ul>)}
+
 		<li><a {...linkOrSelected('/responsive')}>Responsive</a></li>
-<li><a {...linkOrSelected('/features')}>Features</a></li>
-<li><a {...linkOrSelected('/examples')}>Examples</a></li>
-<li><a {...linkOrSelected('/api')}>API Reference</a></li>
+		<li><a {...linkOrSelected('/features')}>Features</a></li>
+		<li><a {...linkOrSelected('/examples')}>Examples</a></li>
+		<li><a {...linkOrSelected('/api')}>API Reference</a></li>
 
 	</ul>
 </nav>
@@ -60,6 +59,42 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 	.side-nav ul.sub > li {
 		padding-left: 1rem;
 	}
+	.side-nav ul {
+		list-style-type: none;
+	}
+
+	.side-nav ul.sub {
+		margin-bottom: 1rem;
+	}
+
+	.side-nav a {
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.side-nav {
+		width: 250px;
+		padding: 2rem;
+		background-color: var(--color-secondary);
+		position: fixed;
+		top: 60px;
+		bottom: 0;
+		overflow-y: auto;
+	}
+
+	.side-nav ul {
+		list-style-type: none;
+	}
+
+	.side-nav > ul > li {
+		margin-bottom: 1rem;
+	}
+
+	.side-nav a {
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+
 	a.selected {
 		color: rgb(219, 249, 159);
 		box-shadow: 0 2px 0 0 rgb(219, 249, 159);

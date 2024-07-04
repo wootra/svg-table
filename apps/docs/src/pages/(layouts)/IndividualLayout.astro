@@ -21,13 +21,16 @@ const { title, selected } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<TopNav/>
+		<TopNav />
 
 		<div class='container'>
-			<SideNav selected={selected}/>
-			<main class='main-container'>
-				<slot />
-			</main>
+			<SideNav selected={selected} />
+            <div class="main-wrapper">
+
+                <main class='main-container'>
+                    <slot />
+                </main>
+            </div>
 		</div>
 	</body>
 </html>
@@ -38,7 +41,6 @@ const { title, selected } = Astro.props;
         --color-accent: #e5d663;
 		--color-background: #23272f;
 		--color-text: #f6f7f9;
-		--color-text-in-example: #23272f;
 		--color-code-background: #292d3e;
 		--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 			Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -60,13 +62,15 @@ const { title, selected } = Astro.props;
 		background-color: var(--color-background);
 		color: var(--color-text);
 		line-height: 1.6;
+        scroll-behavior: smooth;
+        overflow-y: auto;
 	}
 
 	.container {
 		display: flex;
-		flex-direction: row;
+        
 		min-height: 100vh;
-		max-height: 100vh;
+        max-height: 100vh;
 		overflow-y: auto;
 		scroll-behavior: smooth;
 		scroll-padding-top: 5rem; 
@@ -109,18 +113,7 @@ const { title, selected } = Astro.props;
 		overflow-y: auto;
 	}
 
-	.side-nav ul {
-		list-style-type: none;
-	}
-
-	.side-nav > ul > li {
-		margin-bottom: 1rem;
-	}
-
-	.side-nav a {
-		color: var(--color-text);
-		text-decoration: none;
-	}
+	
 
 	.main-content {
 		flex-grow: 1;
@@ -173,13 +166,18 @@ const { title, selected } = Astro.props;
 		padding: 0;
 	}
 
+    .main-wrapper {
+        margin-left: 250px;
+        width: 100%;
+    }
 	.main-container {
-		margin-left: 250px;
-		margin-top: 3rem;
-		/* margin: 3rem auto; */
-		padding: 2rem;
+		max-width: 800px;
+        margin-inline: auto;
+        margin-top: 3rem;
+		padding: 3rem;
 		display: flex;
 		flex-direction: column;
+       
 	}
 
 	h1,
@@ -241,14 +239,10 @@ const { title, selected } = Astro.props;
 	}
 
 	.example-container {
-		background-color: white;
+		background-color: #2c313a;
 		border-radius: 8px;
 		padding: 1rem;
 		margin-bottom: 1.5rem;
-	}
-
-	.example-container > p{
-		color: var(--color-text-in-example);
 	}
 
 	.demo-container {
@@ -310,4 +304,56 @@ const { title, selected } = Astro.props;
 		color: var(--color-secondary);
 		margin-bottom: 0.5rem;
 	}
+    .type-definition {
+        font-family: monospace;
+        white-space: pre-wrap;
+        background-color: var(--color-code-background);
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+
+	.type-definition {
+		font-family: monospace;
+		white-space: pre;
+		margin: 0;
+		line-height: 1.5;
+	}
+
+/* .keyword {
+    color: #0000FF;
+    font-weight: bold;
+}
+
+.type-name {
+    color: #267F99;
+}
+
+.property {
+    color: #001080;
+} */
+
+.type {
+    font-style: italic;
+}
+
+.type.string {
+    color: #007ebd;
+}
+
+.type.boolean, .type.number {
+    color: #ffec3f;
+}
+
+.type-link {
+    color: #c8a83e;
+    text-decoration: none;
+}
+
+.type-link:hover {
+    text-decoration: underline;
+}
+    
 </style>
