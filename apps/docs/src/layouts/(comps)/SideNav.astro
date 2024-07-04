@@ -19,7 +19,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
-		{selected === '/basic-usage' && (<ul  transition:name="opened-nav">
+		{selected === '/basic-usage' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#basic-demo'>Basic Demo</a></li>
 			<li><a href='#table-with-custom-element'>Table with custom element</a></li>
 			<li><a href='#custom-element-with-props'>Custom element with props</a></li>
@@ -30,7 +30,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 
 		<li><a {...linkOrSelected('/custom-tables')}>Custom Tables</a></li>
-		{selected === '/custom-tables' && (<ul  transition:name="opened-nav">
+		{selected === '/custom-tables' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#no-border-table'>No border table</a></li>
 			<li><a href='#table-border'>No border table</a></li>
 			<li><a href='#table-border-styles'>table border styles</a></li>
@@ -39,7 +39,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 		
 		<li><a {...linkOrSelected('/advanced-usage')}>Advanced Usage</a></li>
-		{selected === '/advanced-usage' && (<ul  transition:name="opened-nav">
+		{selected === '/advanced-usage' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#tables-in-a-table'>Tables in a table</a></li>
 			<li><a href='#auto-aligned-embeded-tables'>Auto aligned embeded tables</a></li>
 			<li><a href='#text-override'>Text override</a></li>
@@ -85,10 +85,6 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 
 	.side-nav ul {
 		list-style-type: none;
-	}
-
-	.side-nav > ul > li {
-		margin-bottom: 1rem;
 	}
 
 	.side-nav a {
