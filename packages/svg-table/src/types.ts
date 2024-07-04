@@ -220,8 +220,12 @@ export type TableProps = {
 	defs?: ReactNode;
 	/** Total width of the SVG table in pixels. */
 	width: number;
-	/** Optional. Specifies the width of each column. These are in points and may not match pixels if colGaps is specified. */
+	/** Optional. Total height of the SVG table in pixels. if it is given, rows will be adjusted based on this size. */
+	height?: number;
+	/** Optional. Specifies the width of each column. These are in points and may not match pixels if colGaps is specified. this is not real sizes but ratios based on width after extracting left and right margins and colGaps */
 	columnWidths?: number[];
+	/** Optional. Specifies the height of each row. These are in points and may not match pixels if rowGaps is specified. this is not real sizes but ratios based on height after extracting top and bottom margins and rowGaps */
+	rowHeights?: number[];
 	/** Optional default cell style that applies to all cells unless overridden. */
 	defaultCellStyle?: Partial<CellStyle>;
 	/** Optional default row style that applies to all rows unless overridden. */
