@@ -59,9 +59,8 @@ const embeddedTableProps = (
 	};
 };
 
-const tableProps: TableProps = {
+const tableProps: Omit<TableProps, 'width'> = {
 	columnWidths: [1, 1, 1], // this is just ratio.
-	width: 900,
 	defaultRowStyle: {
 		bgColor: 'yellow',
 		height: 150,
@@ -112,6 +111,6 @@ const tableProps: TableProps = {
 	],
 };
 
-export const EmbeddedTableAsProps = () => {
-	return <SVGTable {...tableProps} />;
+export const EmbeddedTableAsProps = ({ width = 900 }: { width: number }) => {
+	return <SVGTable width={width} {...tableProps} />;
 };
