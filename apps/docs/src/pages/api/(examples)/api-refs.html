@@ -1,0 +1,251 @@
+<h1>SVG Table Type Reference</h1>
+  
+  <p>This page provides a comprehensive reference for all the types used in the SVG Table library. Click on a type name to jump to its description.</p>
+
+  <h2>Table of Contents</h2>
+  <ul>
+    <li><a href="#Widths">Widths</a></li>
+    <li><a href="#ColorsOnWidth">ColorsOnWidth</a></li>
+    <li><a href="#PatternArrays">PatternArrays</a></li>
+    <li><a href="#PatternShape">PatternShape</a></li>
+    <li><a href="#PatternShapes">PatternShapes</a></li>
+    <li><a href="#BorderStyles">BorderStyles</a></li>
+    <li><a href="#TextHAlign">TextHAlign</a></li>
+    <li><a href="#TextVAlign">TextVAlign</a></li>
+    <li><a href="#TextStyle">TextStyle</a></li>
+    <li><a href="#CellStyle">CellStyle</a></li>
+    <li><a href="#ContentProps">ContentProps</a></li>
+    <li><a href="#ContentAsFunc">ContentAsFunc</a></li>
+    <li><a href="#TableInCellProps">TableInCellProps</a></li>
+    <li><a href="#CellProps">CellProps</a></li>
+    <li><a href="#CalculatedCellProps">CalculatedCellProps</a></li>
+    <li><a href="#RowStyle">RowStyle</a></li>
+    <li><a href="#RowProps">RowProps</a></li>
+    <li><a href="#CalculatedRowProps">CalculatedRowProps</a></li>
+    <li><a href="#TableStyle">TableStyle</a></li>
+    <li><a href="#TableProps">TableProps</a></li>
+    <li><a href="#WidthPos">WidthPos</a></li>
+  </ul>
+
+  <h2>Type Definitions</h2>
+
+  <ul class="type-list">
+    <li id="Widths" class="type-item">
+      <span class="type-name">Widths</span>
+      <pre><code>type Widths = [number, number] | [number, number, number, number] | number;</code></pre>
+      <p class="type-description">Represents widths for various elements, allowing for uniform or individual side specification. Can be a single number for all sides, a pair of numbers for top/bottom and left/right, or four numbers for top, right, bottom, and left respectively.</p>
+    </li>
+
+    <li id="ColorsOnWidth" class="type-item">
+      <span class="type-name">ColorsOnWidth</span>
+      <pre><code>type ColorsOnWidth = [string, string] | [string, string, string, string] | string;</code></pre>
+      <p class="type-description">Defines colors for borders, allowing for single, dual, or quad color specifications. Can be a single string for all sides, a pair of strings for top/bottom and left/right, or four strings for top, right, bottom, and left respectively.</p>
+    </li>
+
+    <li id="PatternArrays" class="type-item">
+      <span class="type-name">PatternArrays</span>
+      <pre><code>type PatternArrays = [number[], number[]] | [number[], number[], number[], number[]] | number[] | undefined;</code></pre>
+      <p class="type-description">Specifies dash patterns for borders, supporting various configurations for different sides. Can be a single array for all sides, a pair of arrays for top/bottom and left/right, four arrays for each side, or undefined for no pattern.</p>
+    </li>
+
+    <li id="PatternShape" class="type-item">
+      <span class="type-name">PatternShape</span>
+      <div class="type-definition">
+<span class="keyword">type</span> <span class="type-name">PatternShape</span> = SVGAttributes&lt;<a href="#SVGPathElement" class="type-link">SVGPathElement</a>&gt;['strokeLinecap'];
+</div>
+
+      <p class="type-description">Specifies the shape of the stroke caps for dashed borders. Uses the same values as the SVG strokeLinecap attribute.</p>
+    </li>
+
+    <li id="PatternShapes" class="type-item">
+      <span class="type-name">PatternShapes</span>
+      <p class="type-definition">type PatternShapes = [<a href="#PatternShape">PatternShape</a>, <a href="#PatternShape">PatternShape</a>] | [<a href="#PatternShape">PatternShape</a>, <a href="#PatternShape">PatternShape</a>, <a href="#PatternShape">PatternShape</a>, <a href="#PatternShape">PatternShape</a>] | <a href="#PatternShape">PatternShape</a>;</p><p class="type-description">Defines stroke cap shapes for borders, with configurations for different sides. Can be a single PatternShape for all sides, a pair for top/bottom and left/right, or four for each side individually.</p>
+    </li>
+
+    <li id="BorderStyles" class="type-item">
+      <span class="type-name">BorderStyles</span>
+<div class="type-definition">
+  <span class="keyword">type</span> <span class="type-name">BorderStyles</span> = {
+    <span class="property">borderWidths:</span> <a href="#Widths" class="type-link">Widths</a>;
+    <span class="property">borderColors:</span> <a href="#ColorsOnWidth" class="type-link">ColorsOnWidth</a>;
+    <span class="property">borderPatterns:</span> <a href="#PatternArrays" class="type-link">PatternArrays</a>;
+    <span class="property">borderShapes:</span> <a href="#PatternShapes" class="type-link">PatternShapes</a>;
+  };
+</div>
+      <p class="type-description">Combines all border style properties into a single type, including widths, colors, patterns, and shapes for borders.</p>
+    </li>
+
+    <li id="TextHAlign" class="type-item">
+      <span class="type-name">TextHAlign</span>
+      <pre><code>type TextHAlign = 'left' | 'center' | 'right';</code></pre>
+      <p class="type-description">Horizontal alignment options for text within a cell.</p>
+    </li>
+
+    <li id="TextVAlign" class="type-item">
+      <span class="type-name">TextVAlign</span>
+      <pre><code>type TextVAlign = 'top' | 'center' | 'bottom';</code></pre>
+      <p class="type-description">Vertical alignment options for text within a cell.</p>
+    </li>
+
+    <li id="TextStyle" class="type-item">
+      <span class="type-name">TextStyle</span>
+      <pre><code>type TextStyle = SVGAttributes<SVGTextElement>;</code></pre>
+      <p class="type-description">Style properties for SVG text elements, allowing for full customization of text appearance.</p>
+    </li>
+
+    <li id="CellStyle" class="type-item">
+      <span class="type-name">CellStyle</span>
+      
+<div class="type-definition">
+    <span class="keyword">type</span> <span class="type-name">CellStyle</span> = {
+    <span class="property">bgColor?:</span> <span class="type string">string</span>;
+    <span class="property">paddings:</span> <a href="#Widths" class="type-link">Widths</a>;
+    <span class="property">textColor:</span> <span class="type string">string</span>;
+    <span class="property">allowOverflow:</span> <span class="type boolean">boolean</span>;
+    <span class="property">textStyle?:</span> <a href="#TextStyle" class="type-link">TextStyle</a>;
+    <span class="property">cx?:</span> <span class="type number">number</span>;
+    <span class="property">cy?:</span> <span class="type number">number</span>;
+    <span class="property">svgStyle?:</span> HTMLAttributes&lt;SVGSVGElement&gt;['style'];
+    } & Partial&lt;<a href="#BorderStyles" class="type-link">BorderStyles</a>&gt;;
+</div>
+
+      <p class="type-description">Style properties for table cells, including background color, padding, text styling, and optional border styles. Allows for fine-grained control over cell appearance.</p>
+    </li>
+
+    <li id="ContentProps" class="type-item">
+      <span class="type-name">ContentProps</span>
+      <div class="type-definition">
+<span class="keyword">type</span> <span class="type-name">ContentProps</span> = {
+<span class="property">x:</span> <span class="type number">number</span>;
+<span class="property">y:</span> <span class="type number">number</span>;
+<span class="property">width:</span> <span class="type number">number</span>;
+<span class="property">height:</span> <span class="type number">number</span>;
+<span class="property">textColor:</span> <span class="type string">string</span>;
+<span class="property">textStyle:</span> <a href="#TextStyle" class="type-link">TextStyle</a>;
+};
+</div>
+
+      <p class="type-description">Properties passed to content rendering functions, providing position, dimensions, and text styling information.</p>
+    </li>
+
+    <li id="ContentAsFunc" class="type-item">
+      <span class="type-name">ContentAsFunc</span>
+      <pre><code>type ContentAsFunc = (props: ContentProps) => ReactNode;</code></pre>
+      <p class="type-description">A function type that takes ContentProps and returns a ReactNode, allowing for dynamic content generation within cells.</p>
+    </li>
+
+    <li id="TableInCellProps" class="type-item">
+      <span class="type-name">TableInCellProps</span>
+      <pre><code>type TableInCellProps = {
+  table: Omit<TableProps, 'width'> & { width?: number };
+};</code></pre>
+      <p class="type-description">Properties for defining a nested table within a cell, omitting the width property which is automatically determined based on the cell's width.</p>
+    </li>
+
+    <li id="CellProps" class="type-item">
+      <span class="type-name">CellProps</span>
+      <div class="type-definition">
+        <span class="keyword">type</span> <span class="type-name">CellProps</span> = {
+          <span class="property">style?:</span> Partial&lt;<a href="#CellStyle" class="type-link">CellStyle</a>&gt;;
+          <span class="property">content:</span> ReactNode | <a href="#ContentAsFunc" class="type-link">ContentAsFunc</a> | <a href="#TableInCellProps" class="type-link">TableInCellProps</a>;
+          <span class="property">before?:</span> ReactNode | <a href="#ContentAsFunc" class="type-link">ContentAsFunc</a>;
+          <span class="property">after?:</span> ReactNode | <a href="#ContentAsFunc" class="type-link">ContentAsFunc</a>;
+          <span class="property">colSpan?:</span> <span class="type number">number</span>;
+          <span class="property">rowSpan?:</span> <span class="type number">number</span>;
+        };
+      </div>
+      <p class="type-description">Properties for defining a cell within a table, including content, optional styling, and span information.</p>
+    </li>
+
+    <li id="CalculatedCellProps" class="type-item">
+      <span class="type-name">CalculatedCellProps</span>
+      <pre><code>type CalculatedCellProps =
+  | (CellProps & {
+      _ignored: false;
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    })
+  | {
+      _ignored: true;
+    };</code></pre>
+      <p class="type-description">Extended cell properties including calculated dimensions and positioning, or an indicator that the cell should be ignored.</p>
+    </li>
+
+    <li id="RowStyle" class="type-item">
+      <span class="type-name">RowStyle</span>
+      <pre><code>type RowStyle = {
+  height: number;
+  bgColor?: string;
+};</code></pre>
+      <p class="type-description">Style properties for table rows, including height and optional background color.</p>
+    </li>
+
+    <li id="RowProps" class="type-item">
+      <span class="type-name">RowProps</span>
+      <div class="type-definition">
+        <span class="keyword">type</span> <span class="type-name">RowProps</span> = {
+          <span class="property">style?:</span> Partial&lt;<a href="#RowStyle" class="type-link">RowStyle</a>&gt;;
+          <span class="property">cells:</span> <a href="#CellProps" class="type-link">CellProps</a>[];
+        };
+      </div>
+      <p class="type-description">Properties for defining a row within a table, including cells and optional styling.</p>
+    </li>
+
+    <li id="CalculatedRowProps" class="type-item">
+      <span class="type-name">CalculatedRowProps</span>
+    <li id="CalculatedRowProps" class="type-item">
+      <span class="type-name">CalculatedRowProps</span>
+      <div class="type-definition">
+        <span class="keyword">type</span> <span class="type-name">CalculatedRowProps</span> = Omit&lt;<a href="#RowProps" class="type-link">RowProps</a>, 'cells'&gt; & {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  cells: CalculatedCellProps[];
+};</code></pre>
+      <p class="type-description">Extended row properties including calculated dimensions, positioning, and calculated cell properties.</p>
+    </li>
+
+    <li id="TableStyle" class="type-item">
+      <span class="type-name">TableStyle</span>
+    <li id="TableStyle" class="type-item">
+      <span class="type-name">TableStyle</span>
+      <div class="type-definition">
+        <span class="keyword">type</span> <span class="type-name">TableStyle</span> = {
+          <span class="property">margins:</span> <a href="#Widths" class="type-link">Widths</a>;
+          <span class="property">bgColor?:</span> <span class="type string">string</span>;
+          <span class="property">colGaps:</span> <span class="type number">number</span>;
+          <span class="property">rowGaps:</span> <span class="type number">number</span>;
+          <span class="property">svgStyle:</span> HTMLAttributes&lt;SVGSVGElement&gt;['style'];
+        } & Partial&lt;<a href="#BorderStyles" class="type-link">BorderStyles</a>&gt;;
+      </div>
+      <p class="type-description">Style properties for the table, including margins, gaps, optional background color, and SVG styling. Also includes optional border styles.</p>
+    </li>
+
+    <li id="TableProps" class="type-item">
+      <span class="type-name">TableProps</span>
+    <li id="TableProps" class="type-item">
+      <span class="type-name">TableProps</span>
+      <div class="type-definition">
+        <span class="keyword">type</span> <span class="type-name">TableProps</span> = {
+          <span class="property">className?:</span> <span class="type string">string</span>;
+          <span class="property">defs?:</span> ReactNode;
+          <span class="property">width:</span> <span class="type number">number</span>;
+          <span class="property">columnWidths?:</span> <span class="type number">number[]</span>;
+          <span class="property">defaultCellStyle?:</span> Partial&lt;<a href="#CellStyle" class="type-link">CellStyle</a>&gt;;
+          <span class="property">defaultRowStyle?:</span> Partial&lt;<a href="#RowStyle" class="type-link">RowStyle</a>&gt;;
+          <span class="property">rows:</span> <a href="#RowProps" class="type-link">RowProps</a>[];
+          <span class="property">style?:</span> Partial&lt;<a href="#TableStyle" class="type-link">TableStyle</a>&gt;;
+        };
+      </div>
+      <p class="type-description">Properties for defining a table, including dimensions, rows, optional styling, and default styles for cells and rows.</p>
+    </li>
+
+    <li id="WidthPos" class="type-item">
+      <span class="type-name">WidthPos</span>
+      <pre><code>type WidthPos = 'left' | 'right' | 'top' | 'bottom';</code></pre>
+      <p class="type-description">Represents the position of a width value, used for specifying which side of an element a particular width applies to.</p>
+    </li>
+  </ul>

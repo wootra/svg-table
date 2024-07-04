@@ -59,14 +59,16 @@ const { title } = Astro.props;
 		background-color: var(--color-background);
 		color: var(--color-text);
 		line-height: 1.6;
-        scroll-behavior: smooth;
-        overflow-y: auto;
 	}
 
 	.container {
 		display: flex;
 		flex-direction: row;
 		min-height: 100vh;
+		max-height: 100vh;
+		overflow-y: auto;
+		scroll-behavior: smooth;
+		scroll-padding-top: 5rem; 
 	}
 
 	.top-nav {
@@ -110,7 +112,7 @@ const { title } = Astro.props;
 		list-style-type: none;
 	}
 
-	.side-nav li {
+	.side-nav > ul > li {
 		margin-bottom: 1rem;
 	}
 

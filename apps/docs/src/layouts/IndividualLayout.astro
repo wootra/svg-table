@@ -69,6 +69,10 @@ const { title } = Astro.props;
 		display: flex;
         
 		min-height: 100vh;
+        max-height: 100vh;
+		overflow-y: auto;
+		scroll-behavior: smooth;
+		scroll-padding-top: 5rem; 
 	}
 
 	.top-nav {
@@ -174,13 +178,16 @@ const { title } = Astro.props;
 
     .main-wrapper {
         margin-left: 250px;
+        width: 100%;
     }
 	.main-container {
 		max-width: 800px;
-		margin: 3rem auto;
-		padding: 2rem;
+        margin-inline: auto;
+        margin-top: 3rem;
+		padding: 3rem;
 		display: flex;
 		flex-direction: column;
+       
 	}
 
 	h1,
@@ -307,4 +314,56 @@ const { title } = Astro.props;
 		color: var(--color-secondary);
 		margin-bottom: 0.5rem;
 	}
+    .type-definition {
+        font-family: monospace;
+        white-space: pre-wrap;
+        background-color: var(--color-code-background);
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+
+	.type-definition {
+		font-family: monospace;
+		white-space: pre;
+		margin: 0;
+		line-height: 1.5;
+	}
+
+/* .keyword {
+    color: #0000FF;
+    font-weight: bold;
+}
+
+.type-name {
+    color: #267F99;
+}
+
+.property {
+    color: #001080;
+} */
+
+.type {
+    font-style: italic;
+}
+
+.type.string {
+    color: #007ebd;
+}
+
+.type.boolean, .type.number {
+    color: #ffec3f;
+}
+
+.type-link {
+    color: #c8a83e;
+    text-decoration: none;
+}
+
+.type-link:hover {
+    text-decoration: underline;
+}
+    
 </style>

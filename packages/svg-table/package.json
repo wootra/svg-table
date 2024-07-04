@@ -5,11 +5,14 @@
 	"exports": {
 		".": "./src/index.ts"
 	},
-	"main": "./src/index.ts",
+	"main": "./dist/index.js",
 	"types": "./src/index.ts",
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
-		"generate:component": "turbo gen react-component",
+		"build": "tsc",
+		"patch": "sh ./publish.sh patch",
+		"minor": "sh ./publish.sh minor",
+		"major": "sh ./publish.sh major",
 		"publish": "npm publish --access public"
 	},
 	"devDependencies": {

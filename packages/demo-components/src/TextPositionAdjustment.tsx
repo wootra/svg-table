@@ -26,6 +26,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 		},
 	],
 };
+
 export const TextPositionAdjustment = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };

@@ -115,6 +115,7 @@ export type ContentProps = {
 	textStyle: TextStyle;
 };
 
+// eslint-disable-next-line no-unused-vars
 export type ContentAsFunc = (props: ContentProps) => ReactNode;
 
 export type TableInCellProps = {

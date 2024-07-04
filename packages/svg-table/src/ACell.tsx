@@ -1,4 +1,4 @@
-import { ReactNode, memo } from 'react';
+import { memo } from 'react';
 import type {
 	CalculatedCellProps,
 	CellStyle,
