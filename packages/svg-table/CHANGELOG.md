@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.5.3
+- fix nested table padding issue. (bottom padding was not applied)
+
 ## 1.5.2
 - console remove
 - nested table height dynamic adjustment support.
