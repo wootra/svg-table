@@ -1,0 +1,16 @@
+---
+import ExampleLayout from "../layouts/ExampleLayout.astro";
+import {AllDemo} from '@repo/demo-components';
+---
+
+<ExampleLayout title="Welcome to SVG Title: Examples">
+    <h1>Examples</h1>
+    <p>Here's simple examples </p>
+    <p>Here is <a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components" target="_blank">all DEMO code</a></p>
+    <div class="section">
+        <div class="example-container">
+            <AllDemo width={700}/>
+            </div>
+        </div>
+    </div>
+</ExampleLayout>

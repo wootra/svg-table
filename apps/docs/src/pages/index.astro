@@ -1,87 +1,50 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Basic from './(examples)/basic-demo.mdx';
-import Custom from './(examples)/custom.mdx';
-import Advanced from './(examples)/advanced.mdx';
-import ApiRefs from './(examples)/api-refs.mdx';
-import Responsive from './(examples)/responsive.mdx';
----
-<Layout title="Welcome to Astro.">
-	<main>
-		<div class="container">
-			<h1>SVG Table</h1>
-			<p>SVG Table is a powerful and flexible library for creating tables using SVG. It accepts a javascript object to generate a simple table structures with customizable styles and behaviors.</p>
-		  
-			<div class="section">
-			  <h2>Features</h2>
-			  <ul class="features-list">
-				<li>Create tables using SVG for maximum flexibility and styling options</li>
-				<li>Support for both column and row span functionality with customizable gap and borer styles</li>
-				<li>Customizable cell contents, including all SVG elements</li>
-				<li>Easy-to-use API for defining table structure and styling</li>
-				<li>Lightweight and performant, with no other dependency other than React</li>
-			  </ul>
-			</div>
-		  
-			<div class="section">
-			  <h2>Installation</h2>
-			  <p>To install SVG Table, run the following command in your project directory:</p>
-			  <pre><code>npm install @shjeon0730/svg-table</code></pre>
-			</div>
-		  
-			<div class="section">
-			  <h2>Basic Usage</h2>
-			  <p>Here's simple examples of how to create a basic table using SVG Table:</p>
-		  
-			  <div class="example-container">
-				  <Basic />
-			</div>
-		</div>
-		  
-			<div class="section">
-			  <h2>Advanced Features</h2>
-			  <h3>Custom Cell Content</h3>
-			  <p>SVG Table allows you to customize cell content with any valid SVG elements. Here's examples: </p>
-		  
-			  <div class="example-container">
-				<Custom />
-			  </div>
 
-			  <h3>Complex usecases</h3>
-			  <p>SVGTable is not overly complex by nature. Its simiplicity allows combining with multiple different SVGs, even SVGTable itself.</p>
+import ApiRefs from './(examples)/api-refs.mdx';
+import IndividualLayout from '../layouts/IndividualLayout.astro';
+---
+<IndividualLayout title="Welcome to SVG Table">
+	<h1>SVG Table</h1>
+	<p>SVG Table is a powerful and flexible library for creating tables using SVG. It accepts a javascript object to generate a simple table structures with customizable styles and behaviors.</p>
+	
+	<div class="section">
+		<h2>Features</h2>
+		<ul class="features-list">
+		<li>Create tables using SVG for maximum flexibility and styling options</li>
+		<li>Support for both column and row span functionality with customizable gap and borer styles</li>
+		<li>Customizable cell contents, including all SVG elements</li>
+		<li>Easy-to-use API for defining table structure and styling</li>
+		<li>Lightweight and performant, with no other dependency other than React</li>
+		</ul>
+	</div>
+
+	
+	<div class="section" id="installation">
+		<h2>Installation</h2>
+		<p>To install SVG Table, run the following command in your project directory:</p>
+		<pre><code>npm install @shjeon0730/svg-table</code></pre>
+	</div>
+	
+	
+	<div class="section">
+		<h2>API Reference</h2>
+		<ApiRefs />
+		
+	</div>
+	
+	<div class="note">
+		<div class="note-title">Note</div>
+		<p>SVG Table is currently targeting only for React components. If you want to use it for the other project, feel free to fork for your use case!</p>
+	</div>
+	
+	<div class="section">
+		<h2>Contributing</h2>
+		<p>We welcome contributions to SVG Table! Please check out our <a href="https://github.com/wootra/svg-table/blob/main/CONTRIBUTING.md">contribution guidelines</a> for more information on how to get started.</p>
+	</div>
+	
+	<div class="section">
+		<h2>License</h2>
+		<p>SVG Table is released under the MIT License. See the <a href="https://github.com/wootra/svg-table/blob/main/LICENSE">LICENSE</a> file for more details.</p>
+	</div>
 		  
-			  <div class="example-container">
-				<Advanced />
-			  </div>
-		  
-			  <h3>Responsive Tables</h3>
-			  <p>SVG Table technically does not supports responsive layout, but you can pass width of the table and SVGTable will redraw the cells with recalculated widths.</p>
-		  
-			  <div class="example-container">
-				<Responsive />
-			  </div>
-			</div>
-		  
-			<div class="section">
-			  <h2>API Reference</h2>
-			  <ApiRefs />
-			  
-			</div>
-		  
-			<div class="note">
-			  <div class="note-title">Note</div>
-			  <p>SVG Table is currently targeting only for React components. If you want to use it for the other project, feel free to fork for your use case!</p>
-			</div>
-		  
-			<div class="section">
-			  <h2>Contributing</h2>
-			  <p>We welcome contributions to SVG Table! Please check out our <a href="https://github.com/wootra/svg-table/blob/main/CONTRIBUTING.md">contribution guidelines</a> for more information on how to get started.</p>
-			</div>
-		  
-			<div class="section">
-			  <h2>License</h2>
-			  <p>SVG Table is released under the MIT License. See the <a href="https://github.com/wootra/svg-table/blob/main/LICENSE">LICENSE</a> file for more details.</p>
-			</div>
-		  </div>
-	</main>
-</Layout>
+</IndividualLayout>
