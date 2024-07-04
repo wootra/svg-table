@@ -1,0 +1,35 @@
+---
+const versions = ['1.3.0', '1.4.0']; // Add or modify versions as needed
+
+---
+
+<nav>
+  <select id="api-version-selector" onchange="changeVersion(this.value)">
+    <option value="">Select API Version</option>
+    {versions.map((version) => (
+      <option value={version}>{version}</option>
+    ))}
+  </select>
+</nav>
+
+<script is:inline>
+function changeVersion(version) {
+    console.log("version", version);
+    if (version) {
+      window.location.href = `/api/${version}`;
+    }
+  }
+</script>
+
+<style>
+  nav {
+    margin: 1rem 0;
+  }
+
+  select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+</style>

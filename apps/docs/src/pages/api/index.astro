@@ -1,24 +1,5 @@
 ---
-import IndividualLayout from '../../layouts/IndividualLayout.astro';
-import ApiRef from './(examples)/api-refs.html'
+import ApiRef from './1.4.0/index.astro'
 
-const selected = '/api';
 ---
-
-<IndividualLayout title='Welcome to SVG Title: Api' selected={selected}>
-
-	<h1>API Reference</h1>
-	<ApiRef />
-    
-</IndividualLayout>
-
-<style>
-    :root {
-        --color-code-background: #292d3e;
-        --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
-			Courier, monospace;
-
-		--color-code-bg: #292d3e;
-    }
-    
-</style>
+<ApiRef />
