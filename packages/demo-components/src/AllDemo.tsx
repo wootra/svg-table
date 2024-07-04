@@ -19,6 +19,7 @@ import { TextPositionAdjustment } from './TextPositionAdjustment';
 import { TableHeight } from './TableHeight';
 import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
 import './all-demo.css';
+import { BasicSimpleArray } from './BasicSimpleArray';
 export const AllDemo = ({ width }: { width: number }) => {
 	return (
 		<>
@@ -52,6 +53,18 @@ export const AllDemo = ({ width }: { width: number }) => {
 				</a>
 			</h2>
 			<BasicDemo width={width} />
+			<h2>
+				basic with simple array
+				<a
+					className='demo-code-link'
+					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicSimpleArray.tsx'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					code
+				</a>
+			</h2>
+			<BasicSimpleArray width={width} />
 
 			<h2>
 				basic with element

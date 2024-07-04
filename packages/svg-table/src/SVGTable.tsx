@@ -1,6 +1,8 @@
 import type {
 	CellProps,
+	CellPropsAsObj,
 	CellStyle,
+	RowPropsAsObj,
 	RowStyle,
 	TableProps,
 	TableStyle,
@@ -13,8 +15,9 @@ import { memo } from 'react';
 
 const getTotalCells = (cells: CellProps[]) => {
 	return cells.reduce((total, cell) => {
-		if (cell.colSpan) {
-			return total + cell.colSpan;
+		const cellAsObj = cell as CellPropsAsObj;
+		if (cellAsObj.colSpan) {
+			return total + cellAsObj.colSpan;
 		}
 		return total + 1;
 	}, 0);
@@ -89,7 +92,10 @@ export const SVGTable: React.FC<TableProps> = memo(
 
 		const maxColumns = Math.max(
 			rows.reduce(
-				(max, row) => Math.max(max, getTotalCells(row.cells)),
+				(max, row) =>
+					Array.isArray(row)
+						? Math.max(max, row.length)
+						: Math.max(max, getTotalCells(row.cells)),
 				0
 			),
 			1
@@ -114,11 +120,12 @@ export const SVGTable: React.FC<TableProps> = memo(
 
 		const height =
 			heightFromProps ??
-			rows.reduce(
-				(h, row) =>
-					h + (row.style?.height ?? defaultStyleForRow.height),
-				0
-			) + allRowGaps;
+			rows.reduce((h, row) => {
+				if (Array.isArray(row)) {
+					return h + defaultStyleForRow.height;
+				}
+				return h + (row.style?.height ?? defaultStyleForRow.height);
+			}, 0) + allRowGaps;
 
 		const cellWidths = columnWidths
 			? adjustColumnWidths(columnWidths, width - allColGaps)
@@ -126,7 +133,11 @@ export const SVGTable: React.FC<TableProps> = memo(
 
 		let rowHeights =
 			rowHeightFromProps ??
-			rows.map(row => row.style?.height ?? defaultStyleForRow.height);
+			rows.map(
+				row =>
+					(row as RowPropsAsObj).style?.height ??
+					defaultStyleForRow.height
+			);
 
 		if (heightFromProps) {
 			console.log(
@@ -141,9 +152,9 @@ export const SVGTable: React.FC<TableProps> = memo(
 				rowHeights,
 				heightFromProps - allRowGaps
 			);
-			console.log('rowHeight after adjust', rowHeights.toString());
 			for (let i = 0; i < rows.length; i++) {
-				const rowHeightFromRowStyle = rows[i]?.style?.height;
+				const rowHeightFromRowStyle = (rows[i] as RowPropsAsObj)?.style
+					?.height;
 				// below logic is to make more specific style wins.
 				if (
 					rowHeightFromRowStyle &&
