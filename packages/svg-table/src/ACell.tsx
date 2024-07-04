@@ -43,6 +43,7 @@ export const ACell = memo(
 		const padLeft = getWid(paddings, 'left');
 		const padTop = getWid(paddings, 'top');
 		const padRight = getWid(paddings, 'right');
+		const padBottom = getWid(paddings, 'bottom');
 		const svgStyleToUse = {
 			...svgStyle,
 			...(allowOverflow ? { overflow: 'visible' } : {}),
@@ -67,7 +68,7 @@ export const ACell = memo(
 				const tableWid = width - padRight - padLeft;
 				const adjustProps = cellOpt._heightAdjust
 					? {
-							height: height - padTop - padRight,
+							height: height - padTop - padBottom,
 						}
 					: {};
 

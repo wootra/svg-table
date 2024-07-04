@@ -21,6 +21,7 @@ import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
 import './all-demo.css';
 import { BasicSimpleArray } from './BasicSimpleArray';
 import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
+import { Paddings } from './Paddings';
 export const AllDemo = ({ width }: { width: number }) => {
 	return (
 		<>
@@ -157,6 +158,18 @@ export const AllDemo = ({ width }: { width: number }) => {
 				</a>
 			</h2>
 			<Margins width={width} />
+			<h2>
+				Paddings
+				<a
+					className='demo-code-link'
+					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/Paddings.tsx'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					code
+				</a>
+			</h2>
+			<Paddings width={width} />
 
 			<h2>
 				Table with Height
