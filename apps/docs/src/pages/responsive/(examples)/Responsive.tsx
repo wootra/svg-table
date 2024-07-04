@@ -4,7 +4,6 @@ const Responsive = () => {
 	const [width, setWidth] = useState(900);
 	const onResize = () => {
 		if (ref.current) {
-			console.log('client width');
 			setWidth(ref.current.clientWidth - 30);
 		}
 	};

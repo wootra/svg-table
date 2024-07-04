@@ -1,31 +1,49 @@
 ---
 import IndividualLayout from '../layouts/IndividualLayout.astro';
-const selected = "/features";
+const selected = '/features';
 ---
 
 <IndividualLayout title='Welcome to SVG Title: Features' selected={selected}>
-
 	<h1>Features</h1>
-	
-    <section id="features">
-        <h2>Features</h2>
-        <div class="features">
-          <div class="feature">
-            <h4>Flexible Layout</h4>
-            <p>Create tables with custom layouts, including merged cells and nested structures.</p>
-          </div>
-          <div class="feature">
-            <h4>SVG Power</h4>
-            <p>Leverage the full capabilities of SVG for rich, interactive table designs.</p>
-          </div>
-          <div class="feature">
-            <h4>Multi-context design</h4>
-            <p>SVG Overflow protection as well as option to overflow</p>
-          </div>
-          <div class="feature">
-            <h4>Easy Integration</h4>
-            <p>Seamlessly integrate with React and Javascript Object</p>
-          </div>
-        </div>
-      </section>
+
+	<section id='features' class='features'>
+		<div class='feature'>
+			<h4>Flexible Layout</h4>
+			<p>
+				Create tables with custom layouts, including merged cells and
+				nested structures.
+			</p>
+		</div>
+		<div class='feature'>
+			<h4>SVG Power</h4>
+			<p>
+				Leverage the full capabilities of SVG for rich, interactive
+				table designs.
+			</p>
+		</div>
+		<div class='feature'>
+			<h4>Multi-context design</h4>
+			<p>SVG Overflow protection as well as option to overflow</p>
+		</div>
+		<div class='feature'>
+			<h4>Easy Integration</h4>
+			<p>Seamlessly integrate with React and Javascript Object</p>
+		</div>
+	</section>
 </IndividualLayout>
+
+<style>
+
+	.features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.feature {
+		background-color: var(--color-secondary);
+		padding: 1rem;
+		border-radius: 4px;
+	}
+</style>

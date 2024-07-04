@@ -140,14 +140,6 @@ export const SVGTable: React.FC<TableProps> = memo(
 			);
 
 		if (heightFromProps) {
-			console.log(
-				'rowHeight before adjust',
-				rowHeights.toString(),
-				'height is:',
-				heightFromProps,
-				'heightFromProps - allRowGaps is ',
-				heightFromProps - allRowGaps
-			);
 			rowHeights = adjustRowHeights(
 				rowHeights,
 				heightFromProps - allRowGaps
@@ -163,7 +155,6 @@ export const SVGTable: React.FC<TableProps> = memo(
 					rowHeights[i] = rowHeightFromRowStyle;
 				}
 			}
-			console.log('rowHeight after override', rowHeights.toString());
 		}
 
 		const calculatedRows = calculateRows(
