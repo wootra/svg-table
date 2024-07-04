@@ -1,4 +1,5 @@
 export * from './BasicDemo';
+export * from './BasicSimpleArray';
 export * from './EmbeddedTable';
 export * from './TextStyleOverride';
 export * from './TextPositionAdjustment';

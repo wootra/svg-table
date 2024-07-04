@@ -122,27 +122,32 @@ export type TableInCellProps = {
 	// table in a cell automatically have width based on the cell's width
 	table: Omit<TableProps, 'width'> & { width?: number };
 };
+
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
-export type CellProps = {
-	/** Optional custom style for the cell, overriding default styles. */
-	style?: Partial<CellStyle>;
-	/** The content to be displayed within the cell, can be any React node. */
-	content: ReactNode | ContentAsFunc | TableInCellProps;
-	before?: ReactNode | ContentAsFunc;
-	after?: ReactNode | ContentAsFunc;
-	/** Optional. Specifies the number of columns a cell should span across. */
-	colSpan?: number;
-	/** Optional. Specifies the number of rows a cell should span across. */
-	rowSpan?: number;
-};
+export type CellProps =
+	| {
+			/** Optional custom style for the cell, overriding default styles. */
+			style?: Partial<CellStyle>;
+			/** The content to be displayed within the cell, can be any React node. */
+			content: ReactNode | ContentAsFunc | TableInCellProps;
+			before?: ReactNode | ContentAsFunc;
+			after?: ReactNode | ContentAsFunc;
+			/** Optional. Specifies the number of columns a cell should span across. */
+			colSpan?: number;
+			/** Optional. Specifies the number of rows a cell should span across. */
+			rowSpan?: number;
+	  }
+	| string;
+
+export type CellPropsAsObj = Exclude<CellProps, string>;
 
 /**
  * Extended cell properties including calculated dimensions and positioning.
  */
 export type CalculatedCellProps =
-	| (CellProps & {
+	| (CellPropsAsObj & {
 			/** Indicates that the cell is not ignored and should be rendered. */
 			_ignored: false;
 			/** The x-coordinate of the cell's position. */
@@ -172,17 +177,21 @@ export type RowStyle = {
 /**
  * Properties for defining a row within a table, including cells and optional styling.
  */
-export type RowProps = {
-	/** Optional custom style for the row, overriding default styles. */
-	style?: Partial<RowStyle>;
-	/** An array of CellProps, defining the cells within the row. */
-	cells: CellProps[];
-};
+export type RowProps =
+	| {
+			/** Optional custom style for the row, overriding default styles. */
+			style?: Partial<RowStyle>;
+			/** An array of CellProps, defining the cells within the row. */
+			cells: CellProps[];
+	  }
+	| CellProps[];
+
+export type RowPropsAsObj = Exclude<RowProps, CellProps[]>;
 
 /**
  * Extended row properties including calculated dimensions and positioning.
  */
-export type CalculatedRowProps = Omit<RowProps, 'cells'> & {
+export type CalculatedRowProps = Omit<RowPropsAsObj, 'cells'> & {
 	/** The x-coordinate of the row's position. */
 	x: number;
 	/** The y-coordinate of the row's position. */

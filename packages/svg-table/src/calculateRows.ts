@@ -69,26 +69,30 @@ export const calculateRows = (
 	style?: TableStyle
 ) => {
 	let currentY = 0;
-	const calcRows: CalculatedRowProps[] = rows.map(row => ({
-		...row,
-		x: -1,
-		y: -1,
-		height: -1,
-		width: -1,
-		cells: [
-			...row.cells.map(
-				cell =>
-					({
+	const calcRows: CalculatedRowProps[] = rows.map(aRow => {
+		const row = Array.isArray(aRow) ? { cells: aRow } : aRow;
+		return {
+			...row,
+			x: -1,
+			y: -1,
+			height: -1,
+			width: -1,
+			cells: [
+				...row.cells.map(aCell => {
+					const cell =
+						typeof aCell === 'string' ? { content: aCell } : aCell;
+					return {
 						...cell,
 						x: -1,
 						y: -1,
 						height: -1,
 						width: -1,
 						_ignored: false,
-					}) as CalculatedCellProps
-			),
-		],
-	}));
+					} as CalculatedCellProps;
+				}),
+			],
+		};
+	});
 
 	for (let ri = 0; ri < calcRows.length; ri++) {
 		const row = calcRows[ri];
