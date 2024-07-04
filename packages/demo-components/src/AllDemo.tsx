@@ -20,6 +20,7 @@ import { TableHeight } from './TableHeight';
 import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
 import './all-demo.css';
 import { BasicSimpleArray } from './BasicSimpleArray';
+import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
 export const AllDemo = ({ width }: { width: number }) => {
 	return (
 		<>
@@ -208,6 +209,19 @@ export const AllDemo = ({ width }: { width: number }) => {
 				</a>
 			</h2>
 			<EmbeddedTableAsProps width={width} />
+
+			<h2>
+				embedded table with height as well
+				<a
+					className='demo-code-link'
+					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/EmbeddedTableAsPropsWithHeight.tsx'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					code
+				</a>
+			</h2>
+			<EmbeddedTableAsPropsWithHeight width={width} />
 
 			<h2>
 				text style override

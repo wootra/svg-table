@@ -149,7 +149,8 @@ export type CellPropsAsObj = Exclude<CellProps, string>;
 export type CalculatedCellProps =
 	| (CellPropsAsObj & {
 			/** Indicates that the cell is not ignored and should be rendered. */
-			_ignored: false;
+			_ignored: boolean;
+			_heightAdjust: boolean;
 			/** The x-coordinate of the cell's position. */
 			x: number;
 			/** The y-coordinate of the cell's position. */

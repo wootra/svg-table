@@ -1,11 +1,15 @@
-import SVGTable, { CellProps, TableProps } from '@shjeon0730/svg-table';
+import SVGTable, {
+	CellProps,
+	CellPropsAsObj,
+	TableProps,
+} from '@shjeon0730/svg-table';
 
 const embeddedTableProps = (
 	color: string,
 	columns: number,
 	height = 50,
 	fontSize = 12
-): CellProps => {
+): CellPropsAsObj => {
 	const filled: CellProps = {
 		style: { bgColor: color, textColor: 'white' },
 		content: 'filled',
@@ -97,14 +101,16 @@ const tableProps: Omit<TableProps, 'width'> = {
 		{
 			cells: [
 				embeddedTableProps('pink', 3),
-				embeddedTableProps('cyan', 4),
+				{
+					...embeddedTableProps('cyan', 4),
+					rowSpan: 2,
+				},
 				embeddedTableProps('lime', 2),
 			],
 		},
 		{
 			cells: [
 				embeddedTableProps('magenta', 3),
-				embeddedTableProps('indigo', 2),
 				embeddedTableProps('#296541', 1),
 			],
 		},

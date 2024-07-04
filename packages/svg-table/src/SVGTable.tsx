@@ -157,11 +157,13 @@ export const SVGTable: React.FC<TableProps> = memo(
 			}
 		}
 
+		const embededTableHeightAdjust = !!heightFromProps;
 		const calculatedRows = calculateRows(
 			cellWidths,
 			rowHeights,
 			rows,
-			tableStyle
+			tableStyle,
+			embededTableHeightAdjust
 		);
 
 		const rowsContent = calculatedRows.map((row, rowIndex) => {

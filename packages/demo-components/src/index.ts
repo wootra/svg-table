@@ -14,6 +14,7 @@ export * from './Gaps';
 export * from './Margins';
 export * from './Paddings';
 export * from './EmbeddedTableAsProps';
+export * from './EmbeddedTableAsPropsWithHeight';
 export * from './TableStyles';
 export * from './BasicWithProps';
 export * from './BasicWithElement';

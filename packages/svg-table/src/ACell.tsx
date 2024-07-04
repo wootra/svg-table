@@ -65,9 +65,16 @@ export const ACell = memo(
 		if (typeof contentTouse === 'object') {
 			if ((contentTouse as TableInCellProps).table) {
 				const tableWid = width - padRight - padLeft;
+				const adjustProps = cellOpt._heightAdjust
+					? {
+							height: height - padTop - padRight,
+						}
+					: {};
+
 				contentTouse = (
 					<SVGTable
 						width={tableWid}
+						{...adjustProps}
 						{...(contentTouse as TableInCellProps).table}
 					/>
 				);

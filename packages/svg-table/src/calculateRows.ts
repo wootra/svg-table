@@ -66,7 +66,8 @@ export const calculateRows = (
 	cellWidths: number[],
 	rowHeights: number[],
 	rows: RowProps[],
-	style?: TableStyle
+	style: TableStyle | undefined,
+	embededTableHeightAdjust: boolean
 ) => {
 	let currentY = 0;
 	const calcRows: CalculatedRowProps[] = rows.map(aRow => {
@@ -88,6 +89,7 @@ export const calculateRows = (
 						height: -1,
 						width: -1,
 						_ignored: false,
+						_heightAdjust: embededTableHeightAdjust,
 					} as CalculatedCellProps;
 				}),
 			],
