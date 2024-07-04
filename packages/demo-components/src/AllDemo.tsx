@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { BasicDemo } from './BasicDemo';
 import { BasicWithElement } from './BasicWithElement';
 import { BasicWithProps } from './BasicWithProps';
