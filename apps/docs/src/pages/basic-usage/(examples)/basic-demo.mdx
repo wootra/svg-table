@@ -5,6 +5,7 @@ import {
 	BasicWithPropsAllowingOverflow,
 	BasicWithPropsAllowingOverflowOnlyOneCell,
 	Gaps,
+	TextPositionAdjustment,
 	// Margins,
 	// Paddings,
 } from '@repo/demo-components';
@@ -322,4 +323,48 @@ export const Gaps = ({ width = 500 }: { width?: number }) => {
 
 <div className='demo-container'>
 	<Gaps />
+</div>
+
+### Text Position Adjustment
+
+if your usecase is simply adjusting a little text position based from the center of the cell,
+you can use cx, cy
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	rows: [
+		{
+			cells: [
+				{
+					content: 'cx: -10, cy: -3',
+					style: {
+						cx: -1,
+						cy: -3,
+					},
+				},
+				{
+					content: 'without cx,cy',
+				},
+
+				{
+					content: 'cx: 10, cy: 3',
+					style: {
+						cx: 10,
+						cy: 3,
+					},
+				},
+			],
+		},
+	],
+};
+export const TextPositionAdjustment = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+
+<div className='demo-container'>
+	<TextPositionAdjustment />
 </div>

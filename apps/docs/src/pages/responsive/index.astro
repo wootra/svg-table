@@ -1,0 +1,17 @@
+---
+import ExampleLayout from '../../layouts/ExampleLayout.astro';
+import Responsive from './(examples)/responsive.mdx';
+---
+
+<ExampleLayout title='Welcome to SVG Title: Responsive Tables'>
+	<h1>Responsive Tables</h1>
+	<p>
+		SVG Table technically does not supports responsive layout, but you can
+		pass width of the table and SVGTable will redraw the cells with
+		recalculated widths.
+	</p>
+
+	<div class='example-container'>
+		<Responsive />
+	</div>
+</ExampleLayout>

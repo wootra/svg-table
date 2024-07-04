@@ -88,8 +88,18 @@ export type CellStyle = {
 	allowOverflow: boolean;
 	/**
 	 * Optional styling for the text within the cell, using SVG text attributes.
+	 * textStyle is given as style attribute of the text element.
 	 */
 	textStyle?: TextStyle;
+	/**
+	 * if you want to adjust the horizontal position of the text based on the center position, use this.
+	 */
+	cx?: number;
+	/**
+	 * if you want to adjust the vertical position of the text based on the center position, use this.
+	 */
+	cy?: number;
+
 	/**
 	 * Optional CSS styles for the SVG element representing the cell.
 	 */
@@ -107,6 +117,10 @@ export type ContentProps = {
 
 export type ContentAsFunc = (props: ContentProps) => ReactNode;
 
+export type TableInCellProps = {
+	// table in a cell automatically have width based on the cell's width
+	table: Omit<TableProps, 'width'> & { width?: number };
+};
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
@@ -114,7 +128,7 @@ export type CellProps = {
 	/** Optional custom style for the cell, overriding default styles. */
 	style?: Partial<CellStyle>;
 	/** The content to be displayed within the cell, can be any React node. */
-	content: ReactNode | ContentAsFunc;
+	content: ReactNode | ContentAsFunc | TableInCellProps;
 	before?: ReactNode | ContentAsFunc;
 	after?: ReactNode | ContentAsFunc;
 	/** Optional. Specifies the number of columns a cell should span across. */

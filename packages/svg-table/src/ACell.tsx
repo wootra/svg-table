@@ -1,7 +1,13 @@
-import { memo } from 'react';
-import type { CalculatedCellProps, CellStyle, ContentProps } from './types';
+import { ReactNode, memo } from 'react';
+import type {
+	CalculatedCellProps,
+	CellStyle,
+	ContentProps,
+	TableInCellProps,
+} from './types';
 import { getWid } from './utils';
 import FilledArea from './FilledArea';
+import { SVGTable } from './SVGTable';
 
 export const ACell = memo(
 	({
@@ -31,9 +37,12 @@ export const ACell = memo(
 			textColor,
 			textStyle,
 			allowOverflow,
+			cx = 0,
+			cy = 0,
 		} = styleToUse;
 		const padLeft = getWid(paddings, 'left');
 		const padTop = getWid(paddings, 'top');
+		const padRight = getWid(paddings, 'right');
 		const svgStyleToUse = {
 			...svgStyle,
 			...(allowOverflow ? { overflow: 'visible' } : {}),
@@ -50,8 +59,21 @@ export const ACell = memo(
 				...textStyle,
 			},
 		};
-		const contentTouse =
+		let contentTouse =
 			typeof content === 'function' ? content(propsToPass) : content;
+
+		if (typeof contentTouse === 'object') {
+			if ((contentTouse as TableInCellProps).table) {
+				const tableWid = width - padRight - padLeft;
+				contentTouse = (
+					<SVGTable
+						width={tableWid}
+						{...(contentTouse as TableInCellProps).table}
+					/>
+				);
+			}
+		}
+
 		return (
 			<g
 				transform={`translate(${x}, ${y})`}
@@ -75,8 +97,8 @@ export const ACell = memo(
 							: before}
 						{typeof contentTouse === 'string' && (
 							<text
-								x={width / 2}
-								y={height / 2}
+								x={width / 2 + cx}
+								y={height / 2 + cy}
 								textAnchor='middle'
 								dominantBaseline='middle'
 								fill={textColor}
@@ -85,7 +107,10 @@ export const ACell = memo(
 								{contentTouse}
 							</text>
 						)}
-						{typeof contentTouse !== 'string' && contentTouse}
+						{typeof contentTouse !== 'string' &&
+							!(contentTouse as TableInCellProps).table &&
+							contentTouse}
+
 						{after && typeof after === 'function'
 							? after(propsToPass)
 							: after}

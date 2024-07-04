@@ -14,6 +14,8 @@ import { Gaps } from './Gaps';
 import { OutboundLabels } from './OutboundLabels';
 import { TableStyles } from './TableStyles';
 import { Margins } from './Margins';
+import { EmbeddedTableAsProps } from './EmbeddedTableAsProps';
+import { TextPositionAdjustment } from './TextPositionAdjustment';
 
 export const AllDemo = ({ width }: { width: number }) => {
 	return (
@@ -28,12 +30,16 @@ export const AllDemo = ({ width }: { width: number }) => {
 			<BasicWithPropsAllowingOverflow width={width} />
 			<h2>allwing only once cell overflow</h2>
 			<BasicWithPropsAllowingOverflowOnlyOneCell width={width} />
+			<h2>text position adjustment</h2>
+			<TextPositionAdjustment width={width} />
 			<h2>no border table demo</h2>
 			<NoBorderTableDemo width={width} />
 			<h2>Margins</h2>
 			<Margins width={width} />
 			<h2>embedded table</h2>
 			<EmbeddedTable />
+			<h2>embedded table as props</h2>
+			<EmbeddedTableAsProps />
 			<h2>text style override</h2>
 			<TextStyleOverride width={width} />
 			<h2>only table border</h2>
