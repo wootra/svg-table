@@ -34,8 +34,6 @@ export const ACell = memo(
 		} = styleToUse;
 		const padLeft = getWid(paddings, 'left');
 		const padTop = getWid(paddings, 'top');
-		const padRight = getWid(paddings, 'right');
-		const padBottom = getWid(paddings, 'bottom');
 		const svgStyleToUse = {
 			...svgStyle,
 			...(allowOverflow ? { overflow: 'visible' } : {}),

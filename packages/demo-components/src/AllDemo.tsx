@@ -15,6 +15,7 @@ import { BgColorAndTextColor } from './BgColorAndTextColor';
 import { Gaps } from './Gaps';
 import { OutboundLabels } from './OutboundLabels';
 import { TableStyles } from './TableStyles';
+import { Margins } from './Margins';
 
 export const AllDemo = ({ width }: { width: number }) => {
 	return (
@@ -31,6 +32,8 @@ export const AllDemo = ({ width }: { width: number }) => {
 			<BasicWithPropsAllowingOverflowOnlyOneCell width={width} />
 			<h2>no border table demo</h2>
 			<NoBorderTableDemo width={width} />
+			<h2>Margins</h2>
+			<Margins width={width} />
 			<h2>embedded table</h2>
 			<EmbeddedTable />
 			<h2>text style override</h2>
