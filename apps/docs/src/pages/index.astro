@@ -1,12 +1,14 @@
 ---
-
 import IndividualLayout from '../layouts/IndividualLayout.astro';
+const selected = Astro.url.pathname;
 ---
-<IndividualLayout title="Welcome to SVG Table">
+
+<IndividualLayout title="Welcome to SVG Table" selected={selected}>
+
 	<h1>SVG Table</h1>
 	<p>SVG Table is a powerful and flexible library for creating tables using SVG. It accepts a javascript object to generate a simple table structures with customizable styles and behaviors.</p>
 	
-	<div class="section">
+	<div class="section" id="features">
 		<h2>Features</h2>
 		<ul class="features-list">
 		<li>Create tables using SVG for maximum flexibility and styling options</li>
@@ -24,17 +26,17 @@ import IndividualLayout from '../layouts/IndividualLayout.astro';
 		<pre><code>npm install @shjeon0730/svg-table</code></pre>
 	</div>
 	
-	<div class="note">
+	<div class="note" id="note">
 		<div class="note-title">Note</div>
 		<p>SVG Table is currently targeting only for React components. If you want to use it for the other project, feel free to fork for your use case!</p>
 	</div>
 	
-	<div class="section">
+	<div class="section" id="contributing">
 		<h2>Contributing</h2>
 		<p>We welcome contributions to SVG Table! Please check out our <a href="https://github.com/wootra/svg-table/blob/main/CONTRIBUTING.md">contribution guidelines</a> for more information on how to get started.</p>
 	</div>
 	
-	<div class="section">
+	<div class="section" id="license">
 		<h2>License</h2>
 		<p>SVG Table is released under the MIT License. See the <a href="https://github.com/wootra/svg-table/blob/main/LICENSE">LICENSE</a> file for more details.</p>
 	</div>

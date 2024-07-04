@@ -1,9 +1,10 @@
 ---
 import ExampleLayout from '../../layouts/ExampleLayout.astro';
 import Advanced from './(examples)/advanced.mdx';
+const selected = Astro.url.pathname;
 ---
 
-<ExampleLayout title='Welcome to SVG Title: Advanced Usage'>
+<ExampleLayout title='Welcome to SVG Title: Advanced Usage' selected={selected}>
 	<h1>Advanced Usage</h1>
 	<p>
 		SVGTable is not overly complex by nature. Its simiplicity allows

@@ -1,21 +1,89 @@
 ---
+import { FaNpm, FaGithub } from 'react-icons/fa';
+import { FaDonate } from 'react-icons/fa';
 ---
 <nav class='top-nav'>
 	<a href='/' class='brand'>
-		SVG Table
-	</a>
+		<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect width="40" height="40" rx="8" fill="#4A90E2"/>
+			<path d="M10 10H30V14H10V10Z" fill="tomato"/>
+			<path d="M10 16H18V22H10V16Z" fill="lime"/>
+			<path d="M20 16H30V22H20V16Z" fill="#ffffff"/>
+			<path d="M10 24H18V30H10V24Z" fill="#ffffff"/>
+			<path d="M20 24H30V30H20V24Z" fill="lightblue"/>
+		  </svg>
+		<span class="brand-text">SVG Table</span>
+	  </a>
 	<div class='top-nav-links'>
 		<a
 			href='https://www.npmjs.com/package/@shjeon0730/svg-table'
 			target='_blank'
+			title="NPM"
+			class="npm-link"
 		>
-			NPM
+			<FaNpm />
 		</a>
-		<a href='https://github.com/wootra/svg-table' target='_blank'>
-			GitHub
+		<a href='https://github.com/wootra/svg-table' target='_blank' title="GitHub">
+			<FaGithub />
 		</a>
-		<a href='#' target='_blank'>
-			Donate
+		<a href='#' target='_blank' title="Donate" class="donate-link">
+			<FaDonate />
 		</a>
 	</div>
 </nav>
+
+<style>
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  .brand-text {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+	.top-nav-links a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin-left: 1rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .top-nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: currentColor;
+    opacity: 0;
+    filter: blur(8px);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .top-nav-links a:hover::before {
+    opacity: 0.2;
+  }
+
+  .top-nav-links a:hover {
+    transform: scale(1.1);
+  }
+
+  .npm-link {
+    color: #cb3837; /* NPM red color */
+  }
+
+  .donate-link {
+	color: #89ff72; 
+  }
+</style>

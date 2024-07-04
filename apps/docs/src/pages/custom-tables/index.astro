@@ -1,9 +1,11 @@
 ---
 import ExampleLayout from '../../layouts/ExampleLayout.astro';
 import Custom from './(examples)/custom.mdx';
+const selected = Astro.url.pathname;
 ---
 
-<ExampleLayout title='Welcome to SVG Title: Custom Cell Content'>
+<ExampleLayout title='Welcome to SVG Title: Custom Cell Content' selected={selected}>
+
 	<h1>Custom Cell Content</h1>
 	<p>
 		SVG Table allows you to customize cell content with any valid SVG

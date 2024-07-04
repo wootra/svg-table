@@ -1,9 +1,11 @@
 ---
 import ExampleLayout from "../layouts/ExampleLayout.astro";
 import {AllDemo} from '@repo/demo-components';
+const selected = Astro.url.pathname;
 ---
 
-<ExampleLayout title="Welcome to SVG Title: Examples">
+<ExampleLayout title="Welcome to SVG Title: Examples" selected={selected}>
+
     <h1>Examples</h1>
     <p>Here's simple examples </p>
     <p>Here is <a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components" target="_blank">all DEMO code</a></p>

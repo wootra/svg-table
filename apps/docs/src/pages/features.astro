@@ -1,9 +1,10 @@
 ---
 import IndividualLayout from '../layouts/IndividualLayout.astro';
-
+const selected = Astro.url.pathname;
 ---
 
-<IndividualLayout title='Welcome to SVG Title: Features'>
+<IndividualLayout title='Welcome to SVG Title: Features' selected={selected}>
+
 	<h1>Features</h1>
 	
     <section id="features">

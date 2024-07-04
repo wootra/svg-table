@@ -1,9 +1,11 @@
 ---
 import ExampleLayout from '../../layouts/ExampleLayout.astro';
 import Responsive from './(examples)/Responsive';
+const selected = Astro.url.pathname;
 ---
 
-<ExampleLayout title='Welcome to SVG Title: Responsive Tables'>
+<ExampleLayout title='Welcome to SVG Title: Responsive Tables' selected={selected}>
+
 	<h1>Responsive Tables</h1>
 	<p>
 		SVG Table technically does not supports CSS way of responsive layout, 
