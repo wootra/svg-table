@@ -59,13 +59,25 @@ const adjustColumnWidths = (
 	return columnWidths.map(width => width * ratio);
 };
 
+const adjustRowHeights = (
+	rowHeights: number[],
+	tableHeightWithoutGaps: number
+) => {
+	const totalHeight = rowHeights.reduce((total, width) => total + width, 0);
+	const ratio = tableHeightWithoutGaps / totalHeight;
+	if (ratio > 0.99 && ratio <= 1.01) return rowHeights;
+	return rowHeights.map(width => width * ratio);
+};
+
 export const SVGTable: React.FC<TableProps> = memo(
 	({
 		rows,
 		width = 500,
+		height: heightFromProps,
 		defaultCellStyle,
 		defaultRowStyle,
 		columnWidths,
+		rowHeights: rowHeightFromProps,
 		style,
 		className,
 		defs,
@@ -82,6 +94,7 @@ export const SVGTable: React.FC<TableProps> = memo(
 			),
 			1
 		);
+
 		const tableStyle: TableStyle = parsedTableStyle(style);
 
 		const allColGaps =
@@ -94,18 +107,53 @@ export const SVGTable: React.FC<TableProps> = memo(
 			getWid(tableStyle.margins, 'top') +
 			getWid(tableStyle.margins, 'bottom');
 
-		const cellWidths = columnWidths
-			? adjustColumnWidths(columnWidths, width - allColGaps)
-			: Array(maxColumns).fill((width - allColGaps) / maxColumns);
-
 		const defaultStyleForRow: RowStyle = {
 			height: 30,
 			...defaultRowStyle,
 		};
 
-		const rowHeights = rows.map(
-			row => row.style?.height ?? defaultStyleForRow.height
-		);
+		const height =
+			heightFromProps ??
+			rows.reduce(
+				(h, row) =>
+					h + (row.style?.height ?? defaultStyleForRow.height),
+				0
+			) + allRowGaps;
+
+		const cellWidths = columnWidths
+			? adjustColumnWidths(columnWidths, width - allColGaps)
+			: Array(maxColumns).fill((width - allColGaps) / maxColumns);
+
+		let rowHeights =
+			rowHeightFromProps ??
+			rows.map(row => row.style?.height ?? defaultStyleForRow.height);
+
+		if (heightFromProps) {
+			console.log(
+				'rowHeight before adjust',
+				rowHeights.toString(),
+				'height is:',
+				heightFromProps,
+				'heightFromProps - allRowGaps is ',
+				heightFromProps - allRowGaps
+			);
+			rowHeights = adjustRowHeights(
+				rowHeights,
+				heightFromProps - allRowGaps
+			);
+			console.log('rowHeight after adjust', rowHeights.toString());
+			for (let i = 0; i < rows.length; i++) {
+				const rowHeightFromRowStyle = rows[i]?.style?.height;
+				// below logic is to make more specific style wins.
+				if (
+					rowHeightFromRowStyle &&
+					typeof rowHeights[i] === 'number'
+				) {
+					rowHeights[i] = rowHeightFromRowStyle;
+				}
+			}
+			console.log('rowHeight after override', rowHeights.toString());
+		}
 
 		const calculatedRows = calculateRows(
 			cellWidths,
@@ -136,12 +184,6 @@ export const SVGTable: React.FC<TableProps> = memo(
 			);
 		});
 
-		const height =
-			rows.reduce(
-				(h, row) =>
-					h + (row.style?.height ?? defaultStyleForRow.height),
-				0
-			) + allRowGaps;
 		return (
 			<svg
 				width={width}
