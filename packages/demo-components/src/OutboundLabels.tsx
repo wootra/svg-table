@@ -27,8 +27,8 @@ const tableProps: Omit<TableProps, 'width'> = {
 	defs: (
 		<>
 			<filter x='-0.1' y='0' width='1.2' height='1' id='white-bg'>
-				<feFlood flood-color='#FFFFFF' />
-				<feComposite in='SourceGraphic' operator='and' />
+				<feFlood floodColor='#FFFFFF' />
+				<feComposite in='SourceGraphic' operator='over' />
 			</filter>
 		</>
 	),

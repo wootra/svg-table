@@ -5,7 +5,7 @@ import type {
 	ContentProps,
 	TableInCellProps,
 } from './types';
-import { getWid } from './utils';
+import { getWid, simpleValue } from './utils';
 import FilledArea from './FilledArea';
 import { SVGTable } from './SVGTable';
 
@@ -49,8 +49,8 @@ export const ACell = memo(
 			...(allowOverflow ? { overflow: 'visible' } : {}),
 		};
 		const propsToPass: ContentProps = {
-			x: width / 2,
-			y: height / 2,
+			x: simpleValue(width / 2),
+			y: simpleValue(height / 2),
 			width,
 			height,
 			textColor,
@@ -65,16 +65,18 @@ export const ACell = memo(
 
 		if (typeof contentTouse === 'object') {
 			if ((contentTouse as TableInCellProps).table) {
-				const tableWid = width - padRight - padLeft;
+				const tableWid = simpleValue(width - padRight - padLeft);
 				const adjustProps = cellOpt._heightAdjust
 					? {
-							height: height - padTop - padBottom,
+							height: simpleValue(
+								Math.max(height - padTop - padBottom, 1)
+							),
 						}
 					: {};
 
 				contentTouse = (
 					<SVGTable
-						width={tableWid}
+						width={simpleValue(tableWid)}
 						{...adjustProps}
 						{...(contentTouse as TableInCellProps).table}
 					/>
@@ -83,12 +85,7 @@ export const ACell = memo(
 		}
 
 		return (
-			<g
-				transform={`translate(${x}, ${y})`}
-				className='cell-wrapper'
-				width={width}
-				height={height}
-			>
+			<g transform={`translate(${x}, ${y})`} className='cell-wrapper'>
 				<FilledArea
 					width={width}
 					height={height}
@@ -98,15 +95,20 @@ export const ACell = memo(
 					borderShapes={borderShapes}
 					{...(bgColor ? { bgColor } : {})}
 				/>
-				<svg width={width} height={height} style={svgStyleToUse}>
+				<svg
+					width={width}
+					height={Math.max(height, 1)}
+					style={svgStyleToUse}
+					viewBox={`0 0 ${width} ${height}`}
+				>
 					<g transform={`translate(${padLeft}, ${padTop})`}>
 						{before && typeof before === 'function'
 							? before(propsToPass)
 							: before}
 						{typeof contentTouse === 'string' && (
 							<text
-								x={width / 2 + cx}
-								y={height / 2 + cy}
+								x={simpleValue(width / 2 + cx)}
+								y={simpleValue(height / 2 + cy)}
 								textAnchor='middle'
 								dominantBaseline='middle'
 								fill={textColor}

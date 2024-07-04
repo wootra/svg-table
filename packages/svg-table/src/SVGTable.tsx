@@ -9,7 +9,7 @@ import type {
 } from './types';
 import { ACell } from './ACell';
 import { calculateRows } from './calculateRows';
-import { getWid } from './utils';
+import { getWid, simpleValue } from './utils';
 import FilledArea from './FilledArea';
 import { memo } from 'react';
 
@@ -59,7 +59,7 @@ const adjustColumnWidths = (
 	const totalWidth = columnWidths.reduce((total, width) => total + width, 0);
 	const ratio = tableWidthWithoutGaps / totalWidth;
 	if (ratio > 0.99 && ratio <= 1.01) return columnWidths;
-	return columnWidths.map(width => width * ratio);
+	return columnWidths.map(width => Math.max(simpleValue(width * ratio), 1));
 };
 
 const adjustRowHeights = (
@@ -69,7 +69,7 @@ const adjustRowHeights = (
 	const totalHeight = rowHeights.reduce((total, width) => total + width, 0);
 	const ratio = tableHeightWithoutGaps / totalHeight;
 	if (ratio > 0.99 && ratio <= 1.01) return rowHeights;
-	return rowHeights.map(width => width * ratio);
+	return rowHeights.map(width => Math.max(simpleValue(width * ratio), 1));
 };
 
 export const SVGTable: React.FC<TableProps> = memo(
@@ -118,7 +118,7 @@ export const SVGTable: React.FC<TableProps> = memo(
 			...defaultRowStyle,
 		};
 
-		const height =
+		let height =
 			heightFromProps ??
 			rows.reduce((h, row) => {
 				if (Array.isArray(row)) {
@@ -127,9 +127,13 @@ export const SVGTable: React.FC<TableProps> = memo(
 				return h + (row.style?.height ?? defaultStyleForRow.height);
 			}, 0) + allRowGaps;
 
+		height = simpleValue(height);
+
 		const cellWidths = columnWidths
 			? adjustColumnWidths(columnWidths, width - allColGaps)
-			: Array(maxColumns).fill((width - allColGaps) / maxColumns);
+			: Array(maxColumns).fill(
+					simpleValue((width - allColGaps) / maxColumns)
+				);
 
 		let rowHeights =
 			rowHeightFromProps ??
