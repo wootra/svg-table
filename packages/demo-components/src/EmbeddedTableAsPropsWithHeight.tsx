@@ -50,7 +50,7 @@ const embeddedTableProps = (
 
 const tableProps: Omit<TableProps, 'width'> = {
 	columnWidths: [1, 1, 1], // this is just ratio.
-	height: 150,
+	height: 150, // when height is given, all nested table will be dynamically adjusted in height.
 	rows: [
 		['Header 1', 'Header 2', 'Header3'],
 		[

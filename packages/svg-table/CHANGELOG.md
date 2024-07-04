@@ -1,6 +1,13 @@
 # CHANGELOG
 
-## 1.4.0 and before
+## 1.5.2
+- console remove
+- nested table height dynamic adjustment support.
+
+## 1.5.0
+- simple array form support for rows and cells.
+
+## 1.4.0
 - make row heights calculated based on table height.
 
 ## 1.3.0
