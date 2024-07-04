@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import TopNav from './(comps)/TopNav.astro';
 import SideNav from './(comps)/SideNav.astro';
 
@@ -19,6 +20,7 @@ const { title, selected } = Astro.props;
 		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 		<meta name='generator' content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
 		<TopNav />
@@ -27,7 +29,7 @@ const { title, selected } = Astro.props;
 			<SideNav selected={selected} />
             <div class="main-wrapper">
 
-                <main class='main-container'>
+                <main class='main-container'  transition:name="content">
                     <slot />
                 </main>
             </div>

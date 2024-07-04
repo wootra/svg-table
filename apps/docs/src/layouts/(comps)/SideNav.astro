@@ -4,14 +4,13 @@ type Props = {
 }
 const selected = Astro.props.selected;
 const hash = Astro.url.hash;
-console.log(Astro.url, hash)
 const linkOrSelected = (link: string) => selected === link || (selected+hash) === link ? {href: '#', class: 'selected'}: {href:link};
 ---
 
 <nav class='side-nav'>
 	<ul>
-		<li><a {...linkOrSelected('/')}>Introduction</a></li>
-		{selected === '/' && (<ul class="sub">
+		<li><a transition:name="main-nav" {...linkOrSelected('/')}>Introduction</a></li>
+		{selected === '/' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#features'>Features</a></li>
 			<li><a href='#installation'>Installation</a></li>
 			<li><a href='#note'>Note</a></li>
@@ -20,7 +19,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
-		{selected === '/basic-usage' && (<ul class="sub">
+		{selected === '/basic-usage' && (<ul  transition:name="opened-nav">
 			<li><a href='#basic-demo'>Basic Demo</a></li>
 			<li><a href='#table-with-custom-element'>Table with custom element</a></li>
 			<li><a href='#custom-element-with-props'>Custom element with props</a></li>
@@ -31,7 +30,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 
 		<li><a {...linkOrSelected('/custom-tables')}>Custom Tables</a></li>
-		{selected === '/custom-tables' && (<ul class="sub">
+		{selected === '/custom-tables' && (<ul  transition:name="opened-nav">
 			<li><a href='#no-border-table'>No border table</a></li>
 			<li><a href='#table-border'>No border table</a></li>
 			<li><a href='#table-border-styles'>table border styles</a></li>
@@ -40,7 +39,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 		
 		<li><a {...linkOrSelected('/advanced-usage')}>Advanced Usage</a></li>
-		{selected === '/advanced-usage' && (<ul class="sub">
+		{selected === '/advanced-usage' && (<ul  transition:name="opened-nav">
 			<li><a href='#tables-in-a-table'>Tables in a table</a></li>
 			<li><a href='#auto-aligned-embeded-tables'>Auto aligned embeded tables</a></li>
 			<li><a href='#text-override'>Text override</a></li>

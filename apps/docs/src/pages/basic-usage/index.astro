@@ -1,7 +1,7 @@
 ---
-import ExampleLayout from "../(layouts)/ExampleLayout.astro";
+import ExampleLayout from "../../layouts/ExampleLayout.astro";
 import Basic from './(examples)/basic-demo.mdx';
-const selected = Astro.url.pathname;
+const selected = '/basic-usage'
 ---
 
 <ExampleLayout title="Welcome to SVG Title: Basic Usage" selected={selected}>
