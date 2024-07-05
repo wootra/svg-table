@@ -12,27 +12,13 @@ const Rect = () => {
 };
 const tableProps: Omit<TableProps, 'width'> = {
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Col Span',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: <Rect /> },
-				{ content: 'Row Span', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['Header 1', 'Header 2', 'Header3'],
+		[
+			{ content: <Rect /> },
+			{ content: 'Row Span', rowSpan: 2 },
+			'Row 1, Cell 3',
+		],
+		['Row 2, Cell 1', 'Row 2, Cell 3'],
 	],
 };
 

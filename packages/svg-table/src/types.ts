@@ -92,6 +92,14 @@ export type CellStyle = {
 	 */
 	textStyle?: TextStyle;
 	/**
+	 * Optional styling for the before element. It works only when before is text.
+	 */
+	beforeTextStyle?: TextStyle;
+	/**
+	 * Optional styling for the after element. It works only when after is text.
+	 */
+	afterTextStyle?: TextStyle;
+	/**
 	 * if you want to adjust the horizontal position of the text based on the center position, use this.
 	 */
 	cx?: number;
@@ -149,7 +157,7 @@ export type CellPropsAsObj = Exclude<CellProps, string>;
 export type CalculatedCellProps =
 	| (CellPropsAsObj & {
 			/** Indicates that the cell is not ignored and should be rendered. */
-			_ignored: boolean;
+			_ignored: false;
 			_heightAdjust: boolean;
 			/** The x-coordinate of the cell's position. */
 			x: number;

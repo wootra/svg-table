@@ -1,6 +1,7 @@
 ---
 import ExampleLayout from '../../layouts/ExampleLayout.astro';
-import Responsive from './(examples)/Responsive';
+import Responsive from './_examples/Responsive';
+import Responsive2 from './_examples/Responsive2';
 const selected = "/responsive"
 ---
 
@@ -16,6 +17,12 @@ const selected = "/responsive"
 	</p>
 	<div class='section'>
 		<Responsive client:load/>
+
+	</div>
+
+	<div class='section'>
+
+		<Responsive2 client:load/>
 	</div>
 	
 </ExampleLayout>

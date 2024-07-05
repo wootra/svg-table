@@ -30,6 +30,10 @@ const tableProps: Omit<TableProps, 'width'> = {
 				<feFlood floodColor='#FFFFFF' />
 				<feComposite in='SourceGraphic' operator='over' />
 			</filter>
+			<filter x='-0.1' y='0' width='1.2' height='1' id='red-bg'>
+				<feFlood floodColor='red' />
+				<feComposite in='SourceGraphic' operator='over' />
+			</filter>
 		</>
 	),
 	style: {
@@ -43,9 +47,56 @@ const tableProps: Omit<TableProps, 'width'> = {
 						allowOverflow: true,
 					},
 					content: getOutBoundLabelOnTop,
+					after: props => (
+						<text
+							x={props.width}
+							y={props.height / 2}
+							textAnchor='end'
+							fill='yellow'
+							{...props.textStyle}
+						>
+							After
+						</text>
+					),
+					before: props => (
+						<>
+							<rect
+								x={0}
+								y={0}
+								width={props.width}
+								height={props.height}
+								fill='#ff6666'
+							/>
+							<text
+								x={0}
+								y={props.height / 2}
+								fill='white'
+								{...props.textStyle}
+							>
+								Before
+							</text>
+						</>
+					),
 				},
 				{
+					style: {
+						allowOverflow: true,
+						textStyle: {
+							// another way of outbounding label
+							y: 0,
+							filter: 'url(#white-bg)',
+						},
+						beforeTextStyle: {
+							filter: 'url(#red-bg)',
+							fill: 'yellow',
+						},
+						afterTextStyle: {
+							fill: 'green',
+						},
+					},
 					content: 'Header 2',
+					after: 'After Header 2', // this will not affected by textStyle
+					before: 'Before Header 2',
 					colSpan: 2,
 				},
 			],
@@ -63,9 +114,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 				{ content: 'Row 1, Cell 3' },
 			],
 		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['Row 2, Cell 1', 'Row 2, Cell 3'],
 	],
 };
 

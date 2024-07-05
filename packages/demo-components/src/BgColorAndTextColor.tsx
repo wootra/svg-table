@@ -13,50 +13,41 @@ const Gradients = () => {
 		</>
 	);
 };
+const blueTextCell = {
+	content: 'Blue Text',
+	style: {
+		textColor: 'blue',
+	},
+};
+const OrangeBackWhiteTextCell = {
+	content: 'OrangeBack,WhiteText',
+	style: {
+		bgColor: 'orange',
+		textColor: 'white',
+	},
+};
+
+const GradientBackCell = {
+	content: 'Gradient Back',
+	style: {
+		bgColor: 'url(#red-to-blue)',
+		textColor: 'white',
+	},
+};
+
+const GradientBackCell2 = {
+	content: 'Gradient Back2',
+	style: {
+		bgColor: 'url(#cyan-to-white)',
+	},
+};
+
 const tableProps: Omit<TableProps, 'width'> = {
 	defs: <Gradients />,
+	height: 100,
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-
-					style: {
-						textColor: 'blue',
-					},
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-					style: {
-						bgColor: 'orange',
-						textColor: 'white',
-					},
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'test' },
-				{
-					content: 'Row 1, Cell 2',
-					rowSpan: 2,
-					style: {
-						bgColor: 'url(#red-to-blue)',
-						textColor: 'white',
-					},
-				},
-				{
-					content: 'Row 1, Cell 3',
-					style: {
-						bgColor: 'url(#cyan-to-white)',
-					},
-				},
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		[blueTextCell, OrangeBackWhiteTextCell],
+		[GradientBackCell, GradientBackCell2],
 	],
 };
 export const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {

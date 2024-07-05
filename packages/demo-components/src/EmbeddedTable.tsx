@@ -11,7 +11,7 @@ const tableProps: TableProps = {
 	width: 900,
 	defaultRowStyle: {
 		bgColor: 'yellow',
-		height: 50,
+		height: 120,
 	},
 
 	style: {
@@ -23,38 +23,18 @@ const tableProps: TableProps = {
 			style: {
 				height: 30,
 			},
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Header 2',
-				},
-				{
-					content: 'Header3',
-				},
-			],
+			cells: ['Header 1', 'Header 2', 'Header3'],
 		},
-		{
-			style: {
-				height: 200,
-			},
-			cells: [
-				{ content: <BgColorAndTextColor width={300} /> }, // since there is gaps added, it will be overflow.
-				{ content: <BasicDemo width={293} /> },
-				{ content: <Gaps width={293} /> },
-			],
-		},
-		{
-			style: {
-				height: 200,
-			},
-			cells: [
-				{ content: <NoBorderTableDemo width={293} /> },
-				{ content: <OnlyTableBolder width={293} /> },
-				{ content: <TableBorderStyles width={293} /> },
-			],
-		},
+		[
+			{ content: <BgColorAndTextColor width={300} /> }, // since there is gaps added, it will be overflow.
+			{ content: <BasicDemo width={293} /> },
+			{ content: <Gaps width={293} /> },
+		],
+		[
+			{ content: <NoBorderTableDemo width={293} /> },
+			{ content: <OnlyTableBolder width={293} /> },
+			{ content: <TableBorderStyles width={293} /> },
+		],
 	],
 };
 

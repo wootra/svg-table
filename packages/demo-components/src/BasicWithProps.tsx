@@ -11,27 +11,8 @@ const adjustedText: ContentAsFunc = props => {
 
 const tableProps: Omit<TableProps, 'width'> = {
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: adjustedText },
-				{ content: 'Row Span', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['Header 1', 'Header 2'],
+		[{ content: adjustedText }, 'Cell'],
 	],
 };
 

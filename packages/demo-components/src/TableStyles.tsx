@@ -1,11 +1,21 @@
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+import { ImBug } from 'react-icons/im';
 
 const Circle = () => {
-	return <ellipse cx={15} cy={15} rx={30} ry={30} fill='cyan' />;
+	return (
+		<ellipse
+			cx={15}
+			cy={15}
+			rx={30}
+			ry={30}
+			fill='orange'
+			style={{ filter: 'blur(10px)' }}
+		/>
+	);
 };
 
 const tableProps: Omit<TableProps, 'width'> = {
-	columnWidths: [100, 300, 200],
+	columnWidths: [2, 1, 2],
 
 	defaultRowStyle: {
 		bgColor: 'yellow',
@@ -32,14 +42,32 @@ const tableProps: Omit<TableProps, 'width'> = {
 		{
 			cells: [
 				{
-					content: <Circle />,
+					before: <Circle />,
 					style: {
+						allowOverflow: false,
+					},
+					after: props => (
+						<g
+							transform={`translate(${props.x - 40}, ${props.y - 16}) scale(2)`}
+						>
+							<ImBug fill='red' color='yellow' />
+						</g>
+					),
+					content: 'Row1, Cell1',
+				},
+				{
+					content: `rotate 15, 
+					opacity 0.5`,
+					rowSpan: 2,
+					style: {
+						textStyle: {
+							rotate: '15',
+						},
 						svgStyle: {
-							overflow: 'visible', // override internal svg's style
+							opacity: 0.5,
 						},
 					},
 				},
-				{ content: 'Row 1, Cell 2', rowSpan: 2 },
 				{ content: 'Row 1, Cell 3' },
 			],
 		},

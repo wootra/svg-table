@@ -17,7 +17,9 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 			<li><a href='#contributing'>Contributing</a></li>
 			<li><a href='#license'>License</a></li>
 		</ul>)}
-
+		<li><a {...linkOrSelected('/features')}>Features</a></li>
+		<li><a {...linkOrSelected('/examples')}>Examples</a></li>
+		<li><a {...linkOrSelected('/api')}>API Reference</a></li>
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
 		{selected === '/basic-usage' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#basic-demo'>Basic Demo</a></li>
@@ -47,9 +49,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 
 		<li><a {...linkOrSelected('/responsive')}>Responsive</a></li>
-		<li><a {...linkOrSelected('/features')}>Features</a></li>
-		<li><a {...linkOrSelected('/examples')}>Examples</a></li>
-		<li><a {...linkOrSelected('/api')}>API Reference</a></li>
+		
 
 	</ul>
 </nav>

@@ -15,6 +15,7 @@ const embeddedTableProps = (
 		content: 'filled',
 	};
 	const empty: CellProps = { content: 'empty' };
+	// below logic make the nested table recurrsively.
 	const cellStore: CellProps[] = Array(columns + 1)
 		.fill('')
 		.map((_, idx) => {
@@ -48,15 +49,9 @@ const embeddedTableProps = (
 					height,
 				},
 				rows: [
-					{
-						cells: cellStore.slice(0, columns),
-					},
-					{
-						cells: cellStore.slice(1, columns + 1),
-					},
-					{
-						cells: cellStore.slice(0, columns),
-					},
+					cellStore.slice(0, columns),
+					cellStore.slice(1, columns + 1),
+					cellStore.slice(0, columns),
 				],
 			},
 		},
@@ -79,41 +74,22 @@ const tableProps: Omit<TableProps, 'width'> = {
 			style: {
 				height: 30,
 			},
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Header 2',
-				},
-				{
-					content: 'Header3',
-				},
-			],
+			cells: ['Header 1', 'Header 2', 'Header3'],
 		},
-		{
-			cells: [
-				embeddedTableProps('red', 2),
-				embeddedTableProps('blue', 3),
-				embeddedTableProps('green', 4),
-			],
-		},
-		{
-			cells: [
-				embeddedTableProps('pink', 3),
-				{
-					...embeddedTableProps('cyan', 4),
-					rowSpan: 2,
-				},
-				embeddedTableProps('lime', 2),
-			],
-		},
-		{
-			cells: [
-				embeddedTableProps('magenta', 3),
-				embeddedTableProps('#296541', 1),
-			],
-		},
+		[
+			embeddedTableProps('red', 2),
+			embeddedTableProps('blue', 3),
+			embeddedTableProps('green', 4),
+		],
+		[
+			embeddedTableProps('pink', 3),
+			{
+				...embeddedTableProps('cyan', 4),
+				rowSpan: 2,
+			},
+			embeddedTableProps('lime', 2),
+		],
+		[embeddedTableProps('magenta', 3), embeddedTableProps('#296541', 1)],
 	],
 };
 

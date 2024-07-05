@@ -9,10 +9,11 @@ const Responsive = () => {
 	};
 	useEffect(() => {
 		window.addEventListener('resize', onResize);
+		onResize();
 		return () => {
 			window.removeEventListener('resize', onResize);
 		};
-	});
+	}, []);
 	const ref = useRef<HTMLDivElement>(null);
 	return (
 		<div
@@ -21,6 +22,10 @@ const Responsive = () => {
 			onResize={onResize}
 			style={{ width: 'calc(100vw - 20rem)' }}
 		>
+			<p>
+				try to resize the window in height and width! In this example,
+				your table will only react with width.
+			</p>
 			<EmbeddedTableAsProps width={width} />
 		</div>
 	);

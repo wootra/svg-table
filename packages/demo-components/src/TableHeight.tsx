@@ -15,27 +15,9 @@ const tableProps: TableProps = {
 		borderColors: 'red',
 	},
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Col Span',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'Row 1, Cell 1' },
-				{ content: 'Row Span', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['header1', 'header2', 'header3'],
+		['cell1', 'cell2', 'cell3'],
+		['cell1', 'cell2', 'cell3'],
 	],
 };
 

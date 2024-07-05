@@ -1,13 +1,50 @@
-import { memo } from 'react';
+import { ReactNode, memo } from 'react';
 import type {
 	CalculatedCellProps,
 	CellStyle,
 	ContentProps,
 	TableInCellProps,
+	TextStyle,
+	Widths,
 } from './types';
 import { getWid, simpleValue } from './utils';
 import FilledArea from './FilledArea';
 import { SVGTable } from './SVGTable';
+
+const convertToTableIfNeeded = (
+	contentTouse: ReactNode | TableInCellProps,
+	width: number,
+	height: number,
+	paddings: Widths,
+	cellOpt: CalculatedCellProps & { _ignored: false }
+): ReactNode => {
+	if ((contentTouse as TableInCellProps).table) {
+		const padLeft = getWid(paddings, 'left');
+		const padTop = getWid(paddings, 'top');
+		const padRight = getWid(paddings, 'right');
+		const padBottom = getWid(paddings, 'bottom');
+
+		const tableWid = simpleValue(width - padRight - padLeft);
+		const adjustProps = cellOpt._heightAdjust
+			? {
+					height: simpleValue(
+						Math.max(height - padTop - padBottom, 1)
+					),
+				}
+			: {};
+
+		return (
+			<SVGTable
+				width={simpleValue(tableWid)}
+				{...adjustProps}
+				{...(contentTouse as TableInCellProps).table}
+			/>
+		);
+	}
+	return contentTouse as ReactNode;
+};
+
+type TextAnchor = 'middle' | 'start' | 'end';
 
 export const ACell = memo(
 	({
@@ -36,53 +73,107 @@ export const ACell = memo(
 			svgStyle,
 			textColor,
 			textStyle,
+			beforeTextStyle,
+			afterTextStyle,
 			allowOverflow,
 			cx = 0,
 			cy = 0,
 		} = styleToUse;
 		const padLeft = getWid(paddings, 'left');
 		const padTop = getWid(paddings, 'top');
-		const padRight = getWid(paddings, 'right');
-		const padBottom = getWid(paddings, 'bottom');
+
 		const svgStyleToUse = {
 			...svgStyle,
 			...(allowOverflow ? { overflow: 'visible' } : {}),
 		};
-		const propsToPass: ContentProps = {
-			x: simpleValue(width / 2),
-			y: simpleValue(height / 2),
+
+		const propsToPass = (
+			textStyleToUse: TextStyle | undefined,
+			anchorBase: TextAnchor,
+			startX: number,
+			startY: number
+		): ContentProps => ({
+			x: simpleValue(startX),
+			y: simpleValue(startY),
 			width,
 			height,
 			textColor,
 			textStyle: {
-				textAnchor: 'middle',
+				textAnchor: anchorBase,
 				dominantBaseline: 'middle',
-				...textStyle,
+				...textStyleToUse,
 			},
-		};
+		});
+		// execute it if contents are callback function.
 		let contentTouse =
-			typeof content === 'function' ? content(propsToPass) : content;
+			typeof content === 'function'
+				? content(
+						propsToPass(
+							textStyle,
+							'middle',
+							width / 2 + cx,
+							height / 2 + cy
+						)
+					)
+				: content;
+		let beforeToUse =
+			typeof before === 'function'
+				? before(propsToPass(beforeTextStyle, 'start', 0, height / 2))
+				: before;
+		let afterToUse =
+			typeof after === 'function'
+				? after(propsToPass(afterTextStyle, 'end', width, height / 2))
+				: after;
 
 		if (typeof contentTouse === 'object') {
-			if ((contentTouse as TableInCellProps).table) {
-				const tableWid = simpleValue(width - padRight - padLeft);
-				const adjustProps = cellOpt._heightAdjust
-					? {
-							height: simpleValue(
-								Math.max(height - padTop - padBottom, 1)
-							),
-						}
-					: {};
-
-				contentTouse = (
-					<SVGTable
-						width={simpleValue(tableWid)}
-						{...adjustProps}
-						{...(contentTouse as TableInCellProps).table}
-					/>
-				);
-			}
+			contentTouse = convertToTableIfNeeded(
+				contentTouse,
+				width,
+				height,
+				paddings,
+				cellOpt
+			);
 		}
+
+		const renderTextOnly = (
+			contentToRender: string,
+			startX: number,
+			startY: number,
+			textAnchor: TextAnchor,
+			styleToApply: TextStyle = {}
+		) => {
+			const lines = contentToRender.split('\n');
+			let textToRender: ReactNode = contentToRender;
+			if (lines.length > 1) {
+				const fontSize = (styleToApply.fontSize as number) || 16;
+				textToRender = lines
+					.filter(v => v)
+					.map((line, index) => (
+						<tspan
+							key={index}
+							x={startX}
+							dy={index === 0 ? 0 : fontSize}
+						>
+							{line}
+						</tspan>
+					));
+				startY =
+					startY - ((lines.length - 1) * simpleValue(fontSize)) / 2;
+			}
+
+			return (
+				<text
+					x={simpleValue(startX)}
+					y={simpleValue(startY)}
+					textAnchor={textAnchor}
+					dominantBaseline='middle'
+					fill={textColor}
+					{...styleToApply}
+				>
+					{textToRender}
+				</text>
+			);
+		};
 
 		return (
 			<g transform={`translate(${x}, ${y})`} className='cell-wrapper'>
@@ -102,28 +193,35 @@ export const ACell = memo(
 					viewBox={`0 0 ${width} ${height}`}
 				>
 					<g transform={`translate(${padLeft}, ${padTop})`}>
-						{before && typeof before === 'function'
-							? before(propsToPass)
-							: before}
-						{typeof contentTouse === 'string' && (
-							<text
-								x={simpleValue(width / 2 + cx)}
-								y={simpleValue(height / 2 + cy)}
-								textAnchor='middle'
-								dominantBaseline='middle'
-								fill={textColor}
-								{...textStyle}
-							>
-								{contentTouse}
-							</text>
-						)}
-						{typeof contentTouse !== 'string' &&
-							!(contentTouse as TableInCellProps).table &&
-							contentTouse}
+						{before && typeof beforeToUse === 'string'
+							? renderTextOnly(
+									beforeToUse,
+									0,
+									height / 2,
+									'start',
+									beforeTextStyle
+								)
+							: beforeToUse}
 
-						{after && typeof after === 'function'
-							? after(propsToPass)
-							: after}
+						{typeof contentTouse === 'string'
+							? renderTextOnly(
+									contentTouse,
+									width / 2 + cx,
+									height / 2 + cy,
+									'middle',
+									textStyle
+								)
+							: contentTouse}
+
+						{afterToUse && typeof afterToUse === 'string'
+							? renderTextOnly(
+									afterToUse,
+									width,
+									height / 2,
+									'end',
+									afterTextStyle
+								)
+							: afterToUse}
 					</g>
 				</svg>
 			</g>

@@ -2,33 +2,15 @@ import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
 const tableProps: Omit<TableProps, 'width'> = {
 	defaultCellStyle: {
-		borderWidths: 0,
+		borderWidths: 0, // remove default cell border
 	},
 	style: {
-		borderWidths: 1,
+		borderWidths: 1, // eanble table border
 	},
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'test' },
-				{ content: 'Row 1, Cell 2', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['Header 1', 'Header 2', 'Header3'],
+		['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
+		['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3'],
 	],
 };
 export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {

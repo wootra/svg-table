@@ -7,6 +7,9 @@ const MARGIN_LEFT = 40;
 
 const HORZ_GAP = 10;
 const VERT_GAP = 20;
+const rectCell = (width: number, fill: string) => ({
+	content: <rect x={0} y={0} width={width} height={30} fill={fill} />,
+});
 
 export const Margins = ({ width = 500 }: { width?: number }) => {
 	const HALF = (width - MARGIN_LEFT - MARGIN_RIGHT - HORZ_GAP) / 2;
@@ -18,88 +21,13 @@ export const Margins = ({ width = 500 }: { width?: number }) => {
 			borderWidths: 1,
 			borderColors: 'black',
 		},
+		defaultRowStyle: {
+			height: 30,
+		},
 		rows: [
-			{
-				style: {
-					height: 30,
-				},
-				cells: [
-					{
-						content: (
-							<rect
-								x={0}
-								y={0}
-								width={HALF}
-								height={30}
-								fill='red'
-							/>
-						),
-					},
-					{
-						content: (
-							<rect
-								x={0}
-								y={0}
-								width={HALF}
-								height={30}
-								fill='blue'
-							/>
-						),
-					},
-				],
-			},
-			{
-				cells: [
-					{
-						content: (
-							<rect
-								x={0}
-								y={0}
-								width={HALF}
-								height={30}
-								fill='pink'
-							/>
-						),
-					},
-					{
-						content: (
-							<rect
-								x={0}
-								y={0}
-								width={HALF}
-								height={30}
-								fill='cyan'
-							/>
-						),
-					},
-				],
-			},
-			{
-				cells: [
-					{
-						content: (
-							<rect
-								x={0}
-								y={0}
-								width={HALF}
-								height={30}
-								fill='orange'
-							/>
-						),
-					},
-					{
-						content: (
-							<rect
-								x={0}
-								y={0}
-								width={HALF}
-								height={30}
-								fill='green'
-							/>
-						),
-					},
-				],
-			},
+			[rectCell(HALF, 'red'), rectCell(HALF, 'blue')],
+			[rectCell(HALF, 'pink'), rectCell(HALF, 'cyan')],
+			[rectCell(HALF, 'orange'), rectCell(HALF, 'green')],
 		],
 	};
 	return <SVGTable {...tableProps} width={width} />;
