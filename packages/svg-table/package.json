@@ -1,13 +1,13 @@
 {
 	"name": "@shjeon0730/svg-table",
-	"version": "1.6.1",
+	"version": "1.6.3",
 	"private": false,
 	"main": "src/index.ts",
 	"module": "src/index.ts",
 	"browser": "src/index.ts",
 	"types": "src/index.ts",
 	"files": [
-		"dist"
+		"src"
 	],
 	"scripts": {
 		"build": "npm run lint; tsc --noEmit",

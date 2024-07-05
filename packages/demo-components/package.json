@@ -23,7 +23,7 @@
 		"typescript": "^5.5.3"
 	},
 	"peerDependencies": {
-		"@shjeon0730/svg-table": "workspace:*",
+		"@shjeon0730/svg-table": "^1",
 		"react": "^18",
 		"react-dom": "^18"
 	},
