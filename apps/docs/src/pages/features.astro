@@ -6,7 +6,8 @@ const selected = '/features';
 <IndividualLayout title='Welcome to SVG Title: Features' selected={selected}>
 	<h1>Features</h1>
 
-	<section id='features' class='features'>
+	<section id='features' class='features '>
+    <div class="grid-background"></div>
 		<div class='feature'>
 			<h4>Flexible Layout</h4>
 			<p>
@@ -29,21 +30,94 @@ const selected = '/features';
 			<h4>Easy Integration</h4>
 			<p>Seamlessly integrate with React and Javascript Object</p>
 		</div>
+    <div class='feature'>
+			<h4>Multiline Support</h4>
+			<p>Easily add multiline contents in the cell by adding linefeed</p>
+		</div>
+    <div class='feature'>
+			<h4>Simple or Complex</h4>
+			<p>Support Simple or Complext use cases on demand</p>
+		</div>
 	</section>
 </IndividualLayout>
 
 <style>
 
 	.features {
+    perspective: 1000px;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		gap: 1rem;
 		margin-bottom: 2rem;
+    position: relative;
+    
 	}
+  h1 {
+    z-index: 2;
+  }
 
 	.feature {
 		background-color: var(--color-secondary);
+    opacity: 0.8;
+    transition: all 0.3s ease;
 		padding: 1rem;
 		border-radius: 4px;
+    z-index: 2;
 	}
+
+
+  .feature:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+    box-shadow: 0 5px 15px rgba(0, 200, 255, 0.2);
+  }
+
+  .grid-background {
+    /* transition: transform 3s ease; */
+
+    perspective-origin: bottom;
+    transform-style: preserve-3d;
+    position: fixed;
+   
+    top: -100vh;
+    left: -100vw;
+    right: -100vw;
+    bottom: -100vh;
+    animation: grid-swing 30s ease-in-out infinite;
+    z-index: 1;
+  }
+
+
+
+  @keyframes grid-swing {
+    0% {
+      transform: rotateX(30deg) rotateY(-10deg) rotateZ(30deg);
+    }
+    50% {
+      transform: rotateX(-10deg) rotateY(-10deg) rotateZ(-30deg);
+    }
+    100% {
+      transform: rotateX(30deg) rotateY(-10deg) rotateZ(30deg);
+    }
+  }
+
+  .grid-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.2;
+    --grid-size: 50px;
+    --grid-color: rgb(243, 243, 243);
+    --grid-border: 3px;
+   
+    position: fixed;
+    
+    background-image: 
+      linear-gradient(to right, var(--grid-color) var(--grid-border), transparent var(--grid-border)),
+      linear-gradient(to bottom, var(--grid-color) var(--grid-border), transparent var(--grid-border));
+    background-size: var(--grid-size) var(--grid-size);
+  }
 </style>

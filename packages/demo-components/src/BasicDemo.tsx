@@ -16,7 +16,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 		{
 			cells: [
 				{ content: 'Row 1, Cell 1' },
-				{ content: 'Row Span', rowSpan: 2 },
+				{ content: 'Row Span\nmultiline\nsupport', rowSpan: 2 },
 				{ content: 'Row 1, Cell 3' },
 			],
 		},
