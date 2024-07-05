@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, SVGAttributes } from 'react';
+import type { HTMLAttributes, ReactNode, SVGAttributes } from 'react';
 
 /**
  * Represents widths for various elements, allowing for uniform or individual side specification.

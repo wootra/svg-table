@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 1.6.4
+## 1.6.5
 - bundled version
 
 ## 1.6.0
