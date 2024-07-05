@@ -1,9 +1,11 @@
 # CHANGELOG
 
-## 1.5.3
-- fix nested table padding issue. (bottom padding was not applied)
+## 1.6.0
+- add before/after as text in cells.
+- add multiline support in cells.
 
-## 1.5.2
+## 1.5.4
+- fix nested table padding issue. (bottom padding was not applied)
 - console remove
 - nested table height dynamic adjustment support.
 
