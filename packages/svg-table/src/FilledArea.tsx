@@ -1,5 +1,5 @@
 import { getRectStyle, isBorderRect } from './utils';
-import { BorderStyles } from './types';
+import type { BorderStyles } from './types';
 import { PathOnArea } from './PathOnArea';
 
 type Props = {

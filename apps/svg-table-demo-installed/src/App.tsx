@@ -1,10 +1,10 @@
 import { AllDemo } from '@repo/demo-components';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 const App = () => {
 	const [width, setWidth] = useState(500);
-	const onChange = (e: any) => {
-		setWidth(e.target.value);
+	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setWidth(parseInt(e.target.value));
 	};
 	return (
 		<div className='main'>

@@ -1,4 +1,4 @@
-import { ReactNode, memo } from 'react';
+import type { ReactNode } from 'react';
 import type {
 	CalculatedCellProps,
 	CellStyle,
@@ -46,8 +46,7 @@ const convertToTableIfNeeded = (
 
 type TextAnchor = 'middle' | 'start' | 'end';
 
-export const ACell = memo(
-	({
+export const ACell = ({
 		cellOpt,
 		defaultStyle,
 	}: {
@@ -227,4 +226,3 @@ export const ACell = memo(
 			</g>
 		);
 	}
-);

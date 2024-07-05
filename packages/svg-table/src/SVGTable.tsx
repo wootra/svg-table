@@ -11,7 +11,6 @@ import { ACell } from './ACell';
 import { calculateRows } from './calculateRows';
 import { getWid, simpleValue } from './utils';
 import FilledArea from './FilledArea';
-import { memo } from 'react';
 
 const getTotalCells = (cells: CellProps[]) => {
 	return cells.reduce((total, cell) => {
@@ -72,152 +71,144 @@ const adjustRowHeights = (
 	return rowHeights.map(width => Math.max(simpleValue(width * ratio), 1));
 };
 
-export const SVGTable: React.FC<TableProps> = memo(
-	({
-		rows,
-		width = 500,
-		height: heightFromProps,
-		defaultCellStyle,
-		defaultRowStyle,
-		columnWidths,
-		rowHeights: rowHeightFromProps,
-		style,
-		className,
-		defs,
-	}) => {
-		// Calculate the total width and height of the table
+export const SVGTable: React.FC<TableProps> = ({
+	rows,
+	width = 500,
+	height: heightFromProps,
+	defaultCellStyle,
+	defaultRowStyle,
+	columnWidths,
+	rowHeights: rowHeightFromProps,
+	style,
+	className,
+	defs,
+}) => {
+	// Calculate the total width and height of the table
 
-		const defaultStyleForCell: CellStyle =
-			parseDefaultCellStyle(defaultCellStyle);
+	const defaultStyleForCell: CellStyle =
+		parseDefaultCellStyle(defaultCellStyle);
 
-		const maxColumns = Math.max(
-			rows.reduce(
-				(max, row) =>
-					Array.isArray(row)
-						? Math.max(max, row.length)
-						: Math.max(max, getTotalCells(row.cells)),
-				0
-			),
-			1
+	const maxColumns = Math.max(
+		rows.reduce(
+			(max, row) =>
+				Array.isArray(row)
+					? Math.max(max, row.length)
+					: Math.max(max, getTotalCells(row.cells)),
+			0
+		),
+		1
+	);
+
+	const tableStyle: TableStyle = parsedTableStyle(style);
+
+	const allColGaps =
+		(maxColumns - 1) * tableStyle.colGaps +
+		getWid(tableStyle.margins, 'left') +
+		getWid(tableStyle.margins, 'right');
+
+	const allRowGaps =
+		(rows.length - 1) * tableStyle.rowGaps +
+		getWid(tableStyle.margins, 'top') +
+		getWid(tableStyle.margins, 'bottom');
+
+	const defaultStyleForRow: RowStyle = {
+		height: 30,
+		...defaultRowStyle,
+	};
+
+	let height =
+		heightFromProps ??
+		rows.reduce((h, row) => {
+			if (Array.isArray(row)) {
+				return h + defaultStyleForRow.height;
+			}
+			return h + (row.style?.height ?? defaultStyleForRow.height);
+		}, 0) + allRowGaps;
+
+	height = simpleValue(height);
+
+	const cellWidths = columnWidths
+		? adjustColumnWidths(columnWidths, width - allColGaps)
+		: Array(maxColumns).fill(
+				simpleValue((width - allColGaps) / maxColumns)
+			);
+
+	let rowHeights =
+		rowHeightFromProps ??
+		rows.map(
+			row =>
+				(row as RowPropsAsObj).style?.height ??
+				defaultStyleForRow.height
 		);
 
-		const tableStyle: TableStyle = parsedTableStyle(style);
-
-		const allColGaps =
-			(maxColumns - 1) * tableStyle.colGaps +
-			getWid(tableStyle.margins, 'left') +
-			getWid(tableStyle.margins, 'right');
-
-		const allRowGaps =
-			(rows.length - 1) * tableStyle.rowGaps +
-			getWid(tableStyle.margins, 'top') +
-			getWid(tableStyle.margins, 'bottom');
-
-		const defaultStyleForRow: RowStyle = {
-			height: 30,
-			...defaultRowStyle,
-		};
-
-		let height =
-			heightFromProps ??
-			rows.reduce((h, row) => {
-				if (Array.isArray(row)) {
-					return h + defaultStyleForRow.height;
-				}
-				return h + (row.style?.height ?? defaultStyleForRow.height);
-			}, 0) + allRowGaps;
-
-		height = simpleValue(height);
-
-		const cellWidths = columnWidths
-			? adjustColumnWidths(columnWidths, width - allColGaps)
-			: Array(maxColumns).fill(
-					simpleValue((width - allColGaps) / maxColumns)
-				);
-
-		let rowHeights =
-			rowHeightFromProps ??
-			rows.map(
-				row =>
-					(row as RowPropsAsObj).style?.height ??
-					defaultStyleForRow.height
-			);
-
-		if (heightFromProps) {
-			rowHeights = adjustRowHeights(
-				rowHeights,
-				heightFromProps - allRowGaps
-			);
-			for (let i = 0; i < rows.length; i++) {
-				const rowHeightFromRowStyle = (rows[i] as RowPropsAsObj)?.style
-					?.height;
-				// below logic is to make more specific style wins.
-				if (
-					rowHeightFromRowStyle &&
-					typeof rowHeights[i] === 'number'
-				) {
-					rowHeights[i] = rowHeightFromRowStyle;
-				}
+	if (heightFromProps) {
+		rowHeights = adjustRowHeights(rowHeights, heightFromProps - allRowGaps);
+		for (let i = 0; i < rows.length; i++) {
+			const rowHeightFromRowStyle = (rows[i] as RowPropsAsObj)?.style
+				?.height;
+			// below logic is to make more specific style wins.
+			if (rowHeightFromRowStyle && typeof rowHeights[i] === 'number') {
+				rowHeights[i] = rowHeightFromRowStyle;
 			}
 		}
+	}
 
-		const embededTableHeightAdjust = !!heightFromProps;
-		const calculatedRows = calculateRows(
-			cellWidths,
-			rowHeights,
-			rows,
-			tableStyle,
-			embededTableHeightAdjust
-		);
+	const embededTableHeightAdjust = !!heightFromProps;
+	const calculatedRows = calculateRows(
+		cellWidths,
+		rowHeights,
+		rows,
+		tableStyle,
+		embededTableHeightAdjust
+	);
 
-		const rowsContent = calculatedRows.map((row, rowIndex) => {
-			let idx = 0;
-			const rowContent = [] as JSX.Element[];
+	const rowsContent = calculatedRows.map((row, rowIndex) => {
+		let idx = 0;
+		const rowContent = [] as JSX.Element[];
 
-			for (const cell of row.cells) {
-				rowContent.push(
-					<ACell
-						key={idx}
-						cellOpt={cell}
-						defaultStyle={defaultStyleForCell}
-					/>
-				);
-				idx += 1;
-			}
-
-			return (
-				<g key={rowIndex} className={`row-${rowIndex}`}>
-					{rowContent}
-				</g>
+		for (const cell of row.cells) {
+			rowContent.push(
+				<ACell
+					key={idx}
+					cellOpt={cell}
+					defaultStyle={defaultStyleForCell}
+				/>
 			);
-		});
+			idx += 1;
+		}
 
 		return (
-			<svg
+			<g key={rowIndex} className={`row-${rowIndex}`}>
+				{rowContent}
+			</g>
+		);
+	});
+
+	return (
+		<svg
+			width={width}
+			height={height}
+			style={tableStyle.svgStyle}
+			viewBox={`0 0 ${width} ${height}`}
+			className={`svg-table ${className ?? ''}`}
+		>
+			{defs && <defs>{defs}</defs>}
+			<FilledArea
+				className='filled-area-behind-table'
 				width={width}
 				height={height}
-				style={tableStyle.svgStyle}
-				viewBox={`0 0 ${width} ${height}`}
-				className={`svg-table ${className ?? ''}`}
+				bgColor={tableStyle.bgColor}
+				borderWidths={tableStyle.borderWidths}
+				borderColors={tableStyle.borderColors}
+				borderPatterns={tableStyle.borderPatterns}
+				borderShapes={tableStyle.borderShapes}
+			/>
+			<g
+				className='content-area'
+				transform={`translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`}
 			>
-				{defs && <defs>{defs}</defs>}
-				<FilledArea
-					className='filled-area-behind-table'
-					width={width}
-					height={height}
-					bgColor={tableStyle.bgColor}
-					borderWidths={tableStyle.borderWidths}
-					borderColors={tableStyle.borderColors}
-					borderPatterns={tableStyle.borderPatterns}
-					borderShapes={tableStyle.borderShapes}
-				/>
-				<g
-					className='content-area'
-					transform={`translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`}
-				>
-					{rowsContent}
-				</g>
-			</svg>
-		);
-	}
-);
+				{rowsContent}
+			</g>
+		</svg>
+	);
+};
