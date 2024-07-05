@@ -7,12 +7,12 @@ import {
 	NoBorderTableDemo,
 	EmbeddedTable,
 	EmbeddedTableAsProps,
+	EmbeddedTableAsPropsWithHeight,
 	TextStyleOverride,
 	OnlyTableBolder,
 	TableBolderWithMargin,
 	TableBorderStyles,
 	BgColorAndTextColor,
-	Gaps,
 	OutboundLabels,
 	TableStyles,
 } from '@repo/demo-components';
@@ -23,72 +23,49 @@ You can add another table as you want since it is just a SVG.
 Here is a basic example.
 
 ```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
-import BasicDemo from './BasicDemo';
-import BgColorAndTextColor from './BgColorAndTextColor';
-import Gaps from './Gaps';
-import NoBorderTableDemo from './NoBorderTableDemo';
-import OnlyTableBolder from './OnlyTableBolder';
-import TableBorderStyles from './TableBorderStyles';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+import { BasicDemo } from './BasicDemo';
+import { BgColorAndTextColor } from './BgColorAndTextColor';
+import { Gaps } from './Gaps';
+import { NoBorderTableDemo } from './NoBorderTableDemo';
+import { OnlyTableBolder } from './OnlyTableBolder';
+import { TableBorderStyles } from './TableBorderStyles';
 
-const EmbeddedTable = () => {
- const tableProps: TableProps = {
-  columnWidths: [1, 1, 1], // this is just ratio.
-  width: 900,
-  defaultRowStyle: {
-   bgColor: 'yellow',
-   height: 50,
-  },
+const tableProps: TableProps = {
+	columnWidths: [1, 1, 1], // this is just ratio.
+	width: 900,
+	defaultRowStyle: {
+		bgColor: 'yellow',
+		height: 120,
+	},
 
-  style: {
-   rowGaps: 10,
-   colGaps: 10,
-  },
-  rows: [
-   {
-    style: {
-     height: 30,
-    },
-    cells: [
-     {
-      content: 'Header 1',
-     },
-     {
-      content: 'Header 2',
-     },
-     {
-      content: 'Header3',
-     },
-    ],
-   },
-   {
-    style: {
-     height: 200,
-    },
-    cells: [
-     { content: <BgColorAndTextColor width={300} /> }, // since there is gaps added, it will be overflow.
-     { content: <BasicDemo width={293} /> },
-     { content: <Gaps width={293} /> },
-    ],
-   },
-   {
-    style: {
-     height: 200,
-    },
-    cells: [
-     { content: <NoBorderTableDemo width={293} /> },
-     { content: <OnlyTableBolder width={293} /> },
-     { content: <TableBorderStyles width={293} /> },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
+	style: {
+		rowGaps: 10,
+		colGaps: 10,
+	},
+	rows: [
+		{
+			style: {
+				height: 30,
+			},
+			cells: ['Header 1', 'Header 2', 'Header3'],
+		},
+		[
+			{ content: <BgColorAndTextColor width={300} /> }, // since there is gaps added, it will be overflow.
+			{ content: <BasicDemo width={293} /> },
+			{ content: <Gaps width={293} /> },
+		],
+		[
+			{ content: <NoBorderTableDemo width={293} /> },
+			{ content: <OnlyTableBolder width={293} /> },
+			{ content: <TableBorderStyles width={293} /> },
+		],
+	],
 };
 
-export default EmbeddedTable;
-
+export const EmbeddedTable = () => {
+	return <SVGTable {...tableProps} />;
+};
 
 ```
 
@@ -104,19 +81,24 @@ without setting individual tables. All internal table properties will
 automatically have 100% of the cell size in the padding area.
 
 ```typescript
-import SVGTable, { CellProps, TableProps } from '@shjeon0730/svg-table';
+import SVGTable, {
+	CellProps,
+	CellPropsAsObj,
+	TableProps,
+} from '@shjeon0730/svg-table';
 
 const embeddedTableProps = (
 	color: string,
 	columns: number,
 	height = 50,
 	fontSize = 12
-): CellProps => {
+): CellPropsAsObj => {
 	const filled: CellProps = {
 		style: { bgColor: color, textColor: 'white' },
 		content: 'filled',
 	};
 	const empty: CellProps = { content: 'empty' };
+	// below logic make the nested table recurrsively.
 	const cellStore: CellProps[] = Array(columns + 1)
 		.fill('')
 		.map((_, idx) => {
@@ -150,24 +132,17 @@ const embeddedTableProps = (
 					height,
 				},
 				rows: [
-					{
-						cells: cellStore.slice(0, columns),
-					},
-					{
-						cells: cellStore.slice(1, columns + 1),
-					},
-					{
-						cells: cellStore.slice(0, columns),
-					},
+					cellStore.slice(0, columns),
+					cellStore.slice(1, columns + 1),
+					cellStore.slice(0, columns),
 				],
 			},
 		},
 	};
 };
 
-const tableProps: TableProps = {
+const tableProps: Omit<TableProps, 'width'> = {
 	columnWidths: [1, 1, 1], // this is just ratio.
-	width: 900,
 	defaultRowStyle: {
 		bgColor: 'yellow',
 		height: 150,
@@ -182,51 +157,122 @@ const tableProps: TableProps = {
 			style: {
 				height: 30,
 			},
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Header 2',
-				},
-				{
-					content: 'Header3',
-				},
-			],
+			cells: ['Header 1', 'Header 2', 'Header3'],
 		},
-		{
-			cells: [
-				embeddedTableProps('red', 2),
-				embeddedTableProps('blue', 3),
-				embeddedTableProps('green', 4),
-			],
-		},
-		{
-			cells: [
-				embeddedTableProps('pink', 3),
-				embeddedTableProps('cyan', 4),
-				embeddedTableProps('lime', 2),
-			],
-		},
-		{
-			cells: [
-				embeddedTableProps('magenta', 3),
-				embeddedTableProps('indigo', 2),
-				embeddedTableProps('#296541', 1),
-			],
-		},
+		[
+			embeddedTableProps('red', 2),
+			embeddedTableProps('blue', 3),
+			embeddedTableProps('green', 4),
+		],
+		[
+			embeddedTableProps('pink', 3),
+			{
+				...embeddedTableProps('cyan', 4),
+				rowSpan: 2,
+			},
+			embeddedTableProps('lime', 2),
+		],
+		[embeddedTableProps('magenta', 3), embeddedTableProps('#296541', 1)],
 	],
 };
 
-export const EmbeddedTableAsProps = () => {
-	return <SVGTable {...tableProps} />;
+export const EmbeddedTableAsProps = ({ width = 900 }: { width: number }) => {
+	return <SVGTable width={width} {...tableProps} />;
 };
-
 
 ```
 
 <div className='demo-container'>
 	<EmbeddedTableAsProps />
+</div>
+
+## Automatic height adjustment
+
+You can automatically adjust height by setting height property.
+Once the height is given, all nested tables are also automatically fit in the cells.
+
+```typescript
+import SVGTable, {
+	CellProps,
+	CellPropsAsObj,
+	TableProps,
+} from '@shjeon0730/svg-table';
+
+const embeddedTableProps = (
+	color: string,
+	columns: number,
+	fontSize = 12
+): CellPropsAsObj => {
+	const filled: CellProps = {
+		style: { bgColor: color, textColor: 'white' },
+		content: 'filled',
+	};
+	const empty: CellProps = { content: 'empty' };
+	const cellStore: CellProps[] = Array(columns + 1)
+		.fill('')
+		.map((_, idx) => {
+			if (idx === 0) {
+				if (columns !== 1) {
+					return embeddedTableProps(color, columns - 1, fontSize / 3);
+				}
+				return empty;
+			}
+			if (idx % 2 === 0) {
+				return empty;
+			}
+			return filled;
+		});
+	return {
+		content: {
+			table: {
+				defaultCellStyle: {
+					borderColors: color,
+					borderWidths: 1,
+					svgStyle: {
+						fontSize,
+					},
+				},
+				rows: [
+					cellStore.slice(0, columns),
+					cellStore.slice(1, columns + 1),
+					cellStore.slice(0, columns),
+				],
+			},
+		},
+	};
+};
+
+const tableProps: Omit<TableProps, 'width' | 'height'> = {
+	columnWidths: [1, 1, 1], // this is just ratio.
+	rows: [
+		['Header 1', 'Header 2', 'Header3'],
+		[
+			embeddedTableProps('red', 2),
+			embeddedTableProps('blue', 3),
+			embeddedTableProps('green', 4),
+		],
+		[
+			{ ...embeddedTableProps('pink', 3), rowSpan: 2 },
+			{ ...embeddedTableProps('cyan', 4), colSpan: 2 },
+		],
+		[embeddedTableProps('magenta', 3), embeddedTableProps('#296541', 1)],
+	],
+};
+
+export const EmbeddedTableAsPropsWithHeight = ({
+	width = 900,
+	height = 150, // when height is given, all nested table will be dynamically adjusted in height.
+}: {
+	width: number;
+	height?: number;
+}) => {
+	return <SVGTable width={width} {...tableProps} height={height} />;
+};
+
+```
+
+<div className='demo-container'>
+	<EmbeddedTableAsPropsWithHeight />
 </div>
 
 ## text override
@@ -239,84 +285,77 @@ using this behavior, we can override text's position, layout, and much more beha
 in this example, I just overrode the positions of text.
 
 ```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
 const textLeftTop = {
- textAnchor: 'start',
- dominantBaseline: 'hanging',
- x: 0,
- y: 0,
+	textAnchor: 'start',
+	dominantBaseline: 'hanging',
+	x: 0,
+	y: 0,
 };
 
-const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  columnWidths: [100, 300, 200],
-  width: width,
-  defaultCellStyle: {
-   textColor: '#ff0000',
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: 'Header 1',
-      style: {
-       bgColor: '#f0f0f0',
-       paddings: [10, 4, 0, 0],
-       textColor: 'blue',
-       textStyle: {
-        textAnchor: 'middle',
-        dominantBaseline: 'auto',
-        fontSize: 10,
-       },
-      },
-     },
-     {
-      content: 'Header 2',
-      colSpan: 2,
-      style: {
-       textStyle: {
-        textAnchor: 'middle',
-        dominantBaseline: 'middle',
-       },
-      },
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'test' },
-     {
-      content: 'Row 1, Cell 2',
-      rowSpan: 2,
-      style: {
-       textStyle: {
-        fontSize: 30,
-        fontFamily: 'sans-serif',
-       },
-      },
-     },
-     {
-      content: 'Row 1, Cell 3',
-      style: {
-       textStyle: textLeftTop,
-      },
-     },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
+const tableProps: Omit<TableProps, 'width'> = {
+	columnWidths: [100, 300, 200],
+	defaultCellStyle: {
+		textColor: '#ff0000',
+	},
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+					style: {
+						bgColor: '#f0f0f0',
+						paddings: [10, 4, 0, 0],
+						textColor: 'blue',
+						textStyle: {
+							textAnchor: 'middle',
+							dominantBaseline: 'auto',
+							fontSize: 10,
+						},
+					},
+				},
+				{
+					content: 'Header 2',
+					colSpan: 2,
+					style: {
+						textStyle: {
+							textAnchor: 'middle',
+							dominantBaseline: 'middle',
+						},
+					},
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'test' },
+				{
+					content: 'Row 1, Cell 2',
+					rowSpan: 2,
+					style: {
+						textStyle: {
+							fontSize: 30,
+							fontFamily: 'sans-serif',
+						},
+					},
+				},
+				{
+					content: 'Row 1, Cell 3',
+					style: {
+						textStyle: textLeftTop,
+					},
+				},
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
 };
-
-export default TextStyleOverride;
+export const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
 
 ```
 
@@ -329,66 +368,87 @@ export default TextStyleOverride;
 you can set more advanced styles on your svg.
 
 ```typescript
-import SVGTable, { TableProps }from '@shjeon0730/svg-table';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+import { ImBug } from 'react-icons/im';
 
 const Circle = () => {
- return <ellipse cx={15} cy={15} rx={30} ry={30} fill='cyan' />;
+	return (
+		<ellipse
+			cx={15}
+			cy={15}
+			rx={30}
+			ry={30}
+			fill='orange'
+			style={{ filter: 'blur(10px)' }}
+		/>
+	);
 };
 
-const TableStyles = ({ width = 500 }: { width?: number }) => {
- const tableProps: TableProps = {
-  columnWidths: [100, 300, 200],
-  width: width,
+const tableProps: Omit<TableProps, 'width'> = {
+	columnWidths: [2, 1, 2],
 
-  defaultRowStyle: {
-   bgColor: 'yellow',
-   height: 50,
-  },
+	defaultRowStyle: {
+		bgColor: 'yellow',
+		height: 50,
+	},
 
-  style: {
-   // table's border customizations
-   rowGaps: 10,
-   colGaps: 10,
-   margins: [10, 10, 10, 10],
-   bgColor: 'lime',
-   borderWidths: [2, 2, 2, 2],
-   borderColors: ['red', 'green', 'blue', 'purple'],
-   borderPatterns: [
-    [4, 4],
-    [4, 6],
-    [0, 6],
-    [0, 6],
-   ],
-   borderShapes: ['butt', 'butt', 'round', 'square'],
-  },
-  rows: [
-   {
-    cells: [
-     {
-      content: <Circle />,
-      style: {
-       svgStyle: {
-        overflow: 'visible', // override internal svg's style
-       },
-      },
-     },
-     { content: 'Row 1, Cell 2', rowSpan: 2 },
-     { content: 'Row 1, Cell 3' },
-    ],
-   },
-   {
-    cells: [
-     { content: 'Row 2, Cell 1' },
-     { content: 'Row 2, Cell 3' },
-    ],
-   },
-  ],
- };
-
- return <SVGTable {...tableProps} />;
+	style: {
+		// table's border customizations
+		rowGaps: 10,
+		colGaps: 10,
+		margins: [10, 10, 10, 10],
+		bgColor: 'lime',
+		borderWidths: [2, 2, 2, 2],
+		borderColors: ['red', 'green', 'blue', 'purple'],
+		borderPatterns: [
+			[4, 4],
+			[4, 6],
+			[0, 6],
+			[0, 6],
+		],
+		borderShapes: ['butt', 'butt', 'round', 'square'],
+	},
+	rows: [
+		{
+			cells: [
+				{
+					before: <Circle />,
+					style: {
+						allowOverflow: false,
+					},
+					after: props => (
+						<g
+							transform={`translate(${props.x - 40}, ${props.y - 16}) scale(2)`}
+						>
+							<ImBug fill='red' color='yellow' />
+						</g>
+					),
+					content: 'Row1, Cell1',
+				},
+				{
+					content: `rotate 15,
+					opacity 0.5`,
+					rowSpan: 2,
+					style: {
+						textStyle: {
+							rotate: '15',
+						},
+						svgStyle: {
+							opacity: 0.5,
+						},
+					},
+				},
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
 };
-
-export default TableStyles;
+export const TableStyles = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
 
 ```
 

@@ -22,27 +22,13 @@ const tableProps: Omit<TableProps, 'width'> = {
 		borderWidths: 0,
 	},
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'test' },
-				{ content: 'Row 1, Cell 2', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['header1', { content: 'header2', colSpan: 2 }],
+		[
+			'Row1, Cell1',
+			{ content: 'Row 1, Cell 2', rowSpan: 2 },
+			'Row 1, Cell 3',
+		],
+		['Row 2, Cell 1', 'Row 2, Cell 3'],
 	],
 };
 export const NoBorderTableDemo = ({ width = 500 }: { width?: number }) => {
@@ -65,33 +51,15 @@ import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
 const tableProps: Omit<TableProps, 'width'> = {
 	defaultCellStyle: {
-		borderWidths: 0,
+		borderWidths: 0, // remove default cell border
 	},
 	style: {
-		borderWidths: 1,
+		borderWidths: 1, // eanble table border
 	},
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'test' },
-				{ content: 'Row 1, Cell 2', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['Header 1', 'Header 2', 'Header3'],
+		['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
+		['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3'],
 	],
 };
 export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
@@ -112,33 +80,15 @@ import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
 const tableProps: Omit<TableProps, 'width'> = {
 	defaultCellStyle: {
-		borderWidths: 0,
+		borderWidths: 0, // remove default cell border
 	},
 	style: {
-		borderWidths: 1,
+		borderWidths: 1, // eanble table border
 	},
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'test' },
-				{ content: 'Row 1, Cell 2', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['Header 1', 'Header 2', 'Header3'],
+		['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
+		['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3'],
 	],
 };
 export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
@@ -159,7 +109,7 @@ You can customize the shapes and colors of each border line.
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 const propsDefault: Omit<TableProps, 'width'> = {
 	defaultCellStyle: {
-		borderWidths: [0, 1, 1, 0], // since default border is black, should be hide before customize some borders.
+		borderWidths: [2, 0, 2, 0], // since default border is black, should be hide before customize some borders.
 	},
 	rows: [
 		{
@@ -185,13 +135,32 @@ const propsDefault: Omit<TableProps, 'width'> = {
 		},
 		{
 			cells: [
-				{ content: 'test' },
-				{ content: 'Row 1, Cell 2', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
+				{
+					content: 'test',
+					style: {
+						borderColors: ['', 'red', '', 'green'],
+						borderWidths: [0, 4, 0, 2],
+					},
+				},
+				{
+					content: 'Row 1, Cell 2',
+					rowSpan: 2,
+					style: { borderWidths: 0 },
+				},
+				{
+					content: 'Row 1, Cell 3',
+					style: { borderWidths: [0, 0, 3, 0] },
+				},
 			],
 		},
 		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+			cells: [
+				{ content: 'Row 2, Cell 1' },
+				{
+					content: 'Row 2, Cell 3',
+					style: { borderColors: 'magenta' },
+				},
+			],
 		},
 	],
 };
@@ -244,6 +213,10 @@ const tableProps: Omit<TableProps, 'width'> = {
 				<feFlood floodColor='#FFFFFF' />
 				<feComposite in='SourceGraphic' operator='over' />
 			</filter>
+			<filter x='-0.1' y='0' width='1.2' height='1' id='red-bg'>
+				<feFlood floodColor='red' />
+				<feComposite in='SourceGraphic' operator='over' />
+			</filter>
 		</>
 	),
 	style: {
@@ -257,9 +230,56 @@ const tableProps: Omit<TableProps, 'width'> = {
 						allowOverflow: true,
 					},
 					content: getOutBoundLabelOnTop,
+					after: props => (
+						<text
+							x={props.width}
+							y={props.height / 2}
+							textAnchor='end'
+							fill='yellow'
+							{...props.textStyle}
+						>
+							After
+						</text>
+					),
+					before: props => (
+						<>
+							<rect
+								x={0}
+								y={0}
+								width={props.width}
+								height={props.height}
+								fill='#ff6666'
+							/>
+							<text
+								x={0}
+								y={props.height / 2}
+								fill='white'
+								{...props.textStyle}
+							>
+								Before
+							</text>
+						</>
+					),
 				},
 				{
+					style: {
+						allowOverflow: true,
+						textStyle: {
+							// another way of outbounding label
+							y: 0,
+							filter: 'url(#white-bg)',
+						},
+						beforeTextStyle: {
+							filter: 'url(#red-bg)',
+							fill: 'yellow',
+						},
+						afterTextStyle: {
+							fill: 'green',
+						},
+					},
 					content: 'Header 2',
+					after: 'After Header 2', // this will not affected by textStyle
+					before: 'Before Header 2',
 					colSpan: 2,
 				},
 			],
@@ -277,9 +297,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 				{ content: 'Row 1, Cell 3' },
 			],
 		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		['Row 2, Cell 1', 'Row 2, Cell 3'],
 	],
 };
 
@@ -316,50 +334,41 @@ const Gradients = () => {
 		</>
 	);
 };
+const blueTextCell = {
+	content: 'Blue Text',
+	style: {
+		textColor: 'blue',
+	},
+};
+const OrangeBackWhiteTextCell = {
+	content: 'OrangeBack,WhiteText',
+	style: {
+		bgColor: 'orange',
+		textColor: 'white',
+	},
+};
+
+const GradientBackCell = {
+	content: 'Gradient Back',
+	style: {
+		bgColor: 'url(#red-to-blue)',
+		textColor: 'white',
+	},
+};
+
+const GradientBackCell2 = {
+	content: 'Gradient Back2',
+	style: {
+		bgColor: 'url(#cyan-to-white)',
+	},
+};
+
 const tableProps: Omit<TableProps, 'width'> = {
 	defs: <Gradients />,
+	height: 100,
 	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-
-					style: {
-						textColor: 'blue',
-					},
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-					style: {
-						bgColor: 'orange',
-						textColor: 'white',
-					},
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'test' },
-				{
-					content: 'Row 1, Cell 2',
-					rowSpan: 2,
-					style: {
-						bgColor: 'url(#red-to-blue)',
-						textColor: 'white',
-					},
-				},
-				{
-					content: 'Row 1, Cell 3',
-					style: {
-						bgColor: 'url(#cyan-to-white)',
-					},
-				},
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
+		[blueTextCell, OrangeBackWhiteTextCell],
+		[GradientBackCell, GradientBackCell2],
 	],
 };
 export const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
