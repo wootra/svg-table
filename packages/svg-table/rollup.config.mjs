@@ -20,7 +20,7 @@ export default [
 				sourcemap: true,
 			},
 			{
-				name: '@shjeon0730/svg-table',
+				name: 'shjeon0730-svg-table',
 				file: pkg.browser,
 				format: 'umd',
 				sourcemap: true,

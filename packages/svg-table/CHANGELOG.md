@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.6.4
+- bundled version
+
 ## 1.6.0
 - add before/after as text in cells.
 - add multiline support in cells.
