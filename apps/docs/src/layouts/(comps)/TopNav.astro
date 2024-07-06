@@ -32,17 +32,33 @@ import { FaDonate } from 'react-icons/fa';
 	</div>
 </nav>
 
-<style>
+<style is:global>
   .top-nav {
     z-index: 10;
   }
-  
-.brand {
+  .top-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: var(--color-background);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		padding: 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		z-index: 1000;
+	}
+  .brand {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: var(--color-primary);
+		text-decoration: none;
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: inherit;
-  }
+	}
+
   .brand-text {
     margin-left: 10px;
     font-weight: bold;
@@ -82,6 +98,9 @@ import { FaDonate } from 'react-icons/fa';
   .top-nav-links a:hover {
     transform: scale(1.1);
   }
+
+
+
 
   .npm-link {
     color: #cb3837; /* NPM red color */

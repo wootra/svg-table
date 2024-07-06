@@ -1,0 +1,95 @@
+---
+import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
+import IndividualLayout from '../layouts/IndividualLayout.astro';
+const selected = '/introduction';
+---
+
+<IndividualLayout title="Welcome to SVG Table: Introduction" selected={selected}>
+
+	<h1>SVG Table</h1>
+	<p>SVG Table is a powerful and flexible library for creating tables using SVG. 
+		It accepts a simple javascript object to generate complex table structures in SVG
+		with customizable styles and behaviors.</p>
+	<div class="logo-holder">
+		<LogoDemo width={640}/>
+
+	</div>
+
+	<div class="section" id="features">
+		<h2>Features</h2>
+		<ul class="features-list">
+		<li>Flexible Layout</li>
+		<li>SVG Power</li>
+		<li>Multi-context design</li>
+		<li>Easy integration</li>
+		<li>Multiline support</li>
+		<li>Many Examples</li>
+		</ul>
+	</div>
+
+	
+	<div class="section" id="installation">
+		<h2>Installation</h2>
+		<p>To install SVG Table, run the following command in your project directory:</p>
+		<pre><code>npm install @shjeon0730/svg-table</code></pre>
+	</div>
+	
+	<div class="note" id="note">
+		<div class="note-title">Note</div>
+		<p>SVG Table is currently targeting only for React components. If you want to use it for the other project, feel free to fork for your use case!</p>
+	</div>
+	
+	<div class="section" id="contributing">
+		<h2>Contributing</h2>
+		<p>We welcome contributions to SVG Table! Please check out our <a href="https://github.com/wootra/svg-table/blob/main/CONTRIBUTING.md">contribution guidelines</a> for more information on how to get started.</p>
+	</div>
+	
+	<div class="section" id="license">
+		<h2>License</h2>
+		<p>SVG Table is released under the MIT License. See the <a href="https://github.com/wootra/svg-table/blob/main/LICENSE">LICENSE</a> file for more details.</p>
+	</div>
+		  
+</IndividualLayout>
+
+<style>
+	.logo-holder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: max-content;
+		margin-bottom: 2rem;
+		margin-block: 2rem;
+	}
+
+	.features-list {
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	.features-list li {
+		margin-bottom: 0.5rem;
+		display: flex;
+		align-items: center;
+	}
+
+	.features-list li::before {
+		content: '✓';
+		color: var(--color-secondary);
+		margin-right: 0.5rem;
+		font-weight: bold;
+	}
+
+	.note {
+		background-color: rgba(20, 158, 202, 0.1);
+		border-left: 4px solid var(--color-secondary);
+		padding: 1rem;
+		margin: 1rem 0;
+		border-radius: 0 4px 4px 0;
+	}
+
+	.note-title {
+		font-weight: bold;
+		color: var(--color-secondary);
+		margin-bottom: 0.5rem;
+	}
+</style>

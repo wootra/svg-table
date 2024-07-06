@@ -28,9 +28,11 @@ const { title, selected } = Astro.props;
 		<div class='container'>
 			<SideNav selected={selected} />
             <div class="main-wrapper">
-
+				<div class="perspective-wrapper">
+					<div class="grid-background"></div>
+				</div>
                 <main class='main-container'  transition:name="content">
-                    <slot />
+					<slot />
                 </main>
             </div>
 		</div>
@@ -77,7 +79,7 @@ const { title, selected } = Astro.props;
 		scroll-behavior: smooth;
 		scroll-padding-top: 5rem; 
 	}
-
+/* 
 	.top-nav {
 		position: fixed;
 		top: 0;
@@ -113,7 +115,7 @@ const { title, selected } = Astro.props;
 		top: 60px;
 		bottom: 0;
 		overflow-y: auto;
-	}
+	} */
 
 	
 
@@ -228,12 +230,12 @@ const { title, selected } = Astro.props;
 		border-radius: 4px;
 	}
 
-	.example-container {
+	/* .example-container {
 		background-color: #2c313a;
 		border-radius: 8px;
 		padding: 1rem;
 		margin-bottom: 1.5rem;
-	}
+	} */
 
 	.demo-container {
 		background-color: #ffffff;
@@ -242,7 +244,7 @@ const { title, selected } = Astro.props;
 		margin-bottom: 1.5rem;
 	}
 
-	.example-title {
+	/* .example-title {
 		font-size: 1.2rem;
 		color: var(--color-secondary);
 		margin-bottom: 0.5rem;
@@ -257,43 +259,13 @@ const { title, selected } = Astro.props;
 		padding: 1rem;
 		border-radius: 4px;
 		overflow-x: auto;
-	}
+	} */
 
 	.section {
 		margin-bottom: 2rem;
 	}
 
-	.features-list {
-		list-style-type: none;
-		padding-left: 0;
-	}
-
-	.features-list li {
-		margin-bottom: 0.5rem;
-		display: flex;
-		align-items: center;
-	}
-
-	.features-list li::before {
-		content: '✓';
-		color: var(--color-secondary);
-		margin-right: 0.5rem;
-		font-weight: bold;
-	}
-
-	.note {
-		background-color: rgba(20, 158, 202, 0.1);
-		border-left: 4px solid var(--color-secondary);
-		padding: 1rem;
-		margin: 1rem 0;
-		border-radius: 0 4px 4px 0;
-	}
-
-	.note-title {
-		font-weight: bold;
-		color: var(--color-secondary);
-		margin-bottom: 0.5rem;
-	}
+/* 	
     .type-definition {
         font-family: monospace;
         white-space: pre-wrap;
@@ -310,7 +282,7 @@ const { title, selected } = Astro.props;
 		white-space: pre;
 		margin: 0;
 		line-height: 1.5;
-	}
+	} */
 
 /* .keyword {
     color: #0000FF;
@@ -325,7 +297,7 @@ const { title, selected } = Astro.props;
     color: #001080;
 } */
 
-.type {
+/* .type {
     font-style: italic;
 }
 
@@ -344,6 +316,82 @@ const { title, selected } = Astro.props;
 
 .type-link:hover {
     text-decoration: underline;
-}
+} */
     
+
+.perspective-wrapper {
+  perspective: 1000px;
+  position: absolute;
+  inset: 0;
+  padding-left: 300px;
+  padding-right: 3rem;
+  padding-top: 3rem;
+  display: grid;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow:hidden;
+}
+
+.perspective-wrapper::after {
+    /* transition: transform 3s ease; */
+    position: fixed;
+    content: '';
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    
+    /* background-image: linear-gradient(to bottom, var(--color-background) transparent); */
+    background-image: linear-gradient(to bottom, #23272f 0%, #23272f 10%, transparent);
+    /* z-index: 1; */
+  }
+
+  .grid-background {
+
+	perspective-origin: bottom;
+	transform-style: preserve-3d;
+	position: fixed;
+
+	top: -100vh;
+	left: -100vw;
+	right: -100vw;
+	bottom: -100vh;
+}
+
+
+
+@keyframes grid-swing {
+    0% {
+      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
+    }
+    50% {
+      transform: rotateX(30deg) rotateY(-10deg) rotateZ(-30deg);
+    }
+    100% {
+      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
+    }
+  }
+
+  .grid-background::after {
+    animation: grid-swing 60s ease-in-out infinite;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.2;
+    --grid-size: 100px;
+    --grid-color: rgb(45, 117, 138);
+    --grid-border: 3px;
+    z-index: 1;
+    position: fixed;
+    
+    background-image: 
+      linear-gradient(to right, var(--grid-color) var(--grid-border), transparent var(--grid-border)),
+      linear-gradient(to bottom, var(--grid-color) var(--grid-border), transparent var(--grid-border));
+    background-size: var(--grid-size) var(--grid-size);
+  }
+
 </style>

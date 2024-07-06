@@ -9,15 +9,16 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 
 <nav class='side-nav'>
 	<ul>
-		<li><a transition:name="main-nav" {...linkOrSelected('/')}>Introduction</a></li>
-		{selected === '/' && (<ul class="sub" transition:name="opened-nav">
+		<li><a {...linkOrSelected('/')}>Features</a></li>
+		<li><a transition:name="main-nav" {...linkOrSelected('/introduction')}>Introduction</a></li>
+		{selected === '/introduction' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#features'>Features</a></li>
 			<li><a href='#installation'>Installation</a></li>
 			<li><a href='#note'>Note</a></li>
 			<li><a href='#contributing'>Contributing</a></li>
 			<li><a href='#license'>License</a></li>
 		</ul>)}
-		<li><a {...linkOrSelected('/features')}>Features</a></li>
+		
 		<li><a {...linkOrSelected('/examples')}>Examples</a></li>
 		<li><a {...linkOrSelected('/api')}>API Reference</a></li>
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
@@ -51,13 +52,14 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 
 		<li><a {...linkOrSelected('/responsive')}>Responsive</a></li>
-		<li><a {...linkOrSelected('/class-names')}>Gradnular Control</a></li>
+		<li><a {...linkOrSelected('/class-names')}>Fine Control</a></li>
 		
 
 	</ul>
 </nav>
 
-<style>
+<style is:global>
+	
 	.side-nav {
 		z-index: 2;
 	}
@@ -83,7 +85,8 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 	.side-nav {
 		width: 250px;
 		padding: 2rem;
-		background-color: var(--color-secondary);
+		/* background-color: #149ccaa2; */
+		background-image: linear-gradient(to bottom, #149eca, #149cca5d);
 		position: fixed;
 		top: 60px;
 		bottom: 0;

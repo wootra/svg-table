@@ -1,63 +1,159 @@
 ---
-import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
+import { LogoDemo } from '@repo/demo-components';
 import IndividualLayout from '../layouts/IndividualLayout.astro';
 const selected = '/';
 ---
 
-<IndividualLayout title="Welcome to SVG Table" selected={selected}>
+<IndividualLayout title='Welcome to SVG-Table' selected={selected}>
+  <div class="center-content">
+    <div class="feature-wrapper">
+    
+      <div class="logo-holder">
+        <LogoDemo width={640} bgColor={null}/>
+      </div>
 
-	<h1>SVG Table</h1>
-	<p>SVG Table is a powerful and flexible library for creating tables using SVG. 
-		It accepts a simple javascript object to generate complex table structures in SVG
-		with customizable styles and behaviors.</p>
-	<div class="logo-holder">
-		<LogoDemo width={640}/>
-
-	</div>
-
-	<div class="section" id="features">
-		<h2>Features</h2>
-		<ul class="features-list">
-		<li>Flexible Layout</li>
-		<li>SVG Power</li>
-		<li>Multi-context design</li>
-		<li>Easy integration</li>
-		<li>Multiline support</li>
-		<li>Many Examples</li>
-		</ul>
-	</div>
-
-	
-	<div class="section" id="installation">
-		<h2>Installation</h2>
-		<p>To install SVG Table, run the following command in your project directory:</p>
-		<pre><code>npm install @shjeon0730/svg-table</code></pre>
-	</div>
-	
-	<div class="note" id="note">
-		<div class="note-title">Note</div>
-		<p>SVG Table is currently targeting only for React components. If you want to use it for the other project, feel free to fork for your use case!</p>
-	</div>
-	
-	<div class="section" id="contributing">
-		<h2>Contributing</h2>
-		<p>We welcome contributions to SVG Table! Please check out our <a href="https://github.com/wootra/svg-table/blob/main/CONTRIBUTING.md">contribution guidelines</a> for more information on how to get started.</p>
-	</div>
-	
-	<div class="section" id="license">
-		<h2>License</h2>
-		<p>SVG Table is released under the MIT License. See the <a href="https://github.com/wootra/svg-table/blob/main/LICENSE">LICENSE</a> file for more details.</p>
-	</div>
-		  
+      <section id='features' class='features '>
+        <div class='feature'>
+          <h4>Flexible Layout</h4>
+          <p>
+            Create tables with custom layouts, including merged cells and
+            nested structures.
+          </p>
+        </div>
+        <div class='feature'>
+          <h4>SVG Power</h4>
+          <p>
+            Leverage the full capabilities of SVG for rich, interactive
+            table designs.
+          </p>
+        </div>
+        <div class='feature'>
+          <h4>Multi-context design</h4>
+          <p>SVG Overflow protection as well as option to overflow</p>
+        </div>
+        <div class='feature'>
+          <h4>Easy Integration</h4>
+          <p>Seamlessly integrate with React and Javascript Object</p>
+        </div>
+        <div class='feature'>
+          <h4>Multiline Support</h4>
+          <p>Easily add multiline contents in the cell by adding linefeed</p>
+        </div>
+        <div class='feature'>
+          <h4>Simple or Complex</h4>
+          <p>Support Simple or Complext use cases on demand</p>
+        </div>
+      </section>
+    </div>
+  </div>
 </IndividualLayout>
 
 <style>
-	.logo-holder {
+
+  .center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 3rem);
+    margin-top: 3rem;
+    min-width: max-content;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+  .logo-holder {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: max-content;
-		margin-bottom: 2rem;
-		margin-block: 2rem;
+		margin-bottom: 4rem;
 	}
+
+  .feature-wrapper {
+  position: relative;
+ width: 100%;
+ max-height: max-content;
+ displaly: flex;
+ flex-direction: column;
+ gap: 4rem;
+ z-index: 1;
+}
+
+	.features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+		margin-bottom: 2rem;
+    
+    
+	}
+  h1 {
+    z-index: 3;
+  }
+
+	.feature {
+		background-color: var(--color-secondary);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+		padding: 1rem;
+		border-radius: 4px;
+    z-index: 3;
+	}
+
+
+  .feature:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+    box-shadow: 0 5px 15px rgba(0, 200, 255, 0.2);
+  }
+
+  /* .grid-background {
+
+    perspective-origin: bottom;
+    transform-style: preserve-3d;
+    position: fixed;
+   
+    top: -100vh;
+    left: -100vw;
+    right: -100vw;
+    bottom: -100vh;
+  } */
+
+
+/* 
+
+  @keyframes grid-swing {
+    0% {
+      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
+    }
+    50% {
+      transform: rotateX(30deg) rotateY(-10deg) rotateZ(-30deg);
+    }
+    100% {
+      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
+    }
+  }
+
+  .grid-background::after {
+    animation: grid-swing 60s ease-in-out infinite;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.2;
+    --grid-size: 100px;
+    --grid-color: rgb(45, 117, 138);
+    --grid-border: 3px;
+    z-index: 1;
+    position: fixed;
+    
+    background-image: 
+      linear-gradient(to right, var(--grid-color) var(--grid-border), transparent var(--grid-border)),
+      linear-gradient(to bottom, var(--grid-color) var(--grid-border), transparent var(--grid-border));
+    background-size: var(--grid-size) var(--grid-size);
+  } */
 </style>
