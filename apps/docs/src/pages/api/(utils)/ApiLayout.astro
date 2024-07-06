@@ -1,0 +1,157 @@
+---
+import IndividualLayout from '../../../layouts/IndividualLayout.astro';
+import Nav from '../(utils)/navigation.astro';
+
+const selected = '/api';
+type Props = {
+  version: string;
+}
+const version = Astro.props.version;
+---
+
+<IndividualLayout title='Welcome to SVG Title: Api' selected={selected}>
+
+	<h1>SVG Table Type Reference</h1>
+   <div class="nav-sticky-holder"> 
+    <Nav version={version} />
+    
+  </div>
+  <p></p>
+	<slot/>
+    
+</IndividualLayout>
+
+
+<style is:global>
+
+  .nav-sticky-holder {
+    position: sticky;
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+    top: 3rem;
+    left: 300px;
+    margin-inline: -2rem;
+    padding-right: 2rem;
+    z-index: 100;
+    background-color: var(--color-background);
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+
+
+  :root {
+      --color-code-background: #292d3e;
+      --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
+    Courier, monospace;
+
+  --color-code-bg: #292d3e;
+  }
+
+  .type-definition {
+      background-color: var(--color-code-background);
+      font-family: monospace;
+      white-space: pre;
+      margin: 0;
+      line-height: 1.5;
+      color:#e0e0e0;
+      overflow-x: auto;
+  }
+
+  .keyword {
+      color: #c588ce;
+      font-weight: bold;
+  }
+
+  /* .type-name {
+      color: #267F99;
+  } */
+
+  .property {
+      color: #a0a4c0;
+  }
+
+  .type {
+      font-style: italic;
+  }
+
+  .type.string {
+      color: #008000;
+  }
+
+  .type.boolean, .type.number {
+      color: #0000FF;
+  }
+
+  .type-link {
+      color: #267F99;
+      text-decoration: none;
+  }
+
+  .type-link:hover {
+      text-decoration: underline;
+  }
+
+
+  .type-list {
+list-style-type: none;
+padding: 0;
+}
+
+.type-item {
+margin-bottom: 30px;
+border: 1px solid #e0e0e079;
+box-shadow: 0 3px 6px rgba(112, 183, 250, 0.433);
+border-radius: 5px;
+padding: 15px;
+}
+
+.type-name {
+font-size: 1.2em;
+font-weight: bold;
+color: #267F99;
+}
+/* 
+.type-definition {
+background-color: #f8f8f8;
+border: 1px solid #e0e0e0;
+border-radius: 3px;
+padding: 10px;
+margin: 10px 0;
+font-family: 'Courier New', Courier, monospace;
+white-space: pre-wrap;
+word-wrap: break-word;
+} */
+
+/* .keyword {
+color: #0000ff;
+}
+
+.type {
+color: #008000;
+}
+
+.property {
+color: #8b0000;
+} */
+
+.type-description {
+margin-top: 10px;
+font-style: italic;
+}
+
+.type-link {
+color: #3498db;
+}
+
+@media (max-width: 600px) {
+body {
+  padding: 10px;
+}
+
+.type-definition {
+  font-size: 0.9em;
+}
+}
+</style>

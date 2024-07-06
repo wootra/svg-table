@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.7.0
+- optimization of class generation (default does not create class name)
+- cell props will have className props to support in fine level control.
+
 ## 1.6.5
 - bundled version
 

@@ -1,11 +1,14 @@
 ---
-const versions = ['1.3.0', '1.4.0', '1.5.0', '1.6.0']; // Add or modify versions as needed
-
+const versions = ['1.3.0', '1.4.0', '1.5.0', '1.6.0', '1.7.0']; // Add or modify versions as needed
+type Props = {
+  version: string;
+}
+const selected = Astro.props.version;
 ---
 
 <nav>
   <select id="api-version-selector" onchange="changeVersion(this.value)">
-    <option value="">Select API Version</option>
+    <option value="">selected version: {selected}</option>
     {versions.map((version) => (
       <option value={version}>{version}</option>
     ))}

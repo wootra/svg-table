@@ -1,26 +1,12 @@
 ---
-import IndividualLayout from '../../../layouts/IndividualLayout.astro';
 import ApiRef from './(examples)/api.html'
-import Nav from '../(utils)/navigation.astro';
+import ApiLayout from '../(utils)/ApiLayout.astro';
 
-const selected = '/api';
 ---
 
-<IndividualLayout title='Welcome to SVG Title: Api' selected={selected}>
+<ApiLayout version="1.6.0">
 
-	<h1>SVG Table Type Reference (1.6.0)</h1>
-    <Nav />
 	<ApiRef />
     
-</IndividualLayout>
+</ApiLayout>
 
-<style>
-    :root {
-        --color-code-background: #292d3e;
-        --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
-			Courier, monospace;
-
-		--color-code-bg: #292d3e;
-    }
-    
-</style>
