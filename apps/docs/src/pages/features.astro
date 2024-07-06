@@ -4,56 +4,105 @@ const selected = '/features';
 ---
 
 <IndividualLayout title='Welcome to SVG Title: Features' selected={selected}>
-	<h1>Features</h1>
-
-	<section id='features' class='features '>
+  <div class="perspective-wrapper">
     <div class="grid-background"></div>
-		<div class='feature'>
-			<h4>Flexible Layout</h4>
-			<p>
-				Create tables with custom layouts, including merged cells and
-				nested structures.
-			</p>
-		</div>
-		<div class='feature'>
-			<h4>SVG Power</h4>
-			<p>
-				Leverage the full capabilities of SVG for rich, interactive
-				table designs.
-			</p>
-		</div>
-		<div class='feature'>
-			<h4>Multi-context design</h4>
-			<p>SVG Overflow protection as well as option to overflow</p>
-		</div>
-		<div class='feature'>
-			<h4>Easy Integration</h4>
-			<p>Seamlessly integrate with React and Javascript Object</p>
-		</div>
-    <div class='feature'>
-			<h4>Multiline Support</h4>
-			<p>Easily add multiline contents in the cell by adding linefeed</p>
-		</div>
-    <div class='feature'>
-			<h4>Simple or Complex</h4>
-			<p>Support Simple or Complext use cases on demand</p>
-		</div>
-	</section>
+    
+    <div class="feature-wrapper">
+    <h1>Features</h1>
+    <section id='features' class='features '>
+      <div class='feature'>
+        <h4>Flexible Layout</h4>
+        <p>
+          Create tables with custom layouts, including merged cells and
+          nested structures.
+        </p>
+      </div>
+      <div class='feature'>
+        <h4>SVG Power</h4>
+        <p>
+          Leverage the full capabilities of SVG for rich, interactive
+          table designs.
+        </p>
+      </div>
+      <div class='feature'>
+        <h4>Multi-context design</h4>
+        <p>SVG Overflow protection as well as option to overflow</p>
+      </div>
+      <div class='feature'>
+        <h4>Easy Integration</h4>
+        <p>Seamlessly integrate with React and Javascript Object</p>
+      </div>
+      <div class='feature'>
+        <h4>Multiline Support</h4>
+        <p>Easily add multiline contents in the cell by adding linefeed</p>
+      </div>
+      <div class='feature'>
+        <h4>Simple or Complex</h4>
+        <p>Support Simple or Complext use cases on demand</p>
+      </div>
+    </section>
+  </div>
+  </div>
+  
 </IndividualLayout>
 
 <style>
 
+.perspective-wrapper {
+  perspective: 1000px;
+  position: absolute;
+  inset: 0;
+  padding-left: 300px;
+  padding-right: 3rem;
+  padding-top: 5rem;
+  display: grid;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow:hidden;
+}
+
+.perspective-wrapper::after {
+    /* transition: transform 3s ease; */
+    position: fixed;
+    content: '';
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    
+    /* background-image: linear-gradient(to bottom, var(--color-background) transparent); */
+    background-image: linear-gradient(to bottom, #23272f 0%, #23272f 10%, transparent);
+    /* z-index: 1; */
+  }
+
+
+.feature-wrapper {
+  position: relative;
+ width: 100%;
+ max-height: max-content;
+ displaly: flex;
+ flex-direction: column;
+ gap: 4rem;
+ z-index: 1;
+}
+
+.feature-wrapper h1 {
+  height: 4rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
 	.features {
-    perspective: 1000px;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		gap: 1rem;
 		margin-bottom: 2rem;
-    position: relative;
+    
     
 	}
   h1 {
-    z-index: 2;
+    z-index: 3;
   }
 
 	.feature {
@@ -62,7 +111,7 @@ const selected = '/features';
     transition: all 0.3s ease;
 		padding: 1rem;
 		border-radius: 4px;
-    z-index: 2;
+    z-index: 3;
 	}
 
 
@@ -83,25 +132,28 @@ const selected = '/features';
     left: -100vw;
     right: -100vw;
     bottom: -100vh;
-    animation: grid-swing 30s ease-in-out infinite;
-    z-index: 1;
+    /* background-image: linear-gradient(to bottom, var(--color-background) transparent); */
+    /* background-image: linear-gradient(to bottom, 0% #23272f, 50% #23272f, 100% transparent); */
+    /* z-index: 2; */
   }
+
 
 
 
   @keyframes grid-swing {
     0% {
-      transform: rotateX(30deg) rotateY(-10deg) rotateZ(30deg);
+      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
     }
     50% {
-      transform: rotateX(-10deg) rotateY(-10deg) rotateZ(-30deg);
+      transform: rotateX(30deg) rotateY(-10deg) rotateZ(-30deg);
     }
     100% {
-      transform: rotateX(30deg) rotateY(-10deg) rotateZ(30deg);
+      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
     }
   }
 
   .grid-background::after {
+    animation: grid-swing 60s ease-in-out infinite;
     content: '';
     position: absolute;
     top: 0;
@@ -109,10 +161,10 @@ const selected = '/features';
     right: 0;
     bottom: 0;
     opacity: 0.2;
-    --grid-size: 50px;
-    --grid-color: rgb(243, 243, 243);
+    --grid-size: 100px;
+    --grid-color: rgb(45, 117, 138);
     --grid-border: 3px;
-   
+    z-index: 1;
     position: fixed;
     
     background-image: 
