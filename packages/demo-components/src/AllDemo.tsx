@@ -55,7 +55,7 @@ export const AllDemo = ({ width }: { width: number }) => {
 					code
 				</a>
 			</h2>
-			<LogoDemo width={width} />
+			<LogoDemo width={width} bgColor={null} />
 
 			<h2>
 				basic demo
