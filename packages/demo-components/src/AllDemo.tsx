@@ -23,7 +23,13 @@ import { BasicSimpleArray } from './BasicSimpleArray';
 import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
 import { Paddings } from './Paddings';
 import { LogoDemo } from './LogoDemo';
-export const AllDemo = ({ width }: { width: number }) => {
+export const AllDemo = ({
+	width,
+	useClassName = false,
+}: {
+	width: number;
+	useClassName?: boolean;
+}) => {
 	return (
 		<>
 			<style>
@@ -55,7 +61,11 @@ export const AllDemo = ({ width }: { width: number }) => {
 					code
 				</a>
 			</h2>
-			<LogoDemo width={width} bgColor={null} />
+			<LogoDemo
+				width={width}
+				bgColor={null}
+				className={useClassName ? 'logo-demo' : undefined}
+			/>
 
 			<h2>
 				basic demo

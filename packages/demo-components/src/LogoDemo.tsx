@@ -12,18 +12,16 @@ const DEFAULT_BG = '#23272f';
 export const LogoDemo = ({
 	width = 500,
 	bgColor,
+	className,
 }: {
 	width?: number;
 	bgColor?: string | null;
+	className?: string;
 }) => {
 	const tableProps = useMemo(() => {
-		const noBorderTable = (
-			rows: RowProps[],
-			className: string
-		): TableInCellProps => {
+		const noBorderTable = (rows: RowProps[]): TableInCellProps => {
 			return {
 				table: {
-					className,
 					style: {
 						bgColor:
 							bgColor ?? bgColor === null
@@ -56,70 +54,63 @@ export const LogoDemo = ({
 				textStyle: { fontSize: 10 },
 				bgColor: '#009dff',
 			},
+			className: 'filled-cell',
 			content: '!!',
 		};
 		const FilledCell1: CellProps = {
 			style: { bgColor: '#33a100' },
+			className: 'filled-cell-1',
 			content: '',
 		};
 		const FilledCell2: CellProps = {
 			style: { bgColor: '#ffae00', svgStyle: { pointerEvents: 'none' } },
+			className: 'filled-cell-2',
 			content: Smile,
 		};
 		const EmptyCell: CellProps = { content: '' };
 		const TopFill: CellProps = {
-			content: noBorderTable([[FilledCell], [EmptyCell]], 'top-fill'),
+			className: 'top-fill',
+			content: noBorderTable([[FilledCell], [EmptyCell]]),
 		};
 		const BottomFill: CellProps = {
-			content: noBorderTable([[EmptyCell], [FilledCell1]], 'bottom-fill'),
+			className: 'bottom-fill',
+			content: noBorderTable([[EmptyCell], [FilledCell1]]),
 		};
 		const MiddleFill: CellProps = {
-			content: noBorderTable(
-				[[EmptyCell], [FilledCell], [EmptyCell]],
-				'middle-fill'
-			),
+			className: 'middle-fill',
+			content: noBorderTable([[EmptyCell], [FilledCell], [EmptyCell]]),
 		};
 		const leftTopEmpty: CellProps = {
-			content: noBorderTable(
-				[
-					[EmptyCell, FilledCell2],
-					[FilledCell1, FilledCell],
-				],
-				'left-top-empty'
-			),
+			className: 'left-top-empty',
+			content: noBorderTable([
+				[EmptyCell, FilledCell2],
+				[FilledCell1, FilledCell],
+			]),
 		};
 		const leftBottomEmpty: CellProps = {
-			content: noBorderTable(
-				[
-					[FilledCell, FilledCell1],
-					[EmptyCell, FilledCell2],
-				],
-				'left-bottom-empty'
-			),
+			className: 'left-bottom-empty',
+			content: noBorderTable([
+				[FilledCell, FilledCell1],
+				[EmptyCell, FilledCell2],
+			]),
 		};
 		const rightTopEmpty: CellProps = {
-			content: noBorderTable(
-				[
-					[FilledCell, EmptyCell],
-					[FilledCell2, FilledCell],
-				],
-				'right-top-empty'
-			),
+			className: 'right-top-empty',
+			content: noBorderTable([
+				[FilledCell, EmptyCell],
+				[FilledCell2, FilledCell],
+			]),
 		};
 		const rightBottomEmpty: CellProps = {
-			content: noBorderTable(
-				[
-					[FilledCell, FilledCell2],
-					[FilledCell1, EmptyCell],
-				],
-				'right-bottom-empty'
-			),
+			className: 'right-bottom-empty',
+			content: noBorderTable([
+				[FilledCell, FilledCell2],
+				[FilledCell1, EmptyCell],
+			]),
 		};
 		const middleEmpty: CellProps = {
-			content: noBorderTable(
-				[[FilledCell2, EmptyCell, FilledCell]],
-				'middle-empty'
-			),
+			className: 'middle-empty',
+			content: noBorderTable([[FilledCell2, EmptyCell, FilledCell]]),
 		};
 
 		const O: CellProps = FilledCell1;
@@ -178,7 +169,7 @@ export const LogoDemo = ({
 				borderWidths: 0,
 			},
 			height: 300,
-			className: 'logo-demo',
+			className,
 			rows: [[{ content: SVG }], [{ content: TABLE }]],
 		};
 

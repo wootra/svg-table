@@ -178,7 +178,12 @@ export const SVGTable: React.FC<TableProps> = ({
 		}
 
 		return (
-			<g key={rowIndex} className={`row-${rowIndex}`}>
+			<g
+				key={rowIndex}
+				className={
+					className ? `${className}-row-${rowIndex}` : undefined
+				}
+			>
 				{rowContent}
 			</g>
 		);
@@ -190,11 +195,15 @@ export const SVGTable: React.FC<TableProps> = ({
 			height={height}
 			style={tableStyle.svgStyle}
 			viewBox={`0 0 ${width} ${height}`}
-			className={`svg-table ${className ?? ''}`}
+			className={className ? `svg-table ${className}` : undefined}
 		>
 			{defs && <defs>{defs}</defs>}
 			<FilledArea
-				className='filled-area-behind-table'
+				className={
+					className
+						? `${className}-filled-area-behind-table`
+						: undefined
+				}
 				width={width}
 				height={height}
 				bgColor={tableStyle.bgColor}
@@ -204,7 +213,7 @@ export const SVGTable: React.FC<TableProps> = ({
 				borderShapes={tableStyle.borderShapes}
 			/>
 			<g
-				className='content-area'
+				className={className ? `${className}-content-area` : undefined}
 				transform={`translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`}
 			>
 				{rowsContent}

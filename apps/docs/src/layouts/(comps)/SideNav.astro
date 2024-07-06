@@ -25,7 +25,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		{selected === '/basic-usage' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#basic-demo'>Basic Demo</a></li>
 			<li><a href='#table-with-custom-element'>Table with custom element</a></li>
-			<li><a href='#custom-element-with-props'>Custom element with props</a></li>
+			<li><a href='#custom-element-with-props'>Custom Elements with props</a></li>
 			<li><a href='#allow-contents-overflow'>Allow contents overflow</a></li>
 			<li><a href='#control-overflow-behavior-individually'>Control overflow behavior individually</a></li>
 			<li><a href='#gaps-between-columns-and-rows'>Gaps between columns and rows</a></li>
@@ -52,7 +52,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 
 		<li><a {...linkOrSelected('/responsive')}>Responsive</a></li>
-		<li><a {...linkOrSelected('/class-names')}>Fine Control</a></li>
+		<li><a {...linkOrSelected('/class-names')}>Fine-Level Control</a></li>
 		
 
 	</ul>

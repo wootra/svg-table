@@ -146,6 +146,10 @@ export type CellProps =
 			colSpan?: number;
 			/** Optional. Specifies the number of rows a cell should span across. */
 			rowSpan?: number;
+			/**
+			 * clsss name to control individual cell.
+			 */
+			className?: string;
 	  }
 	| string;
 

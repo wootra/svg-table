@@ -1,4 +1,4 @@
-import { AllDemo } from '@repo/demo-components';
+import { AllDemo, LogoDemo } from '@repo/demo-components';
 import { ChangeEvent, useState } from 'react';
 
 const App = () => {
@@ -26,6 +26,7 @@ const App = () => {
 					onChange={onChange}
 				/>
 			</div>
+			<LogoDemo width={width} bgColor={null} className={'logo-demo'} />
 
 			<AllDemo width={width} />
 		</div>

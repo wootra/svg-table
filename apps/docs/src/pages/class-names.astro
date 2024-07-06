@@ -6,16 +6,20 @@ const selected = '/class-names';
 
 <IndividualLayout title="Welcome to SVG Table" selected={selected}>
 
-	<h1>Granular Control</h1>
-	<p>You can assign class names into svg. through the class name, you can add your own style, animation, and any customizations.</p>
+	<h1>Fine-level Control</h1>
+	<p>SVG Table allows you to add className on the table or cells.(default behavior does not create class attributes to save file size.) </p>
+	<p>
+		Once you add it, the internal structure will automatically generate class names. (i.e. XX-wrapper, XX-content, ...)
+	</p>
+	<p>
+		You can add your own styles such as animation or themes using the class names.</p>
+
+		<h2>Try to hover over each boxes!</h2>
 	<div class="logo-holder">
 		<LogoDemo width={640}/>
-
 	</div>
 
-	<div>
-		Hover over each area!
-	</div>
+	
 </IndividualLayout>
 
 <style is:global>
@@ -31,21 +35,24 @@ const selected = '/class-names';
 		transition: all 200ms linear;
 		cursor: pointer;
 	}
-	.left-top-empty:hover > g {
+	.left-top-empty-wrapper:hover .left-top-empty-content > g {
 		transform: scale(1.2);
 	}
-	.right-top-empty:hover > g {
+	.right-top-empty-wrapper:hover .right-top-empty-content > g {
 		transform: scale(1.2) rotate(45deg);
 	}
-	.right-bottom-empty:hover > g {
+	.right-bottom-empty-wrapper:hover .right-bottom-empty-content > g {
 		transform: translate(0, -30px);
 	}
-	.left-bottom-empty:hover > g {
-		transform: translate(30px, 0);
+	.left-bottom-empty-wrapper:hover .left-bottom-empty-content > g:first-child {
+		translate: 30px;
+	}
+	.bottom-fill-wrapper:hover .bottom-fill-content > g {
+		transform: translate(0, 30px);
 	}
 	
-	.middle-empty:hover > g {
-		transform: scale(1.2);
+	.middle-empty-wrapper:hover .middle-empty-content > g { 
+		rotate: 180deg;
 	}
 	@keyframes color-change {
 		0% {
@@ -58,7 +65,25 @@ const selected = '/class-names';
 			fill: #cee9d0;
 		}
 	}
-	.cell-wrapper > .filled-area > rect:hover {
+
+	@keyframes text-pulse {
+		0% {
+			font-size: 14px;
+		}
+		50% {
+			font-size: 20px;
+			fill: white;
+		}
+		100% {
+			font-size: 14px;
+		}
+	}
+
+	.filled-cell-1-wrapper:hover rect{
 		animation: color-change 2s linear infinite;
+	}
+
+	.filled-cell-wrapper:hover .filled-cell-content text {
+		animation: text-pulse .5s linear infinite;
 	}
 </style>

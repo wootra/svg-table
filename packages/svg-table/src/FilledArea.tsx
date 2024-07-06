@@ -27,13 +27,15 @@ const FilledArea = (props: Props) => {
 		? getRectStyle(props)
 		: { fill: bgColor };
 	return (
-		<g className={`filled-area ${className ?? ''}`}>
+		<g className={className ? `filled-area ${className ?? ''}` : undefined}>
 			{isBgColorVisible && (
 				<rect width={width} height={height} {...rectStyleProps} />
 			)}
 			{!isBorderOnRect && (
 				<PathOnArea
-					className='paths-on-area-for-filled-area'
+					className={
+						className ? 'paths-on-area-for-filled-area' : undefined
+					}
 					width={width}
 					height={height}
 					borderWidths={borderWidths}
