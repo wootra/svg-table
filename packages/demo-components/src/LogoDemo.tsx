@@ -7,10 +7,14 @@ import SVGTable, {
 	ContentAsFunc,
 } from '@shjeon0730/svg-table';
 import { FaSmile } from 'react-icons/fa';
-const noBorderTable = (rows: RowProps[]): TableInCellProps => {
+const noBorderTable = (
+	rows: RowProps[],
+	className: string
+): TableInCellProps => {
 	return {
 		table: {
-			style: { rowGaps: 1, colGaps: 1 },
+			className,
+			style: { bgColor: '#23272f', rowGaps: 1, colGaps: 1 },
 			rows,
 			defaultCellStyle: {
 				borderWidths: 0,
@@ -42,45 +46,63 @@ const FilledCell1: CellProps = {
 	content: '',
 };
 const FilledCell2: CellProps = {
-	style: { bgColor: '#ffae00' },
+	style: { bgColor: '#ffae00', svgStyle: { pointerEvents: 'none' } },
 	content: Smile,
 };
 const EmptyCell: CellProps = { content: '' };
 const TopFill: CellProps = {
-	content: noBorderTable([[FilledCell], [EmptyCell]]),
+	content: noBorderTable([[FilledCell], [EmptyCell]], 'top-fill'),
 };
 const BottomFill: CellProps = {
-	content: noBorderTable([[EmptyCell], [FilledCell1]]),
+	content: noBorderTable([[EmptyCell], [FilledCell1]], 'bottom-fill'),
 };
 const MiddleFill: CellProps = {
-	content: noBorderTable([[EmptyCell], [FilledCell], [EmptyCell]]),
+	content: noBorderTable(
+		[[EmptyCell], [FilledCell], [EmptyCell]],
+		'middle-fill'
+	),
 };
 const leftTopEmpty: CellProps = {
-	content: noBorderTable([
-		[EmptyCell, FilledCell2],
-		[FilledCell1, FilledCell],
-	]),
+	content: noBorderTable(
+		[
+			[EmptyCell, FilledCell2],
+			[FilledCell1, FilledCell],
+		],
+		'left-top-empty'
+	),
 };
 const leftBottomEmpty: CellProps = {
-	content: noBorderTable([
-		[FilledCell, FilledCell1],
-		[EmptyCell, FilledCell2],
-	]),
+	content: noBorderTable(
+		[
+			[FilledCell, FilledCell1],
+			[EmptyCell, FilledCell2],
+		],
+		'left-bottom-empty'
+	),
 };
 const rightTopEmpty: CellProps = {
-	content: noBorderTable([
-		[FilledCell, EmptyCell],
-		[FilledCell2, FilledCell],
-	]),
+	content: noBorderTable(
+		[
+			[FilledCell, EmptyCell],
+			[FilledCell2, FilledCell],
+		],
+		'right-top-empty'
+	),
 };
 const rightBottomEmpty: CellProps = {
-	content: noBorderTable([
-		[FilledCell, FilledCell2],
-		[FilledCell1, EmptyCell],
-	]),
+	content: noBorderTable(
+		[
+			[FilledCell, FilledCell2],
+			[FilledCell1, EmptyCell],
+		],
+		'right-bottom-empty'
+	),
 };
 const middleEmpty: CellProps = {
-	content: noBorderTable([[FilledCell2, EmptyCell, FilledCell]]),
+	content: noBorderTable(
+		[[FilledCell2, EmptyCell, FilledCell]],
+		'middle-empty'
+	),
 };
 
 const O: CellProps = FilledCell1;
@@ -133,11 +155,13 @@ const TABLE: TableInCellProps = {
 const tableProps: Omit<TableProps, 'width'> = {
 	style: {
 		rowGaps: 10,
+		bgColor: '#23272f',
 	},
 	defaultCellStyle: {
 		borderWidths: 0,
 	},
 	height: 300,
+	className: 'logo-demo',
 	rows: [[{ content: SVG }], [{ content: TABLE }]],
 };
 

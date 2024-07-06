@@ -1,0 +1,64 @@
+---
+import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
+import IndividualLayout from '../layouts/IndividualLayout.astro';
+const selected = '/class-names';
+---
+
+<IndividualLayout title="Welcome to SVG Table" selected={selected}>
+
+	<h1>Granular Control</h1>
+	<p>You can assign class names into svg. through the class name, you can add your own style, animation, and any customizations.</p>
+	<div class="logo-holder">
+		<LogoDemo width={640}/>
+
+	</div>
+
+	<div>
+		Hover over each area!
+	</div>
+</IndividualLayout>
+
+<style is:global>
+	.logo-holder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: max-content;
+		margin-bottom: 2rem;
+		margin-block: 2rem;
+	}
+	svg, svg *{
+		transition: all 200ms linear;
+		cursor: pointer;
+	}
+	.left-top-empty:hover > g {
+		transform: scale(1.2);
+	}
+	.right-top-empty:hover > g {
+		transform: scale(1.2) rotate(45deg);
+	}
+	.right-bottom-empty:hover > g {
+		transform: translate(0, 30px);
+	}
+	.left-bottom-empty:hover > g {
+		transform: translate(-30px, 0);
+	}
+	
+	.middle-empty:hover > g {
+		transform: scale(1.2);
+	}
+	@keyframes color-change {
+		0% {
+			fill: #cee9d0;
+		}
+		50% {
+			fill: #00ff00;
+		}
+		100% {
+			fill: #cee9d0;
+		}
+	}
+	.cell-wrapper > .filled-area > rect:hover {
+		animation: color-change 2s linear infinite;
+	}
+</style>
