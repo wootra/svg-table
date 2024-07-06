@@ -1,4 +1,5 @@
 export * from './BasicDemo';
+export * from './LogoDemo';
 export * from './BasicSimpleArray';
 export * from './EmbeddedTable';
 export * from './TextStyleOverride';

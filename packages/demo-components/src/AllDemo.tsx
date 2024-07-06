@@ -22,6 +22,7 @@ import './all-demo.css';
 import { BasicSimpleArray } from './BasicSimpleArray';
 import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
 import { Paddings } from './Paddings';
+import { LogoDemo } from './LogoDemo';
 export const AllDemo = ({ width }: { width: number }) => {
 	return (
 		<>
@@ -43,6 +44,19 @@ export const AllDemo = ({ width }: { width: number }) => {
 }
 				`}
 			</style>
+			<h2>
+				Welcome To SVG Table!
+				<a
+					className='demo-code-link'
+					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/LogoDemo.tsx'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					code
+				</a>
+			</h2>
+			<LogoDemo width={width} />
+
 			<h2>
 				basic demo
 				<a

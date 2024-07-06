@@ -1,4 +1,5 @@
 ---
+import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
 import IndividualLayout from '../layouts/IndividualLayout.astro';
 const selected = Astro.url.pathname;
 ---
@@ -7,15 +8,20 @@ const selected = Astro.url.pathname;
 
 	<h1>SVG Table</h1>
 	<p>SVG Table is a powerful and flexible library for creating tables using SVG. It accepts a javascript object to generate a simple table structures with customizable styles and behaviors.</p>
-	
+	<div class="logo-holder">
+		<LogoDemo width={640}/>
+
+	</div>
+
 	<div class="section" id="features">
 		<h2>Features</h2>
 		<ul class="features-list">
-		<li>Create tables using SVG for maximum flexibility and styling options</li>
-		<li>Support for both column and row span functionality with customizable gap and borer styles</li>
-		<li>Customizable cell contents, including all SVG elements</li>
-		<li>Easy-to-use API for defining table structure and styling</li>
-		<li>Lightweight and performant, with no other dependency other than React</li>
+		<li>Flexible Layout</li>
+		<li>SVG Power</li>
+		<li>Multi-context design</li>
+		<li>Easy integration</li>
+		<li>Multiline support</li>
+		<li>Many Examples</li>
 		</ul>
 	</div>
 
@@ -42,3 +48,14 @@ const selected = Astro.url.pathname;
 	</div>
 		  
 </IndividualLayout>
+
+<style>
+	.logo-holder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: max-content;
+		margin-bottom: 2rem;
+		margin-block: 2rem;
+	}
+</style>
