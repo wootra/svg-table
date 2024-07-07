@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table",
-	"version": "1.8.0",
+	"version": "1.8.2",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
@@ -19,12 +19,12 @@
 		"type-check": "tsc --noEmit",
 		"pretest": "npm run build",
 		"lint": "eslint . --max-warnings 0",
+		"pre-patch": "sh ./publish.sh prepatch",
+		"pre-minor": "sh ./publish.sh preminor",
+		"pre-major": "sh ./publish.sh premajor",
 		"patch": "sh ./publish.sh patch",
 		"minor": "sh ./publish.sh minor",
 		"major": "sh ./publish.sh major",
-		"prepatch": "sh ./publish.sh prepatch",
-		"preminor": "sh ./publish.sh preminor",
-		"premajor": "sh ./publish.sh premajor",
 		"publish-now": "npm publish --access public"
 	},
 	"devDependencies": {

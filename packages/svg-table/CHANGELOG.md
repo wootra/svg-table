@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 1.8.1
+## 1.8.2
 - allow last column to span rest of the columns
 - fix rowSpan after colSpan behavior
 
