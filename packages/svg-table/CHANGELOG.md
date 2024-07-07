@@ -1,4 +1,6 @@
 # CHANGELOG
+## 1.7.2
+- simple README.md update
 
 ## 1.7.0
 - optimization of class generation (default does not create class name)
