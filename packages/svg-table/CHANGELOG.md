@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.8.1
+- allow last column to span rest of the columns
+- fix rowSpan after colSpan behavior
+
 ## 1.8.0
 - add standalone functionality.(resize based on HTML container, copy/paste makes standalone svg file.)
 - svgAttrs allows the main svg element to be customizable.
