@@ -7,6 +7,7 @@ import {
 	BasicWithPropsAllowingOverflowOnlyOneCell,
 	Gaps,
 	TextPositionAdjustment,
+	Standalone,
 	// Margins,
 	// Paddings,
 } from '@repo/demo-components';
@@ -102,6 +103,57 @@ export const BasicSimpleArray = ({ width = 500 }: { width?: number }) => {
 </details>
 
 
+### Standalone SVG
+
+To use the real SVG's vector drawing power, try to add `standalone` props.
+Your table will be resized depends on its container in a HTML element.
+You also can copy & paste the svg code to create a new .svg file without issue.
+if you don't use standalone prop, `xmlns="http://www.w3.org/2000/svg"` attribute will not be added,
+which causes the browser read the file as a normal XML file.
+
+<div className='demo-container'>
+	<Standalone />
+</div>
+
+<details>
+<summary>Code</summary>
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Col Span',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'Row 1, Cell 1' },
+				{ content: 'Row Span\nmultiline\nsupport', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+
+export const Standalone = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} standalone={true} />;
+};
+
+```
+</details>
+
 ## Gaps between columns and rows
 
 You can easily add gaps between rows or columns.
@@ -142,3 +194,4 @@ export const Gaps = ({ width = 500 }: { width?: number }) => {
 
 ```
 </details>
+	

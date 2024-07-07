@@ -24,6 +24,8 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
 		{selected === '/basic-usage' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#basic-demo'>Basic Demo</a></li>
+			<li><a href='#just-using-text-array-makes-cells'>Just using text array makes cells</a></li>
+			<li><a href='#standalone-svg'>Standalone SVG</a></li>
 			<li><a href='#gaps-between-columns-and-rows'>Gaps between columns and rows</a></li>
 		</ul>)}
 
