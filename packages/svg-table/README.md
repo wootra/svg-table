@@ -1,6 +1,6 @@
 # svg-table
 
-![Logo](./logo.svg)
+![Logo](https://raw.githubusercontent.com/wootra/svg-table/main/packages/svg-table/logo.svg)
 
 this library is written in typescript and ESM.
 also create the module using React.js.
