@@ -1,7 +1,7 @@
 ---
 import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
 import CenteredLayout from '../layouts/CenteredLayout.astro';
-const selected = '/class-names';
+const selected = '/fine-level-control';
 ---
 
 <CenteredLayout title='Welcome to SVG Table' selected={selected}>
@@ -43,21 +43,25 @@ const selected = '/class-names';
 		cursor: pointer;
 	}
 	.left-top-empty-wrapper:hover .left-top-empty-content > g {
-		transform: scale(1.2);
+		scale: 1.2;
+		translate: 15px 12px;
+		/* transform: scale(1.1); */
 	}
 	.right-top-empty-wrapper:hover .right-top-empty-content > g {
-		transform: scale(1.2) rotate(45deg);
+		translate: -15px 10px;
+		rotate: 15deg;
+		/* transform: scale(1.2) rotate(45deg); */
 	}
-	.right-bottom-empty-wrapper:hover .right-bottom-empty-content > g {
-		transform: translate(0, -30px);
+
+	.right-bottom-empty-wrapper:hover .right-bottom-empty-padding {
+		translate: 0 -30px;
 	}
-	.left-bottom-empty-wrapper:hover
-		.left-bottom-empty-content
-		> g:first-child {
-		translate: 30px;
+	.left-bottom-empty-wrapper:hover .left-bottom-empty-content > g {
+		translate: 30px 0;
 	}
 	.bottom-fill-wrapper:hover .bottom-fill-content > g {
-		transform: translate(0, 30px);
+		/* transform: translate(0, 30px); */
+		translate: 30px 0;
 	}
 
 	.middle-empty-wrapper:hover .middle-empty-content > g {
