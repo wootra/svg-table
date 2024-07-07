@@ -24,12 +24,19 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
 		{selected === '/basic-usage' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#basic-demo'>Basic Demo</a></li>
+			<li><a href='#gaps-between-columns-and-rows'>Gaps between columns and rows</a></li>
+		</ul>)}
+
+		<li><a {...linkOrSelected('/customizing-content')}>Customizing Contents</a></li>
+		{selected === '/customizing-content' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#table-with-custom-element'>Table with custom element</a></li>
 			<li><a href='#custom-element-with-props'>Custom Elements with props</a></li>
 			<li><a href='#allow-contents-overflow'>Allow contents overflow</a></li>
 			<li><a href='#control-overflow-behavior-individually'>Control overflow behavior individually</a></li>
-			<li><a href='#gaps-between-columns-and-rows'>Gaps between columns and rows</a></li>
 			<li><a href='#text-position-adjustment'>Text position adjustment</a></li>
+			<li><a href='#outbound-labels'>outbound labels</a></li>
+			<li><a href='#background-and-text-color-change'>background and text color</a></li>
+			<li><a href='#text-override'>Text override</a></li>
 		</ul>)}
 
 		<li><a {...linkOrSelected('/custom-tables')}>Custom Tables</a></li>
@@ -37,8 +44,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 			<li><a href='#no-border-table'>No border table</a></li>
 			<li><a href='#table-border'>No border table</a></li>
 			<li><a href='#table-border-styles'>table border styles</a></li>
-			<li><a href='#outbound-labels'>outbound labels</a></li>
-			<li><a href='#background-and-text-color-change'>background and text color</a></li>
+			<li><a href='#play-with-styles-even-more'>Play with styles even more</a></li>
 		</ul>)}
 		
 		<li><a {...linkOrSelected('/advanced-usage')}>Advanced Usage</a></li>
@@ -47,8 +53,8 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 			<li><a href='#auto-aligned-embeded-tables'>Auto aligned embeded tables</a></li>
 			<li><a href='#automatic-height-adjustment'>Automatic Height Adjustment</a></li>
 			
-			<li><a href='#text-override'>Text override</a></li>
-			<li><a href='#play-with-styles-even-more'>Play with styles even more</a></li>
+			
+			
 		</ul>)}
 
 		<li><a {...linkOrSelected('/responsive')}>Responsive</a></li>

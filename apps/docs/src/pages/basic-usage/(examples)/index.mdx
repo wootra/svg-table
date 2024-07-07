@@ -1,0 +1,144 @@
+import {
+	BasicDemo,
+	BasicSimpleArray,
+	BasicWithElement,
+	BasicWithProps,
+	BasicWithPropsAllowingOverflow,
+	BasicWithPropsAllowingOverflowOnlyOneCell,
+	Gaps,
+	TextPositionAdjustment,
+	// Margins,
+	// Paddings,
+} from '@repo/demo-components';
+
+### Basic Demo
+
+Here is a simple 3x3 table with with colSpan and rowSpan
+
+<div className='demo-container'>
+	<BasicDemo />
+</div>
+
+<details>
+<summary>Code</summary>
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	rows: [
+		{
+			cells: [
+				{
+					content: 'Header 1',
+				},
+				{
+					content: 'Col Span',
+					colSpan: 2,
+				},
+			],
+		},
+		{
+			cells: [
+				{ content: 'Row 1, Cell 1' },
+				{ content: 'Row Span\nmultiline\nsupport', rowSpan: 2 },
+				{ content: 'Row 1, Cell 3' },
+			],
+		},
+		{
+			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+		},
+	],
+};
+
+export const BasicDemo = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+</details>
+
+### Just using text array makes cells
+
+Instead of writing all the objects, you can simply use string array to make columns.
+it will save a lot of time. Of course, you can add attributes more if you want.
+
+<div className='demo-container'>
+	<BasicSimpleArray />
+</div>
+
+<details>
+<summary>Code</summary>
+
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	rows: [
+		['cell1', 'cell2', 'cell3'],
+		['cell4', { content: 'content', colSpan: 2 }],
+		{
+			style: {
+				height: 100,
+			},
+			cells: [
+				'cell7',
+				{
+					style: {
+						bgColor: 'red',
+					},
+					content: 'content',
+				},
+				'cell9',
+			],
+		},
+	],
+};
+
+export const BasicSimpleArray = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+</details>
+
+
+## Gaps between columns and rows
+
+You can easily add gaps between rows or columns.
+
+<div className='demo-container'>
+	<Gaps />
+</div>
+
+<details>
+<summary>Code</summary>
+```typescript
+import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	style: {
+		colGaps: 4,
+		rowGaps: 10,
+	},
+	rows: [
+		[
+			'Header 1',
+			{
+				content: 'Header 2',
+				colSpan: 2,
+			},
+		],
+		[
+			'Row1, Cell1',
+			{ content: 'Row 1, Cell 2', rowSpan: 2 },
+			'Row 1, Cell 3',
+		],
+		['Row 2, Cell 1', 'Row 2, Cell 3'],
+	],
+};
+export const Gaps = ({ width = 500 }: { width?: number }) => {
+	return <SVGTable {...tableProps} width={width} />;
+};
+
+```
+</details>
