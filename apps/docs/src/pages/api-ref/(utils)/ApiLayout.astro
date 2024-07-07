@@ -1,5 +1,5 @@
 ---
-import Nav from './VersionNav';
+import Nav from './_VersionNav';
 import ScrollLayout from '../../../layouts/ScrollLayout.astro';
 
 const selected = '/api-ref';
@@ -38,13 +38,7 @@ const selected = '/api-ref';
     gap: 2rem;
     top: 0;
     right: 0;
-    /* left: 300px; */
     margin-inline: -2rem;
-    /* padding-right: 2rem; */
-    /* z-index: 100; */
-    /* background-color: var(--color-background); */
-    /* padding: 10px; */
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     z-index: 1;
   }
 
@@ -78,10 +72,6 @@ const selected = '/api-ref';
       color: #c588ce;
       font-weight: bold;
   }
-
-  /* .type-name {
-      color: #267F99;
-  } */
 
   .property {
       color: #a0a4c0;
@@ -127,29 +117,6 @@ font-size: 1.2em;
 font-weight: bold;
 color: #267F99;
 }
-/* 
-.type-definition {
-background-color: #f8f8f8;
-border: 1px solid #e0e0e0;
-border-radius: 3px;
-padding: 10px;
-margin: 10px 0;
-font-family: 'Courier New', Courier, monospace;
-white-space: pre-wrap;
-word-wrap: break-word;
-} */
-
-/* .keyword {
-color: #0000ff;
-}
-
-.type {
-color: #008000;
-}
-
-.property {
-color: #8b0000;
-} */
 
 .type-description {
 margin-top: 10px;

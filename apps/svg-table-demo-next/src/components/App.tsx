@@ -1,13 +1,13 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { ChangeEvent, Suspense, useState } from 'react';
 import './main.css';
 import ServerComponents from './ServerComponents';
 
 const App = () => {
 	const [width, setWidth] = useState(500);
-	const onChange = (e: any) => {
-		setWidth(e.target.value);
+	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setWidth(parseInt(e.target.value));
 	};
 	return (
 		<div className='main'>
