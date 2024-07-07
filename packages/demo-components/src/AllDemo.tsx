@@ -24,6 +24,7 @@ import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight
 import { Paddings } from './Paddings';
 import { LogoDemo } from './LogoDemo';
 import { Standalone } from './Standalone';
+import { AutoColSpan } from './AutoColSpan';
 export const AllDemo = ({
 	width,
 	useClassName = false,
@@ -111,6 +112,21 @@ export const AllDemo = ({
 					</a>
 				</h2>
 				<BasicSimpleArray width={width} />
+			</section>
+
+			<section>
+				<h2>
+					automatic colSpan
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/AutoColSpan.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<AutoColSpan width={width} />
 			</section>
 
 			<section>

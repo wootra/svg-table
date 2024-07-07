@@ -53,12 +53,22 @@ const getCellHeight = (
 	);
 };
 
-const insertIgnoredCell = (row: CalculatedRowProps, colIndex: number) => {
+const insertIgnoredCell = (
+	row: CalculatedRowProps,
+	colIndex: number,
+	cell: CalculatedCellProps & { _ignored: false }
+) => {
 	row.cells = [
 		...(row.cells.slice(0, colIndex) ?? []),
-		{
-			_ignored: true,
-		},
+		...Array(cell.colSpan ?? 1)
+			.fill(null)
+			.map(
+				() =>
+					({
+						_ignored: true,
+						colSpan: 1,
+					}) as CalculatedCellProps
+			),
 		...(row.cells.slice(colIndex) ?? []),
 	];
 };
@@ -125,10 +135,17 @@ export const calculateRows = (
 				continue;
 			}
 
+			const isLastCellButNotLastColumn =
+				row.cells[row.cells.length - 1] === cell &&
+				idx !== cellWidths.length - 1;
+			const colSpan = isLastCellButNotLastColumn
+				? cellWidths.length - idx
+				: 1;
+			cell.colSpan = colSpan;
 			const cellWidth = getCellWidth(
 				cellWidths,
 				idx,
-				cell.colSpan ?? 1,
+				cell.colSpan,
 				style?.colGaps ?? 0
 			);
 
@@ -138,7 +155,8 @@ export const calculateRows = (
 					if (calcRows[ri + i]) {
 						insertIgnoredCell(
 							calcRows[ri + i] as CalculatedRowProps,
-							idx
+							idx,
+							cell
 						);
 					} else {
 						console.error(
