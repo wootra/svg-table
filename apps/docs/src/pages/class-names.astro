@@ -1,26 +1,32 @@
 ---
 import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
-import IndividualLayout from '../layouts/IndividualLayout.astro';
+import CenteredLayout from '../layouts/CenteredLayout.astro';
 const selected = '/class-names';
 ---
 
-<IndividualLayout title="Welcome to SVG Table" selected={selected}>
-
+<CenteredLayout title='Welcome to SVG Table' selected={selected}>
 	<h1>Fine-level Control</h1>
-	<p>SVG Table allows you to add className on the table or cells.(default behavior does not create class attributes to save file size.) </p>
+	<p>SVG Table allows you to add className on the table or cells.</p>
 	<p>
-		Once you add it, the internal structure will automatically generate class names. (i.e. XX-wrapper, XX-content, ...)
+		(default behavior does not create class attributes to save file size.)
 	</p>
 	<p>
-		You can add your own styles such as animation or themes using the class names.</p>
+		Once you add it, the internal structure will automatically generate
+		class names.
+	</p>
+	<p>
+		(i.e. XX-wrapper, XX-content, ...)
+	</p>
+	<p>
+		You can add your own styles such as animation or themes using the class
+		names.
+	</p>
 
-		<h2>Try to hover over each boxes!</h2>
-	<div class="logo-holder">
-		<LogoDemo width={640}/>
+	<h2>Try to hover over each boxes!</h2>
+	<div class='logo-holder'>
+		<LogoDemo width={640} />
 	</div>
-
-	
-</IndividualLayout>
+</CenteredLayout>
 
 <style is:global>
 	.logo-holder {
@@ -28,10 +34,12 @@ const selected = '/class-names';
 		justify-content: center;
 		align-items: center;
 		height: max-content;
-		margin-bottom: 2rem;
+		/* margin-bottom: 2rem; */
 		margin-block: 2rem;
+		padding-block: 2rem;
 	}
-	svg, svg *{
+	svg,
+	svg * {
 		transition: all 200ms linear;
 		cursor: pointer;
 	}
@@ -44,14 +52,16 @@ const selected = '/class-names';
 	.right-bottom-empty-wrapper:hover .right-bottom-empty-content > g {
 		transform: translate(0, -30px);
 	}
-	.left-bottom-empty-wrapper:hover .left-bottom-empty-content > g:first-child {
+	.left-bottom-empty-wrapper:hover
+		.left-bottom-empty-content
+		> g:first-child {
 		translate: 30px;
 	}
 	.bottom-fill-wrapper:hover .bottom-fill-content > g {
 		transform: translate(0, 30px);
 	}
-	
-	.middle-empty-wrapper:hover .middle-empty-content > g { 
+
+	.middle-empty-wrapper:hover .middle-empty-content > g {
 		rotate: 180deg;
 	}
 	@keyframes color-change {
@@ -79,11 +89,11 @@ const selected = '/class-names';
 		}
 	}
 
-	.filled-cell-1-wrapper:hover rect{
+	.filled-cell-1-wrapper:hover rect {
 		animation: color-change 2s linear infinite;
 	}
 
 	.filled-cell-wrapper:hover .filled-cell-content text {
-		animation: text-pulse .5s linear infinite;
+		animation: text-pulse 0.5s linear infinite;
 	}
 </style>

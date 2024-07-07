@@ -1,0 +1,232 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import TopNav from './(comps)/TopNav.astro';
+import SideNav from './(comps)/SideNav.astro';
+
+interface Props {
+	title: string;
+	selected: string;
+}
+
+const { title, selected } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='Astro description' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<TopNav />
+
+        <SideNav selected={selected} />
+		<!-- <div class='container'> -->
+            <div class="main-wrapper">
+				<div class="perspective-wrapper">
+					<div class="grid-background"></div>
+				</div>
+                <div class='content-container'  transition:name="content">
+					<slot />
+                </div>
+            </div>
+		<!-- </div> -->
+	</body>
+</html>
+<style is:global>
+	:root {
+		--color-primary: #087ea4;
+		--color-secondary: #149eca;
+        --color-accent: #e5d663;
+		--color-background: #23272f;
+		--color-text: #f6f7f9;
+		--color-code-background: #292d3e;
+		--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+			Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+			'Segoe UI Symbol';
+		--font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
+			Courier, monospace;
+
+		--color-code-bg: #292d3e;
+	}
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		font-family: var(--font-sans);
+		background-color: var(--color-background);
+		color: var(--color-text);
+		line-height: 1.6;
+        /* scroll-behavior: smooth; */
+        /* overflow-y: auto; */
+	}
+
+    .content-container {
+        width: calc(100vw - var(--side-nav-width));
+        height: calc(100vh - var(--top-nav-height));
+        overflow-y: auto;
+        margin-top: var(--top-nav-height);
+        margin-left: var(--side-nav-width);
+    }
+
+	/* .container {
+		display: flex;
+        
+		/* min-height: 100vh; */
+        /* max-height: 100vh; */
+		/* overflow-y: auto; */
+		/* scroll-behavior: smooth; */
+		/* scroll-padding-top: 5rem;  */
+	} */
+
+	h1,
+	h2,
+	h3 {
+		margin-bottom: 1rem;
+        color: var(--color-secondary);
+	}
+    h4 {
+        color: var(--color-accent)
+    }
+
+
+    h1 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+
+	h2 {
+		font-size: 1.8rem;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	h3 {
+		font-size: 1.4rem;
+		margin-top: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	p {
+		margin-bottom: 1rem;
+	}
+
+	body {
+		font-family: var(--font-sans);
+		background-color: var(--color-background);
+		color: var(--color-text);
+		line-height: 1.6;
+		margin: 0;
+		padding: 0;
+	}
+
+    .main-wrapper {
+        width: 100vw;
+        height: calc(100vh - var(--top-nav-height));
+        margin-top: var(--top-nav-height)
+        /* overflow-y: auto; */
+    }
+
+	a {
+		color: var(--color-secondary);
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	.highlight {
+		background-color: rgba(20, 158, 202, 0.1);
+		padding: 0.2rem 0.4rem;
+		border-radius: 4px;
+	}
+
+
+	.section {
+		margin-bottom: 2rem;
+	}
+
+
+.perspective-wrapper {
+  perspective: 1000px;
+  position: absolute;
+  inset: 0;
+  padding-left: 300px;
+  padding-right: 3rem;
+  padding-top: 3rem;
+  display: grid;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow:hidden;
+}
+
+.perspective-wrapper::after {
+    position: fixed;
+    content: '';
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+    
+    background-image: linear-gradient(to bottom, #23272f 0%, #23272f 10%, transparent);
+  }
+
+  .grid-background {
+
+	perspective-origin: bottom;
+	transform-style: preserve-3d;
+	position: fixed;
+
+	top: -100vh;
+	left: -100vw;
+	right: -100vw;
+	bottom: -100vh;
+}
+
+
+
+@keyframes grid-swing {
+    0% {
+      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
+    }
+    50% {
+      transform: rotateX(30deg) rotateY(-10deg) rotateZ(-30deg);
+    }
+    100% {
+      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
+    }
+  }
+
+  .grid-background::after {
+    animation: grid-swing 60s ease-in-out infinite;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.2;
+    --grid-size: 100px;
+    --grid-color: rgb(45, 117, 138);
+    --grid-border: 3px;
+    z-index: 1;
+    position: fixed;
+    
+    background-image: 
+      linear-gradient(to right, var(--grid-color) var(--grid-border), transparent var(--grid-border)),
+      linear-gradient(to bottom, var(--grid-color) var(--grid-border), transparent var(--grid-border));
+    background-size: var(--grid-size) var(--grid-size);
+  }
+
+</style>

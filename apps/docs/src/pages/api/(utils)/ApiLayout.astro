@@ -1,6 +1,7 @@
 ---
 import IndividualLayout from '../../../layouts/IndividualLayout.astro';
 import Nav from '../(utils)/navigation.astro';
+import ScrollLayout from '../../../layouts/ScrollLayout.astro';
 
 const selected = '/api';
 type Props = {
@@ -9,36 +10,20 @@ type Props = {
 const version = Astro.props.version;
 ---
 
-<IndividualLayout title='Welcome to SVG Title: Api' selected={selected}>
+<ScrollLayout title='Welcome to SVG Title: Api' selected={selected}>
 
 	<h1>SVG Table Type Reference</h1>
-   <div class="nav-sticky-holder"> 
+   
     <Nav version={version} />
     
-  </div>
   <p></p>
 	<slot/>
     
-</IndividualLayout>
+</ScrollLayout>
 
 
 <style is:global>
 
-  .nav-sticky-holder {
-    position: sticky;
-    display: flex;
-    justify-content: end;
-    gap: 2rem;
-    top: 3rem;
-    left: 300px;
-    margin-inline: -2rem;
-    padding-right: 2rem;
-    z-index: 100;
-    background-color: var(--color-background);
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-  }
 
 
   :root {

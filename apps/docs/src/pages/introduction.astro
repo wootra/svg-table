@@ -1,10 +1,10 @@
 ---
 import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
-import IndividualLayout from '../layouts/IndividualLayout.astro';
+import ScrollLayout from '../layouts/ScrollLayout.astro';
 const selected = '/introduction';
 ---
 
-<IndividualLayout title="Welcome to SVG Table: Introduction" selected={selected}>
+<ScrollLayout title="Welcome to SVG Table: Introduction" selected={selected}>
 
 	<h1>SVG Table</h1>
 	<p>SVG Table is a powerful and flexible library for creating tables using SVG. 
@@ -49,7 +49,7 @@ const selected = '/introduction';
 		<p>SVG Table is released under the MIT License. See the <a href="https://github.com/wootra/svg-table/blob/main/LICENSE">LICENSE</a> file for more details.</p>
 	</div>
 		  
-</IndividualLayout>
+</ScrollLayout>
 
 <style>
 	.logo-holder {

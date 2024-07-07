@@ -1,10 +1,10 @@
 ---
 import { LogoDemo } from '@repo/demo-components';
-import IndividualLayout from '../layouts/IndividualLayout.astro';
+import CenteredLayout from '../layouts/CenteredLayout.astro';
 const selected = '/';
 ---
 
-<IndividualLayout title='Welcome to SVG-Table' selected={selected}>
+<CenteredLayout title='Welcome to SVG-Table' selected={selected}>
   <div class="center-content">
     <div class="feature-wrapper">
     
@@ -46,11 +46,11 @@ const selected = '/';
       </section>
     </div>
   </div>
-</IndividualLayout>
+</CenteredLayout>
 
 <style>
 
-  .center-content {
+  /* .center-content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +61,7 @@ const selected = '/';
     padding: 2rem;
     box-sizing: border-box;
     overflow: auto;
-  }
+  } */
 
   .logo-holder {
 		display: flex;
@@ -72,14 +72,14 @@ const selected = '/';
 	}
 
   .feature-wrapper {
-  position: relative;
- width: 100%;
- max-height: max-content;
- displaly: flex;
- flex-direction: column;
- gap: 4rem;
- z-index: 1;
-}
+    position: relative;
+  width: 100%;
+  max-height: max-content;
+  displaly: flex;
+  flex-direction: column;
+  gap: 4rem;
+  z-index: 1;
+  }
 
 	.features {
 		display: grid;
@@ -89,9 +89,9 @@ const selected = '/';
     
     
 	}
-  h1 {
+  /* h1 {
     z-index: 3;
-  }
+  } */
 
 	.feature {
 		background-color: var(--color-secondary);
@@ -109,51 +109,4 @@ const selected = '/';
     box-shadow: 0 5px 15px rgba(0, 200, 255, 0.2);
   }
 
-  /* .grid-background {
-
-    perspective-origin: bottom;
-    transform-style: preserve-3d;
-    position: fixed;
-   
-    top: -100vh;
-    left: -100vw;
-    right: -100vw;
-    bottom: -100vh;
-  } */
-
-
-/* 
-
-  @keyframes grid-swing {
-    0% {
-      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
-    }
-    50% {
-      transform: rotateX(30deg) rotateY(-10deg) rotateZ(-30deg);
-    }
-    100% {
-      transform: rotateX(70deg) rotateY(-10deg) rotateZ(30deg);
-    }
-  }
-
-  .grid-background::after {
-    animation: grid-swing 60s ease-in-out infinite;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.2;
-    --grid-size: 100px;
-    --grid-color: rgb(45, 117, 138);
-    --grid-border: 3px;
-    z-index: 1;
-    position: fixed;
-    
-    background-image: 
-      linear-gradient(to right, var(--grid-color) var(--grid-border), transparent var(--grid-border)),
-      linear-gradient(to bottom, var(--grid-color) var(--grid-border), transparent var(--grid-border));
-    background-size: var(--grid-size) var(--grid-size);
-  } */
 </style>
