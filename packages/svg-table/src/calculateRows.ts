@@ -2,6 +2,7 @@ import type {
 	CalculatedCellProps,
 	CalculatedRowProps,
 	RowProps,
+	TableProps,
 	TableStyle,
 } from './types';
 import { simpleValue } from './utils';
@@ -67,9 +68,12 @@ export const calculateRows = (
 	rowHeights: number[],
 	rows: RowProps[],
 	style: TableStyle | undefined,
-	embededTableHeightAdjust: boolean
+	tableProps: TableProps
 ) => {
 	let currentY = 0;
+	const embededTableHeightAdjust = !!tableProps.height;
+	const standaloneTable = !!tableProps.standalone;
+
 	const calcRows: CalculatedRowProps[] = rows.map(aRow => {
 		const row = Array.isArray(aRow) ? { cells: aRow } : aRow;
 		return {
@@ -90,6 +94,7 @@ export const calculateRows = (
 						width: -1,
 						_ignored: false,
 						_heightAdjust: embededTableHeightAdjust,
+						_standalone: standaloneTable,
 					} as CalculatedCellProps;
 				}),
 			],

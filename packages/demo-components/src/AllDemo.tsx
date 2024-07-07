@@ -23,6 +23,7 @@ import { BasicSimpleArray } from './BasicSimpleArray';
 import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
 import { Paddings } from './Paddings';
 import { LogoDemo } from './LogoDemo';
+import { Standalone } from './Standalone';
 export const AllDemo = ({
 	width,
 	useClassName = false,
@@ -50,319 +51,381 @@ export const AllDemo = ({
 }
 				`}
 			</style>
-			<h2>
-				Welcome To SVG Table!
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/LogoDemo.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<LogoDemo
-				width={width}
-				bgColor={null}
-				className={useClassName ? 'logo-demo' : undefined}
-			/>
+			<section>
+				<h2>
+					Welcome To SVG Table!
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/LogoDemo.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<LogoDemo
+					width={width}
+					bgColor={null}
+					className={useClassName ? 'logo-demo' : undefined}
+				/>
+			</section>
+			<section>
+				<h2>
+					Standalone
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicDemo.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<Standalone width={width} />
+			</section>
 
-			<h2>
-				basic demo
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicDemo.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<BasicDemo width={width} />
-			<h2>
-				basic with simple array
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicSimpleArray.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<BasicSimpleArray width={width} />
+			<section>
+				<h2>
+					basic demo
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicDemo.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<BasicDemo width={width} />
+			</section>
+			<section>
+				<h2>
+					basic with simple array
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicSimpleArray.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<BasicSimpleArray width={width} />
+			</section>
 
-			<h2>
-				basic with element
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicWithElement.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<BasicWithElement width={width} />
+			<section>
+				<h2>
+					basic with element
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicWithElement.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<BasicWithElement width={width} />
+			</section>
 
-			<h2>
-				basic with props
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicWithProps.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<BasicWithProps width={width} />
+			<section>
+				<h2>
+					basic with props
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicWithProps.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<BasicWithProps width={width} />
+			</section>
 
-			<h2>
-				allowing overflow by default
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicWithPropsAllowingOverflow.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<BasicWithPropsAllowingOverflow width={width} />
+			<section>
+				<h2>
+					allowing overflow by default
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicWithPropsAllowingOverflow.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<BasicWithPropsAllowingOverflow width={width} />
+			</section>
 
-			<h2>
-				allowing only one cell overflow
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicWithPropsAllowingOverflowOnlyOneCell.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<BasicWithPropsAllowingOverflowOnlyOneCell width={width} />
+			<section>
+				<h2>
+					allowing only one cell overflow
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicWithPropsAllowingOverflowOnlyOneCell.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<BasicWithPropsAllowingOverflowOnlyOneCell width={width} />
+			</section>
 
-			<h2>
-				text position adjustment
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TextPositionAdjustment.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<TextPositionAdjustment width={width} />
+			<section>
+				<h2>
+					text position adjustment
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TextPositionAdjustment.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<TextPositionAdjustment width={width} />
+			</section>
 
-			<h2>
-				no border table demo
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/NoBorderTableDemo.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<NoBorderTableDemo width={width} />
+			<section>
+				<h2>
+					no border table demo
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/NoBorderTableDemo.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<NoBorderTableDemo width={width} />
+			</section>
 
-			<h2>
-				Margins
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/Margins.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<Margins width={width} />
-			<h2>
-				Paddings
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/Paddings.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<Paddings width={width} />
+			<section>
+				<h2>
+					Margins
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/Margins.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<Margins width={width} />
+			</section>
+			<section>
+				<h2>
+					Paddings
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/Paddings.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<Paddings width={width} />
+			</section>
 
-			<h2>
-				Table with Height
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableHeight.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<TableHeight />
+			<section>
+				<h2>
+					Table with Height
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableHeight.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<TableHeight />
+			</section>
 
-			<h2>
-				Table with Height with override height
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableHeightOverrideHeight.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<TableHeightOverrideHeight />
+			<section>
+				<h2>
+					Table with Height with override height
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableHeightOverrideHeight.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<TableHeightOverrideHeight />
+			</section>
 
-			<h2>
-				embedded table
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/EmbeddedTable.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<EmbeddedTable />
+			<section>
+				<h2>
+					embedded table
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/EmbeddedTable.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<EmbeddedTable />
+			</section>
 
-			<h2>
-				embedded table as props
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/EmbeddedTableAsProps.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<EmbeddedTableAsProps width={width} />
+			<section>
+				<h2>
+					embedded table as props
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/EmbeddedTableAsProps.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<EmbeddedTableAsProps width={width} />
+			</section>
 
-			<h2>
-				embedded table with height as well
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/EmbeddedTableAsPropsWithHeight.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<EmbeddedTableAsPropsWithHeight width={width} />
+			<section>
+				<h2>
+					embedded table with height as well
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/EmbeddedTableAsPropsWithHeight.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<EmbeddedTableAsPropsWithHeight width={width} />
+			</section>
 
-			<h2>
-				text style override
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TextStyleOverride.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<TextStyleOverride width={width} />
+			<section>
+				<h2>
+					text style override
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TextStyleOverride.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<TextStyleOverride width={width} />
+			</section>
 
-			<h2>
-				only table border
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/OnlyTableBolder.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<OnlyTableBolder width={width} />
+			<section>
+				<h2>
+					only table border
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/OnlyTableBolder.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<OnlyTableBolder width={width} />
+			</section>
 
-			<h2>
-				table border with margin
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableBolderWithMargin.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<TableBolderWithMargin width={width} />
+			<section>
+				<h2>
+					table border with margin
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableBolderWithMargin.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<TableBolderWithMargin width={width} />
+			</section>
 
-			<h2>
-				table border styles
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableBorderStyles.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<TableBorderStyles width={width} />
+			<section>
+				<h2>
+					table border styles
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableBorderStyles.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<TableBorderStyles width={width} />
+			</section>
 
-			<h2>
-				background color and text color
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BgColorAndTextColor.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<BgColorAndTextColor width={width} />
+			<section>
+				<h2>
+					background color and text color
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BgColorAndTextColor.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<BgColorAndTextColor width={width} />
+			</section>
 
-			<h2>
-				gaps
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/Gaps.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<Gaps width={width} />
+			<section>
+				<h2>
+					gaps
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/Gaps.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<Gaps width={width} />
+			</section>
 
-			<h2>
-				out bound labels example
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/OutboundLabels.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<OutboundLabels />
+			<section>
+				<h2>
+					out bound labels example
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/OutboundLabels.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<OutboundLabels />
+			</section>
 
-			<h2>
-				table styles
-				<a
-					className='demo-code-link'
-					href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableStyles.tsx'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					code
-				</a>
-			</h2>
-			<TableStyles width={width} />
+			<section>
+				<h2>
+					table styles
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/TableStyles.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<TableStyles width={width} />
+			</section>
 		</>
 	);
 };

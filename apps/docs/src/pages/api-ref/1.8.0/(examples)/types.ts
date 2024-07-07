@@ -163,7 +163,6 @@ export type CalculatedCellProps =
 			/** Indicates that the cell is not ignored and should be rendered. */
 			_ignored: false;
 			_heightAdjust: boolean;
-			_standalone: boolean;
 			/** The x-coordinate of the cell's position. */
 			x: number;
 			/** The y-coordinate of the cell's position. */

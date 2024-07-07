@@ -1,13 +1,14 @@
 {
 	"name": "@shjeon0730/svg-table",
-	"version": "1.7.2",
+	"version": "1.8.0-0",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
 	"browser": "dist/index.umd.js",
-	"types": "dist/index.d.ts",
+	"types": "src/index.ts",
 	"files": [
-		"dist"
+		"dist",
+		"src"
 	],
 	"scripts": {
 		"build": "npm run lint; tsc --noEmit;npm run build:bundle",

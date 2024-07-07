@@ -71,18 +71,21 @@ const adjustRowHeights = (
 	return rowHeights.map(width => Math.max(simpleValue(width * ratio), 1));
 };
 
-export const SVGTable: React.FC<TableProps> = ({
-	rows,
-	width = 500,
-	height: heightFromProps,
-	defaultCellStyle,
-	defaultRowStyle,
-	columnWidths,
-	rowHeights: rowHeightFromProps,
-	style,
-	className,
-	defs,
-}) => {
+export const SVGTable: React.FC<TableProps> = tableProps => {
+	const {
+		rows,
+		width = 500,
+		height: heightFromProps,
+		standalone = false,
+		defaultCellStyle,
+		defaultRowStyle,
+		columnWidths,
+		rowHeights: rowHeightFromProps,
+		style,
+		className,
+		defs,
+		svgAttrs,
+	} = tableProps;
 	// Calculate the total width and height of the table
 
 	const defaultStyleForCell: CellStyle =
@@ -153,13 +156,12 @@ export const SVGTable: React.FC<TableProps> = ({
 		}
 	}
 
-	const embededTableHeightAdjust = !!heightFromProps;
 	const calculatedRows = calculateRows(
 		cellWidths,
 		rowHeights,
 		rows,
 		tableStyle,
-		embededTableHeightAdjust
+		tableProps
 	);
 
 	const rowsContent = calculatedRows.map((row, rowIndex) => {
@@ -188,14 +190,22 @@ export const SVGTable: React.FC<TableProps> = ({
 			</g>
 		);
 	});
-
+	const propsForSvg = standalone
+		? {
+				xmlns: 'http://www.w3.org/2000/svg',
+				xmlnsXlink: 'http://www.w3.org/1999/xlink',
+			}
+		: {
+				width,
+				height,
+			};
 	return (
 		<svg
-			width={width}
-			height={height}
+			{...propsForSvg}
 			style={tableStyle.svgStyle}
 			viewBox={`0 0 ${width} ${height}`}
 			className={className ? `svg-table ${className}` : undefined}
+			{...svgAttrs}
 		>
 			{defs && <defs>{defs}</defs>}
 			<FilledArea

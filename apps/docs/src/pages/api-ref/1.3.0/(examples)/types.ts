@@ -92,14 +92,6 @@ export type CellStyle = {
 	 */
 	textStyle?: TextStyle;
 	/**
-	 * Optional styling for the before element. It works only when before is text.
-	 */
-	beforeTextStyle?: TextStyle;
-	/**
-	 * Optional styling for the after element. It works only when after is text.
-	 */
-	afterTextStyle?: TextStyle;
-	/**
 	 * if you want to adjust the horizontal position of the text based on the center position, use this.
 	 */
 	cx?: number;
@@ -130,40 +122,29 @@ export type TableInCellProps = {
 	// table in a cell automatically have width based on the cell's width
 	table: Omit<TableProps, 'width'> & { width?: number };
 };
-
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
-export type CellProps =
-	| {
-			/** Optional custom style for the cell, overriding default styles. */
-			style?: Partial<CellStyle>;
-			/** The content to be displayed within the cell, can be any React node. */
-			content: ReactNode | ContentAsFunc | TableInCellProps;
-			before?: ReactNode | ContentAsFunc;
-			after?: ReactNode | ContentAsFunc;
-			/** Optional. Specifies the number of columns a cell should span across. */
-			colSpan?: number;
-			/** Optional. Specifies the number of rows a cell should span across. */
-			rowSpan?: number;
-			/**
-			 * clsss name to control individual cell.
-			 */
-			className?: string;
-	  }
-	| string;
-
-export type CellPropsAsObj = Exclude<CellProps, string>;
+export type CellProps = {
+	/** Optional custom style for the cell, overriding default styles. */
+	style?: Partial<CellStyle>;
+	/** The content to be displayed within the cell, can be any React node. */
+	content: ReactNode | ContentAsFunc | TableInCellProps;
+	before?: ReactNode | ContentAsFunc;
+	after?: ReactNode | ContentAsFunc;
+	/** Optional. Specifies the number of columns a cell should span across. */
+	colSpan?: number;
+	/** Optional. Specifies the number of rows a cell should span across. */
+	rowSpan?: number;
+};
 
 /**
  * Extended cell properties including calculated dimensions and positioning.
  */
 export type CalculatedCellProps =
-	| (CellPropsAsObj & {
+	| (CellProps & {
 			/** Indicates that the cell is not ignored and should be rendered. */
 			_ignored: false;
-			_heightAdjust: boolean;
-			_standalone: boolean;
 			/** The x-coordinate of the cell's position. */
 			x: number;
 			/** The y-coordinate of the cell's position. */
@@ -191,21 +172,17 @@ export type RowStyle = {
 /**
  * Properties for defining a row within a table, including cells and optional styling.
  */
-export type RowProps =
-	| {
-			/** Optional custom style for the row, overriding default styles. */
-			style?: Partial<RowStyle>;
-			/** An array of CellProps, defining the cells within the row. */
-			cells: CellProps[];
-	  }
-	| CellProps[];
-
-export type RowPropsAsObj = Exclude<RowProps, CellProps[]>;
+export type RowProps = {
+	/** Optional custom style for the row, overriding default styles. */
+	style?: Partial<RowStyle>;
+	/** An array of CellProps, defining the cells within the row. */
+	cells: CellProps[];
+};
 
 /**
  * Extended row properties including calculated dimensions and positioning.
  */
-export type CalculatedRowProps = Omit<RowPropsAsObj, 'cells'> & {
+export type CalculatedRowProps = Omit<RowProps, 'cells'> & {
 	/** The x-coordinate of the row's position. */
 	x: number;
 	/** The y-coordinate of the row's position. */
@@ -241,18 +218,10 @@ export type TableProps = {
 	className?: string;
 	/** Optional. Defines SVG definitions such as gradients or patterns that can be used within the table. */
 	defs?: ReactNode;
-	/** Optional when standalone is true, ns is added automatically, width and height attributes will not be given. */
-	standalone?: boolean;
-	/** Optional. override more attributes on the root svg on top of default attributes for more flexiblity. */
-	svgAttrs?: SVGAttributes<SVGSVGElement>;
 	/** Total width of the SVG table in pixels. */
 	width: number;
-	/** Optional. Total height of the SVG table in pixels. if it is given, rows will be adjusted based on this size. */
-	height?: number;
 	/** Optional. Specifies the width of each column. These are in points and may not match pixels if colGaps is specified. this is not real sizes but ratios based on width after extracting left and right margins and colGaps */
 	columnWidths?: number[];
-	/** Optional. Specifies the height of each row. These are in points and may not match pixels if rowGaps is specified. this is not real sizes but ratios based on height after extracting top and bottom margins and rowGaps */
-	rowHeights?: number[];
 	/** Optional default cell style that applies to all cells unless overridden. */
 	defaultCellStyle?: Partial<CellStyle>;
 	/** Optional default row style that applies to all rows unless overridden. */

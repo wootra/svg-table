@@ -1,4 +1,9 @@
 # CHANGELOG
+
+## 1.8.0
+- add standalone functionality.(resize based on HTML container, copy/paste makes standalone svg file.)
+- svgAttrs allows the main svg element to be customizable.
+
 ## 1.7.2
 - simple README.md update
 

@@ -34,6 +34,8 @@ const convertToTableIfNeeded = (
 				}
 			: {};
 
+		if (cellOpt._standalone) adjustProps.standalone = true;
+
 		return (
 			<SVGTable
 				width={simpleValue(tableWid)}

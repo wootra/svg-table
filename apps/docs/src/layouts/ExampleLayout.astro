@@ -29,13 +29,21 @@ const { title, selected } = Astro.props;
 
 		--color-code-bg: #292d3e;
 	}
-	.demo-code-link {
+	.code-link {
 		color: var(--color-secondary);
+		text-decoration: none;
+		padding: 2px 6px;
+		border-radius: 4px;
+		border: 1px solid var(--color-secondary);
+		font-size: 0.8em;
+		margin-left: 10px;
 		text-decoration: none;
 	}
 
-	.demo-code-link:hover {
+	.code-link:hover {
 		text-decoration: none;
+		background-color: #4A90E2;
+		color: white;
 	}
 
 	pre {

@@ -20,7 +20,7 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 		
 		<li><a {...linkOrSelected('/examples')}>Examples</a></li>
-		<li><a {...linkOrSelected('/api')}>API Reference</a></li>
+		<li><a {...linkOrSelected('/api-ref')}>API Reference</a></li>
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
 		{selected === '/basic-usage' && (<ul class="sub" transition:name="opened-nav">
 			<li><a href='#basic-demo'>Basic Demo</a></li>

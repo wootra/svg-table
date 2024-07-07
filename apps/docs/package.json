@@ -1,11 +1,11 @@
 {
 	"name": "docs",
 	"type": "module",
-	"version": "0.0.1",
+	"version": "0.1.0-0",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro check && astro build",
+		"build": "pnpm update @shjeon0730/svg-table;pnpm update @repo/demo-components;astro check && astro build",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
