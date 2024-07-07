@@ -33,8 +33,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/demo-components
       '@shjeon0730/svg-table':
-        specifier: workspace:*
-        version: link:../../packages/svg-table
+        specifier: link:../svg-table-repo
+        version: link:../svg-table-repo
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -105,12 +105,9 @@ importers:
 
   apps/svg-table-demo-installed:
     dependencies:
-      '@repo/demo-components':
+      '@repo/demo-components-installed':
         specifier: workspace:*
-        version: link:../../packages/demo-components
-      '@shjeon0730/svg-table':
-        specifier: latest
-        version: 1.8.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: link:../../packages/demo-components-installed
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -189,8 +186,51 @@ importers:
   packages/demo-components:
     dependencies:
       '@shjeon0730/svg-table':
+        specifier: link:../svg-table-repo
+        version: link:../svg-table-repo
+      react:
+        specifier: ^18
+        version: 18.3.1
+      react-dom:
+        specifier: ^18
+        version: 18.3.1(react@18.3.1)
+      react-icons:
+        specifier: ^5.2.1
+        version: 5.2.1(react@18.3.1)
+    devDependencies:
+      '@repo/eslint-config':
         specifier: workspace:*
-        version: link:../svg-table
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@turbo/gen':
+        specifier: ^1.13.4
+        version: 1.13.4(@types/node@20.14.10)(typescript@5.5.3)
+      '@types/eslint':
+        specifier: ^8.56.10
+        version: 8.56.10
+      '@types/node':
+        specifier: ^20.14.10
+        version: 20.14.10
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      typescript:
+        specifier: ^5.5.3
+        version: 5.5.3
+
+  packages/demo-components-installed:
+    dependencies:
+      '@shjeon0730/svg-table':
+        specifier: latest
+        version: 1.8.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18
         version: 18.3.1
@@ -319,6 +359,73 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
+
+  packages/svg-table-repo:
+    dependencies:
+      react:
+        specifier: ^18
+        version: 18.3.1
+      react-dom:
+        specifier: ^18
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.24.7
+        version: 7.24.7
+      '@babel/preset-env':
+        specifier: ^7.24.7
+        version: 7.24.7(@babel/core@7.24.7)
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@rollup/plugin-babel':
+        specifier: ^6.0.4
+        version: 6.0.4(@babel/core@7.24.7)(@types/babel__core@7.20.5)(rollup@4.18.0)
+      '@rollup/plugin-commonjs':
+        specifier: ^26.0.1
+        version: 26.0.1(rollup@4.18.0)
+      '@rollup/plugin-node-resolve':
+        specifier: ^15.2.3
+        version: 15.2.3(rollup@4.18.0)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@4.18.0)
+      '@rollup/plugin-typescript':
+        specifier: ^11.1.6
+        version: 11.1.6(rollup@4.18.0)(tslib@2.6.3)(typescript@5.5.3)
+      '@turbo/gen':
+        specifier: ^1.12.4
+        version: 1.13.4(@types/node@20.14.10)(typescript@5.5.3)
+      '@types/eslint':
+        specifier: ^8.56.5
+        version: 8.56.10
+      '@types/node':
+        specifier: ^20.11.24
+        version: 20.14.10
+      '@types/react':
+        specifier: ^18.2.61
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: ^18.2.19
+        version: 18.3.0
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      rollup:
+        specifier: ^4.18.0
+        version: 4.18.0
+      rollup-plugin-dts:
+        specifier: ^6.1.1
+        version: 6.1.1(rollup@4.18.0)(typescript@5.5.3)
+      rollup-plugin-peer-deps-external:
+        specifier: ^2.2.4
+        version: 2.2.4(rollup@4.18.0)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.5.3
 
   packages/typescript-config: {}
 
@@ -6626,6 +6733,15 @@ snapshots:
       rollup: 4.18.0
       tslib: 2.6.3
 
+  '@rollup/plugin-typescript@11.1.6(rollup@4.18.0)(tslib@2.6.3)(typescript@5.5.3)':
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
+      resolve: 1.22.8
+      typescript: 5.5.3
+    optionalDependencies:
+      rollup: 4.18.0
+      tslib: 2.6.3
+
   '@rollup/pluginutils@5.1.0(rollup@4.18.0)':
     dependencies:
       '@types/estree': 1.0.5
@@ -10623,6 +10739,14 @@ snapshots:
       magic-string: 0.30.10
       rollup: 4.18.0
       typescript: 5.4.5
+    optionalDependencies:
+      '@babel/code-frame': 7.24.7
+
+  rollup-plugin-dts@6.1.1(rollup@4.18.0)(typescript@5.5.3):
+    dependencies:
+      magic-string: 0.30.10
+      rollup: 4.18.0
+      typescript: 5.5.3
     optionalDependencies:
       '@babel/code-frame': 7.24.7
 

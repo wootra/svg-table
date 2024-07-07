@@ -68,9 +68,18 @@ const tableProps: Omit<TableProps, 'width' | 'height'> = {
 export const EmbeddedTableAsPropsWithHeight = ({
 	width = 900,
 	height = 150, // when height is given, all nested table will be dynamically adjusted in height.
+	standalone = false,
 }: {
 	width: number;
 	height?: number;
+	standalone?: boolean;
 }) => {
-	return <SVGTable width={width} {...tableProps} height={height} />;
+	return (
+		<SVGTable
+			width={width}
+			{...tableProps}
+			height={height}
+			standalone={standalone}
+		/>
+	);
 };

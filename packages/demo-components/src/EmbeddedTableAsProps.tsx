@@ -93,6 +93,12 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-export const EmbeddedTableAsProps = ({ width = 900 }: { width: number }) => {
-	return <SVGTable width={width} {...tableProps} />;
+export const EmbeddedTableAsProps = ({
+	width = 900,
+	standalone,
+}: {
+	width: number;
+	standalone?: boolean;
+}) => {
+	return <SVGTable width={width} {...tableProps} standalone={standalone} />;
 };

@@ -274,7 +274,7 @@ export const AllDemo = ({
 						code
 					</a>
 				</h2>
-				<EmbeddedTable />
+				<EmbeddedTable standalone />
 			</section>
 
 			<section>
@@ -289,7 +289,7 @@ export const AllDemo = ({
 						code
 					</a>
 				</h2>
-				<EmbeddedTableAsProps width={width} />
+				<EmbeddedTableAsProps width={width} standalone />
 			</section>
 
 			<section>
@@ -304,7 +304,7 @@ export const AllDemo = ({
 						code
 					</a>
 				</h2>
-				<EmbeddedTableAsPropsWithHeight width={width} />
+				<EmbeddedTableAsPropsWithHeight width={width} standalone />
 			</section>
 
 			<section>

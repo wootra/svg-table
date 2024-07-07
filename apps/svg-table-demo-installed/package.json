@@ -10,8 +10,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@repo/demo-components": "workspace:*",
-		"@shjeon0730/svg-table": "latest",
+		"@repo/demo-components-installed": "workspace:*",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},

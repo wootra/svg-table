@@ -13,7 +13,7 @@ const tableProps: TableProps = {
 		bgColor: 'yellow',
 		height: 120,
 	},
-
+	className: 'embedded-standalone',
 	style: {
 		rowGaps: 10,
 		colGaps: 10,
@@ -38,6 +38,10 @@ const tableProps: TableProps = {
 	],
 };
 
-export const EmbeddedTable = () => {
-	return <SVGTable {...tableProps} />;
+export const EmbeddedTable = ({
+	standalone = false,
+}: {
+	standalone?: boolean;
+}) => {
+	return <SVGTable {...tableProps} standalone={standalone} />;
 };
