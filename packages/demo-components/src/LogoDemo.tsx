@@ -148,6 +148,7 @@ export const LogoDemo = ({
 			table: {
 				rowHeights: [1, 1, 1],
 				defaultCellStyle: wordTableCellStyle,
+				columnWidths: [2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2], // make empty column smaller
 				rows: [
 					[oO, OO, TT, _, OO, ___, OO, _, oO, OO, OO],
 					[TO, OO, Oo, _, TO, O_O, OT, _, OO, __, oo],
@@ -159,6 +160,9 @@ export const LogoDemo = ({
 		const TABLE: TableInCellProps = {
 			table: {
 				defaultCellStyle: wordTableCellStyle,
+				columnWidths: [
+					3, 3, 3, 1, 3, 3, 3, 1, 3, 3, 3, 1, 6, 3, 1, 6, 3,
+				],
 				rows: [
 					[O, O, O, _, __, OO, __, _, OO, T, Oo, _, O, _, _, O, T],
 					[_, O, _, _, oO, TT, Oo, _, OO, H, Oo, _, O, _, _, O, O],
