@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table",
-	"version": "1.8.0-0",
+	"version": "1.8.0",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
@@ -22,7 +22,10 @@
 		"patch": "sh ./publish.sh patch",
 		"minor": "sh ./publish.sh minor",
 		"major": "sh ./publish.sh major",
-		"publish": "npm publish --access public"
+		"prepatch": "sh ./publish.sh prepatch",
+		"preminor": "sh ./publish.sh preminor",
+		"premajor": "sh ./publish.sh premajor",
+		"publish-now": "npm publish --access public"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.7",
