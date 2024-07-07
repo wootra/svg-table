@@ -101,6 +101,7 @@ const { title, selected } = Astro.props;
 		border-radius: 8px;
 		padding: 1rem;
 		margin-bottom: 1.5rem;
+		overflow: hidden;
 	}
 
 	.example-container p{
@@ -135,4 +136,10 @@ const { title, selected } = Astro.props;
 		margin-bottom: 2rem;
 	}
 
+	summary {
+		color: var(--color-secondary);
+		font-size: 1.1rem;
+		font-weight: bold;
+		cursor: pointer;
+	}
 </style>

@@ -15,6 +15,12 @@ import {
 
 Here is a simple 3x3 table with with colSpan and rowSpan
 
+<div className='demo-container'>
+	<BasicDemo />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
@@ -49,15 +55,19 @@ export const BasicDemo = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<BasicDemo />
-</div>
+</details>
 
 ### Just using text array makes cells
 
 Instead of writing all the objects, you can simply use string array to make columns.
 it will save a lot of time. Of course, you can add attributes more if you want.
+
+<div className='demo-container'>
+	<BasicSimpleArray />
+</div>
+
+<details>
+<summary>Code</summary>
 
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
@@ -89,15 +99,18 @@ export const BasicSimpleArray = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<BasicSimpleArray />
-</div>
+</details>
 
 ### Table With Custom Element
 
 you can add an SVG Element as you want. Its position will start from left-top if you don't use callback function.
 
+<div className='demo-container'>
+	<BasicWithElement />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
@@ -128,15 +141,18 @@ export const BasicWithElement = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<BasicWithElement />
-</div>
+</details>
 
 ### Custom Element With Props
 
 Do you want to adjust the element based on the center position? No problem! Use callback function.
 
+<div className='demo-container'>
+	<BasicWithProps />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
 
@@ -161,15 +177,17 @@ export const BasicWithProps = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<BasicWithProps />
-</div>
+</details>
 
 ### Allow Contents Overflow
 
 For the clean look and feel, the default behavior of the cell does not allow overflow of the content. But you can set them to allow overflow with one line. This is useful for debugging. (You know, content is hiding and have no idea where it is...)
 
+<div className='demo-container'>
+	<BasicWithPropsAllowingOverflow />
+</div>
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
@@ -197,16 +215,18 @@ export const BasicWithPropsAllowingOverflow = ({
 };
 
 ```
-
-<div className='demo-container'>
-	<BasicWithPropsAllowingOverflow />
-</div>
+</details>
 
 ### Control Overflow behavior individually
 
 You can make only some cell to overflow as well.
 This allow you to control the table look granually.
 
+<div className='demo-container'>
+	<BasicWithPropsAllowingOverflowOnlyOneCell />
+</div>
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { CellProps, TableProps } from '@shjeon0730/svg-table';
 
@@ -236,15 +256,19 @@ export const BasicWithPropsAllowingOverflowOnlyOneCell = ({
 };
 
 ```
+</details>
 
-<div className='demo-container'>
-	<BasicWithPropsAllowingOverflowOnlyOneCell />
-</div>
 
 ## Gaps between columns and rows
 
 You can easily add gaps between rows or columns.
 
+<div className='demo-container'>
+	<Gaps />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
@@ -274,16 +298,19 @@ export const Gaps = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<Gaps />
-</div>
+</details>
 
 ### Text Position Adjustment
 
 if your usecase is simply adjusting a little text position based from the center of the cell,
 you can use cx, cy
 
+<div className='demo-container'>
+	<TextPositionAdjustment />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
@@ -319,7 +346,4 @@ export const TextPositionAdjustment = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<TextPositionAdjustment />
-</div>
+</details>

@@ -14,6 +14,13 @@ import {
 
 you can remove all borders.
 
+<div className='demo-container'>
+	<NoBorderTableDemo />
+</div>
+
+<details>
+<summary>Code</summary>
+
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
@@ -36,16 +43,19 @@ export const NoBorderTableDemo = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<NoBorderTableDemo />
-</div>
+</details>
 
 ## table border
 
 You can wrap the table with border.
 This is useful when you want to wrap another element with a border line.
 
+<div className='demo-container'>
+	<OnlyTableBolder />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
@@ -67,14 +77,18 @@ export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<OnlyTableBolder />
-</div>
+</details>
 
 In this example, the table border is wrapping the content of the table.
 Imagine you have different sections as table cells and you have to wrap it once more.
 
+
+<div className='demo-container'>
+	<OnlyTableBolder />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
@@ -96,15 +110,19 @@ export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<OnlyTableBolder />
-</div>
+</details>
 
 ## Table border styles
 
 You can customize the shapes and colors of each border line.
 
+
+<div className='demo-container'>
+	<TableBorderStyles />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 const propsDefault: Omit<TableProps, 'width'> = {
@@ -170,16 +188,19 @@ export const TableBorderStyles = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<TableBorderStyles />
-</div>
+</details>
 
 ## Outbound Labels
 
 If you want to put labels outside of the table area, you might find it is very hard.
 You can add before and after items to make outbound labels easily.
 
+<div className='demo-container'>
+	<OutboundLabels />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
 
@@ -242,7 +263,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 						</text>
 					),
 					before: props => (
-						<>
+						<details>
 							<rect
 								x={0}
 								y={0}
@@ -306,10 +327,7 @@ export const OutboundLabels = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<OutboundLabels />
-</div>
+</details>
 
 ## Background and Text Color change
 
@@ -318,6 +336,13 @@ If you want to even more customize it, you can add some defs
 through props. In this example, You will see gradients.
 You can also change the text color simply.
 
+
+<div className='demo-container'>
+	<BgColorAndTextColor />
+</div>
+
+<details>
+<summary>Code</summary>
 ```typescript
 import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 const Gradients = () => {
@@ -376,7 +401,4 @@ export const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
 };
 
 ```
-
-<div className='demo-container'>
-	<BgColorAndTextColor />
-</div>
+</details>
