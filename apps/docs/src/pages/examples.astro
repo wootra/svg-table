@@ -2,11 +2,12 @@
 import ExampleLayout from "../layouts/ExampleLayout.astro";
 import {AllDemo} from '@repo/demo-components';
 const selected = '/examples';
+import {TITLE_TRANSITION} from '../components/consts';
 ---
 
 <ExampleLayout title="Welcome to SVG Title: Examples" selected={selected}>
 
-    <h1>Examples</h1>
+    <h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}>Examples</h1>
     <p>Thes examples are quick demo with its code. ( I used this page for validation of functionalities! ).
         </p>
         <p>Here is <a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components" target="_blank">all DEMO code</a></p>

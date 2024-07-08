@@ -1,13 +1,13 @@
 ---
 import Nav from './_VersionNav';
 import ScrollLayout from '../../../layouts/ScrollLayout.astro';
-
+import { TITLE_TRANSITION } from '../../../components/consts';
 const selected = '/api-ref';
 ---
 
 <ScrollLayout title='Welcome to SVG Title: Api' selected={selected}>
 
-	<h1>SVG Table Type Reference</h1>
+	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>SVG Table Type Reference</h1>
    
     <Nav client:only="react" />
     

@@ -2,11 +2,12 @@
 import ExampleLayout from "../../layouts/ExampleLayout.astro";
 import Basic from './(examples)/index.mdx';
 const selected = '/customizing-content'
+import {TITLE_TRANSITION} from '../../components/consts';
 ---
 
 <ExampleLayout title="Welcome to SVG Title: Customizing Contents" selected={selected}>
 
-    <h1>Customizing contents</h1>
+    <h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Customizing contents</h1>
     <p>SVG Table allows multiple ways of customization for the cell contents.</p>
 
     <div class="section">

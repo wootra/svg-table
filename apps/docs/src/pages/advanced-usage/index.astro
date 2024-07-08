@@ -2,10 +2,11 @@
 import ExampleLayout from '../../layouts/ExampleLayout.astro';
 import Advanced from './(examples)/index.mdx';
 const selected = '/advanced-usage'
+import {TITLE_TRANSITION} from '../../components/consts';
 ---
 
 <ExampleLayout title='Welcome to SVG Title: Advanced Usage' selected={selected}>
-	<h1>Advanced Usage</h1>
+	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Advanced Usage</h1>
 	<p>
 		SVGTable is not overly complex by nature. Its simiplicity allows
 		combining with multiple different SVGs, even SVGTable itself.

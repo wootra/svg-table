@@ -2,11 +2,12 @@
 import ExampleLayout from '../../layouts/ExampleLayout.astro';
 import Custom from './(examples)/index.mdx';
 const selected = "/custom-tables"
+import {TITLE_TRANSITION} from '../../components/consts';
 ---
 
 <ExampleLayout title='Welcome to SVG Title: Custom Cell Content' selected={selected}>
 
-	<h1>Customizing Tables</h1>
+	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Customizing Tables</h1>
 	<p>
 		SVG Table allows customizing table shapes such as borders and backgrounds.
 	</p>

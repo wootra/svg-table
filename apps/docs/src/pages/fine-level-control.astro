@@ -2,10 +2,11 @@
 import InteractiveLogo from '../components/InteractiveLogo.astro';
 import CenteredLayout from '../layouts/CenteredLayout.astro';
 const selected = '/fine-level-control';
+import {TITLE_TRANSITION} from '../components/consts';
 ---
 
 <CenteredLayout title='Welcome to SVG Table' selected={selected}>
-	<h1>Fine-level Control</h1>
+	<h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}>Fine-level Control</h1>
 	<p>SVG Table allows you to add className on the table or cells.</p>
 	<p>
 		(default behavior does not create class attributes to save file size.)

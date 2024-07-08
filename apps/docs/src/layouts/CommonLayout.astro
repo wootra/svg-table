@@ -26,16 +26,14 @@ const { title, selected } = Astro.props;
 		<TopNav />
 
         <SideNav selected={selected} />
-		<!-- <div class='container'> -->
-            <div class="main-wrapper">
-				<div class="perspective-wrapper">
-					<div class="grid-background"></div>
-				</div>
-                <div class='content-container'  transition:name="content">
-					<slot />
-                </div>
-            </div>
-		<!-- </div> -->
+		<div class="main-wrapper" transition:name="content-wrapper"  transition:animate="none">
+			<div class="perspective-wrapper" transition:name="backdrop" transition:animate="none">
+				<div class="grid-background"></div>
+			</div>
+			<div class='content-container' >
+				<slot />
+			</div>
+		</div>
 	</body>
 </html>
 <style is:global>

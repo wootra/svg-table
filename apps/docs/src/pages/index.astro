@@ -1,5 +1,5 @@
 ---
-import { LogoDemo } from '@repo/demo-components';
+import {TITLE_TRANSITION} from '../components/consts';
 import CenteredLayout from '../layouts/CenteredLayout.astro';
 import InteractiveLogo from '../components/InteractiveLogo.astro';
 const selected = '/';
@@ -8,8 +8,9 @@ const selected = '/';
 <CenteredLayout title='Welcome to SVG-Table' selected={selected}>
   <div class="center-content">
     <div class="feature-wrapper">
-    
+      <h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}></h1>
       <InteractiveLogo />
+    
 
       <section id='features' class='features '>
         <div class='feature'>

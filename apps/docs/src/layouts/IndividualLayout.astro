@@ -9,7 +9,5 @@ interface Props {
 const { title, selected } = Astro.props;
 ---
 <CommonLayout title={title} selected={selected}>
-	<!-- <main class='main-container'  transition:name="content"> -->
-		<slot />
-	<!-- </main> -->
+	<slot />
 </CommonLayout>
