@@ -1,4 +1,8 @@
 # CHANGELOG
+
+## 1.8.4
+- fix: path was not properly using css variables.
+
 ## 1.8.3
 - support CSS variable for the default color.
 - add INTERNAL_CSS_VARS object to inform the name of css variable
