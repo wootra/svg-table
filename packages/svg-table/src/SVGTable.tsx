@@ -11,7 +11,7 @@ import { ACell } from './ACell';
 import { calculateRows } from './calculateRows';
 import { getWid, simpleValue } from './utils';
 import FilledArea from './FilledArea';
-import { INTERNAL_CSS_VARS } from '.';
+import { INTERNAL_CSS_VARS } from './consts';
 
 const getTotalCells = (cells: CellProps[]) => {
 	return cells.reduce((total, cell) => {

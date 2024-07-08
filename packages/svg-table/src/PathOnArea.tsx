@@ -5,7 +5,7 @@ import type {
 	PatternShapes,
 	WidthPos,
 } from './types';
-import { getBorderShape, getColor, getDashArray, getWid } from './utils';
+import { getBorderShape, getStrokeColor, getDashArray, getWid } from './utils';
 
 const Path = ({
 	startPt,
@@ -33,7 +33,7 @@ const Path = ({
 			className={className ? `${pos}-path` : undefined} // left-path | right-path | top-path | bottom-path
 			d={`M${startPt} L${endPt}`}
 			strokeWidth={width}
-			stroke={getColor(borderColors, pos)}
+			stroke={getStrokeColor(borderColors, pos)}
 			strokeDasharray={getDashArray(borderPatterns, pos)}
 			strokeLinecap={getBorderShape(borderShapes, borderPatterns, pos)}
 		/>

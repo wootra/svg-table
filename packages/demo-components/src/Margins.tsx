@@ -19,7 +19,6 @@ export const Margins = ({ width = 500 }: { width?: number }) => {
 			colGaps: HORZ_GAP,
 			rowGaps: VERT_GAP,
 			borderWidths: 1,
-			borderColors: 'black',
 		},
 		defaultRowStyle: {
 			height: 30,

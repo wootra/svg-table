@@ -1,3 +1,4 @@
+import { INTERNAL_CSS_VARS } from './consts';
 import {
 	ColorsOnWidth,
 	PatternArrays,
@@ -58,7 +59,10 @@ export const getWid = (widths: Widths | undefined, pos: WidthPos) => {
 	return 0;
 };
 
-export const getColor = (colors: ColorsOnWidth | undefined, pos: WidthPos) => {
+export const getStrokeColor = (
+	colors: ColorsOnWidth | undefined,
+	pos: WidthPos
+) => {
 	if (!colors) return undefined;
 	if (typeof colors === 'string') return colors;
 	if (Array.isArray(colors)) {
@@ -70,7 +74,7 @@ export const getColor = (colors: ColorsOnWidth | undefined, pos: WidthPos) => {
 		colors,
 		' should be string or [string, string, string, string] or [string, string]'
 	);
-	return 'black';
+	return `var(${INTERNAL_CSS_VARS.borderLineColor}, #000)`;
 };
 
 export const isValidateArrayType = (
@@ -194,7 +198,8 @@ export const getRectStyle = (style: {
 	// when one of these
 	return {
 		...(bgColor ? { fill: bgColor } : {}),
-		stroke: borderColors as string,
+		stroke: (borderColors ??
+			`var(${INTERNAL_CSS_VARS.borderLineColor}, #000)`) as string,
 		strokeWidth: borderWidths as number,
 		strokeDasharray: getDashArray(borderPatterns, 'left'),
 	};
