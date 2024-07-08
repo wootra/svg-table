@@ -153,13 +153,14 @@ export const LogoDemo = ({
 			borderColors: '#989898',
 			borderWidths: 1,
 			borderPatterns: [4, 4],
-			allowOverflow: true,
 		};
 
 		const SVG: TableInCellProps = {
 			table: {
 				rowHeights: [1, 1, 1],
-				defaultCellStyle: wordTableCellStyle,
+				defaultCellStyle: {
+					...wordTableCellStyle,
+				},
 				columnWidths: [2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2], // make empty column smaller
 				rows: [
 					[oO, OO, TT, _, OO, ___, OO, _, oO, OO, OO],
