@@ -69,6 +69,15 @@ export const LogoDemo = ({
 			className: 'filled-cell-2',
 			content: Smile,
 		};
+		const FilledCellOverflow: CellProps = {
+			style: {
+				bgColor: '#f6fd36',
+				svgStyle: { pointerEvents: 'none' },
+				allowOverflow: true,
+			},
+			className: 'filled-cell-2',
+			content: Smile,
+		};
 		const EmptyCell: CellProps = { content: '' };
 		const TopFill: CellProps = {
 			className: 'top-fill',
@@ -136,7 +145,7 @@ export const LogoDemo = ({
 		const TO: CellProps = leftBottomEmpty;
 		const OT: CellProps = rightBottomEmpty;
 
-		const OOO: CellProps = FilledCell2;
+		const OOO: CellProps = FilledCellOverflow;
 		const O_O: CellProps = middleEmpty;
 		const ___: CellProps = EmptyCell;
 
@@ -144,6 +153,7 @@ export const LogoDemo = ({
 			borderColors: '#989898',
 			borderWidths: 1,
 			borderPatterns: [4, 4],
+			allowOverflow: true,
 		};
 
 		const SVG: TableInCellProps = {
@@ -180,6 +190,7 @@ export const LogoDemo = ({
 			},
 			defaultCellStyle: {
 				borderWidths: 0,
+				allowOverflow: true,
 			},
 			height: 300,
 			className,
