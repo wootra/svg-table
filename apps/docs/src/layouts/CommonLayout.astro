@@ -30,26 +30,17 @@ const titleToUse = `SVG Table - Flexible and accessible SVG Table: ${title}`;
 			twitter={{
 				creator: "@shjeon0730"
 			}}
+			
 			extend={{
-				// extending the default link tags
-				link: [{ rel: "icon", href: "/favicon.ico" }],
-				// extending the default meta tags
+				link: [{ rel: "icon", href: "/favicon.svg", type: 'image/svg+xml' }],
 				meta: [
-				{
-					name: "twitter:image",
-					content: "https://pbs.twimg.com/profile_images/1476995996861272065/EqenGrYg_400x400.jpg",
-				},
-				{ name: "twitter:title", content: "Tinker Tailor Soldier Spy" },
-				{ name: "twitter:description", content: "Agent" },
+					{ name: 'viewport', content: 'width=device-width' },
 				],
 			}}
 		/>
+		<!-- <meta name='viewport' content='width=device-width' /> -->
+		<!-- <link rel='icon' type='image/svg+xml' href='/favicon.svg' /> -->
 		<meta charset='UTF-8' />
-		<meta name='description' content='this is SVG-Table homepage. It provides examples, API references, and use cases as well as the links to the repository and npm page.' />
-		<meta name='viewport' content='width=device-width' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-		<meta name='generator' content={Astro.generator} />
-		<title>{title}</title>
 		<ViewTransitions />
 	</head>
 	<body>
