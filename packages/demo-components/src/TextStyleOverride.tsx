@@ -10,7 +10,7 @@ const textLeftTop = {
 const tableProps: Omit<TableProps, 'width'> = {
 	columnWidths: [100, 300, 200],
 	defaultCellStyle: {
-		textColor: '#ff0000',
+		textColor: '#ce6767',
 	},
 	rows: [
 		{
@@ -18,9 +18,9 @@ const tableProps: Omit<TableProps, 'width'> = {
 				{
 					content: 'Header 1',
 					style: {
-						bgColor: '#f0f0f0',
+						bgColor: '#ce6767',
 						paddings: [10, 4, 0, 0],
-						textColor: 'blue',
+						textColor: '#c6c6c6',
 						textStyle: {
 							textAnchor: 'middle',
 							dominantBaseline: 'auto',

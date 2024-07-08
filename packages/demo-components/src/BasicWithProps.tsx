@@ -3,9 +3,19 @@ import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
 // this props will have an extensive amount of attributes that you can use for customization
 const adjustedText: ContentAsFunc = props => {
 	return (
-		<text x={props.x + 10} y={props.y + 10}>
-			Adjusted Text
-		</text>
+		<g>
+			<rect
+				x={30}
+				y={0}
+				width={props.width - 60}
+				height={5}
+				fill='#4773bb'
+			/>
+
+			<text x={props.x} y={props.y + 5} {...props.textStyle}>
+				This is Added Element
+			</text>
+		</g>
 	);
 };
 

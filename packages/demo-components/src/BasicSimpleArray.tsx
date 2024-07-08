@@ -12,7 +12,8 @@ const tableProps: Omit<TableProps, 'width'> = {
 				'cell7',
 				{
 					style: {
-						bgColor: 'red',
+						bgColor: '#468cb7',
+						textColor: 'white',
 					},
 					content: 'content',
 				},

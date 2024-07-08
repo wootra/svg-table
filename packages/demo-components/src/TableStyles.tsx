@@ -27,7 +27,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 		rowGaps: 10,
 		colGaps: 10,
 		margins: [10, 10, 10, 10],
-		bgColor: 'lime',
+		bgColor: '#043404',
 		borderWidths: [2, 2, 2, 2],
 		borderColors: ['red', 'green', 'blue', 'purple'],
 		borderPatterns: [
@@ -50,7 +50,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 						<g
 							transform={`translate(${props.x - 40}, ${props.y - 16}) scale(2)`}
 						>
-							<ImBug fill='red' color='yellow' />
+							<ImBug fill='#0d7484' color='yellow' />
 						</g>
 					),
 					content: 'Row1, Cell1',

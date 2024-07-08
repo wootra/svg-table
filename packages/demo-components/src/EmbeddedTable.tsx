@@ -10,7 +10,6 @@ const tableProps: TableProps = {
 	columnWidths: [1, 1, 1], // this is just ratio.
 	width: 900,
 	defaultRowStyle: {
-		bgColor: 'yellow',
 		height: 120,
 	},
 	className: 'embedded-standalone',

@@ -77,19 +77,19 @@ const tableProps: Omit<TableProps, 'width'> = {
 			cells: ['Header 1', 'Header 2', 'Header3'],
 		},
 		[
-			embeddedTableProps('red', 2),
-			embeddedTableProps('blue', 3),
-			embeddedTableProps('green', 4),
+			embeddedTableProps('#5f1010', 2),
+			embeddedTableProps('#111150', 3),
+			embeddedTableProps('#0b310b', 4),
 		],
 		[
-			embeddedTableProps('pink', 3),
+			embeddedTableProps('#836268', 3),
 			{
-				...embeddedTableProps('cyan', 4),
+				...embeddedTableProps('#275454', 4),
 				rowSpan: 2,
 			},
-			embeddedTableProps('lime', 2),
+			embeddedTableProps('#475c56', 2),
 		],
-		[embeddedTableProps('magenta', 3), embeddedTableProps('#296541', 1)],
+		[embeddedTableProps('#550255', 3), embeddedTableProps('#296541', 1)],
 	],
 };
 

@@ -1,11 +1,25 @@
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
+import SVGTable, { TableProps, ContentProps } from '@shjeon0730/svg-table';
 
-const Rect = () => {
+const Rect = (props: ContentProps) => {
 	return (
 		<g>
-			<rect x={10} y={5} width={100} height={15} fill='cyan' />
-			<text x={10} y={15}>
-				hi
+			<rect
+				x={props.width - 50}
+				y={0}
+				width={50}
+				height={props.height}
+				fill='#4773bb'
+			/>
+			<rect x={0} y={0} width={50} height={props.height} fill='#a75252' />
+			<rect
+				x={props.x - 25}
+				y={0}
+				width={50}
+				height={props.height}
+				fill='#4a7e2e'
+			/>
+			<text x={props.x} y={props.y} {...props.textStyle}>
+				This is Added Element
 			</text>
 		</g>
 	);
@@ -14,7 +28,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 	rows: [
 		['Header 1', 'Header 2', 'Header3'],
 		[
-			{ content: <Rect /> },
+			{ content: Rect },
 			{ content: 'Row Span', rowSpan: 2 },
 			'Row 1, Cell 3',
 		],

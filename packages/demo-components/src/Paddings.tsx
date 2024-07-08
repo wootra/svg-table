@@ -2,10 +2,10 @@ import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 const NESTED_TABLE = {
 	table: {
 		style: {
-			bgColor: 'yellow',
+			bgColor: '#e8e8ad',
 			rowGaps: 5,
-			borderColors: 'red',
-			borderWidths: 1,
+			borderColors: '#ad0000',
+			borderWidths: 3,
 			margins: 10,
 		},
 		rows: [
@@ -18,8 +18,8 @@ const NESTED_TABLE = {
 const tableProps: Omit<TableProps, 'width'> = {
 	height: 500,
 	style: {
-		colGaps: 4,
-		rowGaps: 10,
+		colGaps: 10,
+		rowGaps: 20,
 	},
 	rows: [
 		[

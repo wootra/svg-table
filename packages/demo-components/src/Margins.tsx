@@ -24,9 +24,9 @@ export const Margins = ({ width = 500 }: { width?: number }) => {
 			height: 30,
 		},
 		rows: [
-			[rectCell(HALF, 'red'), rectCell(HALF, 'blue')],
-			[rectCell(HALF, 'pink'), rectCell(HALF, 'cyan')],
-			[rectCell(HALF, 'orange'), rectCell(HALF, 'green')],
+			[rectCell(HALF, '#a76767'), rectCell(HALF, '#59597c')],
+			[rectCell(HALF, '#675558'), rectCell(HALF, '#3e5656')],
+			[rectCell(HALF, '#766850'), rectCell(HALF, '#304830')],
 		],
 	};
 	return <SVGTable {...tableProps} width={width} />;
