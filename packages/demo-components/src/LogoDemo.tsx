@@ -75,7 +75,7 @@ export const LogoDemo = ({
 				svgStyle: { pointerEvents: 'none' },
 				allowOverflow: true,
 			},
-			className: 'filled-cell-2',
+			className: 'filled-cell-overflow',
 			content: Smile,
 		};
 		const EmptyCell: CellProps = { content: '' };
