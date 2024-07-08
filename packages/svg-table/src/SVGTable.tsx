@@ -185,6 +185,7 @@ export const SVGTable: React.FC<TableProps> = tableProps => {
 		return (
 			<g
 				key={rowIndex}
+				role='row'
 				className={
 					className ? `${className}-row-${rowIndex}` : undefined
 				}
@@ -226,6 +227,7 @@ export const SVGTable: React.FC<TableProps> = tableProps => {
 				borderShapes={tableStyle.borderShapes}
 			/>
 			<g
+				role='table'
 				className={className ? `${className}-content-area` : undefined}
 				transform={`translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`}
 			>

@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.8.5
+- make the table accessible by adding role=table, row, cell, aria-colspan, aria-rowspan
+- 
 ## 1.8.4
 - fix: path was not properly using css variables.
 

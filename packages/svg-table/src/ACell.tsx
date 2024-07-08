@@ -176,6 +176,18 @@ export const ACell = ({
 			</text>
 		);
 	};
+	const ariaProps = JSON.parse(
+		JSON.stringify({
+			'aria-colspan':
+				cellOpt.colSpan && cellOpt.colSpan > 1
+					? cellOpt.colSpan
+					: undefined,
+			'aria-rowspan':
+				cellOpt.rowSpan && cellOpt.rowSpan > 1
+					? cellOpt.rowSpan
+					: undefined,
+		})
+	);
 
 	return (
 		<g
@@ -202,6 +214,8 @@ export const ACell = ({
 				<g
 					transform={`translate(${padLeft}, ${padTop})`}
 					className={className ? `${className}-padding` : undefined}
+					role='cell'
+					{...ariaProps}
 				>
 					{before && typeof beforeToUse === 'string'
 						? renderTextOnly(
