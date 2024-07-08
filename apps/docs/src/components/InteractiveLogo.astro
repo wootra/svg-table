@@ -1,0 +1,83 @@
+---
+import { LogoDemo } from '@repo/demo-components';
+---
+
+<div class='logo-holder'>
+    <LogoDemo width={640} />
+</div>
+<style is:global>
+	.logo-holder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: max-content;
+		margin-block: 2rem;
+		padding-block: 2rem;
+	}
+	svg,
+	svg * {
+		transition: all 200ms linear;
+		cursor: pointer;
+	}
+	.left-top-empty-wrapper:hover .left-top-empty-content > g {
+		scale: 1.2;
+		translate: 15px 12px;
+	}
+	.right-top-empty-wrapper:hover .right-top-empty-content > g {
+		translate: -15px 10px;
+		rotate: 15deg;
+	}
+
+	.right-bottom-empty-wrapper:hover .right-bottom-empty-padding {
+		translate: 0 -30px;
+	}
+	.left-bottom-empty-wrapper:hover .left-bottom-empty-content > g {
+		translate: 30px 0;
+	}
+	.bottom-fill-wrapper:hover .bottom-fill-content > g {
+		translate: 0 15px;
+	}
+	.top-fill-wrapper:hover .top-fill-content > g {
+		translate: 0 -15px;
+	}
+
+	.middle-empty-wrapper:hover .middle-empty-content > g {
+		rotate: 180deg;
+	}
+
+	.middle-fill-wrapper:hover .middle-fill-content > g {
+		rotate: 180deg;
+	}
+	@keyframes color-change {
+		0% {
+			fill: #cee9d0;
+		}
+		50% {
+			fill: #00ff00;
+		}
+		100% {
+			fill: #cee9d0;
+		}
+	}
+
+	@keyframes text-pulse {
+		0% {
+			font-size: 14px;
+		}
+		50% {
+			font-size: 20px;
+			fill: white;
+		}
+		100% {
+			font-size: 14px;
+		}
+	}
+
+	.filled-cell-1-wrapper:hover rect {
+		animation: color-change 2s linear infinite;
+	}
+
+	.filled-cell-wrapper:hover .filled-cell-content text {
+		animation: text-pulse 0.5s linear infinite;
+	}
+</style>

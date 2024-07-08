@@ -1,6 +1,7 @@
 ---
 import { LogoDemo } from '@repo/demo-components';
 import CenteredLayout from '../layouts/CenteredLayout.astro';
+import InteractiveLogo from '../components/InteractiveLogo.astro';
 const selected = '/';
 ---
 
@@ -8,9 +9,7 @@ const selected = '/';
   <div class="center-content">
     <div class="feature-wrapper">
     
-      <div class="logo-holder">
-        <LogoDemo width={640} bgColor={null}/>
-      </div>
+      <InteractiveLogo />
 
       <section id='features' class='features '>
         <div class='feature'>
@@ -50,13 +49,6 @@ const selected = '/';
 
 <style>
 
-  .logo-holder {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: max-content;
-		margin-bottom: 4rem;
-	}
 
   .feature-wrapper {
     position: relative;
