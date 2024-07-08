@@ -213,13 +213,13 @@ export const ACell = ({
 							)
 						: beforeToUse}
 					<g
-						transform={`translate(${width / 2 + cx},${height / 2 + cy})`}
+						transform={`translate(${simpleValue(width / 2 + cx)},${simpleValue(height / 2 + cy)})`}
 						className={
 							className ? `${className}-content` : undefined
 						}
 					>
 						<g
-							transform={`translate(-${width / 2 + cx},-${height / 2 + cy})`}
+							transform={`translate(-${simpleValue(width / 2 + cx)},-${simpleValue(height / 2 + cy)})`}
 						>
 							{typeof contentTouse === 'string'
 								? renderTextOnly(

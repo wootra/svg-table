@@ -5,9 +5,25 @@ import SVGTable, {
 	RowProps,
 	CellStyle,
 	ContentAsFunc,
+	simpleValue,
 } from '@shjeon0730/svg-table';
 import { useMemo } from 'react';
 import { FaSmile } from 'react-icons/fa';
+
+const Smile: ContentAsFunc = props => {
+	return (
+		<g
+			transform={`translate(${simpleValue(props.x - props.width / 2)},${simpleValue(props.y - props.width / 2)})`}
+			style={{
+				fontSize: simpleValue(props.width * 0.95),
+				color: '#ff7556a9',
+			}}
+		>
+			<FaSmile />
+		</g>
+	);
+};
+
 const DEFAULT_BG = '#23272f';
 export const LogoDemo = ({
 	width = 500,
@@ -36,16 +52,6 @@ export const LogoDemo = ({
 					},
 				},
 			};
-		};
-		const Smile: ContentAsFunc = props => {
-			return (
-				<g
-					transform={`translate(${props.x - props.width / 2},${props.y - props.width / 2})`}
-					style={{ fontSize: props.width * 0.95, color: '#ff7556a9' }}
-				>
-					<FaSmile />
-				</g>
-			);
 		};
 
 		const FilledCell: CellProps = {

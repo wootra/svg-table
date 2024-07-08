@@ -1,5 +1,6 @@
 ---
 import { LogoDemo } from '@repo/demo-components';
+
 ---
 
 <div class='logo-holder'>
@@ -80,4 +81,10 @@ import { LogoDemo } from '@repo/demo-components';
 	.filled-cell-wrapper:hover .filled-cell-content text {
 		animation: text-pulse 0.5s linear infinite;
 	}
+
+    .filled-cell-overflow-wrapper:hover .filled-cell-overflow-content > g {
+		scale: 2;
+        z-index: 99;
+	}
+
 </style>
