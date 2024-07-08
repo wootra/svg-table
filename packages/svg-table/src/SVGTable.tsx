@@ -11,6 +11,7 @@ import { ACell } from './ACell';
 import { calculateRows } from './calculateRows';
 import { getWid, simpleValue } from './utils';
 import FilledArea from './FilledArea';
+import { INTERNAL_CSS_VARS } from '.';
 
 const getTotalCells = (cells: CellProps[]) => {
 	return cells.reduce((total, cell) => {
@@ -29,7 +30,9 @@ const parsedTableStyle = (style?: Partial<TableStyle>): TableStyle => {
 		borderWidths: undefined,
 		borderPatterns: undefined,
 		borderShapes: undefined,
-		borderColors: style?.borderWidths ? '#000' : undefined,
+		borderColors: style?.borderWidths
+			? `var(${INTERNAL_CSS_VARS.borderLineColor}, #000)`
+			: undefined,
 		svgStyle: { overflow: 'visible' },
 		...style,
 		margins: style?.margins ?? 0,
@@ -42,11 +45,11 @@ const parseDefaultCellStyle = (
 	return {
 		allowOverflow: false,
 		borderWidths: 1,
-		borderColors: '#000',
+		borderColors: `var(${INTERNAL_CSS_VARS.borderLineColor}, #000)`,
 		borderPatterns: undefined,
 		borderShapes: undefined,
 		paddings: [1, 1, 1, 1],
-		textColor: '#000',
+		textColor: `var(${INTERNAL_CSS_VARS.textColor}, #000)`,
 		...defaultCellStyle,
 	};
 };

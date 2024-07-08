@@ -19,8 +19,11 @@ const { title, selected } = Astro.props;
         --color-accent: #e5d663;
 		--color-background: #23272f;
 		--color-text: #f6f7f9;
-		--color-text-in-example: #23272f;
+		--color-text-in-example: #a7a7a7;
+		--line-default-stroke:  #a7a7a7;
+		--text-default-color:  #a7a7a7;
 		--color-code-background: #292d3e;
+		--label-background:  #292d3e;
 		--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 			Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
 			'Segoe UI Symbol';
@@ -63,10 +66,10 @@ const { title, selected } = Astro.props;
 	p > code {
 		font-family: var(--font-mono);
 		font-size: 0.9rem;
-		background: rgb(229, 229, 230);
+		background: var(--color-code-background);
 		padding: 0.2rem 0.4rem;
 		border-radius: 4px;
-		border: 1px solid rgb(198, 198, 198);
+		border: 1px solid var(--text-default-color);
 		font-style: italic;
 	}
 
@@ -116,7 +119,7 @@ const { title, selected } = Astro.props;
 	}
 
 	.example-container {
-		background-color: white;
+		
 		border-radius: 8px;
 		padding: 1rem;
 		margin-bottom: 1.5rem;
@@ -128,7 +131,8 @@ const { title, selected } = Astro.props;
 	}
 
 	.demo-container {
-		background-color: #ffffff;
+		background-color: var(--color-code-background);
+		
 		border-radius: 8px;
 		padding: 1rem;
 		margin-bottom: 1.5rem;
@@ -153,6 +157,8 @@ const { title, selected } = Astro.props;
 
 	.section {
 		margin-bottom: 2rem;
+		color: var(--color-text-in-example);
+		fill: var(--color-text-in-example);
 	}
 
 	summary {

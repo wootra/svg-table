@@ -1,4 +1,7 @@
 # CHANGELOG
+## 1.8.3
+- support CSS variable for the default color.
+- add INTERNAL_CSS_VARS object to inform the name of css variable
 
 ## 1.8.2
 - allow last column to span rest of the columns
