@@ -105,6 +105,7 @@ export type CellStyle = {
 	 * Optional styling for rotate center of the cell. It will apply attribute on center of the text.
 	 * for example, you can rotate the text or cell element based on the center of the cell.
 	 */
+	// eslint-disable-next-line no-unused-vars
 	rotateCenterProps?: GroupStyle | ((props: GroupProps) => GroupStyle);
 
 	/**
