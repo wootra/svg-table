@@ -25,6 +25,8 @@ import { Paddings } from './Paddings';
 import { LogoDemo } from './LogoDemo';
 import { Standalone } from './Standalone';
 import { AutoColSpan } from './AutoColSpan';
+import { Rotate } from './Rotate';
+
 export const AllDemo = ({
 	width,
 	useClassName = false,
@@ -157,6 +159,21 @@ export const AllDemo = ({
 					</a>
 				</h2>
 				<BasicWithProps width={width} />
+			</section>
+
+			<section>
+				<h2>
+					Rotate Text
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/Rotate.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<Rotate width={width} />
 			</section>
 
 			<section>

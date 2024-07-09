@@ -11,6 +11,15 @@ import type {
 import { getWid, simpleValue } from './utils';
 import FilledArea from './FilledArea';
 import { SVGTable } from './SVGTable';
+import { CenteredCellContent } from './CenteredCellContent';
+
+type TextAnchor = 'middle' | 'start' | 'end';
+
+const moveToLeftTop = (width: number, height: number, content: ReactNode) => {
+	return (
+		<g transform={`translate(${-width / 2}, ${-height / 2})`}>{content}</g>
+	);
+};
 
 const convertToTableIfNeeded = (
 	contentTouse: ReactNode | TableInCellProps,
@@ -47,48 +56,85 @@ const convertToTableIfNeeded = (
 	return contentTouse as ReactNode;
 };
 
-type TextAnchor = 'middle' | 'start' | 'end';
+const renderTextOnly = (
+	contentToRender: string,
+	startX: number,
+	startY: number,
+	textAnchor: TextAnchor,
+	styleToApply: TextStyle = {}
+) => {
+	const lines = contentToRender.split('\n');
+	let textToRender: ReactNode = contentToRender;
+	if (lines.length > 1) {
+		const fontSize = (styleToApply.fontSize as number) || 16;
+		textToRender = lines
+			.filter(v => v)
+			.map((line, index) => (
+				<tspan key={index} x={startX} dy={index === 0 ? 0 : fontSize}>
+					{line}
+				</tspan>
+			));
+		startY = startY - ((lines.length - 1) * simpleValue(fontSize)) / 2;
+	}
 
-export const ACell = ({
-	cellOpt,
-	defaultStyle,
-}: {
-	cellOpt: CalculatedCellProps;
-	defaultStyle: CellStyle;
-}) => {
-	if (cellOpt._ignored) return null;
+	return (
+		<text
+			x={simpleValue(startX)}
+			y={simpleValue(startY)}
+			textAnchor={textAnchor}
+			dominantBaseline='middle'
+			{...styleToApply}
+		>
+			{textToRender}
+		</text>
+	);
+};
 
-	const { content, x, y, width, height, style, before, after, className } =
-		cellOpt;
-
-	const styleToUse = {
-		...defaultStyle,
-		...style,
+const styleWithFill = (
+	style: TextStyle | undefined,
+	color: string
+): TextStyle => {
+	return {
+		fill: color,
+		...style, // style will override
 	};
+};
 
-	const {
-		bgColor,
-		borderWidths,
-		borderColors,
-		borderPatterns,
-		borderShapes,
+const getAriaProps = (cellOpt: CalculatedCellProps & { _ignored: false }) => {
+	return JSON.parse(
+		JSON.stringify({
+			'aria-colspan':
+				cellOpt.colSpan && cellOpt.colSpan > 1
+					? cellOpt.colSpan
+					: undefined,
+			'aria-rowspan':
+				cellOpt.rowSpan && cellOpt.rowSpan > 1
+					? cellOpt.rowSpan
+					: undefined,
+		})
+	);
+};
+
+const getContents = (
+	cellOpt: CalculatedCellProps & { _ignored: false },
+	styleToUse: CellStyle
+) => {
+	const { content, width, height, before, after } = cellOpt;
+
+	let {
 		paddings,
-		svgStyle,
 		textColor,
 		textStyle,
 		beforeTextStyle,
 		afterTextStyle,
-		allowOverflow,
 		cx = 0,
 		cy = 0,
 	} = styleToUse;
-	const padLeft = getWid(paddings, 'left');
-	const padTop = getWid(paddings, 'top');
 
-	const svgStyleToUse = {
-		...svgStyle,
-		...(allowOverflow ? { overflow: 'visible' } : {}),
-	};
+	// update styles with textColor only when fill is not given.
+	textStyle = styleWithFill(textStyle, textColor);
+	beforeTextStyle = styleWithFill(beforeTextStyle, textColor);
+	afterTextStyle = styleWithFill(afterTextStyle, textColor);
 
 	const propsToPass = (
 		textStyleToUse: TextStyle | undefined,
@@ -107,18 +153,34 @@ export const ACell = ({
 			...textStyleToUse,
 		},
 	});
-	// execute it if contents are callback function.
-	let contentTouse =
-		typeof content === 'function'
-			? content(
-					propsToPass(
-						textStyle,
-						'middle',
-						width / 2 + cx,
-						height / 2 + cy
-					)
+	const getContent = () => {
+		if (typeof content === 'function') {
+			let node = content(
+				propsToPass(
+					textStyle,
+					'middle',
+					width / 2 + cx,
+					height / 2 + cy
 				)
-			: content;
+			);
+			return node;
+		} else if (typeof content === 'object') {
+			const node = convertToTableIfNeeded(
+				content,
+				width,
+				height,
+				paddings,
+				cellOpt
+			);
+
+			return node;
+		} else {
+			return content;
+		}
+	};
+
+	const contentToUse = getContent();
+
 	let beforeToUse =
 		typeof before === 'function'
 			? before(propsToPass(beforeTextStyle, 'start', 0, height / 2))
@@ -128,65 +190,96 @@ export const ACell = ({
 			? after(propsToPass(afterTextStyle, 'end', width, height / 2))
 			: after;
 
-	if (typeof contentTouse === 'object') {
-		contentTouse = convertToTableIfNeeded(
-			contentTouse,
-			width,
-			height,
-			paddings,
-			cellOpt
-		);
-	}
+	const beforeContent =
+		before && typeof beforeToUse === 'string'
+			? renderTextOnly(
+					beforeToUse,
+					0,
+					height / 2,
+					'start',
+					beforeTextStyle
+				)
+			: beforeToUse;
 
-	const renderTextOnly = (
-		contentToRender: string,
-		startX: number,
-		startY: number,
-		textAnchor: TextAnchor,
-		styleToApply: TextStyle = {}
-	) => {
-		const lines = contentToRender.split('\n');
-		let textToRender: ReactNode = contentToRender;
-		if (lines.length > 1) {
-			const fontSize = (styleToApply.fontSize as number) || 16;
-			textToRender = lines
-				.filter(v => v)
-				.map((line, index) => (
-					<tspan
-						key={index}
-						x={startX}
-						dy={index === 0 ? 0 : fontSize}
-					>
-						{line}
-					</tspan>
-				));
-			startY = startY - ((lines.length - 1) * simpleValue(fontSize)) / 2;
-		}
+	const afterContent =
+		afterToUse && typeof afterToUse === 'string'
+			? renderTextOnly(
+					afterToUse,
+					width,
+					height / 2,
+					'end',
+					afterTextStyle
+				)
+			: afterToUse;
 
-		return (
-			<text
-				x={simpleValue(startX)}
-				y={simpleValue(startY)}
-				textAnchor={textAnchor}
-				dominantBaseline='middle'
-				fill={textColor}
-				{...styleToApply}
-			>
-				{textToRender}
-			</text>
-		);
+	const mainContent =
+		typeof contentToUse === 'string'
+			? renderTextOnly(contentToUse, cx, cy, 'middle', textStyle)
+			: moveToLeftTop(width, height, contentToUse);
+
+	return {
+		beforeContent,
+		afterContent,
+		mainContent,
 	};
-	const ariaProps = JSON.parse(
-		JSON.stringify({
-			'aria-colspan':
-				cellOpt.colSpan && cellOpt.colSpan > 1
-					? cellOpt.colSpan
-					: undefined,
-			'aria-rowspan':
-				cellOpt.rowSpan && cellOpt.rowSpan > 1
-					? cellOpt.rowSpan
-					: undefined,
-		})
+};
+
+const FilledAreaInCell = ({
+	cellOpt,
+	styleToUse,
+}: {
+	cellOpt: CalculatedCellProps & { _ignored: false };
+	styleToUse: CellStyle;
+}) => {
+	const { width, height, className } = cellOpt;
+
+	let { bgColor, borderWidths, borderColors, borderPatterns, borderShapes } =
+		styleToUse;
+
+	return (
+		<FilledArea
+			className={className ? `${className}-filled-back` : undefined}
+			width={width}
+			height={height}
+			borderWidths={borderWidths}
+			borderColors={borderColors}
+			borderPatterns={borderPatterns}
+			borderShapes={borderShapes}
+			{...(bgColor ? { bgColor } : {})}
+		/>
+	);
+};
+
+export const ACell = ({
+	cellOpt,
+	defaultStyle,
+}: {
+	cellOpt: CalculatedCellProps;
+	defaultStyle: CellStyle;
+}) => {
+	if (cellOpt._ignored) return null;
+
+	const { x, y, width, height, style, className } = cellOpt;
+
+	const styleToUse = {
+		...defaultStyle,
+		...style,
+	};
+
+	let { paddings, svgStyle, allowOverflow } = styleToUse;
+	const padLeft = getWid(paddings, 'left');
+	const padTop = getWid(paddings, 'top');
+
+	const svgStyleToUse = {
+		...svgStyle,
+		...(allowOverflow ? { overflow: 'visible' } : {}),
+	};
+
+	const ariaProps = getAriaProps(cellOpt);
+
+	const { beforeContent, afterContent, mainContent } = getContents(
+		cellOpt,
+		styleToUse
 	);
 
 	return (
@@ -194,16 +287,7 @@ export const ACell = ({
 			transform={`translate(${x}, ${y})`}
 			className={className ? `${className}-wrapper` : undefined}
 		>
-			<FilledArea
-				className={className ? `${className}-filled-back` : undefined}
-				width={width}
-				height={height}
-				borderWidths={borderWidths}
-				borderColors={borderColors}
-				borderPatterns={borderPatterns}
-				borderShapes={borderShapes}
-				{...(bgColor ? { bgColor } : {})}
-			/>
+			<FilledAreaInCell cellOpt={cellOpt} styleToUse={styleToUse} />
 			<svg
 				width={width}
 				height={Math.max(height, 1)}
@@ -217,45 +301,14 @@ export const ACell = ({
 					role='cell'
 					{...ariaProps}
 				>
-					{before && typeof beforeToUse === 'string'
-						? renderTextOnly(
-								beforeToUse,
-								0,
-								height / 2,
-								'start',
-								beforeTextStyle
-							)
-						: beforeToUse}
-					<g
-						transform={`translate(${simpleValue(width / 2 + cx)},${simpleValue(height / 2 + cy)})`}
-						className={
-							className ? `${className}-content` : undefined
-						}
+					{beforeContent}
+					<CenteredCellContent
+						cellOpt={cellOpt}
+						styleToUse={styleToUse}
 					>
-						<g
-							transform={`translate(-${simpleValue(width / 2 + cx)},-${simpleValue(height / 2 + cy)})`}
-						>
-							{typeof contentTouse === 'string'
-								? renderTextOnly(
-										contentTouse,
-										width / 2 + cx,
-										height / 2 + cy,
-										'middle',
-										textStyle
-									)
-								: contentTouse}
-						</g>
-					</g>
-
-					{afterToUse && typeof afterToUse === 'string'
-						? renderTextOnly(
-								afterToUse,
-								width,
-								height / 2,
-								'end',
-								afterTextStyle
-							)
-						: afterToUse}
+						{mainContent}
+					</CenteredCellContent>
+					{afterContent}
 				</g>
 			</svg>
 		</g>

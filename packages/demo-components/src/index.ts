@@ -23,4 +23,5 @@ export * from './BasicWithElement';
 export * from './BasicWithPropsAllowingOverflow';
 export * from './BasicWithPropsAllowingOverflowOnlyOneCell';
 export * from './OutboundLabels';
+export * from './Rotate';
 export * from './AllDemo';

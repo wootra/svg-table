@@ -65,6 +65,8 @@ export type TextVAlign = 'top' | 'center' | 'bottom';
  */
 export type TextStyle = SVGAttributes<SVGTextElement>;
 
+export type GroupStyle = SVGAttributes<SVGGElement>;
+
 /**
  * Style properties for table cells, including background color, padding, and text styling.
  */
@@ -100,6 +102,12 @@ export type CellStyle = {
 	 */
 	afterTextStyle?: TextStyle;
 	/**
+	 * Optional styling for rotate center of the cell. It will apply attribute on center of the text.
+	 * for example, you can rotate the text or cell element based on the center of the cell.
+	 */
+	rotateCenterProps?: GroupStyle | ((props: GroupProps) => GroupStyle);
+
+	/**
 	 * if you want to adjust the horizontal position of the text based on the center position, use this.
 	 */
 	cx?: number;
@@ -121,6 +129,13 @@ export type ContentProps = {
 	height: number;
 	textColor: string;
 	textStyle: TextStyle;
+};
+
+export type GroupProps = {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
 };
 
 // eslint-disable-next-line no-unused-vars
