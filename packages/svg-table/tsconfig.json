@@ -13,6 +13,9 @@
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true
 	},
+	"paths": {
+		"tslib": ["node_modules/tslib/tslib.d.ts"]
+	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist", "out", "eslintrc.js", "**/*.mjs"]
 }

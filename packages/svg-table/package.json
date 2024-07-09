@@ -46,6 +46,7 @@
 		"rollup": "^4.18.0",
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"tslib": "^2.6.3",
 		"typescript": "^5.4.5"
 	},
 	"peerDependencies": {
