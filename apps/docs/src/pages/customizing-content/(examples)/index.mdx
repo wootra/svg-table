@@ -239,7 +239,12 @@ import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
 const getOutBoundLabelOnTop: ContentAsFunc = props => {
 	// white-bg is given to defs property.
 	return (
-		<text x={props.x} y={0} {...props.textStyle} filter='url(#white-bg)'>
+		<text
+			x={props.x}
+			y={props.y - props.height / 2}
+			{...props.textStyle}
+			filter='url(#white-bg)'
+		>
 			TOP LABEL
 		</text>
 	);
@@ -262,7 +267,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 	defs: (
 		<>
 			<filter x='-0.1' y='0' width='1.2' height='1' id='white-bg'>
-				<feFlood floodColor='#FFFFFF' />
+				<feFlood floodColor='var(--label-background, #fff)' />
 				<feComposite in='SourceGraphic' operator='over' />
 			</filter>
 			<filter x='-0.1' y='0' width='1.2' height='1' id='red-bg'>
@@ -284,29 +289,29 @@ const tableProps: Omit<TableProps, 'width'> = {
 					content: getOutBoundLabelOnTop,
 					after: props => (
 						<text
-							x={props.width}
+							{...props.textStyle}
 							y={props.height / 2}
+							x={props.width}
 							textAnchor='end'
 							fill='yellow'
-							{...props.textStyle}
 						>
 							After
 						</text>
 					),
 					before: props => (
-						<details>
+						<>
 							<rect
 								x={0}
 								y={0}
-								width={props.width}
+								width={props.width / 2}
 								height={props.height}
 								fill='#ff6666'
 							/>
 							<text
+								{...props.textStyle}
 								x={0}
 								y={props.height / 2}
 								fill='white'
-								{...props.textStyle}
 							>
 								Before
 							</text>
@@ -318,20 +323,24 @@ const tableProps: Omit<TableProps, 'width'> = {
 						allowOverflow: true,
 						textStyle: {
 							// another way of outbounding label
-							y: 0,
+							y: -15,
 							filter: 'url(#white-bg)',
-						},
-						beforeTextStyle: {
-							filter: 'url(#red-bg)',
-							fill: 'yellow',
-						},
-						afterTextStyle: {
-							fill: 'green',
 						},
 					},
 					content: 'Header 2',
-					after: 'After Header 2', // this will not affected by textStyle
-					before: 'Before Header 2',
+					after: {
+						content: 'After Header 2',
+						textStyle: {
+							fill: 'green',
+						},
+					}, // this will not affected by textStyle
+					before: {
+						content: 'Before Header 2',
+						textStyle: {
+							filter: 'url(#red-bg)',
+							fill: 'yellow',
+						},
+					},
 					colSpan: 2,
 				},
 			],
@@ -356,6 +365,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 export const OutboundLabels = ({ width = 500 }: { width?: number }) => {
 	return <SVGTable {...tableProps} width={width} />;
 };
+
 
 ```
 </details>
