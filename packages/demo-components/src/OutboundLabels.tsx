@@ -91,17 +91,21 @@ const tableProps: Omit<TableProps, 'width'> = {
 							y: -15,
 							filter: 'url(#white-bg)',
 						},
-						beforeTextStyle: {
+					},
+					content: 'Header 2',
+					after: {
+						content: 'After Header 2',
+						textStyle: {
+							fill: 'green',
+						},
+					}, // this will not affected by textStyle
+					before: {
+						content: 'Before Header 2',
+						textStyle: {
 							filter: 'url(#red-bg)',
 							fill: 'yellow',
 						},
-						afterTextStyle: {
-							fill: 'green',
-						},
 					},
-					content: 'Header 2',
-					after: 'After Header 2', // this will not affected by textStyle
-					before: 'Before Header 2',
 					colSpan: 2,
 				},
 			],

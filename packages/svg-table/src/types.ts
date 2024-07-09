@@ -65,6 +65,7 @@ export type TextVAlign = 'top' | 'center' | 'bottom';
  */
 export type TextStyle = SVGAttributes<SVGTextElement>;
 
+/** Style properties for SVG g element */
 export type GroupStyle = SVGAttributes<SVGGElement>;
 
 /**
@@ -94,14 +95,6 @@ export type CellStyle = {
 	 */
 	textStyle?: TextStyle;
 	/**
-	 * Optional styling for the before element. It works only when before is text.
-	 */
-	beforeTextStyle?: TextStyle;
-	/**
-	 * Optional styling for the after element. It works only when after is text.
-	 */
-	afterTextStyle?: TextStyle;
-	/**
 	 * Optional styling for rotate center of the cell. It will apply attribute on center of the text.
 	 * for example, you can rotate the text or cell element based on the center of the cell.
 	 */
@@ -124,18 +117,48 @@ export type CellStyle = {
 } & Partial<BorderStyles>;
 
 export type ContentProps = {
+	/**
+	 * drawing x position of the content.
+	 */
 	x: number;
+	/**
+	 * drawing y position of the content.
+	 */
 	y: number;
+	/**
+	 * width of the cell.
+	 */
 	width: number;
+	/**
+	 * height of the cell.
+	 */
 	height: number;
+	/**
+	 * fill color of the text element
+	 */
 	textColor: string;
+	/**
+	 * style attribute on text element
+	 */
 	textStyle: TextStyle;
 };
 
 export type GroupProps = {
+	/**
+	 * translated x position of the g element
+	 */
 	x: number;
+	/**
+	 * translated y position of the g element
+	 */
 	y: number;
+	/**
+	 * width of the cell.
+	 */
 	width: number;
+	/**
+	 * height of the cell.
+	 */
 	height: number;
 };
 
@@ -147,6 +170,23 @@ export type TableInCellProps = {
 	table: Omit<TableProps, 'width'> & { width?: number };
 };
 
+/** object for before or after content when it need to specify optional styles and dimensions */
+export type BeforeOrAfterAsObj = {
+	content: ReactNode | ContentAsFunc;
+	/** style of the text element */
+	textStyle?: TextStyle;
+	/**  x offset of the text  */
+	cx?: number;
+	/** y offset of the text */
+	cy?: number;
+};
+
+/**
+ * Represents the content that can be displayed before or after the main content in a cell.
+ * It can be a ReactNode, a function that returns a ReactNode, or an object containing the content and optional styling.
+ * */
+export type BeforeOrAfter = BeforeOrAfterAsObj | ReactNode | ContentAsFunc;
+
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
@@ -156,15 +196,15 @@ export type CellProps =
 			style?: Partial<CellStyle>;
 			/** The content to be displayed within the cell, can be any React node. */
 			content: ReactNode | ContentAsFunc | TableInCellProps;
-			before?: ReactNode | ContentAsFunc;
-			after?: ReactNode | ContentAsFunc;
+			/** Optional content to be displayed before the main content, can be a React node or a function that returns a React node. */
+			before?: BeforeOrAfter;
+			/** Optional content to be displayed after the main content, can be a React node or a function that returns a React node. */
+			after?: BeforeOrAfter;
 			/** Optional. Specifies the number of columns a cell should span across. */
 			colSpan?: number;
 			/** Optional. Specifies the number of rows a cell should span across. */
 			rowSpan?: number;
-			/**
-			 * clsss name to control individual cell.
-			 */
+			/** clsss name to control individual cell.  */
 			className?: string;
 	  }
 	| string;

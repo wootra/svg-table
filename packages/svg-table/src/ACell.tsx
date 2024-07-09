@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import type {
+	BeforeOrAfter,
+	BeforeOrAfterAsObj,
 	CalculatedCellProps,
 	CellStyle,
 	ContentProps,
@@ -121,20 +123,22 @@ const getContents = (
 ) => {
 	const { content, width, height, before, after } = cellOpt;
 
-	let {
-		paddings,
-		textColor,
-		textStyle,
-		beforeTextStyle,
-		afterTextStyle,
-		cx = 0,
-		cy = 0,
-	} = styleToUse;
+	let { paddings, textColor, textStyle, cx = 0, cy = 0 } = styleToUse;
 
 	// update styles with textColor only when fill is not given.
 	textStyle = styleWithFill(textStyle, textColor);
-	beforeTextStyle = styleWithFill(beforeTextStyle, textColor);
-	afterTextStyle = styleWithFill(afterTextStyle, textColor);
+	const { content: before2, ...beforeOpts } =
+		typeof before === 'object' && (before as BeforeOrAfterAsObj).content
+			? (before as BeforeOrAfterAsObj)
+			: ({ content: before } as BeforeOrAfterAsObj);
+
+	const { content: after2, ...afterOpts } =
+		typeof after === 'object' && (after as BeforeOrAfterAsObj).content
+			? (after as BeforeOrAfterAsObj)
+			: ({ content: after } as BeforeOrAfterAsObj);
+
+	const beforeTextStyle = styleWithFill(beforeOpts.textStyle, textColor);
+	const afterTextStyle = styleWithFill(afterOpts.textStyle, textColor);
 
 	const propsToPass = (
 		textStyleToUse: TextStyle | undefined,
@@ -182,16 +186,17 @@ const getContents = (
 	const contentToUse = getContent();
 
 	let beforeToUse =
-		typeof before === 'function'
-			? before(propsToPass(beforeTextStyle, 'start', 0, height / 2))
-			: before;
+		typeof before2 === 'function'
+			? before2(propsToPass(beforeTextStyle, 'start', 0, height / 2))
+			: before2;
+
 	let afterToUse =
-		typeof after === 'function'
-			? after(propsToPass(afterTextStyle, 'end', width, height / 2))
-			: after;
+		typeof after2 === 'function'
+			? after2(propsToPass(afterTextStyle, 'end', width, height / 2))
+			: after2;
 
 	const beforeContent =
-		before && typeof beforeToUse === 'string'
+		beforeToUse && typeof beforeToUse === 'string'
 			? renderTextOnly(
 					beforeToUse,
 					0,
