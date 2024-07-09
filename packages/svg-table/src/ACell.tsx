@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import type {
-	BeforeOrAfter,
 	BeforeOrAfterAsObj,
 	CalculatedCellProps,
 	CellStyle,

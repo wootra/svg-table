@@ -1,4 +1,7 @@
 # CHANGELOG
+## 2.0.0
+- before/after API change.
+
 ## 1.8.6
 - fix: browser incompatibility with rotation content.
 
