@@ -4,7 +4,12 @@ import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
 const getOutBoundLabelOnTop: ContentAsFunc = props => {
 	// white-bg is given to defs property.
 	return (
-		<text x={props.x} y={0} {...props.textStyle} filter='url(#white-bg)'>
+		<text
+			x={props.x}
+			y={props.y - props.height / 2}
+			{...props.textStyle}
+			filter='url(#white-bg)'
+		>
 			TOP LABEL
 		</text>
 	);
@@ -49,11 +54,11 @@ const tableProps: Omit<TableProps, 'width'> = {
 					content: getOutBoundLabelOnTop,
 					after: props => (
 						<text
-							x={props.width}
+							{...props.textStyle}
 							y={props.height / 2}
+							x={props.width}
 							textAnchor='end'
 							fill='yellow'
-							{...props.textStyle}
 						>
 							After
 						</text>
@@ -63,15 +68,15 @@ const tableProps: Omit<TableProps, 'width'> = {
 							<rect
 								x={0}
 								y={0}
-								width={props.width}
+								width={props.width / 2}
 								height={props.height}
 								fill='#ff6666'
 							/>
 							<text
+								{...props.textStyle}
 								x={0}
 								y={props.height / 2}
 								fill='white'
-								{...props.textStyle}
 							>
 								Before
 							</text>
@@ -83,7 +88,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 						allowOverflow: true,
 						textStyle: {
 							// another way of outbounding label
-							y: 0,
+							y: -15,
 							filter: 'url(#white-bg)',
 						},
 						beforeTextStyle: {

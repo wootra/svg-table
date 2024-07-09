@@ -1,4 +1,6 @@
 # CHANGELOG
+## 1.8.6
+- fix: browser incompatibility with rotation content.
 
 ## 1.8.5
 - make the table accessible by adding role=table, row, cell, aria-colspan, aria-rowspan

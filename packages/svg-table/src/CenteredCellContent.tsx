@@ -23,7 +23,7 @@ export const CenteredCellContent = ({
 		width,
 		height,
 	});
-
+	// below redundant transformation is needed to avoid firefox incompatibility.
 	return (
 		<svg
 			viewBox={`${-width / 2} ${-height / 2} ${width} ${height}`}
