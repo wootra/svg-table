@@ -1,0 +1,4 @@
+**/*.mjs
+out
+dist
+public

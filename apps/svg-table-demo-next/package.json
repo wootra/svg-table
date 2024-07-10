@@ -9,8 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@shjeon0730/svg-table": "workspace:*",
-		"@repo/demo-components": "workspace:*",
+		"@repo/demo-components-react": "workspace:*",
 		"react": "^18",
 		"react-dom": "^18",
 		"next": "14.2.4"

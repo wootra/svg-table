@@ -1,0 +1,37 @@
+import SVGTable, { TableProps } from '@shjeon0730/svg-table-vanilla';
+import { useEffect } from 'react';
+
+const tableProps: Omit<TableProps, 'width'> = {
+	style: {
+		colGaps: 4,
+		rowGaps: 10,
+	},
+	rows: [
+		[
+			'Header 1',
+			{
+				content: 'Header 2',
+				colSpan: 2,
+			},
+		],
+		['Row1, Cell1', { content: 'Row 1, Cell 2', rowSpan: 2 }, 'Row 1, Cell 3'],
+		['Row 2, Cell 1', 'Row 2, Cell 3'],
+	],
+};
+export const Gaps = ({ width = 500 }: { width?: number }) => {
+	useEffect(() => {
+		const el = document.getElementById('gaps-demo');
+		if (el) {
+			el.innerHTML = SVGTable({ ...tableProps, width });
+		}
+	}, [width]);
+	return (
+		<div>
+			<div id='gaps-demo' />
+		</div>
+	);
+};
+
+export const gaps = ({ width = 500 }: { width?: number }) => {
+	return SVGTable({ ...tableProps, width });
+};

@@ -1,4 +1,4 @@
-import { EmbeddedTableAsPropsWithHeight } from '@repo/demo-components';
+import { EmbeddedTableAsPropsWithHeight } from '@repo/demo-components-react';
 import { useEffect, useRef, useState } from 'react';
 const Responsive2 = () => {
 	const [width, setWidth] = useState(900);
@@ -27,10 +27,7 @@ const Responsive2 = () => {
 				height: 'calc(100vh - 150px)',
 			}}
 		>
-			<p>
-				try to resize the window in height and width! you see the table
-				is "Responsive"!
-			</p>
+			<p>try to resize the window in height and width! you see the table is "Responsive"!</p>
 			<p>Optimization is up to you, though...</p>
 			<EmbeddedTableAsPropsWithHeight width={width} height={height} />
 		</div>
