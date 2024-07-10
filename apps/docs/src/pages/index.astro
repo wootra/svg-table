@@ -3,7 +3,9 @@ import {TITLE_TRANSITION} from '../components/consts';
 import CenteredLayout from '../layouts/CenteredLayout.astro';
 import InteractiveLogo from '../components/InteractiveLogo.astro';
 const selected = '/';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
+<link rel="canonical" href={canonicalURL} />
 
 <CenteredLayout title='Welcome to SVG-Table' selected={selected}>
   <div class="center-content">

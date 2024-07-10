@@ -3,8 +3,9 @@ import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
 import ScrollLayout from '../layouts/ScrollLayout.astro';
 const selected = '/introduction';
 import {TITLE_TRANSITION} from '../components/consts';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
-
+<link rel="canonical" href={canonicalURL} />
 <ScrollLayout title="Welcome to SVG Table: Introduction" selected={selected}>
 
 	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Introduction</h1>

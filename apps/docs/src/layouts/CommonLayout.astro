@@ -11,6 +11,7 @@ interface Props {
 
 const { title, selected } = Astro.props;
 const titleToUse = `SVG Table - Flexible and accessible SVG Table: ${title}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -30,9 +31,13 @@ const titleToUse = `SVG Table - Flexible and accessible SVG Table: ${title}`;
 			twitter={{
 				creator: "@shjeon0730"
 			}}
+			canonical={"https://svg-table.vercel.app/"}
 			
 			extend={{
-				link: [{ rel: "icon", href: "/favicon.svg", type: 'image/svg+xml' }],
+				link: [
+					{ rel: "icon", href: "/favicon.svg", type: 'image/svg+xml' },
+					{ rel: 'canonical', href:"https://svg-table.vercel.app/" },
+				],
 				meta: [
 					{ name: 'viewport', content: 'width=device-width' },
 				],
@@ -41,6 +46,8 @@ const titleToUse = `SVG Table - Flexible and accessible SVG Table: ${title}`;
 		<!-- <meta name='viewport' content='width=device-width' /> -->
 		<!-- <link rel='icon' type='image/svg+xml' href='/favicon.svg' /> -->
 		<meta charset='UTF-8' />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="generator" content={Astro.generator} />
 		<ViewTransitions />
 	</head>
 	<body>

@@ -3,8 +3,9 @@ import ExampleLayout from "../layouts/ExampleLayout.astro";
 import {AllDemo} from '@repo/demo-components';
 const selected = '/examples';
 import {TITLE_TRANSITION} from '../components/consts';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
-
+<link rel="canonical" href={canonicalURL} />
 <ExampleLayout title="Welcome to SVG Title: Examples" selected={selected}>
 
     <h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}>Examples</h1>

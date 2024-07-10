@@ -4,8 +4,9 @@ import Responsive from './_examples/Responsive';
 import Responsive2 from './_examples/Responsive2';
 const selected = "/responsive"
 import {TITLE_TRANSITION} from '../../components/consts';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
-
+<link rel="canonical" href={canonicalURL} />
 <ExampleLayout title='Welcome to SVG Title: Responsive Tables' selected={selected}>
 
 	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Responsive Tables</h1>

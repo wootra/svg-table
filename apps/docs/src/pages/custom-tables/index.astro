@@ -3,8 +3,9 @@ import ExampleLayout from '../../layouts/ExampleLayout.astro';
 import Custom from './(examples)/index.mdx';
 const selected = "/custom-tables"
 import {TITLE_TRANSITION} from '../../components/consts';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
-
+<link rel="canonical" href={canonicalURL} />
 <ExampleLayout title='Welcome to SVG Title: Custom Cell Content' selected={selected}>
 
 	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Customizing Tables</h1>
