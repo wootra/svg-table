@@ -25,18 +25,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 					title: titleToUse,
 					type: "website",
 					image: "https://raw.githubusercontent.com/wootra/svg-table/main/packages/svg-table/logo.svg",
-					url: "https://svg-table.vercel.app/",
+					url: Astro.site,
 				}
 			}}
 			twitter={{
 				creator: "@shjeon0730"
 			}}
-			canonical={"https://svg-table.vercel.app/"}
+			canonical={canonicalURL}
 			
 			extend={{
 				link: [
 					{ rel: "icon", href: "/favicon.svg", type: 'image/svg+xml' },
-					{ rel: 'canonical', href:"https://svg-table.vercel.app/" },
 				],
 				meta: [
 					{ name: 'viewport', content: 'width=device-width' },
@@ -46,7 +45,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<!-- <meta name='viewport' content='width=device-width' /> -->
 		<!-- <link rel='icon' type='image/svg+xml' href='/favicon.svg' /> -->
 		<meta charset='UTF-8' />
-		<link rel="canonical" href={canonicalURL} />
+		<!-- <link rel="canonical" href={canonicalURL} /> -->
 		<meta name="generator" content={Astro.generator} />
 		<ViewTransitions />
 	</head>
