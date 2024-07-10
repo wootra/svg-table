@@ -6,5 +6,5 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
 	integrations: [react(), mdx()],
-	site: process.env.VERCEL_URL, // 'https://svg-table.vercel.com',
+	site: `https://${process.env.VERCEL_URL}`, // 'https://svg-table.vercel.com',
 });
