@@ -11,7 +11,6 @@ import SVGTable, {
 } from '@shjeon0730/svg-table-vanilla';
 
 const smile: ContentAsFunc = props => {
-	console.log('smile:', props);
 	return createVanillaElement(
 		'g',
 		{

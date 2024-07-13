@@ -16,34 +16,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
       <section id='features' class='features '>
         <div class='feature'>
-          <h4>Flexible Layout</h4>
+          <h4>Flexible Style & Layout</h4>
           <p>
-            Create tables with custom layouts, including merged cells and
-            nested structures.
+            Create tables with custom layouts, including merged cells, multi-line, and
+            nested element or tables.
           </p>
         </div>
         <div class='feature'>
-          <h4>SVG Power</h4>
+          <h4>Multi Framework Support(v3.0)</h4>
           <p>
-            Leverage the full capabilities of SVG for rich, interactive
-            table designs.
+            Powered by svg-table-module, Simply all framework can be supported.
+            Currently we have React, Solid, and VanillaJs.
           </p>
         </div>
         <div class='feature'>
-          <h4>Multi-context design</h4>
-          <p>SVG Overflow protection as well as option to overflow</p>
-        </div>
-        <div class='feature'>
-          <h4>Multiline Support</h4>
-          <p>Easily add multiline contents in the cell by adding linefeed</p>
+          <h4>Browser Compatibility</h4>
+          <p>SVG Table is tested on all morden browsers such as Chrome, Firefox, and Safari.</p>
         </div>
         <div class='feature'>
           <h4>Accessibility Support</h4>
           <p>Support accessibility like HTML table</p>
         </div>
         <div class='feature'>
-          <h4>Simple or Complex</h4>
-          <p>Support Simple or Complext use cases on demand</p>
+          <h4>Easy and Powerful usage</h4>
+          <p>for simple table, almost no effort. It still support multiple powerful features.</p>
         </div>
       </section>
     </div>
@@ -55,7 +51,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   .feature-wrapper {
     position: relative;
-  width: 100%;
+  max-width: 100%;
   max-height: max-content;
   displaly: flex;
   flex-direction: column;
@@ -68,8 +64,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		gap: 1rem;
 		margin-bottom: 2rem;
-    
-    
+    padding-inline: 2rem;
 	}
 
 	.feature {

@@ -26,7 +26,17 @@ const Smile: ContentAsFunc = props => {
 
 const DEFAULT_BG = '#23272f';
 export const LogoDemo = React.memo(
-	({ width = 500, bgColor, className }: { width?: number; bgColor?: string | null; className?: string }) => {
+	({
+		width = 500,
+		bgColor,
+		className,
+		standalone = false,
+	}: {
+		width?: number;
+		bgColor?: string | null;
+		className?: string;
+		standalone?: boolean;
+	}) => {
 		const tableProps = useMemo(() => {
 			const noBorderTable = (rows: RowProps[]): TableInCellProps => {
 				return {
@@ -197,6 +207,6 @@ export const LogoDemo = React.memo(
 
 			return tableProps;
 		}, []);
-		return <SVGTable {...tableProps} width={width} />;
+		return <SVGTable {...tableProps} width={width} standalone={standalone} />;
 	}
 );

@@ -13,6 +13,7 @@
 		"@astrojs/check": "^0.7.0",
 		"@astrojs/mdx": "^3.1.2",
 		"@astrojs/react": "^3.6.0",
+		"@astrojs/sitemap": "^3.1.6",
 		"@astrojs/solid-js": "^4.4.0",
 		"@repo/demo-components-react": "link:../../packages/demo-components-react",
 		"@repo/demo-components-solid": "link:../../packages/demo-components-solid",
