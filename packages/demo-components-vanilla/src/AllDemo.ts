@@ -54,7 +54,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					Welcome To SVG Table Example! (Vanilla Javascript)
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/LogoDemo.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/LogoDemo.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -68,7 +68,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					Standalone
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicDemo.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicDemo.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -83,7 +83,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					basic demo
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicDemo.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicDemo.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -97,7 +97,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					basic with simple array
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicSimpleArray.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicSimpleArray.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -112,7 +112,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					automatic colSpan
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/AutoColSpan.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/AutoColSpan.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -127,7 +127,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					basic with element
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicWithElement.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicWithElement.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -142,7 +142,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					basic with props
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicWithProps.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicWithProps.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -157,7 +157,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					Rotate Text
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/Rotate.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/Rotate.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -172,7 +172,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					allowing overflow by default
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicWithPropsAllowingOverflow.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicWithPropsAllowingOverflow.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -187,7 +187,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					allowing only one cell overflow
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicWithPropsAllowingOverflowOnlyOneCell.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BasicWithPropsAllowingOverflowOnlyOneCell.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -202,7 +202,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					text position adjustment
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TextPositionAdjustment.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TextPositionAdjustment.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -217,7 +217,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					no border table demo
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/NoBorderTableDemo.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/NoBorderTableDemo.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -232,7 +232,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					Margins
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/Margins.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/Margins.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -246,7 +246,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					Paddings
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/Paddings.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/Paddings.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -267,7 +267,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					Table with Height
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableHeight.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableHeight.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -303,7 +303,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					Table with Height with override height
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableHeightOverrideHeight.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableHeightOverrideHeight.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -341,7 +341,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					embedded table
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/EmbeddedTable.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/EmbeddedTable.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -356,7 +356,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					embedded table as props
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/EmbeddedTableAsProps.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/EmbeddedTableAsProps.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -371,7 +371,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					embedded table with height as well
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/EmbeddedTableAsPropsWithHeight.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/EmbeddedTableAsPropsWithHeight.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -386,7 +386,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					text style override
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TextStyleOverride.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TextStyleOverride.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -401,7 +401,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					only table border
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/OnlyTableBolder.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/OnlyTableBolder.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -416,7 +416,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					table border with margin
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableBolderWithMargin.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableBolderWithMargin.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -431,7 +431,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					table border styles
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableBorderStyles.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableBorderStyles.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -446,7 +446,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					background color and text color
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BgColorAndTextColor.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/BgColorAndTextColor.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -461,7 +461,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					gaps
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/Gaps.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/Gaps.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -476,7 +476,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					out bound labels example
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/OutboundLabels.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/OutboundLabels.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
@@ -491,7 +491,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					table styles
 					<a
 						class='demo-code-link'
-						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableStyles.tsx'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/TableStyles.ts'
 						target='_blank'
 						rel='noopener noreferrer'
 					>
