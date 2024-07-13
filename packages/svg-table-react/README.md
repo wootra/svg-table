@@ -22,7 +22,7 @@ here is Next.js [server side demo](https://github.com/wootra/svg-table/tree/main
 
 ## Usage
 
-Please visit [Homepage](https://svg-table.vercel.app/) for more information as well as demo
+Please visit [Homepage](https://svg-table.com/) for more information as well as demo
 
 ## Support
 
