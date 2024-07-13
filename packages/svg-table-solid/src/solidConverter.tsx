@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-redeclare
-import { JSX } from 'solid-js';
+import { JSX, ValidComponent } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 
 import { SVGTableElement, SVGTableElementAsObj } from '../../svg-table-module/src/private-types';
 import { __private__, convertToKebabCaseProps } from './utils';
@@ -30,17 +31,11 @@ export const solidConverter = (element: SVGTableElement<Node>): JSX.Element | JS
 					: [];
 		const kebabCaseProps = convertToKebabCaseProps(el.attrs);
 
-		const element = document.createElementNS('http://www.w3.org/2000/svg', el.type as keyof HTMLElementTagNameMap); //.createElement(el.type as keyof HTMLElementTagNameMap);
-
-		for (const attrName in kebabCaseProps) {
-			element.setAttribute(attrName, kebabCaseProps[attrName]);
-		}
-
-		for (const child of children) {
-			element.append(child as Node);
-		}
-
-		return element;
+		return (
+			<Dynamic component={el.type as ValidComponent} {...kebabCaseProps}>
+				{children}
+			</Dynamic>
+		);
 	}
 	return element as JSX.Element;
 };

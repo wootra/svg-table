@@ -1,4 +1,4 @@
-import SVGTable, { CellProps, CellPropsAsObj, TableProps } from '../../svg-table-react-repo/src';
+import SVGTable, { CellProps, CellPropsAsObj, TableProps } from '@shjeon0730/svg-table-react';
 
 const embeddedTableProps = (color: string, columns: number, fontSize = 12): CellPropsAsObj => {
 	const filled: CellProps = {

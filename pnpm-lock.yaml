@@ -363,7 +363,7 @@ importers:
 
   packages/demo-components-react:
     dependencies:
-      '@shjeon0730/svg-table':
+      '@shjeon0730/svg-table-react':
         specifier: link:../svg-table-react-repo
         version: link:../svg-table-react-repo
       react:

@@ -1,4 +1,4 @@
-import SVGTable, { TableProps } from '../../svg-table-react-repo/src';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table-react';
 const propsDefault: Omit<TableProps, 'width'> = {
 	defaultCellStyle: {
 		borderWidths: [2, 0, 2, 0], // since default border is black, should be hide before customize some borders.

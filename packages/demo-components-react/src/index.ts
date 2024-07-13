@@ -25,3 +25,5 @@ export * from './BasicWithPropsAllowingOverflowOnlyOneCell';
 export * from './OutboundLabels';
 export * from './Rotate';
 export * from './AllDemo';
+export * from './HorizontalResponsive';
+export * from './VerticalResponsive';

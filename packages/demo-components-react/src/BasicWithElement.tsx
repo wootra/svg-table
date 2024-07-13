@@ -1,4 +1,4 @@
-import SVGTable, { TableProps, ContentProps } from '../../svg-table-react-repo/src';
+import SVGTable, { TableProps, ContentProps } from '@shjeon0730/svg-table-react';
 
 const Rect = (props: ContentProps) => {
 	return (

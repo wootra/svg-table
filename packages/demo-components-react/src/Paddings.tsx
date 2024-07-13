@@ -1,4 +1,4 @@
-import SVGTable, { TableProps } from '../../svg-table-react-repo/src';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table-react';
 const NESTED_TABLE = {
 	table: {
 		style: {

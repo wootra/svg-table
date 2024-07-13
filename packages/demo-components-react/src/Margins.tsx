@@ -1,4 +1,4 @@
-import SVGTable, { TableProps } from '../../svg-table-react-repo/src';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table-react';
 
 const MARGIN_TOP = 10;
 const MARGIN_RIGHT = 20;

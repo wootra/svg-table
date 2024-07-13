@@ -1,4 +1,4 @@
-import SVGTable, { CellProps, TableProps } from '../../svg-table-react-repo/src';
+import SVGTable, { CellProps, TableProps } from '@shjeon0730/svg-table-react';
 
 const LONG_TEXT = 'This should overflow Because it is so long!!';
 

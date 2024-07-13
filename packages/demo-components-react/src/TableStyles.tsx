@@ -1,4 +1,4 @@
-import SVGTable, { TableProps } from '../../svg-table-react-repo/src';
+import SVGTable, { TableProps } from '@shjeon0730/svg-table-react';
 import { ImBug } from 'react-icons/im';
 
 const Circle = () => {

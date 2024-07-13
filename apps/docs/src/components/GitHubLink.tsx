@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaReact } from 'react-icons/fa';
 import { TbBrandSolidjs } from 'react-icons/tb';
 import { RiJavascriptFill } from 'react-icons/ri';

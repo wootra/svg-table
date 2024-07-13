@@ -6,7 +6,7 @@ import SVGTable, {
 	CellStyle,
 	ContentAsFunc,
 	simpleValue,
-} from '../../svg-table-react-repo/src';
+} from '@shjeon0730/svg-table-react';
 import React, { useMemo } from 'react';
 import { FaSmile } from 'react-icons/fa';
 

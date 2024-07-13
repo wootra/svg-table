@@ -1,4 +1,4 @@
-import SVGTable, { ContentAsFunc, TableProps } from '../../svg-table-react-repo/src';
+import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table-react';
 
 // this props will have an extensive amount of attributes that you can use for customization
 const adjustedText: ContentAsFunc = props => {
