@@ -1,0 +1,20 @@
+{
+	"extends": "@repo/typescript-config/react-library.json",
+	"compilerOptions": {
+		"outDir": "dist",
+		"strict": true,
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"isolatedModules": true
+	},
+	"paths": {
+		"tslib": ["node_modules/tslib/tslib.d.ts"]
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "dist", "out", "eslintrc.js", "**/*.mjs", "public"]
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Page</title>
+    <script src="../dist/index.umd.js" defer></script>
+    <script type="module">
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const SVGTable = globalThis["shjeon0730-svg-table"].default;
+
+                const tableProps = {
+                    rows: [
+                        {
+                            cells: [
+                                {
+                                    content: 'Header 1',
+                                },
+                                {
+                                    content: 'Col Span',
+                                    colSpan: 2,
+                                },
+                            ],
+                        },
+                        {
+                            cells: [
+                                { content: 'Row 1, Cell 1' },
+                                { content: 'Row Span\nmultiline\nsupport', rowSpan: 2 },
+                                { content: 'Row 1, Cell 3' },
+                            ],
+                        },
+                        {
+                            cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+                        },
+                    ],
+                };
+                const tableSvg = SVGTable({ ...tableProps, width:500 });
+                document.getElementById('table').innerHTML = tableSvg;
+        });
+
+      
+    </script>
+</head>
+<body>
+    <h1>Welcome to my simple HTML page</h1>
+    <p>Table is Below</p>
+    <div id="table">
+
+    </div>
+</body>
+</html>

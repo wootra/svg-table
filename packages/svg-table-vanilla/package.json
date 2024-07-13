@@ -1,0 +1,70 @@
+{
+	"name": "@shjeon0730/svg-table-vanilla",
+	"version": "0.1.0",
+	"private": false,
+	"main": "dist/index.js",
+	"module": "dist/index.mjs.js",
+	"browser": "dist/index.umd.js",
+	"types": "src/index.ts",
+	"files": [
+		"dist",
+		"src",
+		"../svg-table-module/src"
+	],
+	"scripts": {
+		"build": "npm run lint; tsc;npm run build:bundle",
+		"build:bundle": "npm run build:js && npm run build:types",
+		"build:js": "rollup -c rollup.config.mjs",
+		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
+		"dev": "rollup -c rollup.config.mjs -w",
+		"type-check": "tsc --noEmit",
+		"pretest": "npm run build",
+		"watch": "tsc --watch & rollup -c rollup.config.mjs -w",
+		"lint": "eslint . --max-warnings 0",
+		"pre-patch": "sh ./publish.sh prepatch",
+		"pre-minor": "sh ./publish.sh preminor",
+		"pre-major": "sh ./publish.sh premajor",
+		"patch": "sh ./publish.sh patch",
+		"minor": "sh ./publish.sh minor",
+		"major": "sh ./publish.sh major",
+		"publish-now": "npm publish --access public"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.24.7",
+		"@babel/preset-env": "^7.24.7",
+		"@repo/eslint-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"@rollup/plugin-babel": "^6.0.4",
+		"@rollup/plugin-commonjs": "^26.0.1",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-terser": "^0.4.4",
+		"@rollup/plugin-typescript": "^11.1.6",
+		"@turbo/gen": "^1.12.4",
+		"@types/eslint": "^8.56.5",
+		"@types/node": "^20.11.24",
+		"@types/react": "^18.2.61",
+		"eslint": "^8.57.0",
+		"rollup": "^4.18.0",
+		"rollup-plugin-dts": "^6.1.1",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"tslib": "^2.6.3",
+		"typescript": "^5.4.5"
+	},
+	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wootra/svg-table.git#main/packages/svg-table"
+	},
+	"keywords": [
+		"svg",
+		"table",
+		"vanillar",
+		"svg-table"
+	],
+	"author": "Songhyeon Jun (shjeon0730@gmail.com)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/wootra/svg-table/issues"
+	},
+	"homepage": "https://svg-table.com/"
+}

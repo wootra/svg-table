@@ -1,0 +1,78 @@
+---
+const selected = '/examples';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+import {TITLE_TRANSITION} from '../../components/consts';
+import ScrollLayout from '../../layouts/ScrollLayout.astro';
+---
+<link rel="canonical" href={canonicalURL} />
+<ScrollLayout title="Welcome to SVG Title: Examples: React.js" selected={selected}>
+    <div class="center-content">
+        <div class="feature-wrapper">
+    <h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}>Examples</h1>
+    <p>Thes examples are quick demo with its code. ( I used this page for validation of functionalities! ).</p>
+
+   
+
+    <div class="section" id="features">
+        <h2>Choose your favorite framework!</h2>
+		<ul class="features-list">
+            <li><a href="/examples/react">React.js</a></li>
+            <li><a href="/examples/solid">Solid.js(from 3.0)</a></li>
+            <li><a href="/examples/vanilla">Vanilla js(from 3.0)</a></li>
+		</ul>
+	</div>
+
+    <div class="section" id="features">
+        <h2>All Demo Code</h2>
+
+        <ul class="features-list">
+            <li><a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components-react" target="_blank">React.js DEMO code</a></li>
+            <li><a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components-solid" target="_blank">Solid.js DEMO code</a></li>
+            <li><a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components-vanilla" target="_blank">Vanilla js DEMO code</a></li>
+        </ul>
+
+    </div>
+    
+    <h2>Multi-framework support</h2>
+    <p>
+        From 3.0 (On development), SVG Title supports multiple framework.
+
+    </p>
+    </div>
+    </div>
+</ScrollLayout>
+
+<style>
+    .features-list {
+		list-style-type: none;
+		padding-left: 0;
+	}
+
+	.features-list li {
+		margin-bottom: 0.5rem;
+		display: flex;
+		align-items: center;
+	}
+
+	.features-list li::before {
+		content: '🔗';
+		color: var(--color-secondary);
+		margin-right: 0.5rem;
+		font-weight: bold;
+	}
+
+
+	.note {
+		background-color: rgba(20, 158, 202, 0.1);
+		border-left: 4px solid var(--color-secondary);
+		padding: 1rem;
+		margin: 1rem 0;
+		border-radius: 0 4px 4px 0;
+	}
+
+	.note-title {
+		font-weight: bold;
+		color: var(--color-secondary);
+		margin-bottom: 0.5rem;
+	}
+</style>

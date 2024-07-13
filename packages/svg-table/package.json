@@ -11,7 +11,7 @@
 		"src"
 	],
 	"scripts": {
-		"build": "npm run lint; tsc --noEmit;npm run build:bundle",
+		"build": "rm -rf dist;npm run lint; tsc --noEmit;npm run build:bundle",
 		"build:bundle": "npm run build:js && npm run build:types",
 		"build:js": "rollup -c rollup.config.mjs",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
@@ -69,5 +69,5 @@
 	"bugs": {
 		"url": "https://github.com/wootra/svg-table/issues"
 	},
-	"homepage": "https://svg-table.vercel.app/"
+	"homepage": "https://svg-table.com/"
 }

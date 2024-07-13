@@ -3,11 +3,12 @@ import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
 import ScrollLayout from '../layouts/ScrollLayout.astro';
 const selected = '/introduction';
 import {TITLE_TRANSITION} from '../components/consts';
+import CodeHolder from '../layouts/CodeHolder.astro';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <link rel="canonical" href={canonicalURL} />
 <ScrollLayout title="Welcome to SVG Table: Introduction" selected={selected}>
-
+	<CodeHolder/>
 	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Introduction</h1>
 	<p>SVG Table is a powerful and flexible library for creating tables using SVG. 
 		It accepts a simple javascript object to generate complex table structures in SVG
