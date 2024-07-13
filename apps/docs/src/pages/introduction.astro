@@ -3,7 +3,7 @@ import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
 import ScrollLayout from '../layouts/ScrollLayout.astro';
 const selected = '/introduction';
 import {TITLE_TRANSITION} from '../components/consts';
-import CodeHolder from '../layouts/CodeHolder.astro';
+import CodeHolder from '@/components/CodeHolder.astro';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <link rel="canonical" href={canonicalURL} />

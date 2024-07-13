@@ -1,5 +1,5 @@
 ---
-import CodeHolder from './CodeHolder.astro';
+import CodeHolder from '../components/CodeHolder.astro';
 import ScrollLayout from './ScrollLayout.astro';
 
 interface Props {
@@ -10,8 +10,8 @@ interface Props {
 const { title, selected } = Astro.props;
 ---
 <ScrollLayout title={title} selected={selected}>
-	<slot />
 	<CodeHolder />
+	<slot />
 </ScrollLayout>
 
 <style is:global>
@@ -67,5 +67,9 @@ const { title, selected } = Astro.props;
 		font-size: 1.1rem;
 		font-weight: bold;
 		cursor: pointer;
+	}
+	
+	h3 {
+		display: flex;
 	}
 </style>
