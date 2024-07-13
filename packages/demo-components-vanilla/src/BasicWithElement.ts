@@ -12,11 +12,7 @@ const rect = (props: ContentProps) => {
 		createVanillaElement('rect', { x: props.width - 50, y: 0, width: 50, height: props.height, fill: '#4773bb' }),
 		createVanillaElement('rect', { x: 0, y: 0, width: 50, height: props.height, fill: '#a75252' }),
 		createVanillaElement('rect', { x: props.x - 25, y: 0, width: 50, height: props.height, fill: '#4a7e2e' }),
-		createVanillaElement(
-			'text',
-			{ x: props.x, y: props.y, dominantBaseline: 'middle', textAnchor: 'middle' },
-			'This is Added Element'
-		)
+		createVanillaElement('text', { ...props.textStyle, x: props.x, y: props.y }, 'This is Added Element')
 	) as SVGRenderElement;
 };
 const tableProps: Omit<TableProps, 'width'> = {
@@ -28,5 +24,5 @@ const tableProps: Omit<TableProps, 'width'> = {
 };
 
 export const BasicWithElement = ({ width = 500 }: { width?: number }) => {
-	SVGTable({ ...tableProps, width });
+	return SVGTable({ ...tableProps, width });
 };

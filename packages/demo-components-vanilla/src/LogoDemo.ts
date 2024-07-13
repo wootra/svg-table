@@ -11,11 +11,12 @@ import SVGTable, {
 } from '@shjeon0730/svg-table-vanilla';
 
 const smile: ContentAsFunc = props => {
+	console.log('smile:', props);
 	return createVanillaElement(
 		'g',
 		{
-			transform: `translate(${simpleValue(props.x - props.width / 2)} ${simpleValue(props.y - props.height / 2)})`,
-			style: `font-size: ${props.width}; color:#ff7556a9`,
+			transform: `translate(${simpleValue(props.x - props.width / 2)} ${simpleValue(props.y - props.width / 2)})`,
+			style: `font-size: ${simpleValue(props.width * 0.95)}px; color:#ff7556a9`,
 		},
 		createRenderedString(`
 		<svg

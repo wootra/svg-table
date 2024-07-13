@@ -17,10 +17,11 @@ const getOutBoundLabelOnTop: ContentAsFunc = props => {
 };
 
 const getOutBoundLabelOnLeft: ContentAsFunc = props => {
+	const textStyle = convertToKebabCaseProps(props.textStyle);
 	return (
 		<g transform={`translate(-10, ${props.y})`}>
 			<g transform={`rotate(-90)`}>
-				<text dominant-baseline={'auto'} text-anchor='middle'>
+				<text {...textStyle} dominant-baseline={'auto'} text-anchor='middle'>
 					LEFT LABEL
 				</text>
 			</g>

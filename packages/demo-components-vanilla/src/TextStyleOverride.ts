@@ -44,7 +44,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 			cells: [
 				{ content: 'test' },
 				{
-					content: 'Row 1, Cell 2',
+					content: 'Row 1\n Cell 2',
 					rowSpan: 2,
 					style: {
 						textStyle: {

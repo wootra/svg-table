@@ -13,7 +13,7 @@ const adjustedText: ContentAsFunc = props => {
 		createVanillaElement('rect', { x: 30, y: 0, width: props.width - 60, height: 5, fill: '#4773bb' }),
 		createVanillaElement(
 			'text',
-			{ x: props.x, y: props.y + 5, 'text-anchor': 'middle', 'dominant-baseline': 'middle' },
+			{ ...props.textStyle, x: props.x, y: props.y + 5, 'text-anchor': 'middle', 'dominant-baseline': 'middle' },
 			'This is Added Element'
 		)
 	) as SVGRenderElement;

@@ -1,12 +1,18 @@
-import SVGTable, { TableProps, ContentProps, SVGRenderElement } from '@shjeon0730/svg-table-solid';
+import SVGTable, {
+	TableProps,
+	ContentProps,
+	SVGRenderElement,
+	convertToKebabCaseProps,
+} from '@shjeon0730/svg-table-solid';
 
 const rect = (props: ContentProps) => {
+	const textStyle = convertToKebabCaseProps(props.textStyle);
 	return (
 		<g>
 			<rect x={props.width - 50} y={0} width={50} height={props.height} fill='#4773bb' />
 			<rect x={0} y={0} width={50} height={props.height} fill='#a75252' />
 			<rect x={props.x - 25} y={0} width={50} height={props.height} fill='#4a7e2e' />
-			<text x={props.x} y={props.y} dominant-baseline='middle' text-anchor='middle'>
+			<text {...textStyle} x={props.x} y={props.y}>
 				This is Added Element
 			</text>
 		</g>

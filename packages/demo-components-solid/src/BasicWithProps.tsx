@@ -1,12 +1,18 @@
-import SVGTable, { ContentAsFunc, SVGRenderElement, TableProps } from '@shjeon0730/svg-table-solid';
+import SVGTable, {
+	ContentAsFunc,
+	convertToKebabCaseProps,
+	SVGRenderElement,
+	TableProps,
+} from '@shjeon0730/svg-table-solid';
 
 // this props will have an extensive amount of attributes that you can use for customization
 const adjustedText: ContentAsFunc = props => {
+	const textStyle = convertToKebabCaseProps(props.textStyle);
 	return (
 		<g>
 			<rect x={30} y={0} width={props.width - 60} height={5} fill='#4773bb' />
 
-			<text x={props.x} y={props.y + 5} text-anchor='middle' dominant-baseline='middle'>
+			<text {...textStyle} x={props.x} y={props.y + 5} text-anchor='middle' dominant-baseline='middle'>
 				This is Added Element
 			</text>
 		</g>

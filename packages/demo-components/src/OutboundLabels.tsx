@@ -4,12 +4,7 @@ import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
 const getOutBoundLabelOnTop: ContentAsFunc = props => {
 	// white-bg is given to defs property.
 	return (
-		<text
-			x={props.x}
-			y={props.y - props.height / 2}
-			{...props.textStyle}
-			filter='url(#white-bg)'
-		>
+		<text x={props.x} y={props.y - props.height / 2} {...props.textStyle} filter='url(#white-bg)'>
 			TOP LABEL
 		</text>
 	);
@@ -19,7 +14,7 @@ const getOutBoundLabelOnLeft: ContentAsFunc = props => {
 	return (
 		<g transform={`translate(-10, ${props.y})`}>
 			<g transform={`rotate(-90)`}>
-				<text dominantBaseline={'auto'} textAnchor='middle'>
+				<text {...props.textStyle} dominantBaseline={'auto'} textAnchor='middle'>
 					LEFT LABEL
 				</text>
 			</g>
@@ -53,31 +48,14 @@ const tableProps: Omit<TableProps, 'width'> = {
 					},
 					content: getOutBoundLabelOnTop,
 					after: props => (
-						<text
-							{...props.textStyle}
-							y={props.height / 2}
-							x={props.width}
-							textAnchor='end'
-							fill='yellow'
-						>
+						<text {...props.textStyle} y={props.height / 2} x={props.width} textAnchor='end' fill='yellow'>
 							After
 						</text>
 					),
 					before: props => (
 						<>
-							<rect
-								x={0}
-								y={0}
-								width={props.width / 2}
-								height={props.height}
-								fill='#ff6666'
-							/>
-							<text
-								{...props.textStyle}
-								x={0}
-								y={props.height / 2}
-								fill='white'
-							>
+							<rect x={0} y={0} width={props.width / 2} height={props.height} fill='#ff6666' />
+							<text {...props.textStyle} x={0} y={props.height / 2} fill='white'>
 								Before
 							</text>
 						</>

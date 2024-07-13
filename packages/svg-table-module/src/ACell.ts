@@ -88,8 +88,7 @@ const renderTextOnly = <NODE extends PrimitiveNode, TEXTTYPE extends TextType>(
 				element<NODE>(
 					'tspan',
 					{
-						// @ts-ignore
-						['data-fontSize']: fontSize,
+						fontSize,
 						x: startX,
 						dy: index === 0 ? 0 : fontSize,
 					},

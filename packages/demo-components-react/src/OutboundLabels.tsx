@@ -14,7 +14,7 @@ const getOutBoundLabelOnLeft: ContentAsFunc = props => {
 	return (
 		<g transform={`translate(-10, ${props.y})`}>
 			<g transform={`rotate(-90)`}>
-				<text dominantBaseline={'auto'} textAnchor='middle'>
+				<text {...props.textStyle} dominantBaseline={'auto'} textAnchor='middle'>
 					LEFT LABEL
 				</text>
 			</g>

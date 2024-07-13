@@ -6,7 +6,7 @@ const adjustedText: ContentAsFunc = props => {
 		<g>
 			<rect x={30} y={0} width={props.width - 60} height={5} fill='#4773bb' />
 
-			<text x={props.x} y={props.y + 5} {...props.textStyle}>
+			<text {...props.textStyle} x={props.x} y={props.y + 5}>
 				This is Added Element
 			</text>
 		</g>

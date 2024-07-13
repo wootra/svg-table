@@ -24,7 +24,11 @@ const getOutBoundLabelOnLeft: ContentAsFunc = props => {
 		createVanillaElement(
 			'g',
 			{ transform: `rotate(-90)` },
-			createVanillaElement('text', { dominantBaseline: 'auto', textAnchor: 'middle' }, 'LEFT LABEL')
+			createVanillaElement(
+				'text',
+				{ ...props.textStyle, dominantBaseline: 'auto', textAnchor: 'middle' },
+				'LEFT LABEL'
+			)
 		)
 	) as SVGRenderElement;
 };
