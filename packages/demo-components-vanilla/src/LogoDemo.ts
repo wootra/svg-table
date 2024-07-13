@@ -6,18 +6,18 @@ import SVGTable, {
 	CellStyle,
 	ContentAsFunc,
 	simpleValue,
-	SVGRenderElement,
+	createVanillaElement,
+	createRenderedString,
 } from '@shjeon0730/svg-table-vanilla';
-import { useEffect } from 'react';
 
 const smile: ContentAsFunc = props => {
-	const g = document.createElement('g');
-	g.setAttribute(
-		'transform',
-		`translate(${simpleValue(props.x - props.width / 2)} ${simpleValue(props.y - props.height / 2)})`
-	);
-	g.setAttribute('style', `font-size: ${props.width}; color:#ff7556a9`);
-	g.innerHTML = `
+	return createVanillaElement(
+		'g',
+		{
+			transform: `translate(${simpleValue(props.x - props.width / 2)} ${simpleValue(props.y - props.height / 2)})`,
+			style: `font-size: ${props.width}; color:#ff7556a9`,
+		},
+		createRenderedString(`
 		<svg
 				stroke='currentColor'
 				fill='currentColor'
@@ -29,8 +29,8 @@ const smile: ContentAsFunc = props => {
 			>
 				<path d='M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z'></path>
 			</svg>
-	`;
-	return g as SVGRenderElement;
+	`)
+	);
 };
 
 const DEFAULT_BG = '#23272f';
@@ -210,11 +210,5 @@ export const LogoDemo = ({
 		rows: [[{ content: SVG }], [{ content: TABLE }]],
 	};
 
-	useEffect(() => {
-		const el = document.getElementById('logo-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width });
-		}
-	}, [width]);
-	return <div id='logo-demo' />;
+	return SVGTable({ ...tableProps, width });
 };

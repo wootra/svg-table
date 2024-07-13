@@ -13,18 +13,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 		['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3'],
 	],
 };
-export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
-	return (
-		<div>
-			<div
-				dangerouslySetInnerHTML={{
-					__html: SVGTable({ ...tableProps, width }),
-				}}
-			/>
-		</div>
-	);
-};
 
-export const onlyTableBolder = ({ width = 500 }: { width?: number }) => {
+export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
 	return SVGTable({ ...tableProps, width });
 };

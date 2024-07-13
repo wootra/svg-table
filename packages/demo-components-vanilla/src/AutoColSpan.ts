@@ -1,5 +1,4 @@
 import SVGTable, { TableProps } from '@shjeon0730/svg-table-vanilla';
-import { useEffect } from 'react';
 
 const tableProps: Omit<TableProps, 'width'> = {
 	rows: [
@@ -11,11 +10,5 @@ const tableProps: Omit<TableProps, 'width'> = {
 };
 
 export const AutoColSpan = ({ width = 500 }: { width?: number }) => {
-	useEffect(() => {
-		const el = document.getElementById('auto-col-span-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width });
-		}
-	}, [width]);
-	return <div id='auto-col-span-demo' />;
+	return SVGTable({ ...tableProps, width });
 };

@@ -13,6 +13,7 @@ import {
 	ContentPropsBase,
 	CellStyleBase,
 	SVGRenderElementBase,
+	SVGTableElement,
 } from '../../svg-table-module/src/private-types';
 
 export * from '../../svg-table-module/src/common-types';
@@ -20,7 +21,11 @@ export * from '../../svg-table-module/src/common-types';
 export type ContentProps = ContentPropsBase<'text'>;
 export type TableInCellProps = TableInCellPropsBase<SVGElement | HTMLElement, 'text', 'g', 'svg'>;
 
-export type ContentAsFunc = ContentAsFuncBase<SVGElement | HTMLElement, 'text', SVGRenderElement>;
+export type ContentAsFunc = ContentAsFuncBase<
+	SVGElement | HTMLElement,
+	'text',
+	SVGRenderElement | SVGTableElement<SVGElement | HTMLElement>
+>;
 
 /** object for before or after content when it need to specify optional styles and dimensions */
 export type BeforeOrAfterAsObj = BeforeOrAfterAsObjBase<SVGElement | HTMLElement, 'text'>;

@@ -46,18 +46,5 @@ const tableProps: Omit<TableProps, 'width'> = {
 };
 
 export const Paddings = ({ width = 500 }: { width?: number }) => {
-	return (
-		<div>
-			<p>in the first row, paddings for the text only works for left and top paddings.</p>
-			<p>but paddings are still used when you add nested table to calculate valid area.</p>
-			<div>
-				<div
-					dangerouslySetInnerHTML={{
-						__html: SVGTable({ ...tableProps, width }),
-					}}
-				/>
-			</div>
-			;
-		</div>
-	);
+	return SVGTable({ ...tableProps, width });
 };

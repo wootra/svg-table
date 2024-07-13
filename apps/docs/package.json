@@ -16,6 +16,7 @@
 		"@astrojs/solid-js": "^4.4.0",
 		"@repo/demo-components-react": "link:../../packages/demo-components-react",
 		"@repo/demo-components-solid": "link:../../packages/demo-components-solid",
+		"@repo/demo-components-vanilla": "link:../../packages/demo-components-vanilla",
 		"@shjeon0730/svg-table-react": "link:../../packages/svg-table-react-repo",
 		"@shjeon0730/svg-table-solid": "link:../../packages/svg-table-solid-repo",
 		"@shjeon0730/svg-table-vanilla": "link:../../packages/svg-table-vanilla-repo",

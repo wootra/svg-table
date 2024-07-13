@@ -1,5 +1,4 @@
 import SVGTable, { CellProps, createVanillaElement, TableProps } from '@shjeon0730/svg-table-vanilla';
-import { useEffect } from 'react';
 const gradients = [
 	createVanillaElement(
 		'linearGradient',
@@ -77,17 +76,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 		[GradientBackCell, GradientBackCell2],
 	],
 };
-export const bgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
-	return SVGTable({ ...tableProps, width });
-};
 
 export const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
-	useEffect(() => {
-		const el = document.getElementById('bg-color-and-text-color-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width });
-		}
-	}, [width]);
-
-	return <div id='bg-color-and-text-color-demo' />;
+	return SVGTable({ ...tableProps, width });
 };

@@ -136,13 +136,5 @@ const tableProps: Omit<TableProps, 'width'> = {
 };
 
 export const OutboundLabels = ({ width = 500 }: { width?: number }) => {
-	return (
-		<div>
-			<div
-				dangerouslySetInnerHTML={{
-					__html: SVGTable({ ...tableProps, width }),
-				}}
-			/>
-		</div>
-	);
+	return SVGTable({ ...tableProps, width });
 };

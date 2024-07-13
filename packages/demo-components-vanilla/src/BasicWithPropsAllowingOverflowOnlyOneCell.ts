@@ -17,15 +17,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-import { useEffect } from 'react';
-
 export const BasicWithPropsAllowingOverflowOnlyOneCell = ({ width = 500 }: { width?: number }) => {
-	useEffect(() => {
-		const el = document.getElementById('basic-with-props-allowing-overflow-only-one-cell-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width });
-		}
-	}, [width]);
-
-	return <div id='basic-with-props-allowing-overflow-only-one-cell-demo' />;
+	return SVGTable({ ...tableProps, width });
 };

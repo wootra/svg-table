@@ -27,13 +27,7 @@ import { Standalone } from './Standalone';
 import { AutoColSpan } from './AutoColSpan';
 import { Rotate } from './Rotate';
 
-export const AllDemo = ({
-	width,
-	useClassName = false,
-}: {
-	width: number;
-	useClassName?: boolean;
-}) => {
+export const AllDemo = ({ width, useClassName = false }: { width: number; useClassName?: boolean }) => {
 	return (
 		<>
 			<style>
@@ -56,7 +50,7 @@ export const AllDemo = ({
 			</style>
 			<section>
 				<h2>
-					Welcome To SVG Table!
+					Welcome To SVG Table Example! (React.js)
 					<a
 						className='demo-code-link'
 						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/LogoDemo.tsx'
@@ -66,11 +60,7 @@ export const AllDemo = ({
 						code
 					</a>
 				</h2>
-				<LogoDemo
-					width={width}
-					bgColor={null}
-					className={useClassName ? 'logo-demo' : undefined}
-				/>
+				<LogoDemo width={width} bgColor={null} className={useClassName ? 'logo-demo' : undefined} />
 			</section>
 			<section>
 				<h2>

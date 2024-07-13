@@ -10,18 +10,7 @@ const tableProps: Omit<TableProps, 'width'> = {
 		['Row 2, Cell 1', 'Row 2, Cell 3'],
 	],
 };
-export const NoBorderTableDemo = ({ width = 500 }: { width?: number }) => {
-	return (
-		<div>
-			<div
-				dangerouslySetInnerHTML={{
-					__html: SVGTable({ ...tableProps, width }),
-				}}
-			/>
-		</div>
-	);
-};
 
-export const noBorderTableDemo = ({ width = 500 }: { width?: number }) => {
+export const NoBorderTableDemo = ({ width = 500 }: { width?: number }) => {
 	return SVGTable({ ...tableProps, width });
 };

@@ -20,6 +20,12 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 		
 		<li><a {...linkOrSelected('/examples')}>Examples</a></li>
+		{selected.includes('/examples') && (<ul class="sub" transition:name="opened-nav" transition:animate="slide">
+			<li><a {...linkOrSelected('/examples/react')}>React Examples</a></li>
+			<li><a {...linkOrSelected('/examples/solid')}>Solid.js Examples</a></li>
+			<li><a {...linkOrSelected('/examples/vanilla')}>Vanilla Js Examples</a></li>
+		</ul>)}
+
 		<li><a {...linkOrSelected('/api-ref')}>API Reference</a></li>
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
 		{selected === '/basic-usage' && (<ul class="sub" transition:name="opened-nav" transition:animate="slide">
@@ -116,6 +122,8 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 	a.selected {
 		color: rgb(219, 249, 159);
 		box-shadow: 0 2px 0 0 rgb(219, 249, 159);
+	}
+	.a.selected:not(.clickable){
 		pointer-events: none;
 		text-decoration: none;
 	}

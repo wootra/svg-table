@@ -1,14 +1,14 @@
 ---
 import ExampleLayout from "../../layouts/ExampleLayout.astro";
 import {AllDemo} from '@repo/demo-components-react';
-const selected = '/examples';
+const selected = '/examples/react';
 import {TITLE_TRANSITION} from '../../components/consts';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <link rel="canonical" href={canonicalURL} />
-<ExampleLayout title="Welcome to SVG Title: Examples" selected={selected}>
+<ExampleLayout title="Welcome to SVG Title: Examples: React.js" selected={selected}>
 
-    <h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}>Examples</h1>
+    <h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}>Examples(React)</h1>
     <p>Thes examples are quick demo with its code. ( I used this page for validation of functionalities! ).
         </p>
         <p>Here is <a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components" target="_blank">all DEMO code</a></p>

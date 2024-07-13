@@ -71,15 +71,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-import { useEffect } from 'react';
-
 export const EmbeddedTableAsProps = ({ width = 900, standalone }: { width: number; standalone?: boolean }) => {
-	useEffect(() => {
-		const el = document.getElementById('embedded-table-as-props-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width, standalone });
-		}
-	}, [width, standalone]);
-
-	return <div id='embedded-table-as-props-demo' />;
+	return SVGTable({ ...tableProps, width, standalone });
 };

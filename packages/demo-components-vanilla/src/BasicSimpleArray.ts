@@ -23,15 +23,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-import { useEffect } from 'react';
-
 export const BasicSimpleArray = ({ width = 500 }: { width?: number }) => {
-	useEffect(() => {
-		const el = document.getElementById('basic-simple-array-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width });
-		}
-	}, [width]);
-
-	return <div id='basic-simple-array-demo' />;
+	return SVGTable({ ...tableProps, width });
 };

@@ -1,5 +1,4 @@
 import SVGTable, { CellProps, CellPropsAsObj, TableProps } from '@shjeon0730/svg-table-vanilla';
-import { useEffect } from 'react';
 
 const embeddedTableProps = (color: string, columns: number, fontSize = 12): CellPropsAsObj => {
 	const filled: CellProps = {
@@ -60,12 +59,5 @@ export const EmbeddedTableAsPropsWithHeight = ({
 	height?: number;
 	standalone?: boolean;
 }) => {
-	useEffect(() => {
-		const el = document.getElementById('embedded-table-as-height-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width, height, standalone });
-		}
-	}, [width, height, standalone]);
-
-	return <div id='embedded-table-as-height-demo' />;
+	return SVGTable({ ...tableProps, width, height, standalone });
 };

@@ -26,15 +26,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-import { useEffect } from 'react';
-
 export const BasicWithProps = ({ width = 500 }: { width?: number }) => {
-	useEffect(() => {
-		const el = document.getElementById('basic-with-props-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width });
-		}
-	}, [width]);
-
-	return <div id='basic-with-props-demo' />;
+	return SVGTable({ ...tableProps, width });
 };

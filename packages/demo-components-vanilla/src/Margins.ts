@@ -34,11 +34,5 @@ export const Margins = ({ width = 500 }: { width?: number }) => {
 			[rectCell(HALF, '#766850'), rectCell(HALF, '#304830')],
 		],
 	};
-	return (
-		<div
-			dangerouslySetInnerHTML={{
-				__html: SVGTable({ ...tableProps, width }),
-			}}
-		/>
-	);
+	return SVGTable({ ...tableProps, width });
 };

@@ -15,15 +15,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-import { useEffect } from 'react';
-
 export const BasicWithPropsAllowingOverflow = ({ width = 500 }: { width?: number }) => {
-	useEffect(() => {
-		const el = document.getElementById('basic-with-props-allowing-overflow-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width });
-		}
-	}, [width]);
-
-	return <div id='basic-with-props-allowing-overflow-demo' />;
+	return SVGTable({ ...tableProps, width });
 };

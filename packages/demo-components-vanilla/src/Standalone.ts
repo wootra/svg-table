@@ -26,19 +26,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-import { useEffect } from 'react';
-
-export const basicDemo = ({ width = 500 }: { width?: number }) => {
+export const Standalone = ({ width = 500 }: { width?: number }) => {
 	return SVGTable({ ...tableProps, width });
-};
-
-export const BasicDemo = ({ width = 500 }: { width?: number }) => {
-	useEffect(() => {
-		const el = document.getElementById('basic-demo');
-		if (el) {
-			el.innerHTML = SVGTable({ ...tableProps, width });
-		}
-	}, [width]);
-
-	return <div id='basic-demo' />;
 };

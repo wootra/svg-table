@@ -26,14 +26,6 @@ const tableProps: Omit<TableProps, 'width'> = {
 	],
 };
 
-export const Standalone = ({ width = 500 }: { width?: number }) => {
-	return (
-		<div>
-			<div
-				dangerouslySetInnerHTML={{
-					__html: SVGTable({ ...tableProps, width }),
-				}}
-			/>
-		</div>
-	);
+export const BasicDemo = ({ width = 500 }: { width?: number }) => {
+	return SVGTable({ ...tableProps, width });
 };

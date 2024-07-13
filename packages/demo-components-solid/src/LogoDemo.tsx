@@ -13,7 +13,7 @@ const smile: ContentAsFunc = props => {
 	return (
 		<g
 			transform={`translate(${simpleValue(props.x - props.width / 2)},${simpleValue(props.y - props.width / 2)})`}
-			style={`font-size:${simpleValue(props.width * 0.95)};color: '#ff7556a9'`}
+			style={`font-size:${simpleValue(props.width * 0.95)};color:#ff7556a9`}
 		>
 			<svg
 				stroke='currentColor'
