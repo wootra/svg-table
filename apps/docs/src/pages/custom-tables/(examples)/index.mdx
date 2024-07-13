@@ -7,8 +7,9 @@ import {
 	TableBorderStyles,
 	TableStyles,
 } from '@repo/demo-components-react';
+import GitHubLink from '@/components/GitHubLink';
 
-## No border Table
+## No border Table <GitHubLink demoName="NoBorderTableDemo" is:inline />
 
 you can remove all borders.
 
@@ -16,34 +17,7 @@ you can remove all borders.
 	<NoBorderTableDemo />
 </div>
 
-<details>
-<summary>Code</summary>
-
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const tableProps: Omit<TableProps, 'width'> = {
-	defaultCellStyle: {
-		borderWidths: 0,
-	},
-	rows: [
-		['header1', { content: 'header2', colSpan: 2 }],
-		[
-			'Row1, Cell1',
-			{ content: 'Row 1, Cell 2', rowSpan: 2 },
-			'Row 1, Cell 3',
-		],
-		['Row 2, Cell 1', 'Row 2, Cell 3'],
-	],
-};
-export const NoBorderTableDemo = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
-
-## table border
+## table border <GitHubLink demoName="OnlyTableBolder" is:inline />
 
 You can wrap the table with border.
 This is useful when you want to wrap another element with a border line.
@@ -52,30 +26,7 @@ This is useful when you want to wrap another element with a border line.
 	<OnlyTableBolder />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const tableProps: Omit<TableProps, 'width'> = {
-	defaultCellStyle: {
-		borderWidths: 0, // remove default cell border
-	},
-	style: {
-		borderWidths: 1, // eanble table border
-	},
-	rows: [
-		['Header 1', 'Header 2', 'Header3'],
-		['Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3'],
-		['Row 2, Cell 1', 'Row 2, Cell 2', 'Row 2, Cell 3'],
-	],
-};
-export const OnlyTableBolder = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
+## table border With Margin  <GitHubLink demoName="TableBolderWithMargin" is:inline />
 
 In this example, the table border is wrapping the content of the table.
 Imagine you have different sections as table cells and you have to wrap it once more.
@@ -85,30 +36,8 @@ Imagine you have different sections as table cells and you have to wrap it once 
 	<TableBolderWithMargin />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
-const tableProps: Omit<TableProps, 'width'> = {
-	style: {
-		borderWidths: 1,
-		margins: 10,
-	},
-	rows: [
-		['Header 1', 'Header 2', 'Header 3'],
-		['Cell 1', 'Cell 2', 'Cell 3'],
-		['Cell 1', 'Cell 2', 'Cell 3'],
-	],
-};
-export const TableBolderWithMargin = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
-
-## Table border styles
+## Table border styles  <GitHubLink demoName="TableBorderStyles" is:inline />
 
 You can customize the shapes and colors of each border line.
 
@@ -117,78 +46,9 @@ You can customize the shapes and colors of each border line.
 	<TableBorderStyles />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-const propsDefault: Omit<TableProps, 'width'> = {
-	defaultCellStyle: {
-		borderWidths: [2, 0, 2, 0], // since default border is black, should be hide before customize some borders.
-	},
-	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-					style: {
-						borderColors: 'blue',
-						borderWidths: [0, 0, 1, 0], // cell level style will override default style.
-					},
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-					style: {
-						borderWidths: [0, 0, 3, 0], // cell level style will override default style.
-						borderColors: 'orange',
-						borderPatterns: [6, 5],
-						borderShapes: 'round',
-					},
-				},
-			],
-		},
-		{
-			cells: [
-				{
-					content: 'test',
-					style: {
-						borderColors: ['', 'red', '', 'green'],
-						borderWidths: [0, 4, 0, 2],
-					},
-				},
-				{
-					content: 'Row 1, Cell 2',
-					rowSpan: 2,
-					style: { borderWidths: 0 },
-				},
-				{
-					content: 'Row 1, Cell 3',
-					style: { borderWidths: [0, 0, 3, 0] },
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'Row 2, Cell 1' },
-				{
-					content: 'Row 2, Cell 3',
-					style: { borderColors: 'magenta' },
-				},
-			],
-		},
-	],
-};
-
-export const TableBorderStyles = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...propsDefault} width={width} />;
-};
-
-```
-</details>
 
 
-
-## Play with styles even more
+## Play with styles even more  <GitHubLink demoName="TableStyles" is:inline />
 
 Try complex use case for your requirements. 
 
@@ -196,91 +56,3 @@ Try complex use case for your requirements.
 	<TableStyles />
 </div>
 
-
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-import { ImBug } from 'react-icons/im';
-
-const Circle = () => {
-	return (
-		<ellipse
-			cx={15}
-			cy={15}
-			rx={30}
-			ry={30}
-			fill='orange'
-			style={{ filter: 'blur(10px)' }}
-		/>
-	);
-};
-
-const tableProps: Omit<TableProps, 'width'> = {
-	columnWidths: [2, 1, 2],
-
-	defaultRowStyle: {
-		bgColor: 'yellow',
-		height: 50,
-	},
-
-	style: {
-		// table's border customizations
-		rowGaps: 10,
-		colGaps: 10,
-		margins: [10, 10, 10, 10],
-		bgColor: 'lime',
-		borderWidths: [2, 2, 2, 2],
-		borderColors: ['red', 'green', 'blue', 'purple'],
-		borderPatterns: [
-			[4, 4],
-			[4, 6],
-			[0, 6],
-			[0, 6],
-		],
-		borderShapes: ['butt', 'butt', 'round', 'square'],
-	},
-	rows: [
-		{
-			cells: [
-				{
-					before: <Circle />,
-					style: {
-						allowOverflow: false,
-					},
-					after: props => (
-						<g
-							transform={`translate(${props.x - 40}, ${props.y - 16}) scale(2)`}
-						>
-							<ImBug fill='red' color='yellow' />
-						</g>
-					),
-					content: 'Row1, Cell1',
-				},
-				{
-					content: `rotate 15,
-					opacity 0.5`,
-					rowSpan: 2,
-					style: {
-						textStyle: {
-							rotate: '15',
-						},
-						svgStyle: {
-							opacity: 0.5,
-						},
-					},
-				},
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
-	],
-};
-export const TableStyles = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>

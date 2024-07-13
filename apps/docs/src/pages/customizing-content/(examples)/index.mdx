@@ -13,8 +13,9 @@ import {
 	// Margins,
 	// Paddings,
 } from '@repo/demo-components-react';
+import GitHubLink from '@/components/GitHubLink';
 
-## Table With Custom Element
+## Table With Custom Element <GitHubLink demoName="BasicWithElement" is:inline />
 
 you can add an SVG Element as you want. Its position will start from left-top if you don't use callback function.
 
@@ -22,41 +23,7 @@ you can add an SVG Element as you want. Its position will start from left-top if
 	<BasicWithElement />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const Rect = () => {
-	return (
-		<g>
-			<rect x={10} y={5} width={100} height={15} fill='cyan' />
-			<text x={10} y={15}>
-				hi
-			</text>
-		</g>
-	);
-};
-const tableProps: Omit<TableProps, 'width'> = {
-	rows: [
-		['Header 1', 'Header 2', 'Header3'],
-		[
-			{ content: <Rect /> },
-			{ content: 'Row Span', rowSpan: 2 },
-			'Row 1, Cell 3',
-		],
-		['Row 2, Cell 1', 'Row 2, Cell 3'],
-	],
-};
-
-export const BasicWithElement = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
-
-## Custom Element With Props
+## Custom Element With Props <GitHubLink demoName="BasicWithProps" is:inline />
 
 Do you want to adjust the element based on the center position? No problem! Use callback function.
 
@@ -64,73 +31,15 @@ Do you want to adjust the element based on the center position? No problem! Use 
 	<BasicWithProps />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
-
-// this props will have an extensive amount of attributes that you can use for customization
-const adjustedText: ContentAsFunc = props => {
-	return (
-		<text x={props.x + 10} y={props.y + 10}>
-			Adjusted Text
-		</text>
-	);
-};
-
-const tableProps: Omit<TableProps, 'width'> = {
-	rows: [
-		['Header 1', 'Header 2'],
-		[{ content: adjustedText }, 'Cell'],
-	],
-};
-
-export const BasicWithProps = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
-
-## Allow Contents Overflow
+## Allow Contents Overflow <GitHubLink demoName="BasicWithPropsAllowingOverflow" is:inline />
 
 For the clean look and feel, the default behavior of the cell does not allow overflow of the content. But you can set them to allow overflow with one line. This is useful for debugging. (You know, content is hiding and have no idea where it is...)
 
 <div className='demo-container'>
 	<BasicWithPropsAllowingOverflow />
 </div>
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
 
-// this props will have an extensive amount of attributes that you can use for customization
-
-const overflowedCell = 'This should overflow Because it is so long!!';
-
-const tableProps: Omit<TableProps, 'width'> = {
-	defaultCellStyle: {
-		allowOverflow: true,
-	},
-	rows: [
-		[overflowedCell, 'Cell', 'Cell'],
-		['Cell', overflowedCell, 'Cell'],
-		['Cell', 'Cell', overflowedCell],
-	],
-};
-
-export const BasicWithPropsAllowingOverflow = ({
-	width = 500,
-}: {
-	width?: number;
-}) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
-
-## Control Overflow behavior individually
+## Control Overflow behavior individually <GitHubLink demoName="BasicWithPropsAllowingOverflowOnlyOneCell" is:inline />
 
 You can make only some cell to overflow as well.
 This allow you to control the table look granually.
@@ -138,41 +47,10 @@ This allow you to control the table look granually.
 <div className='demo-container'>
 	<BasicWithPropsAllowingOverflowOnlyOneCell />
 </div>
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { CellProps, TableProps } from '@shjeon0730/svg-table';
-
-const LONG_TEXT = 'This should overflow Because it is so long!!';
-
-const overflowedCell: CellProps = {
-	style: {
-		allowOverflow: true,
-	},
-	content: LONG_TEXT,
-};
-
-const tableProps: Omit<TableProps, 'width'> = {
-	rows: [
-		[overflowedCell, 'Cell', 'Cell'],
-		['Cell', LONG_TEXT, 'Cell'],
-		['Cell', 'Cell', LONG_TEXT],
-	],
-};
-
-export const BasicWithPropsAllowingOverflowOnlyOneCell = ({
-	width = 500,
-}: {
-	width?: number;
-}) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
 
 
-## Text Position Adjustment
+
+## Text Position Adjustment <GitHubLink demoName="TextPositionAdjustment" is:inline />
 
 if your usecase is simply adjusting a little text position based from the center of the cell,
 you can use cx, cy
@@ -181,47 +59,9 @@ you can use cx, cy
 	<TextPositionAdjustment />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const tableProps: Omit<TableProps, 'width'> = {
-	rows: [
-		{
-			cells: [
-				{
-					content: 'cx: -10, cy: -3',
-					style: {
-						cx: -10,
-						cy: -3,
-					},
-				},
-				{
-					content: 'without cx,cy',
-				},
-
-				{
-					content: 'cx: 10, cy: 3',
-					style: {
-						cx: 10,
-						cy: 3,
-					},
-				},
-			],
-		},
-	],
-};
-
-export const TextPositionAdjustment = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
 
 
-## Outbound Labels
+## Outbound Labels <GitHubLink demoName="OutboundLabels" is:inline />
 
 If you want to put labels outside of the table area, you might find it is very hard.
 You can add before and after items to make outbound labels easily.
@@ -230,147 +70,8 @@ You can add before and after items to make outbound labels easily.
 	<OutboundLabels />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { ContentAsFunc, TableProps } from '@shjeon0730/svg-table';
 
-// this props will have an extensive amount of attributes that you can use for customization
-const getOutBoundLabelOnTop: ContentAsFunc = props => {
-	// white-bg is given to defs property.
-	return (
-		<text
-			x={props.x}
-			y={props.y - props.height / 2}
-			{...props.textStyle}
-			filter='url(#white-bg)'
-		>
-			TOP LABEL
-		</text>
-	);
-};
-
-const getOutBoundLabelOnLeft: ContentAsFunc = props => {
-	return (
-		<g transform={`translate(-10, ${props.y})`}>
-			<g transform={`rotate(-90)`}>
-				<text   {...props.textStyle} dominantBaseline={'auto'} textAnchor='middle'>
-					LEFT LABEL
-				</text>
-			</g>
-		</g>
-	);
-};
-
-const tableProps: Omit<TableProps, 'width'> = {
-	// this can be used in svg area.
-	defs: (
-		<>
-			<filter x='-0.1' y='0' width='1.2' height='1' id='white-bg'>
-				<feFlood floodColor='var(--label-background, #fff)' />
-				<feComposite in='SourceGraphic' operator='over' />
-			</filter>
-			<filter x='-0.1' y='0' width='1.2' height='1' id='red-bg'>
-				<feFlood floodColor='red' />
-				<feComposite in='SourceGraphic' operator='over' />
-			</filter>
-		</>
-	),
-	style: {
-		margins: [0, 0, 0, 30],
-	},
-	rows: [
-		{
-			cells: [
-				{
-					style: {
-						allowOverflow: true,
-					},
-					content: getOutBoundLabelOnTop,
-					after: props => (
-						<text
-							{...props.textStyle}
-							y={props.height / 2}
-							x={props.width}
-							textAnchor='end'
-							fill='yellow'
-						>
-							After
-						</text>
-					),
-					before: props => (
-						<>
-							<rect
-								x={0}
-								y={0}
-								width={props.width / 2}
-								height={props.height}
-								fill='#ff6666'
-							/>
-							<text
-								{...props.textStyle}
-								x={0}
-								y={props.height / 2}
-								fill='white'
-							>
-								Before
-							</text>
-						</>
-					),
-				},
-				{
-					style: {
-						allowOverflow: true,
-						textStyle: {
-							// another way of outbounding label
-							y: -15,
-							filter: 'url(#white-bg)',
-						},
-					},
-					content: 'Header 2',
-					after: {
-						content: 'After Header 2',
-						textStyle: {
-							fill: 'green',
-						},
-					}, // this will not affected by textStyle
-					before: {
-						content: 'Before Header 2',
-						textStyle: {
-							filter: 'url(#red-bg)',
-							fill: 'yellow',
-						},
-					},
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{
-					style: {
-						allowOverflow: true,
-					},
-					content: 'text',
-					before: getOutBoundLabelOnLeft,
-				},
-				{ content: 'Row Span', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		['Row 2, Cell 1', 'Row 2, Cell 3'],
-	],
-};
-
-export const OutboundLabels = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-
-```
-</details>
-
-## Background and Text Color change
+## Background and Text Color change <GitHubLink demoName="BgColorAndTextColor" is:inline />
 
 You can change background of the cells and table.
 If you want to even more customize it, you can add some defs
@@ -382,70 +83,9 @@ You can also change the text color simply.
 	<BgColorAndTextColor />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-const Gradients = () => {
-	return (
-		<>
-			<linearGradient id='red-to-blue' x1='0' x2='0' y1='0' y2='1'>
-				<stop offset='0%' stopColor='red' />
-				<stop offset='100%' stopColor='blue' />
-			</linearGradient>
-			<linearGradient id='cyan-to-white' x1='0' x2='0' y1='0' y2='1'>
-				<stop offset='0%' stopColor='cyan' />
-				<stop offset='100%' stopColor='white' />
-			</linearGradient>
-		</>
-	);
-};
-const blueTextCell = {
-	content: 'Blue Text',
-	style: {
-		textColor: 'blue',
-	},
-};
-const OrangeBackWhiteTextCell = {
-	content: 'OrangeBack,WhiteText',
-	style: {
-		bgColor: 'orange',
-		textColor: 'white',
-	},
-};
-
-const GradientBackCell = {
-	content: 'Gradient Back',
-	style: {
-		bgColor: 'url(#red-to-blue)',
-		textColor: 'white',
-	},
-};
-
-const GradientBackCell2 = {
-	content: 'Gradient Back2',
-	style: {
-		bgColor: 'url(#cyan-to-white)',
-	},
-};
-
-const tableProps: Omit<TableProps, 'width'> = {
-	defs: <Gradients />,
-	height: 100,
-	rows: [
-		[blueTextCell, OrangeBackWhiteTextCell],
-		[GradientBackCell, GradientBackCell2],
-	],
-};
-export const BgColorAndTextColor = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
 
 
-## Text override
+## Text override <GitHubLink demoName="TextStyleOverride" is:inline />
 
 svg-table has class names for individual elements. so you can add css.
 but also, you can control individual text's attributes since the attributes are passed by `style.textStyle` option. All possible attributes can be passed to text elements.
@@ -457,81 +97,3 @@ in this example, I just overrode the positions of text.
 <div className='demo-container'>
 	<TextStyleOverride />
 </div>
-
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const textLeftTop = {
-	textAnchor: 'start',
-	dominantBaseline: 'hanging',
-	x: 0,
-	y: 0,
-};
-
-const tableProps: Omit<TableProps, 'width'> = {
-	columnWidths: [100, 300, 200],
-	defaultCellStyle: {
-		textColor: '#ff0000',
-	},
-	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-					style: {
-						bgColor: '#f0f0f0',
-						paddings: [10, 4, 0, 0],
-						textColor: 'blue',
-						textStyle: {
-							textAnchor: 'middle',
-							dominantBaseline: 'auto',
-							fontSize: 10,
-						},
-					},
-				},
-				{
-					content: 'Header 2',
-					colSpan: 2,
-					style: {
-						textStyle: {
-							textAnchor: 'middle',
-							dominantBaseline: 'middle',
-						},
-					},
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'test' },
-				{
-					content: 'Row 1, Cell 2',
-					rowSpan: 2,
-					style: {
-						textStyle: {
-							fontSize: 30,
-							fontFamily: 'sans-serif',
-						},
-					},
-				},
-				{
-					content: 'Row 1, Cell 3',
-					style: {
-						textStyle: textLeftTop,
-					},
-				},
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
-	],
-};
-export const TextStyleOverride = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>

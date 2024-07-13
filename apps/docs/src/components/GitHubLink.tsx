@@ -29,7 +29,6 @@ const GitHubLink = ({ demoName, sites }: { demoName: string; sites?: Frameworks 
 					rel='noopener noreferrer'
 					aria-label='react code'
 				>
-					code
 					<FaReact />
 				</a>
 			)}
@@ -41,7 +40,6 @@ const GitHubLink = ({ demoName, sites }: { demoName: string; sites?: Frameworks 
 					rel='noopener noreferrer'
 					aria-label='solid code'
 				>
-					code
 					<TbBrandSolidjs />
 				</a>
 			)}
@@ -53,7 +51,6 @@ const GitHubLink = ({ demoName, sites }: { demoName: string; sites?: Frameworks 
 					rel='noopener noreferrer'
 					aria-label='vanilla code'
 				>
-					code
 					<RiJavascriptFill />
 				</a>
 			)}

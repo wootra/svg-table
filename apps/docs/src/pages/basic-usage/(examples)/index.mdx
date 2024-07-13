@@ -13,7 +13,7 @@ import {
 } from '@repo/demo-components-react';
 import GitHubLink from '@/components/GitHubLink';
 
-### Basic Demo <GitHubLink demoName="BasicDemo" is:inline />
+## Basic Demo <GitHubLink demoName="BasicDemo" is:inline />
 
 Here is a simple 3x3 table with with colSpan and rowSpan
 
@@ -21,45 +21,7 @@ Here is a simple 3x3 table with with colSpan and rowSpan
 	<BasicDemo />
 </div>
 
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const tableProps: Omit<TableProps, 'width'> = {
-	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Col Span',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'Row 1, Cell 1' },
-				{ content: 'Row Span\nmultiline\nsupport', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
-	],
-};
-
-export const BasicDemo = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
-
-### Just using text array makes cells
+## Just using text array makes cells <GitHubLink demoName="BasicSimpleArray" is:inline />
 
 Instead of writing all the objects, you can simply use string array to make columns.
 it will save a lot of time. Of course, you can add attributes more if you want.
@@ -68,43 +30,8 @@ it will save a lot of time. Of course, you can add attributes more if you want.
 	<BasicSimpleArray />
 </div>
 
-<details>
-<summary>Code</summary>
 
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const tableProps: Omit<TableProps, 'width'> = {
-	rows: [
-		['cell1', 'cell2', 'cell3'],
-		['cell4', { content: 'content', colSpan: 2 }],
-		{
-			style: {
-				height: 100,
-			},
-			cells: [
-				'cell7',
-				{
-					style: {
-						bgColor: 'red',
-					},
-					content: 'content',
-				},
-				'cell9',
-			],
-		},
-	],
-};
-
-export const BasicSimpleArray = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
-
-
-### Standalone SVG
+## Standalone SVG <GitHubLink demoName="Standalone" is:inline />
 
 To use the real SVG's vector drawing power, try to add `standalone` props.
 Your table will be resized depends on its container in a HTML element.
@@ -116,83 +43,11 @@ which causes the browser read the file as a normal XML file.
 	<Standalone />
 </div>
 
-<details>
-<summary>Code</summary>
 
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const tableProps: Omit<TableProps, 'width'> = {
-	rows: [
-		{
-			cells: [
-				{
-					content: 'Header 1',
-				},
-				{
-					content: 'Col Span',
-					colSpan: 2,
-				},
-			],
-		},
-		{
-			cells: [
-				{ content: 'Row 1, Cell 1' },
-				{ content: 'Row Span\nmultiline\nsupport', rowSpan: 2 },
-				{ content: 'Row 1, Cell 3' },
-			],
-		},
-		{
-			cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
-		},
-	],
-};
-
-export const Standalone = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} standalone={true} />;
-};
-
-```
-</details>
-
-## Gaps between columns and rows
+## Gaps between columns and rows <GitHubLink demoName="Gaps" is:inline />
 
 You can easily add gaps between rows or columns.
 
 <div className='demo-container'>
 	<Gaps />
 </div>
-
-<details>
-<summary>Code</summary>
-```typescript
-import SVGTable, { TableProps } from '@shjeon0730/svg-table';
-
-const tableProps: Omit<TableProps, 'width'> = {
-	style: {
-		colGaps: 4,
-		rowGaps: 10,
-	},
-	rows: [
-		[
-			'Header 1',
-			{
-				content: 'Header 2',
-				colSpan: 2,
-			},
-		],
-		[
-			'Row1, Cell1',
-			{ content: 'Row 1, Cell 2', rowSpan: 2 },
-			'Row 1, Cell 3',
-		],
-		['Row 2, Cell 1', 'Row 2, Cell 3'],
-	],
-};
-export const Gaps = ({ width = 500 }: { width?: number }) => {
-	return <SVGTable {...tableProps} width={width} />;
-};
-
-```
-</details>
-	
