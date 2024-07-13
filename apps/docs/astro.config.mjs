@@ -16,5 +16,5 @@ export default defineConfig({
 		}),
 		sitemap(),
 	],
-	site: `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`, // 'https://svg-table.vercel.com',
+	site: 'https://svg-table.com', // `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`, // 'https://svg-table.vercel.com',
 });
