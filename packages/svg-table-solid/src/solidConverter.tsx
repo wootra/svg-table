@@ -2,7 +2,7 @@
 import { JSX, ValidComponent } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 
-import { SVGTableElement, SVGTableElementAsObj } from '../../svg-table-module/src/private-types';
+import { SVGTableElement, SVGTableElementAsObj } from '../../svg-table-core/src/private-types';
 import { __private__, convertToKebabCaseProps } from './utils';
 const { convertVal } = __private__;
 

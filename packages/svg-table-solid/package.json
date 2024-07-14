@@ -9,7 +9,7 @@
 	"files": [
 		"dist",
 		"src",
-		"../svg-table-module/src"
+		"../svg-table-core/src"
 	],
 	"scripts": {
 		"build": "npm run lint; tsc;npm run build:bundle",

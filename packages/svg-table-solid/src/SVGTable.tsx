@@ -1,5 +1,5 @@
 import { TableProps } from './types';
-import { SVGTableBase } from '../../svg-table-module/src/SVGTableBase';
+import { SVGTableBase } from '../../svg-table-core/src/SVGTableBase';
 import { solidConverter } from './solidConverter';
 
 export const SVGTable = (tableProps: TableProps) => {

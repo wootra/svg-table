@@ -1,6 +1,6 @@
 {
-	"name": "@repo/svg-table-module",
-	"version": "0.1.0",
+	"name": "@shjeon0730/svg-table-core",
+	"version": "0.0.1",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
@@ -17,7 +17,15 @@
 		"build:js": "rollup -c rollup.config.mjs",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
 		"dev": "rollup -c rollup.config.mjs -w",
-		"type-check": "tsc --noEmit"
+		"type-check": "tsc --noEmit",
+		"pre-patch": "sh ./publish.sh prepatch",
+		"pre-minor": "sh ./publish.sh preminor",
+		"pre-major": "sh ./publish.sh premajor",
+		"pre-release": "sh ./publish.sh prerelease",
+		"patch": "sh ./publish.sh patch",
+		"minor": "sh ./publish.sh minor",
+		"major": "sh ./publish.sh major",
+		"publish-now": "npm publish --access public"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.7",

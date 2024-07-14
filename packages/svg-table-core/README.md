@@ -1,4 +1,4 @@
-# svg-table-module
+# svg-table-core
 
 ![Logo](https://raw.githubusercontent.com/wootra/svg-table/main/packages/svg-table/logo.svg)
 

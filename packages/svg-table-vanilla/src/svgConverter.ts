@@ -1,4 +1,4 @@
-import { SVGTableElement, SVGTableElementAsObj } from '../../svg-table-module/src/private-types';
+import { SVGTableElement, SVGTableElementAsObj } from '../../svg-table-core/src/private-types';
 import { convertToKebabCaseProps } from './utils';
 
 export const svgConverter = (element: SVGTableElement): string => {

@@ -13,9 +13,9 @@ import {
 	ContentPropsBase,
 	CellStyleBase,
 	SVGRenderElementBase,
-} from '../../svg-table-module/src/private-types';
+} from '../../svg-table-core/src/private-types';
 
-export * from '../../svg-table-module/src/common-types';
+export * from '../../svg-table-core/src/common-types';
 
 export type ContentProps = ContentPropsBase<'text'>;
 export type TableInCellProps = TableInCellPropsBase<Node, 'text', 'g', 'svg'>;
