@@ -1,24 +1,28 @@
-# svg-table
+# svg-table-vanilla
 
 ![Logo](https://raw.githubusercontent.com/wootra/svg-table/main/packages/svg-table/logo.svg)
 
 this library is written in typescript and ESM.
 also create the module using React.js.
 
-demo code and the documentations are [here](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo)
+demo code and the documentations are [here](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo-vanilla)
 
-or you can see [next.js demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo-next) code as well.
+## Installation
+
+`@shjeon0730/svg-table-vanilla` is a wrapper of (@shjeon0730/svg-table-core)[https://www.npmjs.com/package/@shjeon0730/svg-table-core] npm module. Please install both modules.
+
+```sh
+npm install @shjeon0730/svg-table-core @shjeon0730/svg-table-vanilla 
+```
 
 ## Introduction
 
-`@shjeon0730/svg-table` library is made to support a case that HTML table cannot be used but svg is needed.
+`@shjeon0730/svg-table-vanilla` library is made to support a case that HTML table cannot be used but svg is needed.
 I realized that creating a table form in SVG is a tedious job, so created this library to make the table shape in svg easier and manageable.
 Especially, if you want to use PDFMake and want to create more advanced table like experience in the PDF, it is a time consuming process.
 If you can make the table with SVG and reuse the same code for both browser and PDF, it will be easier to manage.
 
-this library support below use cases. Please check out the [demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo) code to have more idea of using this library.
-
-here is Next.js [server side demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo-next) as well.
+this library support below use cases. Please check out the [demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo-vanilla) code to have more idea of using this library.
 
 ## Usage
 
