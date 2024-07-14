@@ -6,11 +6,13 @@ export const VerticalResponsive = () => {
 	const [height, setHeight] = createSignal(500);
 	const onResize = () => {
 		const ref = document.getElementById(uniqId);
+
 		if (ref) {
 			setWidth(ref.clientWidth - 32);
 			setHeight(ref.clientHeight - 32);
 		}
 	};
+
 	onMount(() => {
 		window.addEventListener('resize', onResize);
 	});
@@ -19,14 +21,11 @@ export const VerticalResponsive = () => {
 	});
 
 	return (
-		<div
-			id={uniqId}
-			class='example-container'
-			style={{
-				height: 'calc(100vh - 300px)',
-			}}
-		>
-			<EmbeddedTableAsPropsWithHeight width={width()} height={height()} />
+		<div id={uniqId} class='example-container' style='height: calc(100vh - 300px)'>
+			{EmbeddedTableAsPropsWithHeight({
+				width: width(),
+				height: height(),
+			})}
 		</div>
 	);
 };

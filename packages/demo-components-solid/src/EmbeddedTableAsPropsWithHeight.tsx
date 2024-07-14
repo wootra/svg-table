@@ -59,5 +59,5 @@ export const EmbeddedTableAsPropsWithHeight = ({
 	height?: number;
 	standalone?: boolean;
 }) => {
-	return SVGTable({ ...tableProps, width, height, standalone });
+	return <SVGTable {...tableProps} {...{ width, height, standalone }} />;
 };

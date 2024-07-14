@@ -19,7 +19,7 @@ export const HorizontalResponsive = () => {
 
 	return (
 		<div id={uniqId} class='example-container'>
-			<EmbeddedTableAsProps width={width()} />
+			{EmbeddedTableAsProps({ width: width() })}
 		</div>
 	);
 };

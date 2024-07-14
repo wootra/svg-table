@@ -1,14 +1,12 @@
-import {
-	HorizontalResponsive,
-	VerticalResponsive,
-} from '@repo/demo-components-solid';
-import GitHubLink from '@/components/GitHubLink';
+import HorizontalResponsiveHolder from '../_helpers-solid/HorizontalResponsiveHolder';
+import VerticalResponsiveHolder from '../_helpers-solid/VerticalResponsiveHolder';
+import GitHubLink from '@/components/GitHubLink.astro';
 
 ## Horizontally Responsive <GitHubLink demoName="HorizontalResponsive" is:inline />
 
 try to resize the window! In this example, your table will only responsive with width.
 
-	<HorizontalResponsive client:only="solid" />
+	<HorizontalResponsiveHolder client:only="solid" />
 
 
 ## Vertically Responsive <GitHubLink demoName="VerticalResponsive" is:inline />
@@ -17,5 +15,5 @@ try to resize the window in height and width! you see the table is "Responsive"!
 Optimization is up to you, though...
 
 
-	<VerticalResponsive client:only="solid" />
+	<VerticalResponsiveHolder client:only="solid" />
 
