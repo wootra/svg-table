@@ -6,7 +6,13 @@
 
 ! ⚠️ This library is separated 3 libraries (maybe more in the future) to support multiple frameworks. (i.e. `@shjeon0730/svg-table-react`, `@shjeon0730/svg-table-rsolid`, and `@shjeon0730/svg-table-vanilla`). Check out [Homepage](https://svg-table.com) for more information. ⚠️
 
+## Installation
 
+! From 2.1.X version, you should install `@shjeon0730/svg-table-core` `@shjeon0730/svg-table-react` as well. @shjeon0730/svg-table will be just wrapper of [@shjeon0730/svg-table-react](https://www.npmjs.com/package/@shjeon0730/svg-table-react) . So there is no difference except for importing name between them.
+
+```
+npm install @shjeon0730/svg-table-core @shjeon0730/svg-table-react @shjeon0730/svg-table
+```
 
 ## Introduction
 
