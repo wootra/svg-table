@@ -76,7 +76,7 @@ export const SVGTableBase = <
 >(
 	tableProps: TablePropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>
 ): SVGTableElement<NODE> => {
-	const {
+	let {
 		rows,
 		width = 500,
 		height: heightFromProps,
@@ -131,8 +131,8 @@ export const SVGTableBase = <
 			return h + (row.style?.height ?? defaultStyleForRow.height);
 		}, 0) + allRowGaps;
 
-	height = simpleValue(height);
-
+	height = Math.max(simpleValue(height), 1);
+	width = Math.max(simpleValue(width), 1);
 	const cellWidths = columnWidths
 		? adjustColumnWidths(columnWidths, width - allColGaps)
 		: Array(maxColumns).fill(simpleValue((width - allColGaps) / maxColumns));

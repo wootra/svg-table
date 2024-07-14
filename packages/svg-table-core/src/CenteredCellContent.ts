@@ -22,7 +22,7 @@ export const CenteredCellContent = <
 	styleToUse: CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>;
 	children: SVGTableElement[] | SVGTableElement;
 }): SVGTableElement<NODE> => {
-	const { width, height, className } = cellOpt;
+	let { width, height, className } = cellOpt;
 
 	let { rotateCenterProps, cx = 0, cy = 0 } = styleToUse;
 
@@ -44,6 +44,8 @@ export const CenteredCellContent = <
 
 	getDuplicatedProps(rotationGroupProps);
 
+	width = Math.max(width, 1);
+	height = Math.max(height, 1);
 	// below redundant transformation is needed to avoid firefox incompatibility.
 	return element<NODE>(
 		'svg',

@@ -278,7 +278,7 @@ export const ACell = <
 }): SVGTableElement<NODE> => {
 	if (cellOpt._ignored) return null;
 
-	const { x, y, width, height, style, className } = cellOpt;
+	let { x, y, width, height, style, className } = cellOpt;
 
 	const styleToUse = {
 		...defaultStyle,
@@ -297,7 +297,8 @@ export const ACell = <
 	const ariaProps = getAriaProps(cellOpt);
 
 	const { beforeContent, afterContent, mainContent } = getContents(cellOpt, styleToUse);
-
+	width = Math.max(width, 1);
+	height = Math.max(height, 1);
 	return element<NODE>(
 		'g',
 		{
@@ -309,7 +310,7 @@ export const ACell = <
 			'svg',
 			{
 				width: width,
-				height: Math.max(height, 1),
+				height: height,
 				style: svgStyleToUse,
 				viewBox: `0 0 ${width} ${height}`,
 				className: className ? className : undefined,

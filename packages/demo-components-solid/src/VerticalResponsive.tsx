@@ -15,6 +15,7 @@ export const VerticalResponsive = () => {
 
 	onMount(() => {
 		window.addEventListener('resize', onResize);
+		onResize();
 	});
 	onCleanup(() => {
 		window.removeEventListener('resize', onResize);
