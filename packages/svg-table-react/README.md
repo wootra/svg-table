@@ -9,6 +9,13 @@ demo code and the documentations are [here](https://github.com/wootra/svg-table/
 
 or you can see [next.js demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo-next) code as well.
 
+## Installation
+
+Please install peerDependency `@shjeon0730/svg-table-core` as well on top of `react`,`react-dom`.
+
+```sh
+npm install @shjeon0730/svg-table-react
+```
 ## Introduction
 
 `@shjeon0730/svg-table-react` library is made to support a case that HTML table cannot be used but svg is needed.
