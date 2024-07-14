@@ -1,15 +1,13 @@
 {
 	"name": "@shjeon0730/svg-table-react",
-	"version": "0.0.1-0",
+	"version": "0.0.2-1",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
 	"browser": "dist/index.umd.js",
 	"types": "src/index.ts",
 	"files": [
-		"dist",
-		"src",
-		"../svg-table-module/src"
+		"dist"
 	],
 	"scripts": {
 		"build": "npm run lint; tsc;npm run build:bundle",
@@ -23,6 +21,7 @@
 		"pre-patch": "sh ./publish.sh prepatch",
 		"pre-minor": "sh ./publish.sh preminor",
 		"pre-major": "sh ./publish.sh premajor",
+		"pre-release": "sh ./publish.sh prerelease",
 		"patch": "sh ./publish.sh patch",
 		"minor": "sh ./publish.sh minor",
 		"major": "sh ./publish.sh major",
