@@ -1,11 +1,13 @@
 ---
 const selected = '/examples';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+import LinkListHolder from '@/components/LinkListHolder.astro';
 import {TITLE_TRANSITION} from '../../components/consts';
 import ScrollLayout from '../../layouts/ScrollLayout.astro';
 ---
 <link rel="canonical" href={canonicalURL} />
 <ScrollLayout title="Welcome to SVG Title: Examples: React.js" selected={selected}>
+	<LinkListHolder />
     <div class="center-content">
         <div class="feature-wrapper">
     <h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}>Examples</h1>
@@ -13,7 +15,8 @@ import ScrollLayout from '../../layouts/ScrollLayout.astro';
 
     <div class="section" id="features">
         <h2>Choose your favorite framework!</h2>
-		<ul class="features-list">
+		<p>Here is multiple examples for the different frameworks. There are some differences to use when you're injecting Frameworks specific nodes. Check out examples.</p>
+		<ul class="link-list">
             <li><a href="/examples/react">React.js</a></li>
             <li><a href="/examples/solid">Solid.js(from 3.0)</a></li>
             <li><a href="/examples/vanilla">Vanilla js(from 3.0)</a></li>
@@ -23,7 +26,7 @@ import ScrollLayout from '../../layouts/ScrollLayout.astro';
     <div class="section" id="features">
         <h2>All Demo Code</h2>
 
-        <ul class="features-list">
+        <ul class="link-list">
             <li><a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components-react" target="_blank">React.js DEMO code</a></li>
             <li><a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components-solid" target="_blank">Solid.js DEMO code</a></li>
             <li><a href="https://github.com/wootra/svg-table/tree/main/packages/demo-components-vanilla" target="_blank">Vanilla js DEMO code</a></li>
@@ -41,24 +44,7 @@ import ScrollLayout from '../../layouts/ScrollLayout.astro';
 </ScrollLayout>
 
 <style>
-    .features-list {
-		list-style-type: none;
-		padding-left: 0;
-	}
-
-	.features-list li {
-		margin-bottom: 0.5rem;
-		display: flex;
-		align-items: center;
-	}
-
-	.features-list li::before {
-		content: '🔗';
-		color: var(--color-secondary);
-		margin-right: 0.5rem;
-		font-weight: bold;
-	}
-
+    
 
 	.note {
 		background-color: rgba(20, 158, 202, 0.1);

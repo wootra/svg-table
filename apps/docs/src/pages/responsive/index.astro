@@ -1,14 +1,14 @@
 ---
-import ExampleLayout from '@/layouts/ExampleLayout.astro';
-import Examples from './(examples)/index.mdx';
-const selected = "/responsive"
-import {TITLE_TRANSITION} from '@/components/consts';
+const selected = '/responsive';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
+import FeatureListHolder from '@/components/FeatureListHolder.astro';
+import {TITLE_TRANSITION} from '../../components/consts';
+import ExampleLayout from '@/layouts/ExampleLayout.astro';
 ---
 <link rel="canonical" href={canonicalURL} />
-<ExampleLayout title='Welcome to SVG Title: Responsive Tables(React)' selected={selected}>
 
+<ExampleLayout title='Welcome to SVG Title: Responsive Tables(React)' selected={selected}>
+	<FeatureListHolder />
 	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Responsive Tables</h1>
 	<p>
 		SVG Table technically does not supports CSS way of responsive layout, 
@@ -17,11 +17,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		so multiple layer of table is easy to make just passing javascript object.
 
 	</p>
-	<div class="section">
-        <div class="example-container">
-            <Examples />
-            </div>
-        </div>
-    </div>
-	
+	<div class="section" id="features">
+        <h2>Choose your favorite framework!</h2>
+		<p>Here is multiple responsive examples for the different frameworks. There are some differences to use when you're injecting Frameworks specific nodes. Check out examples.</p>
+		<ul class="features-list">
+            <li><a href="/responsive/react">React.js</a></li>
+            <li><a href="/responsive/solid">Solid.js(from 3.0)</a></li>
+            <li><a href="/responsive/vanilla">Vanilla js(from 3.0)</a></li>
+		</ul>
+	</div>
 </ExampleLayout>
+
+<style>
+   
+</style>
