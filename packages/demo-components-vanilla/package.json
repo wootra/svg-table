@@ -20,10 +20,13 @@
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"eslint": "^8.57.0",
+		"@shjeon0730/svg-table-vanilla": "link:../svg-table-vanilla-repo",
+		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"typescript": "^5.5.3"
 	},
 	"peerDependencies": {
-		"@shjeon0730/svg-table-vanilla": "link:../svg-table-vanilla-repo",
+		"@shjeon0730/svg-table-vanilla": "*",
+		"@shjeon0730/svg-table-core": "*",
 		"react": "^18",
 		"react-dom": "^18"
 	},

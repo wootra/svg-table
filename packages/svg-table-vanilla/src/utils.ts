@@ -1,4 +1,4 @@
-import { SVGTableElement } from '@shjeon0730/svg-table-core/private-types';
+import { SVGTableElement } from '@shjeon0730/svg-table-core';
 import { SVGElementName } from './types';
 
 export const kebabize = (str: string) =>

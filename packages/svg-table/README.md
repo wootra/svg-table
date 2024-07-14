@@ -28,7 +28,7 @@ They will use the same core logic and will have the same version systems (except
 
 For your convenience, We give you a simple way of upgrading library.
 
-1. install @shjeon0730/svg-table-react
+1. install `@shjeon0730/svg-table-core` and `@shjeon0730/svg-table-react`
 
 ```sh
 npm install @shjeon0730/svg-table-react

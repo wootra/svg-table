@@ -1,19 +1,20 @@
 {
 	"name": "@shjeon0730/svg-table-core",
-	"version": "0.1.0",
+	"version": "0.1.1-0",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
 	"browser": "dist/index.umd.js",
-	"types": "src/index.ts",
+	"types": "dist/types/index.d.js",
 	"files": [
-		"dist",
-		"src"
+		"dist/**/*",
+		"src/**/*"
 	],
 	"scripts": {
 		"test": "vitest",
 		"lint": "eslint . --max-warnings 0",
-		"build": "npm run lint; tsc --noEmit;npm run build:bundle",
+		"build": "npm run lint; tsc;npm run build:bundle; npm run build:sync",
+		"build:sync": "sh ./sync-dist.sh ../svg-table-core-repo",
 		"build:bundle": "npm run build:js && npm run build:types",
 		"build:js": "rollup -c rollup.config.mjs",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",

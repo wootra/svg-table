@@ -30,6 +30,10 @@ export const HorizontalResponsive = (uniqId = `u_123456789`) => {
 		setTimeout(() => {
 			savedEh(); // to avoid hydration error.
 		}, 0);
+	} else {
+		setTimeout(() => {
+			safeEhHolder.savedEh(); // to avoid hydration error.
+		}, 0);
 	}
 	return `<div id="${uniqId}">loading...</div>`;
 };

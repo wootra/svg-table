@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { createElement, Fragment } from 'react';
-import { SVGTableElement, SVGTableElementAsObj } from '@shjeon0730/svg-table-core/dist/types/private-types';
+import { SVGTableElement, SVGTableElementAsObj } from '@shjeon0730/svg-table-core';
 
 import { SVGElementName } from '@shjeon0730/svg-table-core';
 

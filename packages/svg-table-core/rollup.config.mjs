@@ -7,7 +7,7 @@ import pkg from './package.json' assert { type: 'json' };
 
 export default [
 	{
-		input: 'src/index.ts',
+		input: 'dist/index.js',
 		output: [
 			{
 				file: pkg.main,
@@ -27,12 +27,6 @@ export default [
 			},
 		],
 		external: ['react', 'react-dom'],
-		plugins: [
-			resolve(),
-			commonjs(),
-			peerDepsExternal(),
-			typescript({ tsconfig: './tsconfig.json' }),
-			terser(),
-		],
+		plugins: [resolve(), commonjs(), peerDepsExternal(), typescript({ tsconfig: './tsconfig.json' }), terser()],
 	},
 ];

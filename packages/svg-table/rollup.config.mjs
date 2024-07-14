@@ -7,7 +7,7 @@ import pkg from './package.json' assert { type: 'json' };
 
 export default [
 	{
-		input: 'src/index.ts',
+		input: 'dist/index.js',
 		output: [
 			{
 				file: pkg.main,
@@ -26,13 +26,7 @@ export default [
 				sourcemap: true,
 			},
 		],
-		external: ['react', 'react-dom'],
-		plugins: [
-			resolve(),
-			commonjs(),
-			peerDepsExternal(),
-			typescript({ tsconfig: './tsconfig.json' }),
-			terser(),
-		],
+		external: ['react', 'react-dom', '@shjeon0730/svg-table-react', '@shjeon0730/svg-table-core'],
+		plugins: [resolve(), commonjs(), peerDepsExternal(), typescript({ tsconfig: './tsconfig.json' }), terser()],
 	},
 ];

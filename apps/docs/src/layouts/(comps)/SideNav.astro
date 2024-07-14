@@ -60,12 +60,14 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 			<li><a href='#tables-in-a-table'>Tables in a table</a></li>
 			<li><a href='#auto-aligned-embeded-tables'>Auto aligned embeded tables</a></li>
 			<li><a href='#automatic-height-adjustment'>Automatic Height Adjustment</a></li>
-			
-			
-			
 		</ul>)}
 
-		<li><a {...linkOrSelected('/responsive')}>Responsive</a></li>
+		<li><a  {...linkOrSelected('/responsive')}>Responsive</a></li>
+		{selected.includes('/responsive') && (<ul class="sub" transition:name="opened-nav"  transition:animate="slide">
+			<li><a {...linkOrSelected('/responsive/react')}>React Responsive Example</a></li>
+			<li><a {...linkOrSelected('/responsive/solid')}>Solid.js Responsive Example</a></li>
+			<li><a {...linkOrSelected('/responsive/vanilla')}>Vanilla JS Responsive Example</a></li>
+		</ul>)}
 		<li><a {...linkOrSelected('/fine-level-control')}>Fine-Level Control</a></li>
 		
 

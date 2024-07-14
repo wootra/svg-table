@@ -13,9 +13,29 @@ import {
 	ContentPropsBase,
 	CellStyleBase,
 	SVGRenderElementBase,
-} from '@shjeon0730/svg-table-core/private-types';
+} from '@shjeon0730/svg-table-core';
 
-export * from '@shjeon0730/svg-table-core/common-types';
+export type {
+	PrimitiveNode,
+	Widths,
+	ColorsOnWidth,
+	PatternArrays,
+	PatternShape,
+	PatternShapes,
+	BorderStyles,
+	TextHAlign,
+	TextVAlign,
+	GroupProps,
+	RowStyle,
+	WidthPos,
+	TableStyle,
+	SVGElementName,
+	TextType,
+	GType,
+	SVGType,
+	TextAnchor,
+	DominantBaseline,
+} from '@shjeon0730/svg-table-core';
 
 export type ContentProps = ContentPropsBase<'text'>;
 export type TableInCellProps = TableInCellPropsBase<Node, 'text', 'g', 'svg'>;

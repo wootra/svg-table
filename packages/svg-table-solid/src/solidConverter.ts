@@ -2,7 +2,7 @@
 import { JSX, ValidComponent } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 
-import { SVGTableElement, SVGTableElementAsObj } from '@shjeon0730/svg-table-core/private-types';
+import { SVGTableElement, SVGTableElementAsObj } from '@shjeon0730/svg-table-core';
 import { __private__, convertToKebabCaseProps } from './utils';
 const { convertVal } = __private__;
 
@@ -31,11 +31,11 @@ export const solidConverter = (element: SVGTableElement<Node>): JSX.Element | JS
 					: [];
 		const kebabCaseProps = convertToKebabCaseProps(el.attrs);
 
-		return (
-			<Dynamic component={el.type as ValidComponent} {...kebabCaseProps}>
-				{children}
-			</Dynamic>
-		);
+		return Dynamic({ component: el.type as ValidComponent, ...kebabCaseProps, children });
+		// 	<Dynamic component={el.type as ValidComponent} {...kebabCaseProps}>
+		// 		{children}
+		// 	</Dynamic>
+		// );
 	}
 	return element as JSX.Element;
 };
