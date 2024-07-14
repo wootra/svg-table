@@ -45,7 +45,7 @@ const GitHubLink = ({ demoName, sites }: { demoName: string; sites?: Frameworks 
 			{isVanilla && (
 				<a
 					className='code-link'
-					href={`${vanillatUrl}/${demoName}.tsx`}
+					href={`${vanillatUrl}/${demoName}.ts`}
 					target='_blank'
 					rel='noopener noreferrer'
 					aria-label='vanilla code'
