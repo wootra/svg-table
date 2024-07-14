@@ -22,16 +22,6 @@ here is Next.js [server side demo](https://github.com/wootra/svg-table/tree/main
 
 ## Installation
 
-```
-npm install @shjeon0730/svg-table-react
-```
-
-## Backward compatibility (for `@shjeon0730/svg-table` users)
-
-`@shjeon0730/svg-table@2.1.x` will be the last version of this library. 
-But you can continue upgrade it by installing `@shjeon0730/svg-table-react` since it will be used in `@shjeon0730/svg-table@2.1.x` as a peerDependency.
-all Logic is ported to turbo-repo's internal package `@shjeon0730/svg-table-module` and it will not be published to avoid version mismatch among the other framework's version like `@shjeon0730/svg-table-solid` or `@shjeon0730/svg-table-vanilla`.
-They will use the same core logic and will have the same version systems (except for pre-patch version).
 
 
 ## Usage

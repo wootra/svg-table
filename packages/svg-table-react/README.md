@@ -11,7 +11,7 @@ or you can see [next.js demo](https://github.com/wootra/svg-table/tree/main/apps
 
 ## Introduction
 
-`@shjeon0730/svg-table` library is made to support a case that HTML table cannot be used but svg is needed.
+`@shjeon0730/svg-table-react` library is made to support a case that HTML table cannot be used but svg is needed.
 I realized that creating a table form in SVG is a tedious job, so created this library to make the table shape in svg easier and manageable.
 Especially, if you want to use PDFMake and want to create more advanced table like experience in the PDF, it is a time consuming process.
 If you can make the table with SVG and reuse the same code for both browser and PDF, it will be easier to manage.

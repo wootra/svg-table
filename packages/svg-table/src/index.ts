@@ -1,5 +1,4 @@
-import { SVGTable } from './SVGTable';
-export * from './types';
-export { simpleValue } from './utils';
-export * from './consts';
+import SVGTable from '@shjeon0730/svg-table-react';
+
+export * from '@shjeon0730/svg-table-react';
 export default SVGTable;

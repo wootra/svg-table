@@ -14,7 +14,6 @@ const vanillatUrl = `${urlMain}/demo-components-vanilla/src`;
 const GitHubLink = ({ demoName, sites }: { demoName: string; sites?: Frameworks }) => {
 	let sitesArr: string[] = Array.from(Sites.All);
 	if (sites) sitesArr = Array.from(Sites.All);
-	console.log('sites:', typeof sitesArr, sitesArr, Array.isArray(sitesArr));
 	const isReact = sitesArr.includes('react');
 	const isSolid = sitesArr.includes('react');
 	const isVanilla = sitesArr.includes('react');

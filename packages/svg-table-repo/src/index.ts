@@ -1,4 +1,4 @@
-import SVGTable from '../../svg-table/src/index';
-export * from '../../svg-table/src/index';
+import SVGTable from '../../svg-table-react/src';
+export * from '../../svg-table-react/src';
 
 export default SVGTable;
