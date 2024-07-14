@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@repo/demo-components-installed": "workspace:*",
-		"@shjeon0730/svg-table": "file:shjeon0730-svg-table-2.0.0.tgz",
+		"@shjeon0730/svg-table": "workspace:*",
 		"@shjeon0730/svg-table-react": "workspace:*",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
