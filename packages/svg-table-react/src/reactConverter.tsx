@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import { createElement, Fragment } from 'react';
-import { SVGTableElement, SVGTableElementAsObj } from '../../svg-table-core/src/private-types';
+import { SVGTableElement, SVGTableElementAsObj } from '@shjeon0730/svg-table-core/dist/types/private-types';
 
-import { SVGElementName } from '../../svg-table-core/src/common-types';
+import { SVGElementName } from '@shjeon0730/svg-table-core';
 
 export const reactConverter = (element: SVGTableElement): ReactNode => {
 	if (element === null || element === undefined) return element as ReactNode;

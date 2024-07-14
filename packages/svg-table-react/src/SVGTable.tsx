@@ -1,5 +1,5 @@
 import { TableProps } from './types';
-import { SVGTableBase } from '../../svg-table-core/src/SVGTableBase';
+import { SVGTableBase } from '@shjeon0730/svg-table-core';
 import { FC, ReactElement } from 'react';
 import { reactConverter } from './reactConverter';
 

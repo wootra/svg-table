@@ -9,7 +9,7 @@
 	"files": [
 		"dist",
 		"src",
-		"../svg-table-core/src"
+		"@shjeon0730/svg-table-core"
 	],
 	"scripts": {
 		"build": "npm run lint; tsc;npm run build:bundle",
@@ -28,6 +28,9 @@
 		"minor": "sh ./publish.sh minor",
 		"major": "sh ./publish.sh major",
 		"publish-now": "npm publish --access public"
+	},
+	"peerDependencies": {
+		"@shjeon0730/svg-table-core": "*"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.7",

@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table-react",
-	"version": "0.0.2-2",
+	"version": "0.0.2",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
@@ -51,7 +51,8 @@
 	},
 	"peerDependencies": {
 		"react": "^18",
-		"react-dom": "^18"
+		"react-dom": "^18",
+		"@shjeon0730/svg-table-core": "*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React. this library is the successor of @shjeon0730/svg-table.",
 	"repository": {

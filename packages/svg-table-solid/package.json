@@ -9,7 +9,7 @@
 	"files": [
 		"dist",
 		"src",
-		"../svg-table-core/src"
+		"@shjeon0730/svg-table-core"
 	],
 	"scripts": {
 		"build": "npm run lint; tsc;npm run build:bundle",
@@ -51,7 +51,8 @@
 		"typescript": "^5.4.5"
 	},
 	"peerDependencies": {
-		"solid-js": "^1.8.11"
+		"solid-js": "^1.8.11",
+		"@shjeon0730/svg-table-core": "*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {

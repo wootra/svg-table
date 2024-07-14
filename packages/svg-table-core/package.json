@@ -1,13 +1,14 @@
 {
 	"name": "@shjeon0730/svg-table-core",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
 	"browser": "dist/index.umd.js",
 	"types": "src/index.ts",
 	"files": [
-		"src/*"
+		"dist",
+		"src"
 	],
 	"scripts": {
 		"test": "vitest",

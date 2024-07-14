@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-import {
+import type {
 	ContentAsFuncBase,
 	BeforeOrAfterAsObjBase,
 	BeforeOrAfterBase,
@@ -15,9 +15,9 @@ import {
 	ContentPropsBase,
 	CellStyleBase,
 	SVGRenderElementBase,
-} from '../../svg-table-core/src/private-types';
+} from '@shjeon0730/svg-table-core/dist/types/private-types';
 
-export * from '../../svg-table-core/src/common-types';
+export * from '@shjeon0730/svg-table-core/dist/types/common-types';
 
 export type ContentProps = ContentPropsBase<SVGTextElement>;
 export type TableInCellProps = TableInCellPropsBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
