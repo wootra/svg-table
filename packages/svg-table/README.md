@@ -31,7 +31,7 @@ For your convenience, We give you a simple way of upgrading library.
 1. install `@shjeon0730/svg-table-core` and `@shjeon0730/svg-table-react`
 
 ```sh
-npm install @shjeon0730/svg-table-react
+npm install @shjeon0730/svg-table-core @shjeon0730/svg-table-react
 ```
 
 2. update @shjeon0730/svg-table@2.1
