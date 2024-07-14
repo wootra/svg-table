@@ -1,13 +1,13 @@
 ---
 import ExampleLayout from '@/layouts/ExampleLayout.astro';
-import Examples from './(examples)/solid.mdx';
+import Examples from './(examples)/vanilla.mdx';
 const selected = "/responsive"
 import {TITLE_TRANSITION} from '@/components/consts';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 ---
 <link rel="canonical" href={canonicalURL} />
-<ExampleLayout title='Welcome to SVG Title: Responsive Tables(Solid.js)' selected={selected}>
+<ExampleLayout title='Welcome to SVG Title: Responsive Tables(Vanilla JS)' selected={selected}>
 
 	<h1 transition:name="page-title" transition:animate={TITLE_TRANSITION}>Responsive Tables</h1>
 	<p>
@@ -19,7 +19,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	</p>
 	<div class="section">
         <div class="example-container">
-            <Examples client:only="solid" />
+            <Examples />
             </div>
         </div>
     </div>
