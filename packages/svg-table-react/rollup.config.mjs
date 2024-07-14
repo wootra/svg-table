@@ -20,10 +20,15 @@ export default [
 				sourcemap: true,
 			},
 			{
-				name: 'shjeon0730-svg-table',
+				name: 'svgTableReact',
 				file: pkg.browser,
 				format: 'umd',
 				sourcemap: true,
+				globals: {
+					react: 'React',
+					'react-dom': 'ReactDOM',
+					'@shjeon0730/svg-table-core': 'svgTableCore',
+				},
 			},
 		],
 		external: ['react', 'react-dom', '@shjeon0730/svg-table-core'],

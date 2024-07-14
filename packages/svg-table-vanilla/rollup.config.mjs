@@ -20,10 +20,13 @@ export default [
 				sourcemap: true,
 			},
 			{
-				name: 'shjeon0730-svg-table-vanilla',
+				name: 'svgTableVanilla',
 				file: pkg.browser,
 				format: 'umd',
 				sourcemap: true,
+				globals: {
+					'@shjeon0730/svg-table-core': 'svgTableCore',
+				},
 			},
 		],
 		external: ['@shjeon0730/svg-table-core'],
