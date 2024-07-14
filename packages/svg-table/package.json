@@ -11,13 +11,15 @@
 		"src"
 	],
 	"scripts": {
-		"build": "rm -rf dist;npm run lint; tsc --noEmit;npm run build:bundle",
-		"build:bundle": "npm run build:js && npm run build:types",
+		"build": "pnpm run use-prod; pnpm install;rm -rf dist;npm run lint; tsc --noEmit;pnpm run build:bundle;pnpm run use-dev",
+		"build:bundle": "pnpm run build:js && pnpm run build:types",
 		"build:js": "rollup -c rollup.config.mjs",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
 		"dev": "rollup -c rollup.config.mjs -w",
+		"use-dev": "rm ./package.json;echo 'using dev package.json...';cp ./package-dev.json ./package.json",
+		"use-prod": "rm ./package.json;echo 'using prod package.json...';cp ./package-prod.json ./package.json",
 		"type-check": "tsc --noEmit",
-		"pretest": "npm run build",
+		"pretest": "pnpm run build",
 		"lint": "eslint . --max-warnings 0",
 		"pre-patch": "sh ./publish.sh prepatch",
 		"pre-minor": "sh ./publish.sh preminor",
@@ -52,7 +54,7 @@
 	"peerDependencies": {
 		"react": "^18",
 		"react-dom": "^18",
-		"@shjeon0730/svg-table-react": "*"
+		"@shjeon0730/svg-table-react": "link:../svg-table-react-repo"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {

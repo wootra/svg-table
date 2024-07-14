@@ -517,8 +517,8 @@ importers:
   packages/svg-table:
     dependencies:
       '@shjeon0730/svg-table-react':
-        specifier: '*'
-        version: 0.0.2-2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: link:../svg-table-react-repo
+        version: link:../svg-table-react-repo
       react:
         specifier: ^18
         version: 18.3.1
@@ -726,8 +726,8 @@ importers:
   packages/svg-table-react:
     dependencies:
       '@shjeon0730/svg-table-core':
-        specifier: link:../svg-table-core
-        version: link:../svg-table-core
+        specifier: '*'
+        version: 0.0.1
       react:
         specifier: ^18
         version: 18.3.1
@@ -2653,12 +2653,6 @@ packages:
 
   '@shjeon0730/svg-table-core@0.0.1':
     resolution: {integrity: sha512-mQVRI6CdgyazKjA24IK2B5jOMsxWibdnbVeWoDh3Jd/uLDBDxwlkitQ311E1sApYDNbvGW+BgkvX5i3OP6xWYg==}
-
-  '@shjeon0730/svg-table-react@0.0.2-2':
-    resolution: {integrity: sha512-w5+hwsBtikqhfxNPRm74vr2PFJeuagxYJXA1YSZdrthdQPxrpA9x5Kueh9w+8pCOr4oYmb+lsxuVheocu6G4Ow==}
-    peerDependencies:
-      react: ^18
-      react-dom: ^18
 
   '@solid-devtools/debugger@0.23.4':
     resolution: {integrity: sha512-EfTB1Eo313wztQYGJ4Ec/wE70Ay2d603VCXfT3RlyqO5QfLrQGRHX5NXC07hJpQTJJJ3tbNgzO7+ZKo76MM5uA==}
@@ -8836,11 +8830,6 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shjeon0730/svg-table-core@0.0.1': {}
-
-  '@shjeon0730/svg-table-react@0.0.2-2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   '@solid-devtools/debugger@0.23.4(solid-js@1.8.18)':
     dependencies:
