@@ -19,15 +19,15 @@ export default [
 				format: 'es',
 				sourcemap: true,
 			},
-			{
-				name: 'svgTableSolid',
-				file: pkg.browser,
-				format: 'umd',
-				sourcemap: true,
-				globals: {
-					'@shjeon0730/svg-table-core': 'svgTableCore',
-				},
-			},
+			// {
+			// 	name: 'svgTableSolid',
+			// 	file: pkg.browser,
+			// 	format: 'umd',
+			// 	sourcemap: true,
+			// 	globals: {
+			// 		'@shjeon0730/svg-table-core': 'svgTableCore',
+			// 	},
+			// },
 		],
 		external: ['solid-js', '@shjeon0730/svg-table-core'],
 		plugins: [
