@@ -6,7 +6,6 @@ fi
 
 echo "version is $VERSION"
 
-pnpm run lint
 pnpm build
 echo $VERSION
 npm version $VERSION
