@@ -1,6 +1,6 @@
 {
-	"name": "vite-template-solid",
-	"version": "0.0.0",
+	"name": "svg-table-demo-solid",
+	"version": "3.0.0-RC.1",
 	"description": "",
 	"scripts": {
 		"start": "vite",
