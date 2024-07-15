@@ -51,7 +51,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 			</style>
 			<section>
 				<h2>
-					Welcome To SVG Table Example! (Vanilla Javascript)
+					Welcome To SVG Table Example!
 					<a
 						class='demo-code-link'
 						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-vanilla/src/LogoDemo.ts'

@@ -50,7 +50,7 @@ export const AllDemo = ({ width, useClassName = false }: { width: number; useCla
 			</style>
 			<section>
 				<h2>
-					Welcome To SVG Table Example! (React.js)
+					Welcome To SVG Table Example!
 					<a
 						className='demo-code-link'
 						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/LogoDemo.tsx'
