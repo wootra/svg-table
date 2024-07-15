@@ -1,5 +1,5 @@
 {
-	"name": "svg-table-demo-vanilla",
+	"name": "svg-table-demo",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -9,14 +9,14 @@
 		"build:prod": "sh switch-env.sh prod && pnpm build",
 		"build:dev": "sh switch-env.sh dev && pnpm build",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"@shjeon0730/svg-table": "link:../../packages/svg-table-vanilla",
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@repo/demo-components-vanilla": "workspace:*",
-		"react": "^18",
-		"react-dom": "^18",
-		"@shjeon0730/svg-table": "link:../../packages/svg-table-vanilla-repo"
+		"@repo/demo-components-react": "workspace:*",
+		"@shjeon0730/svg-table-react": "latest",
+		"@shjeon0730/svg-table-core": "latest",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
 		"@types/react": "^18.3.3",

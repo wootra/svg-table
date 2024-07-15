@@ -1,8 +1,8 @@
-# Demo for svg-table (Vite version)
+# Demo for svg-table (Vite/React version)
 
 this repo is for the examples using svg-table in Vite.
 
-the demo components are saved in the other package folder as well as its [README](../../packages/demo-components/README.md) file.
+the demo components are saved in the other package folder as well as its [README](../../packages/demo-components-react/README.md) file.
 
 ## Installation
 
