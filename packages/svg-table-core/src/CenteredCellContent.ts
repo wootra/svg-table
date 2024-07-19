@@ -1,25 +1,20 @@
 import type { CalculatedCellPropsBase, SVGTableElement } from './private-types';
-import type { GType, GroupProps, PrimitiveNode, SVGType, TextType } from './common-types';
+import type { GroupProps, PrimitiveNode } from './common-types';
 import type { CellStyleBase } from './private-types';
 
 import { getDuplicatedProps, simpleValue } from './utils';
 import { element } from './element';
 import { SVGAttributes } from 'react';
 
-export const CenteredCellContent = <
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
->({
+export const CenteredCellContent = <NODE extends PrimitiveNode>({
 	cellOpt,
 	styleToUse,
 	children,
 }: {
-	cellOpt: CalculatedCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> & {
+	cellOpt: CalculatedCellPropsBase<NODE> & {
 		_ignored: false;
 	};
-	styleToUse: CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>;
+	styleToUse: CellStyleBase;
 	children: SVGTableElement[] | SVGTableElement;
 }): SVGTableElement<NODE> => {
 	let { width, height, className } = cellOpt;

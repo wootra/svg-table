@@ -1,11 +1,11 @@
 import SVGTable, {
 	TableProps,
-	ContentProps,
-	SVGRenderElement,
 	convertToKebabCaseProps,
+	RetFromContentFunc,
+	ContentAsFunc,
 } from '@shjeon0730/svg-table-solid';
 
-const rect = (props: ContentProps) => {
+const rect: ContentAsFunc = props => {
 	const textStyle = convertToKebabCaseProps(props.textStyle);
 	return (
 		<g>
@@ -16,7 +16,7 @@ const rect = (props: ContentProps) => {
 				This is Added Element
 			</text>
 		</g>
-	) as SVGRenderElement;
+	) as RetFromContentFunc;
 };
 const tableProps: Omit<TableProps, 'width'> = {
 	rows: [

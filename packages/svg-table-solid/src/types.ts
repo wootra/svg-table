@@ -1,18 +1,10 @@
 import {
 	ContentAsFuncBase,
-	BeforeOrAfterAsObjBase,
-	BeforeOrAfterBase,
 	CellPropsBase,
-	CalculatedCellPropsBase,
-	RowPropsBase,
-	RowPropsAsObjBase,
-	CellPropsAsObjBase,
-	CalculatedRowPropsBase,
 	TablePropsBase,
 	TableInCellPropsBase,
-	ContentPropsBase,
-	CellStyleBase,
 	SVGRenderElementBase,
+	ContentAsFuncRetTypes,
 } from '@shjeon0730/svg-table-core';
 
 export type {
@@ -37,49 +29,40 @@ export type {
 	DominantBaseline,
 } from '@shjeon0730/svg-table-core';
 
-export type ContentProps = ContentPropsBase<'text'>;
-export type TableInCellProps = TableInCellPropsBase<Node, 'text', 'g', 'svg'>;
-
-export type ContentAsFunc = ContentAsFuncBase<Node, 'text', SVGRenderElement>;
-
-/** object for before or after content when it need to specify optional styles and dimensions */
-export type BeforeOrAfterAsObj = BeforeOrAfterAsObjBase<Node, 'text'>;
-
+export type ElementType = Node;
 /**
- * Represents the content that can be displayed before or after the main content in a cell.
- * It can be a Node, a function that returns a Node, or an object containing the content and optional styling.
- * */
-export type BeforeOrAfter = BeforeOrAfterBase<Node, 'text'>;
+ * Properties for defining a table, including dimensions, rows, and optional styling.
+ */
+export type TableProps = TablePropsBase<ElementType>;
+/**
+ * Properties for defining a row within a table, including cells and optional styling.
+ */
+export type RowProps = TableProps['rows'][number];
+
+// /**
+//  * Properties for defining a row within a table, including cells and optional styling.
+//  */
+// export type RowProps = RowPropsBase<ElementType, SVGTextElement, SVGGElement, SVGSVGElement>;
+
+export type RowPropsAsObj = Exclude<RowProps, (CellPropsBase<ElementType> | string)[]>;
 
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
-export type CellProps = CellPropsBase<Node, 'text', 'g', 'svg'>;
+export type CellProps = RowPropsAsObj['cells'][number];
 
-export type CellPropsAsObj = CellPropsAsObjBase<Node, 'text', 'g', 'svg'>;
+export type CellPropsAsObj = Exclude<CellProps, string>;
 
-/**
- * Extended cell properties including calculated dimensions and positioning.
- */
-export type CalculatedCellProps = CalculatedCellPropsBase<Node, 'text', 'g', 'svg'>;
+export type CellStyle = Exclude<CellPropsAsObj['style'], undefined>;
 
-/**
- * Properties for defining a row within a table, including cells and optional styling.
- */
-export type RowProps = RowPropsBase<Node, 'text', 'g', 'svg'>;
+export type ContentProps = CellPropsAsObj['content'];
 
-export type RowPropsAsObj = RowPropsAsObjBase<Node, 'text', 'g', 'svg'>;
+export type TableInCellProps = TableInCellPropsBase<ElementType>;
 
-/**
- * Extended row properties including calculated dimensions and positioning.
- */
-export type CalculatedRowProps = CalculatedRowPropsBase<Node, 'text', 'g', 'svg'>;
+export type RetFromContentFunc = ContentAsFuncRetTypes<ElementType>;
 
-/**
- * Properties for defining a table, including dimensions, rows, and optional styling.
- */
-export type TableProps = TablePropsBase<Node, 'text', 'g', 'svg'>;
+export type ContentAsFunc = ContentAsFuncBase<ElementType, RetFromContentFunc>;
 
-export type CellStyle = CellStyleBase<'text', 'g', 'svg'>;
+export type TablePropsWithoutRows = Omit<TableProps, 'rows'>;
 
-export type SVGRenderElement = SVGRenderElementBase<Node>;
+export type SVGRenderElement = SVGRenderElementBase<SVGElement>;

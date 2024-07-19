@@ -4,9 +4,10 @@ import { Dynamic } from 'solid-js/web';
 
 import { SVGTableElement, SVGTableElementAsObj } from '@shjeon0730/svg-table-core';
 import { __private__, convertToKebabCaseProps } from './utils';
+import { ElementType } from './types';
 const { convertVal } = __private__;
 
-export const solidConverter = (element: SVGTableElement<Node>): JSX.Element | JSX.Element[] => {
+export const solidConverter = (element: SVGTableElement<ElementType>): JSX.Element | JSX.Element[] => {
 	if (element === null || element === undefined) return element as JSX.Element;
 	if (typeof element === 'string') return element;
 	if (Array.isArray(element)) {

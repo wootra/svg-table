@@ -1,6 +1,6 @@
-import SVGTable, { TableProps, ContentProps } from '@shjeon0730/svg-table-react';
+import SVGTable, { TableProps, ContentAsFunc } from '@shjeon0730/svg-table-react';
 
-const Rect = (props: ContentProps) => {
+const Rect: ContentAsFunc = props => {
 	return (
 		<g>
 			<rect x={props.width - 50} y={0} width={50} height={props.height} fill='#4773bb' />

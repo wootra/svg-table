@@ -1,23 +1,11 @@
-import SVGTable, { TableProps, ContentProps } from '@shjeon0730/svg-table';
+import SVGTable, { TableProps, ContentAsFunc } from '@shjeon0730/svg-table';
 
-const Rect = (props: ContentProps) => {
+const Rect: ContentAsFunc = props => {
 	return (
 		<g>
-			<rect
-				x={props.width - 50}
-				y={0}
-				width={50}
-				height={props.height}
-				fill='#4773bb'
-			/>
+			<rect x={props.width - 50} y={0} width={50} height={props.height} fill='#4773bb' />
 			<rect x={0} y={0} width={50} height={props.height} fill='#a75252' />
-			<rect
-				x={props.x - 25}
-				y={0}
-				width={50}
-				height={props.height}
-				fill='#4a7e2e'
-			/>
+			<rect x={props.x - 25} y={0} width={50} height={props.height} fill='#4a7e2e' />
 			<text x={props.x} y={props.y} {...props.textStyle}>
 				This is Added Element
 			</text>
@@ -27,11 +15,7 @@ const Rect = (props: ContentProps) => {
 const tableProps: Omit<TableProps, 'width'> = {
 	rows: [
 		['Header 1', 'Header 2', 'Header3'],
-		[
-			{ content: Rect },
-			{ content: 'Row Span', rowSpan: 2 },
-			'Row 1, Cell 3',
-		],
+		[{ content: Rect }, { content: 'Row Span', rowSpan: 2 }, 'Row 1, Cell 3'],
 		['Row 2, Cell 1', 'Row 2, Cell 3'],
 	],
 };

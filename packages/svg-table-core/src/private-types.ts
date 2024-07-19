@@ -16,12 +16,12 @@ import {
 /**
  * Style properties for SVG text elements.
  */
-export type TextStyleBase<TEXTTYPE extends TextType> = SVGAttributes<TEXTTYPE>;
+export type TextStyleBase = SVGAttributes<TextType>;
 
 /** Style properties for SVG g element */
-export type GroupStyleBase<GTYPE extends GType> = SVGAttributes<GTYPE>;
+export type GroupStyleBase = SVGAttributes<GType>;
 
-export type ContentPropsBase<TEXTTYPE extends TextType> = {
+export type ContentPropsBase = {
 	/**
 	 * drawing x position of the content.
 	 */
@@ -45,17 +45,17 @@ export type ContentPropsBase<TEXTTYPE extends TextType> = {
 	/**
 	 * style attribute on text element
 	 */
-	textStyle: TextStyleBase<TEXTTYPE>;
+	textStyle: TextStyleBase;
 };
 
 /**
  * Style properties for table cells, including background color, padding, and text styling.
  */
-export type CellStyleBase<TEXTTYPE extends TextType, GTYPE extends GType, SVGTYPE extends SVGType> = {
+export type CellStyleBase = {
 	/**
 	 * Optional background color of the cell. Accepts any valid CSS color value.
 	 */
-	bgColor?: string;
+	bgColor: string | undefined;
 	/**
 	 * Padding around the content of the cell. Can be specified as a single number (for all sides),
 	 * a pair of numbers (top/bottom, left/right), or four numbers (top, right, bottom, left).
@@ -73,16 +73,16 @@ export type CellStyleBase<TEXTTYPE extends TextType, GTYPE extends GType, SVGTYP
 	 * Optional styling for the text within the cell, using SVG text attributes.
 	 * textStyle is given as style attribute of the text element.
 	 */
-	textStyle?: TextStyleBase<TEXTTYPE>;
+	textStyle: TextStyleBase | undefined;
 	/**
 	 * Optional styling for rotate center of the cell. It will apply attribute on center of the text.
 	 * for example, you can rotate the text or cell element based on the center of the cell.
 	 */
 	// eslint-disable-next-line no-unused-vars
 	rotateCenterProps?:
-		| GroupStyleBase<GTYPE>
+		| GroupStyleBase
 		// eslint-disable-next-line no-unused-vars
-		| ((props: GroupProps) => GroupStyleBase<GTYPE>);
+		| ((props: GroupProps) => GroupStyleBase);
 
 	/**
 	 * if you want to adjust the horizontal position of the text based on the center position, use this.
@@ -96,39 +96,34 @@ export type CellStyleBase<TEXTTYPE extends TextType, GTYPE extends GType, SVGTYP
 	/**
 	 * Optional CSS styles for the SVG element representing the cell.
 	 */
-	svgStyle?: HTMLAttributes<SVGTYPE>['style'];
+	svgStyle?: HTMLAttributes<SVGType>['style'];
 } & Partial<BorderStyles>;
+
+export type ContentAsFuncRetTypes<NODE extends PrimitiveNode> =
+	| SVGRenderElementBase<NODE>
+	| SVGTableElementAsObj
+	| SVGRenderElementBase<NODE>
+	| SVGTableElementAsObj;
 
 export type ContentAsFuncBase<
 	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	RETTYPE extends SVGRenderElementBase<NODE> | SVGTableElementAsObj =
-		| SVGRenderElementBase<NODE>
-		| SVGTableElementAsObj,
+	RETTYPE extends ContentAsFuncRetTypes<NODE> = ContentAsFuncRetTypes<NODE>,
 > =
 	| ((
 			// eslint-disable-next-line no-unused-vars
-			props: ContentPropsBase<TEXTTYPE>
+			props: ContentPropsBase
 	  ) => RETTYPE)
 	| (() => RETTYPE);
 
-export type TableInCellPropsBase<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-> = {
-	// table in a cell automatically have width based on the cell's width
-	table: Omit<TablePropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>, 'width'> & {
-		width?: number;
-	};
+export type TableInCellPropsBase<NODE extends PrimitiveNode> = {
+	table: TableOptionalPropsBase<NODE>;
 };
 
 /** object for before or after content when it need to specify optional styles and dimensions */
-export type BeforeOrAfterAsObjBase<NODE extends PrimitiveNode, TEXTTYPE extends TextType> = {
-	content: SVGRenderElementBase<NODE> | ContentAsFuncBase<NODE, TEXTTYPE>;
+export type BeforeOrAfterAsObjBase<NODE extends PrimitiveNode> = {
+	content: SVGRenderElementBase<NODE> | ContentAsFuncBase<NODE, ContentAsFuncRetTypes<NODE>>;
 	/** style of the text element */
-	textStyle?: TextStyleBase<TEXTTYPE>;
+	textStyle?: TextStyleBase;
 	/**  x offset of the text  */
 	cx?: number;
 	/** y offset of the text */
@@ -139,73 +134,43 @@ export type BeforeOrAfterAsObjBase<NODE extends PrimitiveNode, TEXTTYPE extends 
  * Represents the content that can be displayed before or after the main content in a cell.
  * It can be a NodeWrapper, a function that returns a NodeWrapper, or an object containing the content and optional styling.
  * */
-export type BeforeOrAfterBase<NODE extends PrimitiveNode, TEXTTYPE extends TextType> =
-	| BeforeOrAfterAsObjBase<NODE, TEXTTYPE>
+export type BeforeOrAfterBase<NODE extends PrimitiveNode> =
+	| BeforeOrAfterAsObjBase<NODE>
 	| SVGRenderElementBase<NODE>
-	| ContentAsFuncBase<NODE, TEXTTYPE>;
+	| ContentAsFuncBase<NODE, ContentAsFuncRetTypes<NODE>>;
 
-export type ContentTypeInCell<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-> =
+export type ContentTypeInCell<NODE extends PrimitiveNode> =
 	| SVGRenderElementBase<NODE>
 	| SVGTableElement<NODE>
-	| ContentAsFuncBase<NODE, TEXTTYPE>
-	| TableInCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>;
+	| ContentAsFuncBase<NODE, ContentAsFuncRetTypes<NODE>>
+	| TableInCellPropsBase<NODE>;
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
-export type CellPropsBase<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-	CONTENT_TYPE extends ContentTypeInCell<NODE, TEXTTYPE, GTYPE, SVGTYPE> = ContentTypeInCell<
-		NODE,
-		TEXTTYPE,
-		GTYPE,
-		SVGTYPE
-	>,
-	BEFORE_OR_AFTER_TYPE extends BeforeOrAfterBase<NODE, TEXTTYPE> = BeforeOrAfterBase<NODE, TEXTTYPE>,
-	CELL_STYLE_TYPE extends CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE> = CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>,
-> =
-	| {
-			/** Optional custom style for the cell, overriding default styles. */
-			style?: Partial<CELL_STYLE_TYPE>;
-			/** The content to be displayed within the cell, can be any React node. */
-			content: CONTENT_TYPE;
-			/** Optional content to be displayed before the main content, can be a React node or a function that returns a React node. */
-			before?: BEFORE_OR_AFTER_TYPE;
-			/** Optional content to be displayed after the main content, can be a React node or a function that returns a React node. */
-			after?: BEFORE_OR_AFTER_TYPE;
-			/** Optional. Specifies the number of columns a cell should span across. */
-			colSpan?: number;
-			/** Optional. Specifies the number of rows a cell should span across. */
-			rowSpan?: number;
-			/** clsss name to control individual cell.  */
-			className?: string;
-	  }
-	| string;
+export type CellPropsBase<NODE extends PrimitiveNode> = CellPropsAsObjBase<NODE>;
 
-export type CellPropsAsObjBase<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-> = Exclude<CellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>, string>;
+export type CellPropsAsObjBase<NODE extends PrimitiveNode> = {
+	/** Optional custom style for the cell, overriding default styles. */
+	style?: Partial<CellStyleBase>;
+	/** The content to be displayed within the cell, can be any React node. */
+	content: ContentTypeInCell<NODE>;
+	/** Optional content to be displayed before the main content, can be a React node or a function that returns a React node. */
+	before?: BeforeOrAfterBase<NODE>;
+	/** Optional content to be displayed after the main content, can be a React node or a function that returns a React node. */
+	after?: BeforeOrAfterBase<NODE>;
+	/** Optional. Specifies the number of columns a cell should span across. */
+	colSpan?: number;
+	/** Optional. Specifies the number of rows a cell should span across. */
+	rowSpan?: number;
+	/** clsss name to control individual cell.  */
+	className?: string;
+};
 
 /**
  * Extended cell properties including calculated dimensions and positioning.
  */
-export type CalculatedCellPropsBase<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-> =
-	| (CellPropsAsObjBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> & {
+export type CalculatedCellPropsBase<NODE extends PrimitiveNode> =
+	| (CellPropsAsObjBase<NODE> & {
 			/** Indicates that the cell is not ignored and should be rendered. */
 			_ignored: false;
 			_heightAdjust: boolean;
@@ -224,45 +189,25 @@ export type CalculatedCellPropsBase<
 			_ignored: true;
 	  };
 
+export type RowPropsAsObjBase<NODE extends PrimitiveNode> = {
+	/** Optional custom style for the row, overriding default styles. */
+	style?: Partial<RowStyle>;
+	/** An array of CellPropsBase, defining the cells within the row. */
+	cells: (CellPropsBase<NODE> | string)[];
+};
+
 /**
  * Properties for defining a row within a table, including cells and optional styling.
  */
-export type RowPropsBase<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-> =
-	| {
-			/** Optional custom style for the row, overriding default styles. */
-			style?: Partial<RowStyle>;
-			/** An array of CellPropsBase, defining the cells within the row. */
-			cells: CellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>[];
-	  }
-	| CellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>[];
-
-export type RowPropsAsObjBase<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-> = Exclude<RowPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>, CellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>[]>;
+export type RowPropsBase<NODE extends PrimitiveNode> = RowPropsAsObjBase<NODE> | (CellPropsBase<NODE> | string)[];
 
 /**
  * Extended row properties including calculated dimensions and positioning.
  */
 export type CalculatedRowPropsBase<
 	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-	CELL_CALC_PROP extends CalculatedCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> = CalculatedCellPropsBase<
-		NODE,
-		TEXTTYPE,
-		GTYPE,
-		SVGTYPE
-	>,
-> = Omit<RowPropsAsObjBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>, 'cells'> & {
+	CELL_CALC_PROP extends CalculatedCellPropsBase<NODE> = CalculatedCellPropsBase<NODE>,
+> = Omit<RowPropsAsObjBase<NODE>, 'cells'> & {
 	/** The x-coordinate of the row's position. */
 	x: number;
 	/** The y-coordinate of the row's position. */
@@ -278,14 +223,7 @@ export type CalculatedRowPropsBase<
 /**
  * Properties for defining a table, including dimensions, rows, and optional styling.
  */
-export type TablePropsBase<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-	CELL_STYLE extends CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE> = CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>,
-	ROW_PROP extends RowPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> = RowPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>,
-> = {
+export type TableOptionalAttributesBase<NODE extends PrimitiveNode> = {
 	/** Optional CSS class name for the table. */
 	className?: string;
 	/** Optional. Defines SVG definitions such as gradients or patterns that can be used within the table. */
@@ -294,8 +232,6 @@ export type TablePropsBase<
 	standalone?: boolean;
 	/** Optional. override more attributes on the root svg on top of default attributes for more flexiblity. */
 	svgAttrs?: SVGAttributes<'svg'>;
-	/** Total width of the SVG table in pixels. */
-	width: number;
 	/** Optional. Total height of the SVG table in pixels. if it is given, rows will be adjusted based on this size. */
 	height?: number;
 	/** Optional. Specifies the width of each column. These are in points and may not match pixels if colGaps is specified. this is not real sizes but ratios based on width after extracting left and right margins and colGaps */
@@ -303,23 +239,32 @@ export type TablePropsBase<
 	/** Optional. Specifies the height of each row. These are in points and may not match pixels if rowGaps is specified. this is not real sizes but ratios based on height after extracting top and bottom margins and rowGaps */
 	rowHeights?: number[];
 	/** Optional default cell style that applies to all cells unless overridden. */
-	defaultCellStyle?: Partial<CELL_STYLE>;
+	defaultCellStyle?: Partial<CellStyleBase>;
 	/** Optional default row style that applies to all rows unless overridden. */
 	defaultRowStyle?: Partial<RowStyle>;
-	/** An array of RowPropsBase, defining the rows within the table. */
-	rows: ROW_PROP[];
 	/** Optional custom style for the table, overriding default styles. */
 	style?: Partial<TableStyle>;
 };
 
-export type CellElementPropsBase<
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-> = {
-	cellOpt: CalculatedCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>;
-	defaultStyle: CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>;
+/**
+ * Properties for defining a table, including dimensions, rows, and optional styling.
+ */
+export type TableOptionalPropsBase<NODE extends PrimitiveNode> = TableOptionalAttributesBase<NODE> & {
+	/** An array of RowPropsBase, defining the rows within the table. */
+	rows: (RowPropsAsObjBase<NODE> | (CellPropsBase<NODE> | string)[])[];
+};
+
+/**
+ * Properties for defining a table, including dimensions, rows, and optional styling.
+ */
+export type TablePropsBase<NODE extends PrimitiveNode> = TableOptionalPropsBase<NODE> & {
+	/** Total width of the SVG table in pixels. */
+	width: number;
+};
+
+export type CellElementPropsBase<NODE extends PrimitiveNode> = {
+	cellOpt: CalculatedCellPropsBase<NODE>;
+	defaultStyle: CellStyleBase;
 };
 
 export type SVGTableElementAttributes<

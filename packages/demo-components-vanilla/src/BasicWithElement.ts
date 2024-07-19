@@ -1,11 +1,11 @@
 import SVGTable, {
 	TableProps,
-	ContentProps,
+	ContentAsFunc,
 	SVGRenderElement,
 	createVanillaElement,
 } from '@shjeon0730/svg-table-vanilla';
 
-const rect = (props: ContentProps) => {
+const rect: ContentAsFunc = props => {
 	return createVanillaElement(
 		'g',
 		{},

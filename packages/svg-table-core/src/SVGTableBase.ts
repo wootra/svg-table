@@ -1,4 +1,4 @@
-import type { RowStyle, PrimitiveNode, TableStyle, TextType, GType, SVGType } from './common-types';
+import type { RowStyle, PrimitiveNode, TableStyle } from './common-types';
 import type { CellStyleBase, CellPropsBase, RowPropsAsObjBase, SVGTableElement, TablePropsBase } from './private-types';
 import { ACell } from './ACell';
 import { calculateRows } from './calculateRows';
@@ -9,10 +9,7 @@ import { element } from './element';
 
 const getTotalCells = <
 	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
-	CELLTYPE extends CellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> = CellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>,
+	CELLTYPE extends CellPropsBase<NODE> | string = CellPropsBase<NODE> | string,
 >(
 	cells: CELLTYPE[]
 ) => {
@@ -39,17 +36,18 @@ const parsedTableStyle = (style?: Partial<TableStyle>): TableStyle => {
 	};
 };
 
-const parseDefaultCellStyleBase = <TEXTTYPE extends TextType, GTYPE extends GType, SVGTYPE extends SVGType>(
-	defaultCellStyleBase?: Partial<CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>>
-): CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE> => {
+const parseDefaultCellStyleBase = (defaultCellStyleBase?: Partial<CellStyleBase>): CellStyleBase => {
 	return {
 		allowOverflow: false,
 		borderWidths: 1,
+		bgColor: undefined,
+		textStyle: undefined,
 		borderColors: `var(${INTERNAL_CSS_VARS.borderLineColor}, #000)`,
 		borderPatterns: undefined,
 		borderShapes: undefined,
 		paddings: [1, 1, 1, 1],
 		textColor: `var(${INTERNAL_CSS_VARS.textColor}, #000)`,
+
 		...defaultCellStyleBase,
 	};
 };
@@ -68,14 +66,7 @@ const adjustRowHeights = (rowHeights: number[], tableHeightWithoutGaps: number) 
 	return rowHeights.map(width => Math.max(simpleValue(width * ratio), 1));
 };
 
-export const SVGTableBase = <
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
->(
-	tableProps: TablePropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>
-): SVGTableElement<NODE> => {
+export const SVGTableBase = <NODE extends PrimitiveNode>(tableProps: TablePropsBase<NODE>): SVGTableElement<NODE> => {
 	let {
 		rows,
 		width = 500,
@@ -92,14 +83,12 @@ export const SVGTableBase = <
 	} = tableProps;
 	// Calculate the total width and height of the table
 
-	const defaultStyleForCell: CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE> = parseDefaultCellStyleBase(defaultCellStyle);
+	const defaultStyleForCell: CellStyleBase = parseDefaultCellStyleBase(defaultCellStyle);
 
 	const maxColumns = Math.max(
 		rows.reduce(
 			(max, row) =>
-				Array.isArray(row)
-					? Math.max(max, row.length)
-					: Math.max(max, getTotalCells<NODE, TEXTTYPE, GTYPE, SVGTYPE>(row.cells)),
+				Array.isArray(row) ? Math.max(max, row.length) : Math.max(max, getTotalCells<NODE>(row.cells)),
 			0
 		),
 		1
@@ -139,14 +128,12 @@ export const SVGTableBase = <
 
 	let rowHeights =
 		rowHeightFromProps ??
-		rows.map(
-			row => (row as RowPropsAsObjBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>).style?.height ?? defaultStyleForRow.height
-		);
+		rows.map(row => (row as RowPropsAsObjBase<NODE>).style?.height ?? defaultStyleForRow.height);
 
 	if (heightFromProps) {
 		rowHeights = adjustRowHeights(rowHeights, heightFromProps - allRowGaps);
 		for (let i = 0; i < rows.length; i++) {
-			const rowHeightFromRowStyle = (rows[i] as RowPropsAsObjBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>)?.style?.height;
+			const rowHeightFromRowStyle = (rows[i] as RowPropsAsObjBase<NODE>)?.style?.height;
 			// below logic is to make more specific style wins.
 			if (rowHeightFromRowStyle && typeof rowHeights[i] === 'number') {
 				rowHeights[i] = rowHeightFromRowStyle;
@@ -161,7 +148,7 @@ export const SVGTableBase = <
 
 		for (const cell of row.cells) {
 			rowContent.push(
-				ACell<NODE, TEXTTYPE, GTYPE, SVGTYPE>({
+				ACell<NODE>({
 					cellOpt: cell,
 					defaultStyle: defaultStyleForCell,
 				})

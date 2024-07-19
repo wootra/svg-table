@@ -11,7 +11,9 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@repo/demo-components-react": "workspace:*",
+		"@repo/demo-components-react": "link:../../packages/demo-components-react",
+		"@shjeon0730/svg-table-core": "link:../../packages/svg-table-core-repo",
+		"@shjeon0730/svg-table-react": "link:../../packages/svg-table-react-repo",
 		"react": "^18",
 		"react-dom": "^18",
 		"next": "14.2.4"

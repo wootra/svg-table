@@ -32,7 +32,7 @@
 		"@shjeon0730/svg-table-core": "*"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.24.8",
+		"@babel/core": "^7.24.9",
 		"@babel/preset-env": "^7.24.8",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
@@ -44,7 +44,7 @@
 		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.10",
-		"@types/node": "^20.14.10",
+		"@types/node": "^20.14.11",
 		"@types/react": "^18.3.3",
 		"eslint": "^8.57.0",
 		"rollup": "^4.18.1",

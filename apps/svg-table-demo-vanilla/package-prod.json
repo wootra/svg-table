@@ -16,7 +16,8 @@
 		"@repo/demo-components-vanilla": "workspace:*",
 		"react": "^18",
 		"react-dom": "^18",
-		"@shjeon0730/svg-table": "link:../../packages/svg-table-vanilla-repo"
+		"@shjeon0730/svg-table-core": "latest",
+		"@shjeon0730/svg-table-vanilla": "latest"
 	},
 	"devDependencies": {
 		"@types/react": "^18.3.3",

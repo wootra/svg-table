@@ -1,7 +1,7 @@
 import SVGTable, {
 	ContentAsFunc,
 	convertToKebabCaseProps,
-	SVGRenderElement,
+	RetFromContentFunc,
 	TableProps,
 } from '@shjeon0730/svg-table-solid';
 
@@ -16,7 +16,7 @@ const adjustedText: ContentAsFunc = props => {
 				This is Added Element
 			</text>
 		</g>
-	) as SVGRenderElement;
+	) as RetFromContentFunc;
 };
 
 const tableProps: Omit<TableProps, 'width'> = {

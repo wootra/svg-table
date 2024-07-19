@@ -1,5 +1,5 @@
 import type { SVGAttributes } from 'react';
-import type { GType, PrimitiveNode, SVGType, TextAnchor, TextType, Widths } from './common-types';
+import type { PrimitiveNode, TextAnchor, TextType, Widths } from './common-types';
 import type {
 	TextStyleBase,
 	CellStyleBase,
@@ -32,28 +32,23 @@ const moveToLeftTop = <NODE extends PrimitiveNode>(
 	);
 };
 
-const convertToTableIfNeeded = <
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
->(
-	contentTouse: ContentTypeInCell<NODE, TEXTTYPE, GTYPE, SVGTYPE>,
+const convertToTableIfNeeded = <NODE extends PrimitiveNode>(
+	contentTouse: ContentTypeInCell<NODE>,
 	width: number,
 	height: number,
 	paddings: Widths,
-	cellOpt: CalculatedCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> & {
+	cellOpt: CalculatedCellPropsBase<NODE> & {
 		_ignored: false;
 	}
 ): SVGTableElement<NODE> => {
-	if ((contentTouse as TableInCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>).table) {
+	if ((contentTouse as TableInCellPropsBase<NODE>).table) {
 		const padLeft = getWid(paddings, 'left');
 		const padTop = getWid(paddings, 'top');
 		const padRight = getWid(paddings, 'right');
 		const padBottom = getWid(paddings, 'bottom');
 
 		const tableWid = simpleValue(width - padRight - padLeft);
-		const adjustProps: Partial<TablePropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>> = cellOpt._heightAdjust
+		const adjustProps: Partial<TablePropsBase<NODE>> = cellOpt._heightAdjust
 			? {
 					height: simpleValue(Math.max(height - padTop - padBottom, 1)),
 				}
@@ -61,21 +56,21 @@ const convertToTableIfNeeded = <
 
 		if (cellOpt._standalone) adjustProps.standalone = true;
 
-		return SVGTableBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>({
+		return SVGTableBase<NODE>({
 			width: simpleValue(tableWid),
 			...adjustProps,
-			...(contentTouse as TableInCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>).table,
+			...(contentTouse as TableInCellPropsBase<NODE>).table,
 		});
 	}
 	return contentTouse as SVGTableElement<NODE>;
 };
 
-const renderTextOnly = <NODE extends PrimitiveNode, TEXTTYPE extends TextType>(
+const renderTextOnly = <NODE extends PrimitiveNode>(
 	contentToRender: string,
 	startX: number,
 	startY: number,
 	textAnchor: TextAnchor,
-	styleToApply: SVGAttributes<TEXTTYPE> = {}
+	styleToApply: SVGAttributes<TextType> = {}
 ): SVGTableElement<NODE> => {
 	const lines = contentToRender.split('\n');
 	let textToRender: SVGTableElement<NODE>[] | string[] = [contentToRender];
@@ -110,23 +105,15 @@ const renderTextOnly = <NODE extends PrimitiveNode, TEXTTYPE extends TextType>(
 	return element<NODE>('text', props as SVGAttributes<'text'>, ...textToRender);
 };
 
-const styleWithFill = <TEXTTYPE extends TextType>(
-	style: TextStyleBase<TEXTTYPE> | undefined,
-	color: string
-): TextStyleBase<TEXTTYPE> => {
+const styleWithFill = (style: TextStyleBase | undefined, color: string): TextStyleBase => {
 	return {
 		fill: color,
 		...style, // style will override
 	};
 };
 
-const getAriaProps = <
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
->(
-	cellOpt: CalculatedCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> & {
+const getAriaProps = <NODE extends PrimitiveNode>(
+	cellOpt: CalculatedCellPropsBase<NODE> & {
 		_ignored: false;
 	}
 ) => {
@@ -138,16 +125,11 @@ const getAriaProps = <
 	);
 };
 
-const getContents = <
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
->(
-	cellOpt: CalculatedCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> & {
+const getContents = <NODE extends PrimitiveNode>(
+	cellOpt: CalculatedCellPropsBase<NODE> & {
 		_ignored: false;
 	},
-	styleToUse: CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>
+	styleToUse: CellStyleBase
 ) => {
 	const { content, width, height, before, after } = cellOpt;
 
@@ -156,24 +138,24 @@ const getContents = <
 	// update styles with textColor only when fill is not given.
 	textStyle = styleWithFill(textStyle, textColor);
 	const { content: before2, ...beforeOpts } =
-		typeof before === 'object' && (before as BeforeOrAfterAsObjBase<NODE, TEXTTYPE>).content
-			? (before as BeforeOrAfterAsObjBase<NODE, TEXTTYPE>)
-			: ({ content: before } as BeforeOrAfterAsObjBase<NODE, TEXTTYPE>);
+		typeof before === 'object' && (before as BeforeOrAfterAsObjBase<NODE>).content
+			? (before as BeforeOrAfterAsObjBase<NODE>)
+			: ({ content: before } as BeforeOrAfterAsObjBase<NODE>);
 
 	const { content: after2, ...afterOpts } =
-		typeof after === 'object' && (after as BeforeOrAfterAsObjBase<NODE, TEXTTYPE>).content
-			? (after as BeforeOrAfterAsObjBase<NODE, TEXTTYPE>)
-			: ({ content: after } as BeforeOrAfterAsObjBase<NODE, TEXTTYPE>);
+		typeof after === 'object' && (after as BeforeOrAfterAsObjBase<NODE>).content
+			? (after as BeforeOrAfterAsObjBase<NODE>)
+			: ({ content: after } as BeforeOrAfterAsObjBase<NODE>);
 
 	const beforeTextStyle = styleWithFill(beforeOpts.textStyle, textColor);
 	const afterTextStyle = styleWithFill(afterOpts.textStyle, textColor);
 
 	const propsToPass = (
-		textStyleToUse: TextStyleBase<TEXTTYPE> | undefined,
+		textStyleToUse: TextStyleBase | undefined,
 		anchorBase: TextAnchor,
 		startX: number,
 		startY: number
-	): ContentPropsBase<TEXTTYPE> => ({
+	): ContentPropsBase => ({
 		x: simpleValue(startX),
 		y: simpleValue(startY),
 		width,
@@ -190,13 +172,7 @@ const getContents = <
 			let node = content(propsToPass(textStyle, 'middle', width / 2 + cx, height / 2 + cy));
 			return node;
 		} else if (typeof content === 'object') {
-			const node = convertToTableIfNeeded<NODE, TEXTTYPE, GTYPE, SVGTYPE>(
-				content,
-				width,
-				height,
-				paddings,
-				cellOpt
-			);
+			const node = convertToTableIfNeeded<NODE>(content, width, height, paddings, cellOpt);
 
 			return node;
 		} else {
@@ -214,17 +190,17 @@ const getContents = <
 
 	const beforeContent =
 		beforeToUse && typeof beforeToUse === 'string'
-			? renderTextOnly<NODE, TEXTTYPE>(beforeToUse, 0, height / 2, 'start', beforeTextStyle)
+			? renderTextOnly<NODE>(beforeToUse, 0, height / 2, 'start', beforeTextStyle)
 			: beforeToUse;
 
 	const afterContent =
 		afterToUse && typeof afterToUse === 'string'
-			? renderTextOnly<NODE, TEXTTYPE>(afterToUse, width, height / 2, 'end', afterTextStyle)
+			? renderTextOnly<NODE>(afterToUse, width, height / 2, 'end', afterTextStyle)
 			: afterToUse;
 
 	const mainContent =
 		typeof contentToUse === 'string'
-			? renderTextOnly<NODE, TEXTTYPE>(contentToUse, cx, cy, 'middle', textStyle)
+			? renderTextOnly<NODE>(contentToUse, cx, cy, 'middle', textStyle)
 			: moveToLeftTop(width, height, contentToUse);
 
 	return {
@@ -234,19 +210,14 @@ const getContents = <
 	};
 };
 
-const FilledAreaInCell = <
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
->({
+const FilledAreaInCell = <NODE extends PrimitiveNode>({
 	cellOpt,
 	styleToUse,
 }: {
-	cellOpt: CalculatedCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE> & {
+	cellOpt: CalculatedCellPropsBase<NODE> & {
 		_ignored: false;
 	};
-	styleToUse: CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>;
+	styleToUse: CellStyleBase;
 }): SVGTableElement<NODE> => {
 	const { width, height, className } = cellOpt;
 
@@ -264,17 +235,12 @@ const FilledAreaInCell = <
 	});
 };
 
-export const ACell = <
-	NODE extends PrimitiveNode,
-	TEXTTYPE extends TextType,
-	GTYPE extends GType,
-	SVGTYPE extends SVGType,
->({
+export const ACell = <NODE extends PrimitiveNode>({
 	cellOpt,
 	defaultStyle,
 }: {
-	cellOpt: CalculatedCellPropsBase<NODE, TEXTTYPE, GTYPE, SVGTYPE>;
-	defaultStyle: CellStyleBase<TEXTTYPE, GTYPE, SVGTYPE>;
+	cellOpt: CalculatedCellPropsBase<NODE>;
+	defaultStyle: CellStyleBase;
 }): SVGTableElement<NODE> => {
 	if (cellOpt._ignored) return null;
 
@@ -305,7 +271,7 @@ export const ACell = <
 			transform: `translate(${x}, ${y})`,
 			className: className ? `${className}-wrapper` : undefined,
 		},
-		FilledAreaInCell<NODE, TEXTTYPE, GTYPE, SVGTYPE>({ cellOpt: cellOpt, styleToUse: styleToUse }),
+		FilledAreaInCell<NODE>({ cellOpt: cellOpt, styleToUse: styleToUse }),
 		element<NODE>(
 			'svg',
 			{
@@ -324,7 +290,7 @@ export const ACell = <
 					...ariaProps,
 				},
 				beforeContent,
-				CenteredCellContent<NODE, TEXTTYPE, GTYPE, SVGTYPE>({
+				CenteredCellContent<NODE>({
 					cellOpt: cellOpt,
 					styleToUse: styleToUse,
 					children: mainContent,

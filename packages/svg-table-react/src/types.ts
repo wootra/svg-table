@@ -2,19 +2,11 @@ import { ReactElement } from 'react';
 
 import type {
 	ContentAsFuncBase,
-	BeforeOrAfterAsObjBase,
-	BeforeOrAfterBase,
-	CellPropsBase,
-	CalculatedCellPropsBase,
-	RowPropsBase,
-	RowPropsAsObjBase,
-	CellPropsAsObjBase,
-	CalculatedRowPropsBase,
 	TablePropsBase,
 	TableInCellPropsBase,
-	ContentPropsBase,
-	CellStyleBase,
 	SVGRenderElementBase,
+	CellPropsBase,
+	ContentAsFuncRetTypes,
 } from '@shjeon0730/svg-table-core';
 
 export type {
@@ -39,49 +31,37 @@ export type {
 	DominantBaseline,
 } from '@shjeon0730/svg-table-core';
 
-export type ContentProps = ContentPropsBase<SVGTextElement>;
-export type TableInCellProps = TableInCellPropsBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
-
-export type ContentAsFunc = ContentAsFuncBase<ReactElement, SVGTextElement>;
-
-/** object for before or after content when it need to specify optional styles and dimensions */
-export type BeforeOrAfterAsObj = BeforeOrAfterAsObjBase<ReactElement, SVGTextElement>;
-
 /**
- * Represents the content that can be displayed before or after the main content in a cell.
- * It can be a ReactElement, a function that returns a ReactElement, or an object containing the content and optional styling.
- * */
-export type BeforeOrAfter = BeforeOrAfterBase<ReactElement, SVGTextElement>;
+ * Properties for defining a table, including dimensions, rows, and optional styling.
+ */
+export type TableProps = TablePropsBase<ReactElement>;
+/**
+ * Properties for defining a row within a table, including cells and optional styling.
+ */
+export type RowProps = TableProps['rows'][number];
+
+// /**
+//  * Properties for defining a row within a table, including cells and optional styling.
+//  */
+// export type RowProps = RowPropsBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
+
+export type RowPropsAsObj = Exclude<RowProps, (CellPropsBase<ReactElement> | string)[]>;
 
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
-export type CellProps = CellPropsBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
+export type CellProps = RowPropsAsObj['cells'][number];
 
-export type CellPropsAsObj = CellPropsAsObjBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
+export type CellPropsAsObj = Exclude<CellProps, string>;
 
-/**
- * Extended cell properties including calculated dimensions and positioning.
- */
-export type CalculatedCellProps = CalculatedCellPropsBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
+export type CellStyle = Exclude<CellPropsAsObj['style'], undefined>;
 
-/**
- * Properties for defining a row within a table, including cells and optional styling.
- */
-export type RowProps = RowPropsBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
+export type ContentProps = CellPropsAsObj['content'];
 
-export type RowPropsAsObj = RowPropsAsObjBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
+export type TableInCellProps = TableInCellPropsBase<ReactElement>;
 
-/**
- * Extended row properties including calculated dimensions and positioning.
- */
-export type CalculatedRowProps = CalculatedRowPropsBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
+export type ContentAsFunc = ContentAsFuncBase<ReactElement, ContentAsFuncRetTypes<ReactElement>>;
 
-/**
- * Properties for defining a table, including dimensions, rows, and optional styling.
- */
-export type TableProps = TablePropsBase<ReactElement, SVGTextElement, SVGGElement, SVGSVGElement>;
-
-export type CellStyle = CellStyleBase<SVGTextElement, SVGGElement, SVGSVGElement>;
+export type TablePropsWithoutRows = Omit<TableProps, 'rows'>;
 
 export type SVGRenderElement = SVGRenderElementBase<SVGElement>;
