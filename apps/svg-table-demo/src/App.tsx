@@ -19,7 +19,7 @@ const App = () => {
 				DEMO REACT: width :{width}
 				<input type='range' min='300' max='900' value={width} id='myRange' onChange={onChange} />
 			</div>
-			{/* <LogoDemo width={width} bgColor={null} className={'logo-demo'} /> */}
+			<LogoDemo width={width} bgColor={null} className={'logo-demo'} />
 
 			<AllDemo width={width} />
 		</div>

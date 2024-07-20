@@ -2,7 +2,7 @@ import { CellPropsAsObj, RowPropsAsObj, TableProps } from './types';
 import { SVGTableBase } from '@shjeon0730/svg-table-core';
 import { FC, ReactElement, Children, cloneElement, ReactNode } from 'react';
 import { reactConverter } from './reactConverter';
-type TablePrivateProps = { idx: number; cellsMap?: Record<number, CellPropsAsObj> };
+type TablePrivateProps = { idx?: number; cellsMap?: Record<number, CellPropsAsObj> };
 type InnerSVGRowType = ReactElement<RowPropsAsObj & TablePrivateProps>;
 
 // assign cellsMap to cells and assign it in rowProps
@@ -12,7 +12,7 @@ const convertCells = (rowProps: RowPropsWithChildren) => {
 		cellsMap = {} as Record<number, CellPropsAsObj>,
 		cells: cellsFromProps,
 		...rowPropsWithoutChildren
-	} = rowProps as RowPropsWithChildren & { cells: CellPropsAsObj[] };
+	} = rowProps as RowPropsWithChildren & { cells: CellPropsAsObj[] } & TablePrivateProps;
 	const cells =
 		cellsFromProps ??
 		new Array(Children.count(children)).fill(null).map((_, idx) => {
@@ -26,7 +26,7 @@ const convertCells = (rowProps: RowPropsWithChildren) => {
 };
 
 // convert rowsMap to rows and assign it in tableProps
-const convertRows = (tablePropsWidthChildren: TableWithChildren) => {
+const convertRows = (tablePropsWidthChildren: TableWithChildren & RowPrivateProps) => {
 	const { children, rowsMap, ...tableProps } = tablePropsWidthChildren;
 	const rows = new Array(Children.count(children)).fill(null).map((_, idx) => {
 		const row = rowsMap?.[idx] ?? {};
@@ -51,7 +51,12 @@ export type TableWithChildren = TableWithoutRows & {
 export type TableJsxProps = TableProps | TableWithChildren;
 
 export const SVGTable: FC<TableJsxProps> = tablePropsWithChildren => {
-	const { children, cellsMap, idx, ...tableProps } = tablePropsWithChildren as TableWithChildren & TablePrivateProps;
+	const {
+		children,
+		cellsMap,
+		idx = 0,
+		...tableProps
+	} = tablePropsWithChildren as TableWithChildren & TablePrivateProps;
 
 	if ((tablePropsWithChildren as TableWithChildren).children) {
 		if (Children.count(children) > 0) {
@@ -96,13 +101,11 @@ export const SVGTable: FC<TableJsxProps> = tablePropsWithChildren => {
 };
 
 type SVGTableType = typeof SVGTable;
-type RowPrivateProps = { rowsMap: Record<number, RowPropsWithChildren>; idx: number };
+type RowPrivateProps = { rowsMap?: Record<number, RowPropsWithChildren>; idx?: number };
 type InnerSVGCellType = ReactElement<CellPropsAsObj & RowPrivateProps>;
 type RowPropsWithoutCells = Omit<RowPropsAsObj, 'cells'>;
 type SVGCellType = ReactElement<CellPropsAsObj>;
 type RowPropsWithChildren = RowPropsWithoutCells & {
-	cellsMap: Record<number, CellPropsAsObj>;
-	idx: number;
 	children: SVGCellType[] | SVGCellType;
 };
 type RowJsxProps = RowPropsAsObj | RowPropsWithChildren;
@@ -110,20 +113,21 @@ type RowJsxProps = RowPropsAsObj | RowPropsWithChildren;
 export const SVGTableRow: FC<RowJsxProps> = rowPropsWithChildren => {
 	const {
 		children,
-		rowsMap = {} as Record<number, RowPropsWithChildren>,
-		idx,
+		rowsMap = {} as Record<number, RowPropsWithChildren & CellPrivateProps>,
+		idx = 0,
 		...rowProps
 	} = rowPropsWithChildren as RowPropsWithChildren & RowPrivateProps;
 
-	rowsMap[idx] = { ...rowProps, children } as RowPropsWithChildren;
+	rowsMap[idx] = { cellsMap: {}, ...rowProps, children } as RowPropsWithChildren & CellPrivateProps;
 	if (children) {
 		if (Children.count(children) > 0) {
-			rowsMap[idx].cellsMap = rowsMap[idx].cellsMap ?? ({} as Record<number, CellPropsAsObj>);
+			const privateProps = rowsMap[idx] as RowPropsWithChildren & CellPrivateProps;
+			const cellsMap = privateProps.cellsMap;
 
 			const newChildren = Children.map(children as InnerSVGCellType[], (child, i) => {
 				return cloneElement(child, {
 					idx: i,
-					cellsMap: rowsMap[idx]?.cellsMap,
+					cellsMap,
 				} as CellPrivateProps);
 			});
 			return <>{newChildren}</>;
@@ -135,7 +139,7 @@ export const SVGTableRow: FC<RowJsxProps> = rowPropsWithChildren => {
 
 type CellPrivateProps = { cellsMap: Record<number, CellPropsAsObj>; idx: number };
 type CellWithoutContent = Omit<CellPropsAsObj, 'content'>;
-type CellWithChildren = CellWithoutContent & { children: ReactNode | SVGTableType } & CellPrivateProps;
+type CellWithChildren = CellWithoutContent & { children: ReactNode | SVGTableType };
 type CellJsxProps = CellPropsAsObj | CellWithChildren;
 export const SVGTableCell: FC<CellJsxProps> = cellPropsWithChildren => {
 	const {
@@ -145,7 +149,8 @@ export const SVGTableCell: FC<CellJsxProps> = cellPropsWithChildren => {
 		...cellProps
 	} = cellPropsWithChildren as CellWithChildren & CellPrivateProps;
 
-	cellsMap[idx] = { ...cellProps } as CellPropsAsObj;
+	const contentHolder = { ...cellProps } as CellPropsAsObj;
+	cellsMap[idx] = contentHolder;
 	if (children) {
 		const count = Children.count(children);
 		if (count > 0) {
@@ -160,11 +165,12 @@ export const SVGTableCell: FC<CellJsxProps> = cellPropsWithChildren => {
 					return child; // expecting string
 				}
 			});
+
 			if (count > 1) {
 				// multiple
-				cellsMap[idx].content = <>{newChildren}</>; //wrap array with Fragment
+				contentHolder.content = <>{newChildren}</>; //wrap array with Fragment
 			} else {
-				cellsMap[idx].content = newChildren[0]; // unwrap array
+				contentHolder.content = newChildren[0] ?? ''; // unwrap array
 			}
 		}
 	}
