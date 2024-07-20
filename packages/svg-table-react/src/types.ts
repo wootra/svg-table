@@ -35,6 +35,7 @@ export type {
  * Properties for defining a table, including dimensions, rows, and optional styling.
  */
 export type TableProps = TablePropsBase<ReactElement>;
+
 /**
  * Properties for defining a row within a table, including cells and optional styling.
  */

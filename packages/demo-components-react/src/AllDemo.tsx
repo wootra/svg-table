@@ -26,6 +26,7 @@ import { LogoDemo } from './LogoDemo';
 import { Standalone } from './Standalone';
 import { AutoColSpan } from './AutoColSpan';
 import { Rotate } from './Rotate';
+import { BasicDemoJSX } from './BasicDemoJSX';
 
 export const AllDemo = ({ width, useClassName = false }: { width: number; useClassName?: boolean }) => {
 	return (
@@ -91,6 +92,24 @@ export const AllDemo = ({ width, useClassName = false }: { width: number; useCla
 				</h2>
 				<BasicDemo width={width} />
 			</section>
+			<section>
+				<h2>
+					basic demo(HTML table strucutre)
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components/src/BasicDemoJSX.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<div>
+					<p>This example demonstrates HTML table structure</p>
+					<BasicDemoJSX width={width} />
+				</div>
+			</section>
+
 			<section>
 				<h2>
 					basic with simple array

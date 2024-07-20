@@ -119,7 +119,6 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(tableProps: TablePropsB
 			}
 			return h + (row.style?.height ?? defaultStyleForRow.height);
 		}, 0) + allRowGaps;
-
 	height = Math.max(simpleValue(height), 1);
 	width = Math.max(simpleValue(width), 1);
 	const cellWidths = columnWidths
