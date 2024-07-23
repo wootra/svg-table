@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "pnpm update @shjeon0730/svg-table;pnpm update @repo/demo-components;astro check && astro build",
+		"build": "pnpm update @repo/demo-components;astro check && astro build",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
