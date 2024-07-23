@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
 	"browser": "dist/index.umd.js",
-	"types": "src/index.ts",
+	"types": "dist/index.d.ts",
 	"files": [
 		"dist",
 		"src"
