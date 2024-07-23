@@ -1,11 +1,11 @@
 ---
-import { LogoDemo } from '../../../../packages/demo-components/src/LogoDemo';
 import ScrollLayout from '../layouts/ScrollLayout.astro';
 const selected = '/introduction';
 import {TITLE_TRANSITION} from '../components/consts';
 import CodeHolder from '@/components/CodeHolder.astro';
 import NoteHolder from '@/components/NoteHolder.astro';
 import FeatureListHolder from '@/components/FeatureListHolder.astro';
+import { LogoDemo } from '@repo/demo-components-react';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <link rel="canonical" href={canonicalURL} />
