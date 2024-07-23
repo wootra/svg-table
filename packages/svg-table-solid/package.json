@@ -40,15 +40,15 @@
 		"@rollup/plugin-typescript": "^11.1.6",
 		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"@turbo/gen": "^1.13.4",
-		"@types/eslint": "^8.56.10",
+		"@types/eslint": "^8.56.11",
 		"@types/node": "^20.14.11",
 		"@types/react": "^18.3.3",
 		"eslint": "^8.57.0",
-		"rollup": "^4.18.1",
+		"rollup": "^4.19.0",
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"tslib": "^2.6.3",
-		"typescript": "^5.5.3"
+		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
 		"@shjeon0730/svg-table-core": "*",

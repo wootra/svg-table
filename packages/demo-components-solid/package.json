@@ -17,13 +17,13 @@
 		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"@shjeon0730/svg-table-solid": "link:../svg-table-solid-repo",
 		"@turbo/gen": "^1.13.4",
-		"@types/eslint": "^8.56.10",
+		"@types/eslint": "^8.56.11",
 		"@types/node": "^20.14.11",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"babel-preset-solid": "^1.8.18",
 		"eslint": "^8.57.0",
-		"typescript": "^5.5.3"
+		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
 		"@shjeon0730/svg-table-core": "*",
