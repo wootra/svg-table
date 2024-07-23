@@ -11,7 +11,7 @@
 		"src"
 	],
 	"scripts": {
-		"build": "pnpm install;rm -rf dist;npm run lint; tsc;pnpm run build:bundle",
+		"build": "rm -rf dist;npm run lint; tsc;pnpm run build:bundle",
 		"build:bundle": "pnpm run build:js && pnpm run build:types",
 		"build:js": "rollup -c rollup.config.mjs",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
