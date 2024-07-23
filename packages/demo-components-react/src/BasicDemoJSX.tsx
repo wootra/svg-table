@@ -1,5 +1,4 @@
-import SVGTable from '@shjeon0730/svg-table-react';
-import { SVGTableCell, SVGTableRow } from '../../svg-table-react/src/SVGTable';
+import SVGTable, { SVGTableCell, SVGTableRow } from '@shjeon0730/svg-table-react';
 
 export const BasicDemoJSX = ({ width = 500 }: { width?: number }) => {
 	return (
