@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table-react",
-	"version": "3.0.0",
+	"version": "3.1.0-0",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
@@ -41,7 +41,7 @@
 		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
-		"@types/node": "^20.14.11",
+		"@types/node": "^20.14.12",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"eslint": "^8.57.0",
