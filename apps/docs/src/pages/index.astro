@@ -2,17 +2,20 @@
 import {TITLE_TRANSITION} from '../components/consts';
 import CenteredLayout from '../layouts/CenteredLayout.astro';
 import InteractiveLogo from '../components/InteractiveLogo.astro';
+import { BasicDemo } from '@repo/demo-components-react';
+import CodeHolder from '@/components/CodeHolder.astro';
 const selected = '/';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 <link rel="canonical" href={canonicalURL} />
 
 <CenteredLayout title='Welcome to SVG-Table' selected={selected}>
+  <CodeHolder />
   <div class="center-content">
     <div class="feature-wrapper">
       <h1  transition:name="page-title" transition:animate={TITLE_TRANSITION}></h1>
       <InteractiveLogo />
-    
+      
 
       <section id='features' class='features '>
         <div class='feature'>
@@ -41,13 +44,109 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           <h4>Easy and Powerful usage</h4>
           <p>for simple table, almost no effort. It still support multiple powerful features.</p>
         </div>
+        <div class='feature'>
+          <h4>Easy conversion from HTML table</h4>
+          <p>same format with HTML can be used for easy conversion.</p>
+        </div>
       </section>
     </div>
+
+   
+  </div>
+  <section id='usage' class='section'>
+    
+    <div class='example-container'>
+      <h2>JSON like data structure or HTML like data structure</h2>
+      for the same table, you can use 2 different way of define it. 
+      (HTML like structure only works in React.js)
+      <div class="component-example">
+        <div>
+          <BasicDemo />
+        </div>
+      </div>
+      <div class="code-compare">
+        
+        <div class="code-wrapper">
+         
+          <code>
+            <pre>
+            {`
+  import SVGTable, { TableProps } from '@shjeon0730/svg-table-react';
+  
+  const tableProps: Omit<TableProps, 'width'> = {
+    rows: [
+      {
+        cells: [
+          {
+            content: 'Header 1',
+          },
+          {
+            content: 'Col Span',
+            colSpan: 2,
+          },
+        ],
+      },
+      {
+        cells: [
+          { content: 'Row 1, Cell 1' },
+          { content: 'Row Span\nmultiline\nsupport', rowSpan: 2 },
+          { content: 'Row 1, Cell 3' },
+        ],
+      },
+      {
+        cells: [{ content: 'Row 2, Cell 1' }, { content: 'Row 2, Cell 3' }],
+      },
+    ],
+  };
+  
+  export const BasicDemo = ({ width = 500 }: { width?: number }) => {
+    return <SVGTable {...tableProps} width={width} />;
+  };
+            `}
+            </pre>
+          </code>
+        </div>
+        <div class="code-wrapper">
+          <code>
+            <pre>
+            {`
+  import SVGTable, { SVGTableCell, SVGTableRow } from '@shjeon0730/svg-table-react';
+
+export const BasicDemoJSX = ({ width = 500 }: { width?: number }) => {
+return (
+  <SVGTable width={width}>
+    <SVGTableRow>
+      <SVGTableCell>Header 1</SVGTableCell>
+      <SVGTableCell colSpan={2}>Col Span</SVGTableCell>
+    </SVGTableRow>
+    <SVGTableRow>
+      <SVGTableCell>Row 1, Cell 1</SVGTableCell>
+      <SVGTableCell rowSpan={2}>{'Row Span\nmultiline\nsupport'}</SVGTableCell>
+      <SVGTableCell>Row 1, Cell 3</SVGTableCell>
+    </SVGTableRow>
+    <SVGTableRow>
+      <SVGTableCell>Header 1</SVGTableCell>
+      <SVGTableCell colSpan={2}>Col Span</SVGTableCell>
+    </SVGTableRow>
+  </SVGTable>
+);
+};
+            `}
+            </pre>
+          </code>
+        </div>
+      </div>
+      
+    </div>
+    
+  </section>
   </div>
 </CenteredLayout>
 
 <style>
-
+:root {
+		--text-default-color:  #a7a7a7;
+	}
 
   .feature-wrapper {
     position: relative;
@@ -83,4 +182,90 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     box-shadow: 0 5px 15px rgba(0, 200, 255, 0.2);
   }
 
+  .section {
+    max-width: 100%;
+  }
+
+  .component-example {
+    width: 100%;
+    padding: 1rem;
+    display: grid;
+    align-items: center;
+  }
+  .component-example > * {
+   margin: auto;
+  }
+  .code-compare {
+    max-width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    gap: 1rem;
+  }
+
+  .code-wrapper {
+    flex: 1;
+    overflow-x: auto;
+    border-radius: 1rem;
+    /* height: fit-content; */
+  }
+  .code-wrapper code, .code-wrapper pre{
+    width: fit-content;
+    height: 100%;
+  }
+
+  .example-container {
+		max-width: 100%;
+		border-radius: 8px;
+		padding: 1rem;
+		margin-bottom: 1.5rem;
+		overflow: hidden;
+	}
+
+	.example-container p{
+		color: var(--color-text-in-example);
+	}
+
+	.demo-container {
+		background-color: var(--color-code-background);
+		
+		border-radius: 8px;
+		padding: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.example-title {
+		font-size: 1.2rem;
+		color: var(--color-secondary);
+		margin-bottom: 0.5rem;
+	}
+
+	.example-description {
+		margin-bottom: 1rem;
+	}
+
+	.example-code {
+		background-color: var(--color-code-background);
+		padding: 1rem;
+		border-radius: 4px;
+		overflow-x: auto;
+	}
+
+	.section {
+		margin-bottom: 2rem;
+		color: var(--color-text-in-example);
+		fill: var(--color-text-in-example);
+	}
+
+	summary {
+		color: var(--color-secondary);
+		font-size: 1.1rem;
+		font-weight: bold;
+		cursor: pointer;
+	}
+	
+	h2 {
+		display: flex;
+	}
 </style>
