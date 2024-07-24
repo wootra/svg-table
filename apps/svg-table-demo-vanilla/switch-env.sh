@@ -14,4 +14,7 @@ rm ./package.json
 echo "generating package.json from package-$env.json..."
 cp ./package-$env.json ./package.json
 
+echo "update updated dependencies..."
+pnpm install
+
 echo "done"

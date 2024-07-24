@@ -1,4 +1,4 @@
-import { AllDemo } from '@repo/demo-components-installed';
+import { AllDemo } from '@repo/demo-components-react';
 import { ChangeEvent, useState } from 'react';
 
 const App = () => {
@@ -17,14 +17,7 @@ const App = () => {
 				}}
 			>
 				{width}
-				<input
-					type='range'
-					min='300'
-					max='900'
-					value={width}
-					id='myRange'
-					onChange={onChange}
-				/>
+				<input type='range' min='300' max='900' value={width} id='myRange' onChange={onChange} />
 			</div>
 
 			<AllDemo width={width} />
