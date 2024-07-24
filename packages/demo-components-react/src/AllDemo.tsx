@@ -27,6 +27,8 @@ import { Standalone } from './Standalone';
 import { AutoColSpan } from './AutoColSpan';
 import { Rotate } from './Rotate';
 import { BasicDemoJSX } from './BasicDemoJSX';
+import { EmbeddedTableJSX } from './EmbeddedTableJSX';
+import { EmbeddedTableAsPropsWithHeightJSX } from './EmbeddedTableAsPropsWithHeightJSX';
 
 export const AllDemo = ({ width, useClassName = false }: { width: number; useClassName?: boolean }) => {
 	return (
@@ -321,6 +323,21 @@ export const AllDemo = ({ width, useClassName = false }: { width: number; useCla
 
 			<section>
 				<h2>
+					embedded table(HTML Like)
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-react/src/EmbeddedTableJSX.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<EmbeddedTableJSX standalone />
+			</section>
+
+			<section>
+				<h2>
 					embedded table as props
 					<a
 						className='demo-code-link'
@@ -347,6 +364,21 @@ export const AllDemo = ({ width, useClassName = false }: { width: number; useCla
 					</a>
 				</h2>
 				<EmbeddedTableAsPropsWithHeight width={width} standalone />
+			</section>
+
+			<section>
+				<h2>
+					embedded table with height as well(HTML like)
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-react/src/EmbeddedTableAsPropsWithHeightJSX.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<EmbeddedTableAsPropsWithHeightJSX width={width} standalone />
 			</section>
 
 			<section>

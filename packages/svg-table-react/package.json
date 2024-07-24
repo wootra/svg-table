@@ -72,5 +72,8 @@
 	"bugs": {
 		"url": "https://github.com/wootra/svg-table/issues"
 	},
-	"homepage": "https://svg-table.com/"
+	"homepage": "https://svg-table.com/",
+	"dependencies": {
+		"dot-prop": "^9.0.0"
+	}
 }

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { PropsWithChildren, ReactElement } from 'react';
 
 import type {
 	ContentAsFuncBase,
@@ -35,6 +35,18 @@ export type {
  * Properties for defining a table, including dimensions, rows, and optional styling.
  */
 export type TableProps = TablePropsBase<ReactElement>;
+export type TableWithoutRows = Omit<TableProps, 'rows'>;
+type SVGRowType = ReactElement<RowPropsAsObj & { rowId?: string }>;
+export type TableWithChildren = TableWithoutRows & {
+	tableId?: string;
+	children: SVGRowType[] | SVGRowType;
+};
+export type RowPropsWithoutCells = Omit<RowPropsAsObj, 'cells'>;
+type SVGCellType = ReactElement<CellPropsAsObj & { cellId?: string }>;
+export type RowPropsWithChildren = RowPropsWithoutCells & {
+	rowId?: string;
+	children: SVGCellType[] | SVGCellType;
+};
 
 /**
  * Properties for defining a row within a table, including cells and optional styling.
@@ -58,6 +70,12 @@ export type CellPropsAsObj = Exclude<CellProps, string>;
 export type CellStyle = Exclude<CellPropsAsObj['style'], undefined>;
 
 export type ContentProps = CellPropsAsObj['content'];
+export type CellPropsWithoutContent = Omit<CellPropsAsObj, 'content'>;
+export type CellPropsWithChildren = PropsWithChildren<
+	CellPropsWithoutContent & {
+		cellId?: string;
+	}
+>;
 
 export type TableInCellProps = TableInCellPropsBase<ReactElement>;
 

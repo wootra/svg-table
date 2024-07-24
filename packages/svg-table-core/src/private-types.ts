@@ -259,7 +259,7 @@ export type TableOptionalPropsBase<NODE extends PrimitiveNode> = TableOptionalAt
  */
 export type TablePropsBase<NODE extends PrimitiveNode> = TableOptionalPropsBase<NODE> & {
 	/** Total width of the SVG table in pixels. */
-	width: number;
+	width?: number;
 };
 
 export type CellElementPropsBase<NODE extends PrimitiveNode> = {
