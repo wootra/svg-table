@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import SVGTable, { TableProps } from '@shjeon0730/svg-table-solid';
 
 const tableProps: Omit<TableProps, 'width'> = {

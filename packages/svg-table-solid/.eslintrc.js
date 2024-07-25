@@ -9,6 +9,11 @@ module.exports = {
 	},
 	rules: {
 		'no-console': ['error', { allow: ['warn', 'error'] }],
-		'no-unused-vars': 'error',
+		'no-unused-vars': [
+			'error',
+			{
+				ignorePatterns: ['^_'],
+			},
+		],
 	},
 };

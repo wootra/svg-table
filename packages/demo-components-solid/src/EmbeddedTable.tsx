@@ -22,7 +22,7 @@ const tableProps: TableProps = {
 			style: {
 				height: 30,
 			},
-			cells: ['Header 1', 'Header 2', 'Header3'],
+			cells: ['Header a', 'Header b', 'Header c'],
 		},
 		[
 			{ content: (<BgColorAndTextColor width={300} />) as SVGElement }, // since there is gaps added, it will be overflow.
