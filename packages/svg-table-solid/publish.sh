@@ -12,6 +12,5 @@ pnpm build
 echo $VERSION
 npm version $VERSION
 
-npm publish --access public
-
 sh ./tag-current-version.sh
+npm publish --access public
