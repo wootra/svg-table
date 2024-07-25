@@ -5,7 +5,9 @@
 	"scripts": {
 		"start": "vite",
 		"dev": "vite",
-		"build": "vite build",
+		"build": "pnpm i;vite build",
+		"build:prod": "sh switch-env.sh prod && pnpm build",
+		"build:dev": "sh switch-env.sh dev && pnpm build",
 		"serve": "vite preview"
 	},
 	"license": "MIT",
