@@ -4,6 +4,8 @@ import CenteredLayout from '../layouts/CenteredLayout.astro';
 import InteractiveLogo from '../components/InteractiveLogo.astro';
 import { BasicDemo } from '@repo/demo-components-react';
 import CodeHolder from '@/components/CodeHolder.astro';
+import { CodeBlock, atomOneDark } from 'react-code-blocks';
+
 const selected = '/';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -65,12 +67,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </div>
       </div>
       <div class="code-compare">
+        <div class="code-wrapper">
+          <h3>JSON like data structure</h3>
+        </div>
+        <div class="code-wrapper">
+          <h3>HTML like data structure</h3>
+        </div>
+      </div>
+      <div class="code-compare code-holder">
         
         <div class="code-wrapper">
-         
-          <code>
-            <pre>
-            {`
+         <CodeBlock client:only="react" text={`
   import SVGTable, { TableProps } from '@shjeon0730/svg-table-react';
   
   const tableProps: Omit<TableProps, 'width'> = {
@@ -102,13 +109,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   export const BasicDemo = ({ width = 500 }: { width?: number }) => {
     return <SVGTable {...tableProps} width={width} />;
   };
-            `}
-            </pre>
-          </code>
+            `} language="tsx" theme={atomOneDark} showLineNumbers={false} />
         </div>
         <div class="code-wrapper">
-          <code>
-            <pre>
+          <CodeBlock client:only="react" text=
             {`
   import SVGTable, { SVGTableCell, SVGTableRow } from '@shjeon0730/svg-table-react';
 
@@ -131,9 +135,7 @@ return (
   </SVGTable>
 );
 };
-            `}
-            </pre>
-          </code>
+            `} language='tsx' theme={atomOneDark} showLineNumbers={false} />
         </div>
       </div>
       
@@ -200,8 +202,12 @@ return (
     
     display: flex;
     flex-direction: row;
-    height: 400px;
     gap: 1rem;
+  }
+  
+  .code-holder {
+    
+    height: 400px;
   }
 
   .code-wrapper {
@@ -209,18 +215,18 @@ return (
     overflow-x: auto;
     border-radius: 1rem;
     /* height: fit-content; */
-  }
-  .code-wrapper code, .code-wrapper pre{
     width: fit-content;
-    height: 100%;
   }
+  /* .code-wrapper code, .code-wrapper pre{
+    height: 100%;
+  } */
 
   .example-container {
 		max-width: 100%;
 		border-radius: 8px;
 		padding: 1rem;
 		margin-bottom: 1.5rem;
-		overflow: hidden;
+		/* overflow: hidden; */
 	}
 
 	.example-container p{
