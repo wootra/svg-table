@@ -15,7 +15,8 @@
 		"vite-plugin-solid": "^2.8.2"
 	},
 	"dependencies": {
-		"@repo/demo-components-solid": "link:../../packages/demo-components-solid",
+		"@repo/demo-components-solid": "workspace:*",
+		"@shjeon0730/svg-table-core": "link:../../packages/svg-table-core-repo",
 		"@shjeon0730/svg-table-solid": "link:../../packages/svg-table-solid-repo",
 		"react-icons": "^5.2.1",
 		"solid-js": "^1.8.11"

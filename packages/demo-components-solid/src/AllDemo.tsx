@@ -1,10 +1,12 @@
 import { BasicDemo } from './BasicDemo';
+import { BasicDemoJSX } from './BasicDemoJSX';
 import { BasicWithElement } from './BasicWithElement';
 import { BasicWithProps } from './BasicWithProps';
 import { BasicWithPropsAllowingOverflow } from './BasicWithPropsAllowingOverflow';
 import { BasicWithPropsAllowingOverflowOnlyOneCell } from './BasicWithPropsAllowingOverflowOnlyOneCell';
 import { NoBorderTableDemo } from './NoBorderTableDemo';
 import { EmbeddedTable } from './EmbeddedTable';
+import { EmbeddedTableJSX } from './EmbeddedTableJSX';
 import { TextStyleOverride } from './TextStyleOverride';
 import { OnlyTableBolder } from './OnlyTableBolder';
 import { TableBolderWithMargin } from './TableBolderWithMargin';
@@ -21,6 +23,7 @@ import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
 import './all-demo.css';
 import { BasicSimpleArray } from './BasicSimpleArray';
 import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
+import { EmbeddedTableAsPropsWithHeightJSX } from './EmbeddedTableAsPropsWithHeightJSX';
 import { Paddings } from './Paddings';
 import { LogoDemo } from './LogoDemo';
 import { Standalone } from './Standalone';
@@ -90,6 +93,20 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					</a>
 				</h2>
 				<BasicDemo width={width} />
+			</section>
+			<section>
+				<h2>
+					basic demo (HTML table structure)
+					<a
+						class='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-solid/src/BasicDemoJSX.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<BasicDemoJSX width={width} />
 			</section>
 			<section>
 				<h2>
@@ -302,6 +319,21 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 
 			<section>
 				<h2>
+					embedded table (HTML format)
+					<a
+						class='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-solid/src/EmbeddedTableJSX.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<EmbeddedTableJSX standalone />
+			</section>
+
+			<section>
+				<h2>
 					embedded table as props
 					<a
 						class='demo-code-link'
@@ -328,6 +360,20 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 					</a>
 				</h2>
 				<EmbeddedTableAsPropsWithHeight width={width} standalone />
+			</section>
+			<section>
+				<h2>
+					embedded table with height as well(HTML format)
+					<a
+						class='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-solid/src/EmbeddedTableAsPropsWithHeightJSX.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<EmbeddedTableAsPropsWithHeightJSX width={width} standalone />
 			</section>
 
 			<section>

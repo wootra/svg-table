@@ -1,3 +1,4 @@
+import { JSX } from 'solid-js';
 import {
 	ContentAsFuncBase,
 	CellPropsBase,
@@ -45,14 +46,20 @@ export type RowProps = TableProps['rows'][number];
 // export type RowProps = RowPropsBase<ElementType, SVGTextElement, SVGGElement, SVGSVGElement>;
 
 export type RowPropsAsObj = Exclude<RowProps, (CellPropsBase<ElementType> | string)[]>;
-
+export type RowPropsWithoutCells = Omit<RowPropsAsObj, 'cells'>;
+export type RowPropsWithChildren = RowPropsWithoutCells & {
+	children: JSX.Element;
+};
 /**
  * Properties for defining a cell within a table, including content and optional styling.
  */
 export type CellProps = RowPropsAsObj['cells'][number];
 
 export type CellPropsAsObj = Exclude<CellProps, string>;
-
+export type CellPropsWithoutContent = Omit<CellPropsAsObj, 'content'>;
+export type CellPropsWithChildren = CellPropsWithoutContent & {
+	children: JSX.Element;
+};
 export type CellStyle = Exclude<CellPropsAsObj['style'], undefined>;
 
 export type ContentProps = CellPropsAsObj['content'];
@@ -64,5 +71,8 @@ export type RetFromContentFunc = ContentAsFuncRetTypes<ElementType>;
 export type ContentAsFunc = ContentAsFuncBase<ElementType, RetFromContentFunc>;
 
 export type TablePropsWithoutRows = Omit<TableProps, 'rows'>;
+export type TablePropsWithChildren = TablePropsWithoutRows & {
+	children: JSX.Element;
+};
 
 export type SVGRenderElement = SVGRenderElementBase<SVGElement>;

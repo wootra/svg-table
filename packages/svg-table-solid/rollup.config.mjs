@@ -4,6 +4,7 @@ import typescript from '@rollup/plugin-typescript';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import terser from '@rollup/plugin-terser';
 import pkg from './package.json' assert { type: 'json' };
+import babel from 'rollup-plugin-babel';
 
 export default [
 	{
@@ -31,7 +32,11 @@ export default [
 		],
 		external: ['solid-js', '@shjeon0730/svg-table-core'],
 		plugins: [
-			resolve(),
+			resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx'] }),
+			babel({
+				exclude: 'node_modules/**',
+				presets: ['@babel/env', 'babel-preset-solid'],
+			}),
 			commonjs(),
 			peerDepsExternal({
 				includeDependencies: false,
