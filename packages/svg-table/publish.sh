@@ -1,3 +1,4 @@
+#!/bin/bash
 VERSION=$1
 if [ -z $VERSION ]; then
   echo "version is empty"
@@ -12,3 +13,5 @@ echo $VERSION
 npm version $VERSION
 
 npm publish --access public
+
+sh ./tag-current-version.sh
