@@ -1,4 +1,13 @@
-import { CellPropsWithChildren, TableWithChildren, RowPropsWithChildren, TableProps } from './types';
+import {
+	CellPropsWithChildren,
+	TableWithChildren,
+	RowPropsWithChildren,
+	TableProps,
+	CellPropsAsObj,
+	RowPropsAsObj,
+	ContentProps,
+	TableInCellProps,
+} from './types';
 import { setProperty, hasProperty, deleteProperty } from 'dot-prop';
 import React, { FC, Children, cloneElement } from 'react';
 import { SVGTableRaw } from './SVGTableRaw';
@@ -8,6 +17,7 @@ const tableMap: Record<string, TableProps> = {}; // cache
 
 let idx = 0;
 
+// @ts-ignore
 const hasNullInProps = (props: any) => {
 	if (props === null) {
 		return true;
