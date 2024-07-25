@@ -1,19 +1,9 @@
 import {
-	BasicDemo,
-	BasicWithElement,
-	BasicWithProps,
-	BasicWithPropsAllowingOverflow,
-	BasicWithPropsAllowingOverflowOnlyOneCell,
-	NoBorderTableDemo,
 	EmbeddedTable,
+	EmbeddedTableJSX,
 	EmbeddedTableAsProps,
 	EmbeddedTableAsPropsWithHeight,
-	
-	OnlyTableBolder,
-	TableBolderWithMargin,
-	TableBorderStyles,
-	BgColorAndTextColor,
-	OutboundLabels,
+	EmbeddedTableAsPropsWithHeightJSX,
 } from '@repo/demo-components-react';
 import GitHubLink from '@/components/GitHubLink.astro';
 
@@ -24,6 +14,15 @@ Here is a basic example.
 
 <div className='demo-container'>
 	<EmbeddedTable />
+</div>
+
+## tables in a table (HTML form) <GitHubLink demoName="EmbeddedTableJSX" sites={["react"]} is:inline />
+
+You can add another table as you want since it is just a SVG.
+Here is a basic example.
+
+<div className='demo-container'>
+	<EmbeddedTableJSX />
 </div>
 
 ## auto aligned embeded tables <GitHubLink demoName="EmbeddedTableAsProps" is:inline />
@@ -45,4 +44,13 @@ Once the height is given, all nested tables are also automatically fit in the ce
 
 <div className='demo-container'>
 	<EmbeddedTableAsPropsWithHeight />
+</div>
+
+## Automatic height adjustment (HTML form) <GitHubLink demoName="EmbeddedTableAsPropsWithHeightJSX" sites={['react']} is:inline />
+
+You can automatically adjust height by setting height property.
+Once the height is given, all nested tables are also automatically fit in the cells.
+
+<div className='demo-container'>
+	<EmbeddedTableAsPropsWithHeightJSX />
 </div>

@@ -5,8 +5,9 @@ import { RiJavascriptFill } from 'react-icons/ri';
 
 const Sites = {
 	All: ['solid', 'react', 'vanilla'],
+	
 } as const;
-type Frameworks = (typeof Sites)[keyof typeof Sites];
+type Frameworks = (typeof Sites)[keyof typeof Sites] | (typeof Sites.All)[number][];
 type Props =  { demoName: string; sites?: Frameworks };
 
 const urlMain = 'https://github.com/wootra/svg-table/blob/main/packages';
@@ -14,7 +15,7 @@ const reactUrl = `${urlMain}/demo-components-react/src`;
 const solidUrl = `${urlMain}/demo-components-solid/src`;
 const vanillatUrl = `${urlMain}/demo-components-vanilla/src`;
 const { demoName, sites } = Astro.props;
-let sitesArr: string[] = [];
+let sitesArr: Frameworks = sites ?? [] as Frameworks;
 if (!sites) sitesArr = Array.from(Sites.All);
 const isReact = sitesArr.includes('react');
 const isSolid = sitesArr.includes('solid');
