@@ -4,5 +4,5 @@
 		"outDir": "dist"
 	},
 	"include": ["src", "turbo"],
-	"exclude": ["node_modules", "dist", "eslintrc.js", "**/*.mjs", "public"]
+	"exclude": ["node_modules", "dist", "eslintrc.js", "**/*.mjs", "public", "*.js"]
 }

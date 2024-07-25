@@ -1,4 +1,4 @@
-import { splitProps, type JSX } from 'solid-js';
+import { type JSX } from 'solid-js';
 import { TableProps } from './types';
 import { SVGTableJSX } from './SVGTableJSX';
 import { SVGTableRaw } from './SVGTableRaw';

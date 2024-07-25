@@ -1,5 +1,5 @@
 import { JSX } from 'solid-js';
-import { children as Children, useContext, createSignal, createEffect } from 'solid-js';
+import { children as Children } from 'solid-js';
 import { SVGTableRaw } from './SVGTableRaw';
 import {
 	CellPropsAsObj,
