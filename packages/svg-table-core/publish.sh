@@ -1,3 +1,4 @@
+#!/bin/bash
 VERSION=$1
 if [ -z $VERSION ]; then
   echo "version is empty"
@@ -5,9 +6,11 @@ if [ -z $VERSION ]; then
 fi
 
 echo "version is $VERSION"
+pnpm run lint && echo 'lint success' || exit 1
+pnpm build && echo 'build success'|| exit 1
 
-pnpm build
 echo $VERSION
 npm version $VERSION
 
+sh ./tag-current-version.sh
 npm publish --access public
