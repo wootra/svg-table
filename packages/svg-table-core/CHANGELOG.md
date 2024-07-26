@@ -1,4 +1,9 @@
 # CHANGELOG
+## 3.0.1
+- fix: standalone mode was making all following svg structure to have namespace and remove all width and height. apply it only in the shell svg
+
+## 3.0.0
+- create core version to separate core logic into svg-table-core and svg-table-react. svg-table-solid and svg-table-vanilla is created to use this library.
 ## 2.0.0
 - before/after API change.
 
