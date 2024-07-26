@@ -66,12 +66,14 @@ const adjustRowHeights = (rowHeights: number[], tableHeightWithoutGaps: number) 
 	return rowHeights.map(width => Math.max(simpleValue(width * ratio), 1));
 };
 
-export const SVGTableBase = <NODE extends PrimitiveNode>(tableProps: TablePropsBase<NODE>): SVGTableElement<NODE> => {
+export const SVGTableBase = <NODE extends PrimitiveNode>(
+	tablePropsWithStandalone: TablePropsBase<NODE>
+): SVGTableElement<NODE> => {
+	const { standalone = false, ...tableProps } = tablePropsWithStandalone;
 	let {
 		rows,
 		width = 500,
 		height: heightFromProps,
-		standalone = false,
 		defaultCellStyle,
 		defaultRowStyle,
 		columnWidths,
