@@ -10,14 +10,31 @@ import { FaDonate } from 'react-icons/fa';
 		<span class="brand-text">SVG Table</span>
 	  </a>
 	<div class='top-nav-links'>
-		<a
-			href='https://www.npmjs.com/package/@shjeon0730/svg-table'
-			target='_blank'
-			title="NPM"
+		<div
 			class="npm-link"
 		>
 			<FaNpm />
-		</a>
+      <div class="sub-link">
+        <a
+          href='https://www.npmjs.com/package/@shjeon0730/svg-table-react'
+          target='_blank'
+          title="NPM"
+          class="npm-link"
+        >React</a>
+        <a
+          href='https://www.npmjs.com/package/@shjeon0730/svg-table-solid'
+          target='_blank'
+          title="NPM"
+          class="npm-link"
+        >Solid</a>
+        <a
+          href='https://www.npmjs.com/package/@shjeon0730/svg-table-vanilla'
+          target='_blank'
+          title="NPM"
+          class="npm-link"
+        >Vanilla</a>
+      </div>
+		</div>
 		<a href='https://github.com/wootra/svg-table' target='_blank' title="GitHub">
 			<FaGithub />
 		</a>
@@ -61,7 +78,11 @@ import { FaDonate } from 'react-icons/fa';
     margin-left: 10px;
     font-weight: bold;
   }
-	.top-nav-links a {
+  .top-nav-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+	.top-nav-links> * {
     font-size: 1.5rem;
     text-decoration: none;
     margin-left: 1rem;
@@ -75,7 +96,7 @@ import { FaDonate } from 'react-icons/fa';
     transition: all 0.3s ease;
   }
 
-  .top-nav-links a::before {
+  .top-nav-links > *::before {
     content: '';
     position: absolute;
     top: 0;
@@ -89,11 +110,11 @@ import { FaDonate } from 'react-icons/fa';
     transition: all 0.3s ease;
   }
 
-  .top-nav-links a:hover::before {
+  .top-nav-links > *:hover::before {
     opacity: 0.2;
   }
 
-  .top-nav-links a:hover {
+  .top-nav-links > *:hover {
     transform: scale(1.1);
   }
 
@@ -102,8 +123,35 @@ import { FaDonate } from 'react-icons/fa';
 
   .npm-link {
     color: #cb3837; /* NPM red color */
+    position: relative;
+    .sub-link {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.5rem;
+      display:flex;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: rgb(0,0,0, 0.1);
+      a {
+        color: #ffffff;
+        font-size: medium;
+      }
+    }
   }
 
+  .npm-link:has(.sub-link) {
+    .sub-link {
+      display: none;
+    }
+  }
+
+  .npm-link:hover {
+    .sub-link {
+      display: flex;
+    }
+  }
   .donate-link {
 	color: #89ff72; 
   }

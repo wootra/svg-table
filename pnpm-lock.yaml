@@ -223,7 +223,7 @@ importers:
         version: link:../../packages/demo-components-solid
       '@shjeon0730/svg-table-core':
         specifier: latest
-        version: 3.0.1-0
+        version: 3.0.1
       '@shjeon0730/svg-table-solid':
         specifier: latest
         version: 3.1.1(solid-js@1.8.18)
