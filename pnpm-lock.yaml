@@ -144,7 +144,7 @@ importers:
         version: link:../../packages/demo-components-react
       '@shjeon0730/svg-table-react':
         specifier: latest
-        version: 3.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -224,7 +224,7 @@ importers:
         version: link:../../packages/demo-components-solid
       '@shjeon0730/svg-table-core':
         specifier: latest
-        version: 3.0.1
+        version: 3.0.2
       '@shjeon0730/svg-table-solid':
         specifier: latest
         version: 3.1.1(solid-js@1.8.18)
@@ -703,8 +703,8 @@ importers:
   packages/svg-table-react:
     dependencies:
       '@shjeon0730/svg-table-core':
-        specifier: 3.0.1-0
-        version: 3.0.1-0
+        specifier: latest
+        version: 3.0.2
       dot-prop:
         specifier: ^9.0.0
         version: 9.0.0
@@ -913,8 +913,8 @@ importers:
   packages/svg-table-solid:
     dependencies:
       '@shjeon0730/svg-table-core':
-        specifier: workspace:*
-        version: link:../svg-table-core
+        specifier: latest
+        version: 3.0.2
       solid-js:
         specifier: ^1.8.11
         version: 1.8.19
@@ -2886,14 +2886,14 @@ packages:
   '@shikijs/core@1.12.1':
     resolution: {integrity: sha512-biCz/mnkMktImI6hMfMX3H9kOeqsInxWEyCHbSlL8C/2TR1FqfmGxTLRNwYCKsyCyxWLbB8rEqXRVZuyxuLFmA==}
 
-  '@shjeon0730/svg-table-core@3.0.1':
-    resolution: {integrity: sha512-WnPDThrSXcvBmkGaO+7bCs8/KZUuu8TtltAGtnVRAUA/OaukvRSxupG16JNQe//qlmStBBwpm83xJfkq/NW2pQ==}
-
   '@shjeon0730/svg-table-core@3.0.1-0':
     resolution: {integrity: sha512-XFG4wfNUUSmwKF3dB7I/ETulssPt508wdPO2o35E0gqlmplQlJ4sCLYglwyyanni988wgZAKK4e5XNtt0LrX7g==}
 
-  '@shjeon0730/svg-table-react@3.1.1':
-    resolution: {integrity: sha512-fPdVF0WA4iWsshRV1aFyVBZMNbXAg1TzJzCCPnN2JvcGy8BkB8vg7xrUIdA5LXddpJbyxWAVNvg89SxAwN9SUQ==}
+  '@shjeon0730/svg-table-core@3.0.2':
+    resolution: {integrity: sha512-TwoKOeBsfQqK7whiVq4v4j2k1pKslWkH41WeIzAPHhNmhQ9s6Y0fDNbbJQsOqpDj5BMY7FNwHwyRw8jx2CT+5g==}
+
+  '@shjeon0730/svg-table-react@3.1.2':
+    resolution: {integrity: sha512-XjGA9urAzea5F9j2bx4NlQXl9Y95DjLZOjvZ/o/LWppMQjR241CkNn/AvJuVxlLW0aQWAnuigafvSqKVPGPNGQ==}
     peerDependencies:
       react: ^18
       react-dom: ^18
@@ -10428,13 +10428,13 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
 
-  '@shjeon0730/svg-table-core@3.0.1': {}
-
   '@shjeon0730/svg-table-core@3.0.1-0': {}
 
-  '@shjeon0730/svg-table-react@3.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@shjeon0730/svg-table-core@3.0.2': {}
+
+  '@shjeon0730/svg-table-react@3.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@shjeon0730/svg-table-core': 3.0.1-0
+      '@shjeon0730/svg-table-core': 3.0.2
       dot-prop: 9.0.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
