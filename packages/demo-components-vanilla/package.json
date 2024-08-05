@@ -24,9 +24,7 @@
 	},
 	"peerDependencies": {
 		"react": "^18",
-		"react-dom": "^18"
-	},
-	"dependencies": {
+		"react-dom": "^18",
 		"@shjeon0730/svg-table-vanilla": "workspace:*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
