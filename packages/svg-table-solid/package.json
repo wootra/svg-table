@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table-solid",
-	"version": "3.1.1",
+	"version": "3.1.2",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
@@ -54,7 +54,7 @@
 		"solid-js": "^1.8.11"
 	},
 	"dependencies": {
-		"@shjeon0730/svg-table-core": "workspace:*"
+		"@shjeon0730/svg-table-core": "latest"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {

@@ -1,4 +1,11 @@
 # CHANGELOG
+## 3.1.2
+- includes svg-table-core as bundle
+- svg-table-core version 3.0.2
+
+## 3.0.0
+- start consuming svg-table-core
+  
 ## 2.0.0
 - before/after API change.
 
