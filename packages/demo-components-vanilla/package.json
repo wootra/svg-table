@@ -14,6 +14,7 @@
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
+		"@shjeon0730/svg-table-vanilla": "workspace:*",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
 		"@types/node": "^20.14.14",
@@ -25,7 +26,7 @@
 	"peerDependencies": {
 		"react": "^18",
 		"react-dom": "^18",
-		"@shjeon0730/svg-table-vanilla": "workspace:*"
+		"@shjeon0730/svg-table-vanilla": "*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {
