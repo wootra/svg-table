@@ -44,9 +44,6 @@ importers:
       '@repo/demo-components-vanilla':
         specifier: workspace:*
         version: link:../../packages/demo-components-vanilla
-      '@shjeon0730/svg-table-core':
-        specifier: workspace:*
-        version: link:../../packages/svg-table-core
       '@shjeon0730/svg-table-react':
         specifier: workspace:*
         version: link:../../packages/svg-table-react
@@ -86,6 +83,10 @@ importers:
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
+    devDependencies:
+      '@shjeon0730/svg-table-core':
+        specifier: workspace:*
+        version: link:../../packages/svg-table-core
 
   apps/svg-table-demo:
     dependencies:
@@ -309,8 +310,8 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       '@shjeon0730/svg-table-react':
-        specifier: workspace:*
-        version: link:../svg-table-react
+        specifier: link:../svg-table-react-repo
+        version: link:../svg-table-react-repo
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.14.14)(typescript@5.5.4)
@@ -342,8 +343,8 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       '@shjeon0730/svg-table-solid':
-        specifier: workspace:*
-        version: link:../svg-table-solid
+        specifier: link:../svg-table-solid-repo
+        version: link:../svg-table-solid-repo
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.14.14)(typescript@5.5.4)
@@ -388,8 +389,8 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
       '@shjeon0730/svg-table-vanilla':
-        specifier: workspace:*
-        version: link:../svg-table-vanilla
+        specifier: link:../svg-table-vanilla-repo
+        version: link:../svg-table-vanilla-repo
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.14.14)(typescript@5.5.4)

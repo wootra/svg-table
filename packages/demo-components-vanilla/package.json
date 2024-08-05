@@ -14,7 +14,7 @@
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
-		"@shjeon0730/svg-table-vanilla": "workspace:*",
+		"@shjeon0730/svg-table-vanilla": "link:../svg-table-vanilla-repo",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
 		"@types/node": "^20.14.14",
