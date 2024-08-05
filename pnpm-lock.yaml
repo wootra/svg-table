@@ -251,7 +251,7 @@ importers:
         version: link:../../packages/demo-components-vanilla
       '@shjeon0730/svg-table-vanilla':
         specifier: latest
-        version: 3.0.0-beta.1(@shjeon0730/svg-table-core@3.0.1)
+        version: 3.0.1
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -2903,10 +2903,8 @@ packages:
     peerDependencies:
       solid-js: ^1.8.11
 
-  '@shjeon0730/svg-table-vanilla@3.0.0-beta.1':
-    resolution: {integrity: sha512-9Jo0TLS+TUkYOq1cD+PKm9hPZ5PZJI/x8KoQPSgl51wG9vczKiJ6gXFwF8lcmVryptNnbAnv17yyl4L6skI6Gg==}
-    peerDependencies:
-      '@shjeon0730/svg-table-core': '*'
+  '@shjeon0730/svg-table-vanilla@3.0.1':
+    resolution: {integrity: sha512-Yi79BwkTmmllcHLyNgWibFana5aQ4933KONUaF3kCSGEEsnrZTPzFl5yyhBjVmAZ6q4Gjkto69sdCD4/Rb9XrA==}
 
   '@solid-devtools/debugger@0.23.4':
     resolution: {integrity: sha512-EfTB1Eo313wztQYGJ4Ec/wE70Ay2d603VCXfT3RlyqO5QfLrQGRHX5NXC07hJpQTJJJ3tbNgzO7+ZKo76MM5uA==}
@@ -10462,9 +10460,9 @@ snapshots:
       '@shjeon0730/svg-table-core': link:packages/svg-table-core
       solid-js: 1.8.18
 
-  '@shjeon0730/svg-table-vanilla@3.0.0-beta.1(@shjeon0730/svg-table-core@3.0.1)':
+  '@shjeon0730/svg-table-vanilla@3.0.1':
     dependencies:
-      '@shjeon0730/svg-table-core': 3.0.1
+      '@shjeon0730/svg-table-core': 3.0.1-0
 
   '@solid-devtools/debugger@0.23.4(solid-js@1.8.18)':
     dependencies:
