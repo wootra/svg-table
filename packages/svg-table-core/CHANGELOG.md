@@ -1,4 +1,7 @@
 # CHANGELOG
+## 3.0.2
+- fix: package.json was exporting src which makes its consumer fails build the app.
+
 ## 3.0.1
 - fix: standalone mode was making all following svg structure to have namespace and remove all width and height. apply it only in the shell svg
 
