@@ -1,4 +1,14 @@
 # CHANGELOG
+
+## 3.1.1
+- include svg-table-core as part of the bundle
+
+## 3.1.0
+- add HTML structure 
+
+## 3.0.0
+- starting consuming svg-table-core
+
 ## 2.0.0
 - before/after API change.
 
