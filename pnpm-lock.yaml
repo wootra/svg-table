@@ -142,8 +142,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/demo-components-react
       '@shjeon0730/svg-table-react':
-        specifier: file:shjeon0730-svg-table-react-3.1.0.tgz
-        version: file:apps/svg-table-demo-installed/shjeon0730-svg-table-react-3.1.0.tgz(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: latest
+        version: 3.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -225,8 +225,8 @@ importers:
         specifier: latest
         version: 3.0.1-0
       '@shjeon0730/svg-table-solid':
-        specifier: latest
-        version: 3.1.0(@shjeon0730/svg-table-core@3.0.1-0)(solid-js@1.8.18)
+        specifier: file:shjeon0730-svg-table-solid-3.1.0.tgz
+        version: file:apps/svg-table-demo-solid/shjeon0730-svg-table-solid-3.1.0.tgz(solid-js@1.8.18)
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.3.1)
@@ -2888,17 +2888,16 @@ packages:
   '@shjeon0730/svg-table-core@3.0.1-0':
     resolution: {integrity: sha512-XFG4wfNUUSmwKF3dB7I/ETulssPt508wdPO2o35E0gqlmplQlJ4sCLYglwyyanni988wgZAKK4e5XNtt0LrX7g==}
 
-  '@shjeon0730/svg-table-react@file:apps/svg-table-demo-installed/shjeon0730-svg-table-react-3.1.0.tgz':
-    resolution: {integrity: sha512-sQeNfenwOQbLFoF2f/CUBc8ev3mSfbVbDAKJxXM8QDTORzoXmNOdg1bEi+c6UM5CAzAjE85+imujZYfuZ0+XNA==, tarball: file:apps/svg-table-demo-installed/shjeon0730-svg-table-react-3.1.0.tgz}
-    version: 3.1.0
+  '@shjeon0730/svg-table-react@3.1.1':
+    resolution: {integrity: sha512-fPdVF0WA4iWsshRV1aFyVBZMNbXAg1TzJzCCPnN2JvcGy8BkB8vg7xrUIdA5LXddpJbyxWAVNvg89SxAwN9SUQ==}
     peerDependencies:
       react: ^18
       react-dom: ^18
 
-  '@shjeon0730/svg-table-solid@3.1.0':
-    resolution: {integrity: sha512-y+2W2/hDQULLQoO27BJcHozoAB1LiAfmonESyYYGJnV7atCmHMrxJ0DzkpfqA3EhGE77gNm9ltyfKWwjhMWTpw==}
+  '@shjeon0730/svg-table-solid@file:apps/svg-table-demo-solid/shjeon0730-svg-table-solid-3.1.0.tgz':
+    resolution: {integrity: sha512-BLq1Z6zQvatNyf4U9GtL6dSHRT4AE9bl1j4EMRy3vGBf4Kbxo/SotKEeOOjp0CwjfbvYUX/aAIhUyJUtkT7UDw==, tarball: file:apps/svg-table-demo-solid/shjeon0730-svg-table-solid-3.1.0.tgz}
+    version: 3.1.0
     peerDependencies:
-      '@shjeon0730/svg-table-core': '*'
       solid-js: ^1.8.11
 
   '@solid-devtools/debugger@0.23.4':
@@ -10438,14 +10437,14 @@ snapshots:
 
   '@shjeon0730/svg-table-core@3.0.1-0': {}
 
-  '@shjeon0730/svg-table-react@file:apps/svg-table-demo-installed/shjeon0730-svg-table-react-3.1.0.tgz(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@shjeon0730/svg-table-react@3.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@shjeon0730/svg-table-core': 3.0.1-0
       dot-prop: 9.0.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@shjeon0730/svg-table-solid@3.1.0(@shjeon0730/svg-table-core@3.0.1-0)(solid-js@1.8.18)':
+  '@shjeon0730/svg-table-solid@file:apps/svg-table-demo-solid/shjeon0730-svg-table-solid-3.1.0.tgz(solid-js@1.8.18)':
     dependencies:
       '@shjeon0730/svg-table-core': 3.0.1-0
       solid-js: 1.8.18
@@ -12406,7 +12405,7 @@ snapshots:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
       eslint-plugin-react: 7.35.0(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
@@ -12460,7 +12459,7 @@ snapshots:
       enhanced-resolve: 5.17.1
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.6
       is-core-module: 2.15.0
@@ -12535,7 +12534,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5

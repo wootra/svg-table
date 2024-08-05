@@ -15,7 +15,14 @@ If you can make the table with SVG and reuse the same code for both browser and 
 
 this library support below use cases. Please check out the [demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo-solid) code to have more idea of using this library.
 
-here is Next.js [server side demo](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo-solid) as well.
+## Installation
+
+```sh
+npm install @shjeon0730/svg-table-solid
+```
+### NOTE
+peer dependency svg-table-core is included from 3.1.1 version
+
 
 ## Usage
 

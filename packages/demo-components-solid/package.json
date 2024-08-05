@@ -24,10 +24,8 @@
 		"solid-js": "^1.8.19",
 		"typescript": "^5.5.4"
 	},
-	"dependencies": {
-		"@shjeon0730/svg-table-solid": "link:../svg-table-solid-repo"
-	},
 	"peerDependencies": {
+		"@shjeon0730/svg-table-solid": "link:../svg-table-solid-repo",
 		"solid-js": "*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
