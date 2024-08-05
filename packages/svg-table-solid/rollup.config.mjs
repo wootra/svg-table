@@ -30,7 +30,7 @@ export default [
 			// 	},
 			// },
 		],
-		external: ['solid-js', '@shjeon0730/svg-table-core'],
+		external: ['solid-js'],
 		plugins: [
 			resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx'] }),
 			babel({

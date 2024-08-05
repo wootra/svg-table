@@ -29,8 +29,8 @@
 		"publish-now": "npm publish --access public"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.24.9",
-		"@babel/preset-env": "^7.24.8",
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.3",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
 		"@rollup/plugin-babel": "^6.0.4",
@@ -41,20 +41,23 @@
 		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
-		"@types/node": "^20.14.12",
+		"@types/node": "^20.14.14",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"eslint": "^8.57.0",
-		"rollup": "^4.19.0",
+		"rollup": "^4.20.0",
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
-		"@shjeon0730/svg-table-core": "*",
 		"react": "^18",
 		"react-dom": "^18"
+	},
+	"dependencies": {
+		"@shjeon0730/svg-table-core": "3.0.1-0",
+		"dot-prop": "^9.0.0"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React. this library is the successor of @shjeon0730/svg-table.",
 	"repository": {
@@ -72,8 +75,5 @@
 	"bugs": {
 		"url": "https://github.com/wootra/svg-table/issues"
 	},
-	"homepage": "https://svg-table.com/",
-	"dependencies": {
-		"dot-prop": "^9.0.0"
-	}
+	"homepage": "https://svg-table.com/"
 }

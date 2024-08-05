@@ -1,13 +1,4 @@
-import {
-	CellPropsWithChildren,
-	TableWithChildren,
-	RowPropsWithChildren,
-	TableProps,
-	CellPropsAsObj,
-	RowPropsAsObj,
-	ContentProps,
-	TableInCellProps,
-} from './types';
+import { CellPropsWithChildren, TableWithChildren, RowPropsWithChildren, TableProps } from './types';
 import { setProperty, hasProperty, deleteProperty } from 'dot-prop';
 import React, { FC, Children, cloneElement } from 'react';
 import { SVGTableRaw } from './SVGTableRaw';

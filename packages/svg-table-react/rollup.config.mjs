@@ -27,11 +27,10 @@ export default [
 				globals: {
 					react: 'React',
 					'react-dom': 'ReactDOM',
-					'@shjeon0730/svg-table-core': 'svgTableCore',
 				},
 			},
 		],
-		external: ['react', 'react-dom', '@shjeon0730/svg-table-core'],
+		external: ['react', 'react-dom'],
 		plugins: [
 			resolve(),
 			commonjs(),

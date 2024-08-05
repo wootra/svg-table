@@ -1,0 +1,14 @@
+---
+import ApiRef from './(examples)/api.html'
+import ApiLayout from '../../(solid-utils)/ApiLayout.astro'; // to avoid the solid type pattern, I used not -solid as name
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<link rel="canonical" href={canonicalURL} />
+
+<ApiLayout>
+
+	<ApiRef />
+    
+</ApiLayout>
+

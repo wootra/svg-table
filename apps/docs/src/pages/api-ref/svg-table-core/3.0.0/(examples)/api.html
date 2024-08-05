@@ -1,0 +1,189 @@
+<p>This page provides a comprehensive reference for all the types used in the SVG Table library. Click on a type name to jump to its description.</p>
+
+<h2>Table of Contents</h2>
+<ul>
+  <li><a href="#PrimitiveNode">PrimitiveNode</a></li>
+  <li><a href="#Widths">Widths</a></li>
+  <li><a href="#ColorsOnWidth">ColorsOnWidth</a></li>
+  <li><a href="#PatternArrays">PatternArrays</a></li>
+  <li><a href="#PatternShape">PatternShape</a></li>
+  <li><a href="#PatternShapes">PatternShapes</a></li>
+  <li><a href="#BorderStyles">BorderStyles</a></li>
+  <li><a href="#TextHAlign">TextHAlign</a></li>
+  <li><a href="#TextVAlign">TextVAlign</a></li>
+  <li><a href="#GroupProps">GroupProps</a></li>
+  <li><a href="#RowStyle">RowStyle</a></li>
+  <li><a href="#TableStyle">TableStyle</a></li>
+  <li><a href="#SVGElementName">SVGElementName</a></li>
+  <li><a href="#TextType">TextType</a></li>
+  <li><a href="#GType">GType</a></li>
+  <li><a href="#SVGType">SVGType</a></li>
+  <li><a href="#TextAnchor">TextAnchor</a></li>
+  <li><a href="#DominantBaseline">DominantBaseline</a></li>
+  <li><a href="#TextStyleBase">TextStyleBase</a></li>
+  <li><a href="#GroupStyleBase">GroupStyleBase</a></li>
+  <li><a href="#ContentPropsBase">ContentPropsBase</a></li>
+  <li><a href="#CellStyleBase">CellStyleBase</a></li>
+  <li><a href="#ContentAsFuncBase">ContentAsFuncBase</a></li>
+  <li><a href="#TableInCellPropsBase">TableInCellPropsBase</a></li>
+  <li><a href="#BeforeOrAfterAsObjBase">BeforeOrAfterAsObjBase</a></li>
+  <li><a href="#BeforeOrAfterBase">BeforeOrAfterBase</a></li>
+  <li><a href="#ContentTypeInCell">ContentTypeInCell</a></li>
+  <li><a href="#CellPropsBase">CellPropsBase</a></li>
+  <li><a href="#CellPropsAsObjBase">CellPropsAsObjBase</a></li>
+  <li><a href="#CalculatedCellPropsBase">CalculatedCellPropsBase</a></li>
+  <li><a href="#RowPropsBase">RowPropsBase</a></li>
+  <li><a href="#RowPropsAsObjBase">RowPropsAsObjBase</a></li>
+  <li><a href="#CalculatedRowPropsBase">CalculatedRowPropsBase</a></li>
+  <li><a href="#TableOptionalAttributesBase">TableOptionalAttributesBase</a></li>
+  <li><a href="#TableOptionalPropsBase">TableOptionalPropsBase</a></li>
+  <li><a href="#TablePropsBase">TablePropsBase</a></li>
+  <li><a href="#CellElementPropsBase">CellElementPropsBase</a></li>
+  <li><a href="#SVGTableElementAttributes">SVGTableElementAttributes</a></li>
+  <li><a href="#SVGTableElementAsObj">SVGTableElementAsObj</a></li>
+  <li><a href="#SVGRenderElementBase">SVGRenderElementBase</a></li>
+  <li><a href="#SVGTableElement">SVGTableElement</a></li>
+  <li><a href="#WidthPos">WidthPos</a></li>
+</ul>
+
+<h2>Type Definitions</h2>
+
+<ul class="type-list">
+  <li id="PrimitiveNode" class="type-item">
+    <span class="type-name">PrimitiveNode</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">PrimitiveNode</span> = object;
+    </div>
+    <p class="type-description">Represents a primitive node object.</p>
+  </li>
+
+  <li id="Widths" class="type-item">
+    <span class="type-name">Widths</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">Widths</span> =
+      | [<span class="type number">number</span>, <span class="type number">number</span>] /** top/bottom, left/right */
+      | [<span class="type number">number</span>, <span class="type number">number</span>, <span class="type number">number</span>, <span class="type number">number</span>] /** top, right, bottom, left */
+      | <span class="type number">number</span>; /** top/bottom/left/right */
+    </div>
+    <p class="type-description">Represents widths for various elements, allowing for uniform or individual side specification.</p>
+  </li>
+
+  <li id="ColorsOnWidth" class="type-item">
+    <span class="type-name">ColorsOnWidth</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">ColorsOnWidth</span> =
+      | [<span class="type string">string</span>, <span class="type string">string</span>] // [top/bottom, left/right]
+      | [<span class="type string">string</span>, <span class="type string">string</span>, <span class="type string">string</span>, <span class="type string">string</span>] // [top, right, bottom, left]
+      | <span class="type string">string</span>; // single value
+    </div>
+    <p class="type-description">Defines colors for borders, allowing for single, dual, or quad color specifications.</p>
+  </li>
+
+  <li id="PatternArrays" class="type-item">
+    <span class="type-name">PatternArrays</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">PatternArrays</span> =
+      | [<span class="type">number[]</span>, <span class="type">number[]</span>] // [top/bottom, left/right]
+      | [<span class="type">number[]</span>, <span class="type">number[]</span>, <span class="type">number[]</span>, <span class="type">number[]</span>] // [top, right, bottom, left]
+      | <span class="type">number[]</span> // single pattern
+      | <span class="type">undefined</span>; // no pattern
+    </div>
+    <p class="type-description">Specifies dash patterns for borders, supporting various configurations for different sides.</p>
+  </li>
+
+  <li id="PatternShape" class="type-item">
+    <span class="type-name">PatternShape</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">PatternShape</span> = SVGAttributes&lt;SVGPathElement&gt;['strokeLinecap'];
+    </div>
+    <p class="type-description">Specifies the shape of the stroke caps for dashed borders.</p>
+  </li>
+
+  <li id="PatternShapes" class="type-item">
+    <span class="type-name">PatternShapes</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">PatternShapes</span> =
+      | [<a href="#PatternShape" class="type-link">PatternShape</a>, <a href="#PatternShape" class="type-link">PatternShape</a>] // [top/bottom, left/right]
+      | [<a href="#PatternShape" class="type-link">PatternShape</a>, <a href="#PatternShape" class="type-link">PatternShape</a>, <a href="#PatternShape" class="type-link">PatternShape</a>, <a href="#PatternShape" class="type-link">PatternShape</a>] // [top, right, bottom, left]
+      | <a href="#PatternShape" class="type-link">PatternShape</a>; // single shape
+    </div>
+    <p class="type-description">Defines stroke cap shapes for borders, with configurations for different sides.</p>
+  </li>
+
+  <li id="BorderStyles" class="type-item">
+    <span class="type-name">BorderStyles</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">BorderStyles</span> = {
+        <span class="property">borderWidths:</span> <a href="#Widths" class="type-link">Widths</a>;
+        <span class="property">borderColors:</span> <a href="#ColorsOnWidth" class="type-link">ColorsOnWidth</a>;
+        <span class="property">borderPatterns:</span> <a href="#PatternArrays" class="type-link">PatternArrays</a>;
+        <span class="property">borderShapes:</span> <a href="#PatternShapes" class="type-link">PatternShapes</a>;
+      };
+    </div>
+    <p class="type-description">Combines all border style properties into a single type.</p>
+  </li>
+
+  <li id="TextHAlign" class="type-item">
+    <span class="type-name">TextHAlign</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">TextHAlign</span> = 'left' | 'center' | 'right';
+    </div>
+    <p class="type-description">Horizontal alignment options for text.</p>
+  </li>
+
+  <li id="TextVAlign" class="type-item">
+    <span class="type-name">TextVAlign</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">TextVAlign</span> = 'top' | 'center' | 'bottom';
+    </div>
+    <p class="type-description">Vertical alignment options for text.</p>
+  </li>
+
+  <li id="GroupProps" class="type-item">
+    <span class="type-name">GroupProps</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">GroupProps</span> = {
+        <span class="property">x:</span> <span class="type number">number</span>;
+        <span class="property">y:</span> <span class="type number">number</span>;
+        <span class="property">width:</span> <span class="type number">number</span>;
+        <span class="property">height:</span> <span class="type number">number</span>;
+      };
+    </div>
+    <p class="type-description">Properties for SVG group elements, including position and dimensions.</p>
+  </li>
+
+  <li id="RowStyle" class="type-item">
+    <span class="type-name">RowStyle</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">RowStyle</span> = {
+        <span class="property">height:</span> <span class="type number">number</span>;
+        <span class="property">bgColor?:</span> <span class="type string">string</span>;
+      };
+    </div>
+    <p class="type-description">Style properties for table rows, including height and optional background color.</p>
+  </li>
+
+  <li id="TableStyle" class="type-item">
+    <span class="type-name">TableStyle</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">TableStyle</span> = {
+        <span class="property">margins:</span> <a href="#Widths" class="type-link">Widths</a>;
+        <span class="property">bgColor?:</span> <span class="type string">string</span>;
+        <span class="property">colGaps:</span> <span class="type number">number</span>;
+        <span class="property">rowGaps:</span> <span class="type number">number</span>;
+        <span class="property">svgStyle:</span> HTMLAttributes&lt;'svg'&gt;['style'];
+      } & Partial&lt;<a href="#BorderStyles" class="type-link">BorderStyles</a>&gt;;
+    </div>
+    <p class="type-description">Style properties for the table, including margins, gaps, and optional background color.</p>
+  </li>
+
+  <!-- Add the rest of the new types here -->
+
+  <li id="WidthPos" class="type-item">
+    <span class="type-name">WidthPos</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">WidthPos</span> = 'left' | 'right' | 'top' | 'bottom';
+    </div>
+    <p class="type-description">Represents the position of a width value, used for specifying which side of an element a particular width applies to.</p>
+  </li>
+</ul>

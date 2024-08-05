@@ -1,0 +1,163 @@
+<p>This page provides a comprehensive reference for all the types used in the SVG Table library for Solid. Click on a type name to jump to its description.</p>
+
+<h2>Table of Contents</h2>
+<ul>
+  <li><a href="#ElementType">ElementType</a></li>
+  <li><a href="#TableProps">TableProps</a></li>
+  <li><a href="#RowProps">RowProps</a></li>
+  <li><a href="#RowPropsAsObj">RowPropsAsObj</a></li>
+  <li><a href="#RowPropsWithoutCells">RowPropsWithoutCells</a></li>
+  <li><a href="#RowPropsWithChildren">RowPropsWithChildren</a></li>
+  <li><a href="#CellProps">CellProps</a></li>
+  <li><a href="#CellPropsAsObj">CellPropsAsObj</a></li>
+  <li><a href="#CellPropsWithoutContent">CellPropsWithoutContent</a></li>
+  <li><a href="#CellPropsWithChildren">CellPropsWithChildren</a></li>
+  <li><a href="#CellStyle">CellStyle</a></li>
+  <li><a href="#ContentProps">ContentProps</a></li>
+  <li><a href="#TableInCellProps">TableInCellProps</a></li>
+  <li><a href="#RetFromContentFunc">RetFromContentFunc</a></li>
+  <li><a href="#ContentAsFunc">ContentAsFunc</a></li>
+  <li><a href="#TablePropsWithoutRows">TablePropsWithoutRows</a></li>
+  <li><a href="#TablePropsWithChildren">TablePropsWithChildren</a></li>
+  <li><a href="#SVGRenderElement">SVGRenderElement</a></li>
+</ul>
+
+<h2>Type Definitions</h2>
+
+<ul class="type-list">
+  <li id="ElementType" class="type-item">
+    <span class="type-name">ElementType</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">ElementType</span> = Node;
+    </div>
+    <p class="type-description">Represents the basic element type used in the SVG Table library for Solid.</p>
+  </li>
+
+  <li id="TableProps" class="type-item">
+    <span class="type-name">TableProps</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">TableProps</span> = <a href="/api-ref/svg-table-core#TablePropsBase" class="type-link">TablePropsBase</a>&lt;ElementType&gt;;
+    </div>
+    <p class="type-description">Properties for defining a table, including dimensions, rows, and optional styling.</p>
+  </li>
+
+  <li id="RowProps" class="type-item">
+    <span class="type-name">RowProps</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">RowProps</span> = TableProps['rows'][number];
+    </div>
+    <p class="type-description">Properties for defining a row within a table, including cells and optional styling.</p>
+  </li>
+
+  <li id="RowPropsAsObj" class="type-item">
+    <span class="type-name">RowPropsAsObj</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">RowPropsAsObj</span> = Exclude&lt;RowProps, (<a href="#CellProps" class="type-link">CellProps</a> | string)[]&gt;;
+    </div>
+  </li>
+
+  <li id="RowPropsWithoutCells" class="type-item">
+    <span class="type-name">RowPropsWithoutCells</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">RowPropsWithoutCells</span> = Omit&lt;<a href="#RowPropsAsObj" class="type-link">RowPropsAsObj</a>, 'cells'&gt;;
+    </div>
+  </li>
+
+  <li id="RowPropsWithChildren" class="type-item">
+    <span class="type-name">RowPropsWithChildren</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">RowPropsWithChildren</span> = <a href="#RowPropsWithoutCells" class="type-link">RowPropsWithoutCells</a> & {
+        <span class="property">children:</span> JSX.Element;
+      };
+    </div>
+  </li>
+
+  <li id="CellProps" class="type-item">
+    <span class="type-name">CellProps</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">CellProps</span> = RowPropsAsObj['cells'][number];
+    </div>
+    <p class="type-description">Properties for defining a cell within a table, including content and optional styling.</p>
+  </li>
+
+  <li id="CellPropsAsObj" class="type-item">
+    <span class="type-name">CellPropsAsObj</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">CellPropsAsObj</span> = Exclude&lt;<a href="#CellProps" class="type-link">CellProps</a>, string&gt;;
+    </div>
+  </li>
+
+  <li id="CellPropsWithoutContent" class="type-item">
+    <span class="type-name">CellPropsWithoutContent</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">CellPropsWithoutContent</span> = Omit&lt;<a href="#CellPropsAsObj" class="type-link">CellPropsAsObj</a>, 'content'&gt;;
+    </div>
+  </li>
+
+  <li id="CellPropsWithChildren" class="type-item">
+    <span class="type-name">CellPropsWithChildren</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">CellPropsWithChildren</span> = <a href="#CellPropsWithoutContent" class="type-link">CellPropsWithoutContent</a> & {
+        <span class="property">children:</span> JSX.Element;
+      };
+    </div>
+  </li>
+
+  <li id="CellStyle" class="type-item">
+    <span class="type-name">CellStyle</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">CellStyle</span> = Exclude&lt;<a href="#CellPropsAsObj" class="type-link">CellPropsAsObj</a>['style'], undefined&gt;;
+    </div>
+  </li>
+
+  <li id="ContentProps" class="type-item">
+    <span class="type-name">ContentProps</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">ContentProps</span> = CellPropsAsObj['content'];
+    </div>
+  </li>
+
+  <li id="TableInCellProps" class="type-item">
+    <span class="type-name">TableInCellProps</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">TableInCellProps</span> = <a href="/api-ref/svg-table-core#TableInCellPropsBase" class="type-link">TableInCellPropsBase</a>&lt;ElementType&gt;;
+    </div>
+  </li>
+
+  <li id="RetFromContentFunc" class="type-item">
+    <span class="type-name">RetFromContentFunc</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">RetFromContentFunc</span> = <a href="/api-ref/svg-table-core#ContentAsFuncRetTypes" class="type-link">ContentAsFuncRetTypes</a>&lt;ElementType&gt;;
+    </div>
+  </li>
+
+  <li id="ContentAsFunc" class="type-item">
+    <span class="type-name">ContentAsFunc</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">ContentAsFunc</span> = <a href="/api-ref/svg-table-core#ContentAsFuncBase" class="type-link">ContentAsFuncBase</a>&lt;ElementType, <a href="#RetFromContentFunc" class="type-link">RetFromContentFunc</a>&gt;;
+    </div>
+  </li>
+
+  <li id="TablePropsWithoutRows" class="type-item">
+    <span class="type-name">TablePropsWithoutRows</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">TablePropsWithoutRows</span> = Omit&lt;<a href="#TableProps" class="type-link">TableProps</a>, 'rows'&gt;;
+    </div>
+  </li>
+
+  <li id="TablePropsWithChildren" class="type-item">
+    <span class="type-name">TablePropsWithChildren</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">TablePropsWithChildren</span> = <a href="#TablePropsWithoutRows" class="type-link">TablePropsWithoutRows</a> & {
+        <span class="property">children:</span> JSX.Element;
+      };
+    </div>
+  </li>
+
+  <li id="SVGRenderElement" class="type-item">
+    <span class="type-name">SVGRenderElement</span>
+    <div class="type-definition">
+      <span class="keyword">type</span> <span class="type-name">SVGRenderElement</span> = <a href="/api-ref/svg-table-core#SVGRenderElementBase" class="type-link">SVGRenderElementBase</a>&lt;SVGElement&gt;;
+    </div>
+  </li>
+</ul>

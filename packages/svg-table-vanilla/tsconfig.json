@@ -17,5 +17,5 @@
 		"tslib": ["node_modules/tslib/tslib.d.ts"]
 	},
 	"include": ["src"],
-	"exclude": ["node_modules", "dist", "eslintrc.js", "**/*.mjs", "public"]
+	"exclude": ["node_modules", "dist", "eslintrc.js", "**/*.mjs", "public", "tagging.js"]
 }

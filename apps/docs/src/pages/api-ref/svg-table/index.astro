@@ -1,0 +1,6 @@
+---
+import Latest from './2.0.0/index.astro';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<link rel="canonical" href={canonicalURL} />
+<Latest />

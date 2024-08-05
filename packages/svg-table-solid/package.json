@@ -29,8 +29,8 @@
 		"publish-now": "npm publish --access public"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.24.9",
-		"@babel/preset-env": "^7.24.8",
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.3",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
 		"@rollup/plugin-babel": "^6.0.4",
@@ -41,11 +41,11 @@
 		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
-		"@types/node": "^20.14.12",
+		"@types/node": "^20.14.14",
 		"@types/react": "^18.3.3",
 		"babel-preset-solid": "^1.8.19",
 		"eslint": "^8.57.0",
-		"rollup": "^4.19.0",
+		"rollup": "^4.20.0",
 		"rollup-plugin-babel": "^4.4.0",
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
@@ -53,8 +53,10 @@
 		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
-		"@shjeon0730/svg-table-core": "*",
 		"solid-js": "^1.8.11"
+	},
+	"dependencies": {
+		"@shjeon0730/svg-table-core": "workspace:*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {

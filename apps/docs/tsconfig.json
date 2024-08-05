@@ -8,5 +8,5 @@
 			"@/*": ["src/*"]
 		}
 	},
-	"exclude": ["**/solid.tsx", "**/solid/*.tsx"]
+	"exclude": ["**/solid.*", "**/solid/*.*", "**/*-solid/*.*"]
 }

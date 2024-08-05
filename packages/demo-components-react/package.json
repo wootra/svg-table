@@ -14,22 +14,20 @@
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
-		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
-		"@shjeon0730/svg-table-react": "link:../svg-table-react-repo",
+		"@shjeon0730/svg-table-react": "workspace:*",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
-		"@types/node": "^20.14.11",
+		"@types/node": "^20.14.14",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"eslint": "^8.57.0",
 		"typescript": "^5.5.4"
 	},
 	"dependencies": {
-		"react-icons": "^5.2.1"
+		"react-icons": "^5.2.1",
+		"@shjeon0730/svg-table-react": "workspace:*"
 	},
 	"peerDependencies": {
-		"@shjeon0730/svg-table-core": "*",
-		"@shjeon0730/svg-table-react": "*",
 		"react": "^18",
 		"react-dom": "^18"
 	},

@@ -2,7 +2,7 @@ import dts from 'rollup-plugin-dts';
 
 export default {
 	input: './dist/types/index.d.ts',
-	external: ['react', 'react-dom', '@shjeon0730/svg-table-core'],
+	external: ['react', 'react-dom'],
 	output: [
 		{ file: 'dist/index.d.ts', format: 'cjs' },
 		{ file: 'dist/index.mjs.d.ts', format: 'es' },

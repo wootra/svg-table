@@ -1,6 +1,120 @@
 ---
-import Latest from './2.0.0/index.astro';
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+import { FaReact } from 'react-icons/fa';
+import { TbBrandSolidjs } from 'react-icons/tb';
+import { RiJavascriptFill } from 'react-icons/ri';
+
+import CenteredLayout from '../../layouts/CenteredLayout.astro';
+const selected = '/api-ref';
 ---
-<link rel="canonical" href={canonicalURL} />
-<Latest />
+<CenteredLayout title='Welcome to SVG Title: Api' selected={selected}>
+    <div class="card-holder">
+        <div class="card">
+            <h2>Core(Common)</h2>
+            <div class="btn-holder">
+                <a href="/api-ref/svg-table-core" class="btn">{`>=3`}</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-holder react">
+                <FaReact />
+            </div>
+            <h2>React.js</h2>
+           
+            <div class="btn-holder">
+                <a href="/api-ref/svg-table" class="btn">{`(<=2.x.x)`}</a>
+                <a href="/api-ref/svg-table-react" class="btn">{`>=3`}</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-holder solid">
+                <TbBrandSolidjs />
+            </div>
+            <h2>Solid.js</h2>
+           
+            <div class="btn-holder">
+                <a href="/api-ref/svg-table-solid" class="btn">{`>=3`}</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="img-holder vanilla">
+                <RiJavascriptFill />
+            </div>
+            <h2>Vanilla JS</h2>
+           
+            <div class="btn-holder">
+                <a href="/api-ref/svg-table-vanilla" class="btn">{`>=3`}</a>
+            </div>
+        </div>
+        
+    </div>
+</CenteredLayout>
+
+<style>
+    .img-holder {
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+         justify-content: center;
+         &.react {
+             color: #3bcaf6;
+        }
+        &.solid {
+            color: #3b82f6;
+        }
+        &.vanilla {
+            color: #e3cb16;
+         }
+    }
+    .btn-holder {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+         font-weight: bold;
+         margin: 0;
+    }
+    .btn {
+        /* @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded; */
+        background-color: #31496e;
+         color: #fff;
+         font-weight: bold;
+         padding: 0.5rem 1rem;
+         border-radius: 0.25rem;
+         text-decoration: none;
+         transition: background-color 0.3s ease-in-out;
+    }
+    .btn:hover {
+        background-color: rgb(67, 106, 189);
+    }
+    .card-holder {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+    .card {
+        /* @apply flex flex-col items-center justify-center p-5 border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out; */
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.3s ease-in-out;
+        width: 300px;
+         height: 200px;
+         margin: 10px;
+         text-decoration: none;
+         color: inherit;
+         font-size: large;
+    }
+    .card:hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border: 2px solid #3b82f6;
+    }
+</style>

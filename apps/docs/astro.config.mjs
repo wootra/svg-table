@@ -8,11 +8,11 @@ import solidJs from '@astrojs/solid-js';
 export default defineConfig({
 	integrations: [
 		react({
-			exclude: ['**/solid.tsx', '**/solid/*.tsx', '**/*-solid/**'],
+			exclude: ['**/solid.*', '**/solid/*', '**/*-solid/**/*.*'],
 		}),
 		mdx(),
 		solidJs({
-			include: ['**/solid.tsx', '**/solid/*.tsx', '**/*-solid/**'],
+			include: ['**/solid.*', '**/solid/*', '**/*-solid/**/*.*'],
 		}),
 		sitemap(),
 	],

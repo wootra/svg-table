@@ -24,9 +24,6 @@ export default [
 				file: pkg.browser,
 				format: 'umd',
 				sourcemap: true,
-				globals: {
-					'@shjeon0730/svg-table-core': 'svgTableCore',
-				},
 			},
 		],
 		external: ['@shjeon0730/svg-table-core'],
