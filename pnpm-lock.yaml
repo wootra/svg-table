@@ -36,13 +36,13 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0(solid-js@1.8.19)(vite@5.3.5(@types/node@20.14.14)(terser@5.31.3))
       '@repo/demo-components-react':
-        specifier: link:../../packages/demo-components-react
+        specifier: workspace:*
         version: link:../../packages/demo-components-react
       '@repo/demo-components-solid':
-        specifier: link:../../packages/demo-components-solid
+        specifier: workspace:*
         version: link:../../packages/demo-components-solid
       '@repo/demo-components-vanilla':
-        specifier: link:../../packages/demo-components-vanilla
+        specifier: workspace:*
         version: link:../../packages/demo-components-vanilla
       '@shjeon0730/svg-table-core':
         specifier: workspace:*
@@ -51,8 +51,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/svg-table-react
       '@shjeon0730/svg-table-solid':
-        specifier: link:../../packages/svg-table-solid-repo
-        version: link:../../packages/svg-table-solid-repo
+        specifier: workspace:*
+        version: link:../../packages/svg-table-solid
       '@shjeon0730/svg-table-vanilla':
         specifier: workspace:*
         version: link:../../packages/svg-table-vanilla
