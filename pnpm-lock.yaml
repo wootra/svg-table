@@ -225,8 +225,8 @@ importers:
         specifier: latest
         version: 3.0.1-0
       '@shjeon0730/svg-table-solid':
-        specifier: file:shjeon0730-svg-table-solid-3.1.0.tgz
-        version: file:apps/svg-table-demo-solid/shjeon0730-svg-table-solid-3.1.0.tgz(solid-js@1.8.18)
+        specifier: latest
+        version: 3.1.0(@shjeon0730/svg-table-core@3.0.1-0)(solid-js@1.8.18)
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.3.1)
@@ -2894,10 +2894,10 @@ packages:
       react: ^18
       react-dom: ^18
 
-  '@shjeon0730/svg-table-solid@file:apps/svg-table-demo-solid/shjeon0730-svg-table-solid-3.1.0.tgz':
-    resolution: {integrity: sha512-BLq1Z6zQvatNyf4U9GtL6dSHRT4AE9bl1j4EMRy3vGBf4Kbxo/SotKEeOOjp0CwjfbvYUX/aAIhUyJUtkT7UDw==, tarball: file:apps/svg-table-demo-solid/shjeon0730-svg-table-solid-3.1.0.tgz}
-    version: 3.1.0
+  '@shjeon0730/svg-table-solid@3.1.0':
+    resolution: {integrity: sha512-y+2W2/hDQULLQoO27BJcHozoAB1LiAfmonESyYYGJnV7atCmHMrxJ0DzkpfqA3EhGE77gNm9ltyfKWwjhMWTpw==}
     peerDependencies:
+      '@shjeon0730/svg-table-core': '*'
       solid-js: ^1.8.11
 
   '@solid-devtools/debugger@0.23.4':
@@ -3782,6 +3782,9 @@ packages:
 
   caniuse-lite@1.0.30001647:
     resolution: {integrity: sha512-n83xdNiyeNcHpzWY+1aFbqCK7LuLfBricc4+alSQL2Xb6OR3XpnQAmlDG+pQcdTfiHRuLcQ96VOfrPSGiNJYSg==}
+
+  caniuse-lite@1.0.30001649:
+    resolution: {integrity: sha512-fJegqZZ0ZX8HOWr6rcafGr72+xcgJKI9oWfDW5DrD7ExUtgZC7a7R7ZYmZqplh7XDocFdGeIFn7roAxhOeYrPQ==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -10444,7 +10447,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@shjeon0730/svg-table-solid@file:apps/svg-table-demo-solid/shjeon0730-svg-table-solid-3.1.0.tgz(solid-js@1.8.18)':
+  '@shjeon0730/svg-table-solid@3.1.0(@shjeon0730/svg-table-core@3.0.1-0)(solid-js@1.8.18)':
     dependencies:
       '@shjeon0730/svg-table-core': 3.0.1-0
       solid-js: 1.8.18
@@ -11742,7 +11745,7 @@ snapshots:
 
   browserslist@4.23.3:
     dependencies:
-      caniuse-lite: 1.0.30001647
+      caniuse-lite: 1.0.30001649
       electron-to-chromium: 1.5.4
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
@@ -11794,6 +11797,8 @@ snapshots:
   camelize@1.0.1: {}
 
   caniuse-lite@1.0.30001647: {}
+
+  caniuse-lite@1.0.30001649: {}
 
   ccount@2.0.1: {}
 
@@ -12405,7 +12410,7 @@ snapshots:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
       eslint-plugin-react: 7.35.0(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
@@ -12459,7 +12464,7 @@ snapshots:
       enhanced-resolve: 5.17.1
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.6
       is-core-module: 2.15.0
@@ -12534,7 +12539,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5
