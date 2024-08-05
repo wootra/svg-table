@@ -7,8 +7,7 @@
 	"browser": "dist/index.umd.js",
 	"types": "dist/types/index.d.js",
 	"files": [
-		"dist/**/*",
-		"src/**/*"
+		"dist"
 	],
 	"scripts": {
 		"test": "vitest",
