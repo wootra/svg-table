@@ -142,8 +142,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/demo-components-react
       '@shjeon0730/svg-table-react':
-        specifier: latest
-        version: 3.1.0(@shjeon0730/svg-table-core@3.0.1-0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: file:shjeon0730-svg-table-react-3.1.0.tgz
+        version: file:apps/svg-table-demo-installed/shjeon0730-svg-table-react-3.1.0.tgz(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -292,9 +292,6 @@ importers:
 
   packages/demo-components-react:
     dependencies:
-      '@shjeon0730/svg-table-react':
-        specifier: workspace:*
-        version: link:../svg-table-react
       react:
         specifier: ^18
         version: 18.3.1
@@ -311,6 +308,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@shjeon0730/svg-table-react':
+        specifier: workspace:*
+        version: link:../svg-table-react
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.14.14)(typescript@5.5.4)
@@ -2888,10 +2888,10 @@ packages:
   '@shjeon0730/svg-table-core@3.0.1-0':
     resolution: {integrity: sha512-XFG4wfNUUSmwKF3dB7I/ETulssPt508wdPO2o35E0gqlmplQlJ4sCLYglwyyanni988wgZAKK4e5XNtt0LrX7g==}
 
-  '@shjeon0730/svg-table-react@3.1.0':
-    resolution: {integrity: sha512-AbA2rnJB3udbeGW7+lX8rqJstFFWNTeMpUg4v9SsaTfS9QkcBEXRqUjOs7N8tMVU3fBHYCUZnPWwemhToLJPrA==}
+  '@shjeon0730/svg-table-react@file:apps/svg-table-demo-installed/shjeon0730-svg-table-react-3.1.0.tgz':
+    resolution: {integrity: sha512-sQeNfenwOQbLFoF2f/CUBc8ev3mSfbVbDAKJxXM8QDTORzoXmNOdg1bEi+c6UM5CAzAjE85+imujZYfuZ0+XNA==, tarball: file:apps/svg-table-demo-installed/shjeon0730-svg-table-react-3.1.0.tgz}
+    version: 3.1.0
     peerDependencies:
-      '@shjeon0730/svg-table-core': '*'
       react: ^18
       react-dom: ^18
 
@@ -10438,7 +10438,7 @@ snapshots:
 
   '@shjeon0730/svg-table-core@3.0.1-0': {}
 
-  '@shjeon0730/svg-table-react@3.1.0(@shjeon0730/svg-table-core@3.0.1-0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@shjeon0730/svg-table-react@file:apps/svg-table-demo-installed/shjeon0730-svg-table-react-3.1.0.tgz(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@shjeon0730/svg-table-core': 3.0.1-0
       dot-prop: 9.0.0

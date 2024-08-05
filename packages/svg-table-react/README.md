@@ -1,9 +1,8 @@
-# svg-table
+# svg-table-react
 
 ![Logo](https://raw.githubusercontent.com/wootra/svg-table/main/packages/svg-table/logo.svg)
 
-this library is written in typescript and ESM.
-also create the module using React.js.
+this library is written in typescript and React.js. For Solid.js library, please see [svg-table-solid](https://www.npmjs.com/package/@shjeon0730/svg-table-solid). For Vanilla.js library, please see [svg-table-vanilla](https://www.npmjs.com/package/@shjeon0730/svg-table-vanilla).
 
 demo code and the documentations are [here](https://github.com/wootra/svg-table/tree/main/apps/svg-table-demo)
 
@@ -11,11 +10,12 @@ or you can see [next.js demo](https://github.com/wootra/svg-table/tree/main/apps
 
 ## Installation
 
-Please install peerDependency `@shjeon0730/svg-table-core` as well on top of `react`,`react-dom`.
-
 ```sh
 npm install @shjeon0730/svg-table-react
 ```
+### NOTE
+peer dependency svg-table-core is included from 3.1.1 version
+
 ## Introduction
 
 `@shjeon0730/svg-table-react` library is made to support a case that HTML table cannot be used but svg is needed.
