@@ -4,9 +4,10 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbo",
-		"build:prod": "sh switch-env.sh prod && pnpm build",
-		"build:dev": "sh switch-env.sh dev && pnpm build",
-		"build": "pnpm i;pnpm update;next build",
+		"build": "echo 'no build in turbo repo'",
+		"build:now": "pnpm i;pnpm update;next build",
+		"build:prod": "sh switch-env.sh prod && pnpm build:now",
+		"build:dev": "sh switch-env.sh dev && pnpm build:now",
 		"start": "next start",
 		"lint": "next lint"
 	},

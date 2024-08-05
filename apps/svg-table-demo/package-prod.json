@@ -5,9 +5,10 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "pnpm i;pnpm update;tsc -b && vite build",
-		"build:prod": "sh switch-env.sh prod && pnpm build",
-		"build:dev": "sh switch-env.sh dev && pnpm build",
+		"build": "echo 'no build in turbo repo'",
+		"build:now": "pnpm i;pnpm update;tsc -b && vite build",
+		"build:prod": "sh switch-env.sh prod && pnpm build:now",
+		"build:dev": "sh switch-env.sh dev && pnpm build:now",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview"
 	},

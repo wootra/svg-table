@@ -5,9 +5,10 @@
 	"scripts": {
 		"start": "vite",
 		"dev": "vite",
-		"build": "pnpm i;vite build",
-		"build:prod": "sh switch-env.sh prod && pnpm build",
-		"build:dev": "sh switch-env.sh dev && pnpm build",
+		"build": "echo 'no build in turbo repo'",
+		"build:now": "pnpm i;vite build",
+		"build:prod": "sh switch-env.sh prod && pnpm build:now",
+		"build:dev": "sh switch-env.sh dev && pnpm build:now",
 		"serve": "vite preview"
 	},
 	"license": "MIT",

@@ -9,7 +9,7 @@
 	"types": "./src/index.ts",
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
-		"build": "pnpm update && tsc --noEmit"
+		"build": "echo 'do not need build'"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
