@@ -9,10 +9,10 @@ demo code and the documentations are [here](https://github.com/wootra/svg-table/
 
 ## Installation
 
-`@shjeon0730/svg-table-vanilla` is a wrapper of (@shjeon0730/svg-table-core)[https://www.npmjs.com/package/@shjeon0730/svg-table-core] npm module. Please install both modules.
+`@shjeon0730/svg-table-vanilla` is a wrapper of (@shjeon0730/svg-table-core)[https://www.npmjs.com/package/@shjeon0730/svg-table-core] npm module. But it is bundled together for the convenience. No need to install both of it from 3.0.1 version.
 
 ```sh
-npm install @shjeon0730/svg-table-core @shjeon0730/svg-table-vanilla 
+npm install @shjeon0730/svg-table-vanilla 
 ```
 
 ## Introduction

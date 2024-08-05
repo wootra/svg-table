@@ -9,12 +9,11 @@
 		"build:prod": "sh switch-env.sh prod && pnpm build",
 		"build:dev": "sh switch-env.sh dev && pnpm build",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"@shjeon0730/svg-table": "link:../../packages/svg-table-vanilla",
 		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@repo/demo-components-vanilla": "workspace:*",
-		"@shjeon0730/svg-table": "link:../../packages/svg-table-vanilla-repo",
+		"@shjeon0730/svg-table-vanilla": "latest",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},

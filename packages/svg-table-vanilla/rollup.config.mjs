@@ -26,7 +26,6 @@ export default [
 				sourcemap: true,
 			},
 		],
-		external: ['@shjeon0730/svg-table-core'],
 		plugins: [
 			resolve(),
 			commonjs(),

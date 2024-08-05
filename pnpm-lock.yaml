@@ -226,7 +226,7 @@ importers:
         version: 3.0.1-0
       '@shjeon0730/svg-table-solid':
         specifier: latest
-        version: 3.1.0(@shjeon0730/svg-table-core@3.0.1-0)(solid-js@1.8.18)
+        version: 3.1.1(solid-js@1.8.18)
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.3.1)
@@ -249,9 +249,9 @@ importers:
       '@repo/demo-components-vanilla':
         specifier: workspace:*
         version: link:../../packages/demo-components-vanilla
-      '@shjeon0730/svg-table':
-        specifier: link:../../packages/svg-table-vanilla-repo
-        version: link:../../packages/svg-table-vanilla-repo
+      '@shjeon0730/svg-table-vanilla':
+        specifier: latest
+        version: 3.0.0-beta.1(@shjeon0730/svg-table-core@3.0.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -1045,6 +1045,10 @@ importers:
         version: 5.5.3
 
   packages/svg-table-vanilla:
+    dependencies:
+      '@shjeon0730/svg-table-core':
+        specifier: 3.0.1-0
+        version: 3.0.1-0
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -1073,9 +1077,6 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^11.1.6
         version: 11.1.6(rollup@4.20.0)(tslib@2.6.3)(typescript@5.5.4)
-      '@shjeon0730/svg-table-core':
-        specifier: link:../svg-table-core-repo
-        version: link:../svg-table-core-repo
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.14.14)(typescript@5.5.4)
@@ -2885,6 +2886,9 @@ packages:
   '@shikijs/core@1.12.1':
     resolution: {integrity: sha512-biCz/mnkMktImI6hMfMX3H9kOeqsInxWEyCHbSlL8C/2TR1FqfmGxTLRNwYCKsyCyxWLbB8rEqXRVZuyxuLFmA==}
 
+  '@shjeon0730/svg-table-core@3.0.1':
+    resolution: {integrity: sha512-WnPDThrSXcvBmkGaO+7bCs8/KZUuu8TtltAGtnVRAUA/OaukvRSxupG16JNQe//qlmStBBwpm83xJfkq/NW2pQ==}
+
   '@shjeon0730/svg-table-core@3.0.1-0':
     resolution: {integrity: sha512-XFG4wfNUUSmwKF3dB7I/ETulssPt508wdPO2o35E0gqlmplQlJ4sCLYglwyyanni988wgZAKK4e5XNtt0LrX7g==}
 
@@ -2894,11 +2898,15 @@ packages:
       react: ^18
       react-dom: ^18
 
-  '@shjeon0730/svg-table-solid@3.1.0':
-    resolution: {integrity: sha512-y+2W2/hDQULLQoO27BJcHozoAB1LiAfmonESyYYGJnV7atCmHMrxJ0DzkpfqA3EhGE77gNm9ltyfKWwjhMWTpw==}
+  '@shjeon0730/svg-table-solid@3.1.1':
+    resolution: {integrity: sha512-+wDg7Xx24go6KQlq3dDYUchUBEF2Fm1qiBxI227ipGZKpBZoq3tZRYe9xPVt8LZs2AkB1qouOBP6CtKp1TKWZA==}
+    peerDependencies:
+      solid-js: ^1.8.11
+
+  '@shjeon0730/svg-table-vanilla@3.0.0-beta.1':
+    resolution: {integrity: sha512-9Jo0TLS+TUkYOq1cD+PKm9hPZ5PZJI/x8KoQPSgl51wG9vczKiJ6gXFwF8lcmVryptNnbAnv17yyl4L6skI6Gg==}
     peerDependencies:
       '@shjeon0730/svg-table-core': '*'
-      solid-js: ^1.8.11
 
   '@solid-devtools/debugger@0.23.4':
     resolution: {integrity: sha512-EfTB1Eo313wztQYGJ4Ec/wE70Ay2d603VCXfT3RlyqO5QfLrQGRHX5NXC07hJpQTJJJ3tbNgzO7+ZKo76MM5uA==}
@@ -10438,6 +10446,8 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
 
+  '@shjeon0730/svg-table-core@3.0.1': {}
+
   '@shjeon0730/svg-table-core@3.0.1-0': {}
 
   '@shjeon0730/svg-table-react@3.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
@@ -10447,10 +10457,14 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@shjeon0730/svg-table-solid@3.1.0(@shjeon0730/svg-table-core@3.0.1-0)(solid-js@1.8.18)':
+  '@shjeon0730/svg-table-solid@3.1.1(solid-js@1.8.18)':
     dependencies:
-      '@shjeon0730/svg-table-core': 3.0.1-0
+      '@shjeon0730/svg-table-core': link:packages/svg-table-core
       solid-js: 1.8.18
+
+  '@shjeon0730/svg-table-vanilla@3.0.0-beta.1(@shjeon0730/svg-table-core@3.0.1)':
+    dependencies:
+      '@shjeon0730/svg-table-core': 3.0.1
 
   '@solid-devtools/debugger@0.23.4(solid-js@1.8.18)':
     dependencies:

@@ -28,8 +28,8 @@
 		"major": "sh ./publish.sh major",
 		"publish-now": "npm publish --access public"
 	},
-	"peerDependencies": {
-		"@shjeon0730/svg-table-core": "*"
+	"dependencies": {
+		"@shjeon0730/svg-table-core": "3.0.1-0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.25.2",
