@@ -109,7 +109,7 @@ export const SVGTableCell: FC<CellPropsWithChildren> = cellPropsWithChildren => 
 	}
 
 	if (hasTable) {
-		const newChildren = Children.map(children, (child, i) => {
+		const newChildren = Children.map(children, child => {
 			if (child && React.isValidElement(child) && child.type === SVGTable) {
 				return cloneElement(child, {
 					tableId: `${cellId}.content.table`,
