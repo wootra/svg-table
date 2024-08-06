@@ -27,6 +27,12 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 		</ul>)}
 
 		<li><a {...linkOrSelected('/api-ref')}>API Reference</a></li>
+		{selected.includes('/api-ref') && (<ul class="sub" transition:name="opened-nav" transition:animate="slide">
+			<li><a {...linkOrSelected('/api-ref/svg-table-core')}>Core</a></li>
+			<li><a {...linkOrSelected('/api-ref/svg-table-react')}>React.js</a></li>
+			<li><a {...linkOrSelected('/api-ref/svg-table-solid')}>Solid.js</a></li>
+			<li><a {...linkOrSelected('/api-ref/svg-table-vanilla')}>Vanilla Js</a></li>
+		</ul>)}
 		<li><a {...linkOrSelected('/basic-usage')}>Basic Usage</a></li>
 		{selected === '/basic-usage' && (<ul class="sub" transition:name="opened-nav" transition:animate="slide">
 			<li><a href='#basic-demo'>Basic Demo</a></li>

@@ -14,7 +14,6 @@
 	},
 	"dependencies": {
 		"@repo/demo-components-react": "workspace:*",
-		"@shjeon0730/svg-table-core": "link:../../packages/svg-table-core-repo",
 		"@shjeon0730/svg-table-react": "link:../../packages/svg-table-react-repo",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
