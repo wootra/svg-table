@@ -146,9 +146,7 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 
 	const rowsContent = calculatedRows.map((row, rowIndex) => {
 		const rowContent = [] as SVGTableElement<NODE>[];
-		console.warn('row.style - no color', row.style);
 		if (row.style?.bgColor) {
-			console.warn('row.style', row.style);
 			rowContent.push(
 				element<NODE>('rect', {
 					x: row.x,

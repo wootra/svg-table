@@ -1,4 +1,10 @@
-import { AllDemo, LogoDemo, SimpleRowsTable, SimpleRowsTableObj } from '@repo/demo-components-react';
+import {
+	AllDemo,
+	LogoDemo,
+	SimpleRowsTable,
+	SimpleRowsTableObj,
+	EmbeddedTableAsPropsWithHeightJSX,
+} from '@repo/demo-components-react';
 import { ChangeEvent, useState } from 'react';
 
 const App = () => {
@@ -19,11 +25,12 @@ const App = () => {
 				DEMO REACT: width :{width}
 				<input type='range' min='300' max='900' value={width} id='myRange' onChange={onChange} />
 			</div>
-			{/* <LogoDemo width={width} bgColor={null} className={'logo-demo'} />
+			<LogoDemo width={width} bgColor={null} className={'logo-demo'} />
 
-			<AllDemo width={width} /> */}
+			<AllDemo width={width} />
 			<SimpleRowsTable width={width} />
 			<SimpleRowsTableObj width={width} />
+			<EmbeddedTableAsPropsWithHeightJSX width={width} />
 		</div>
 	);
 };

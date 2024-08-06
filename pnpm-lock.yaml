@@ -36,23 +36,23 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0(solid-js@1.8.19)(vite@5.3.5(@types/node@20.14.14)(terser@5.31.3))
       '@repo/demo-components-react':
-        specifier: workspace:*
+        specifier: link:../../packages/demo-components-react
         version: link:../../packages/demo-components-react
       '@repo/demo-components-solid':
-        specifier: workspace:*
+        specifier: link:../../packages/demo-components-solid
         version: link:../../packages/demo-components-solid
       '@repo/demo-components-vanilla':
-        specifier: workspace:*
+        specifier: link:../../packages/demo-components-vanilla
         version: link:../../packages/demo-components-vanilla
       '@shjeon0730/svg-table-react':
-        specifier: workspace:*
-        version: link:../../packages/svg-table-react
+        specifier: link:../../packages/svg-table-react-repo
+        version: link:../../packages/svg-table-react-repo
       '@shjeon0730/svg-table-solid':
-        specifier: workspace:*
-        version: link:../../packages/svg-table-solid
+        specifier: link:../../packages/svg-table-solid-repo
+        version: link:../../packages/svg-table-solid-repo
       '@shjeon0730/svg-table-vanilla':
-        specifier: workspace:*
-        version: link:../../packages/svg-table-vanilla
+        specifier: link:../../packages/svg-table-vanilla-repo
+        version: link:../../packages/svg-table-vanilla-repo
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -287,9 +287,6 @@ importers:
 
   packages/demo-components-react:
     dependencies:
-      dot-prop:
-        specifier: ^9.0.0
-        version: 9.0.0
       react:
         specifier: ^18
         version: 18.3.1
@@ -697,11 +694,8 @@ importers:
   packages/svg-table-react:
     dependencies:
       '@shjeon0730/svg-table-core':
-        specifier: latest
-        version: 3.0.2
-      dot-prop:
-        specifier: ^9.0.0
-        version: 9.0.0
+        specifier: link:../svg-table-core
+        version: link:../svg-table-core
       react:
         specifier: ^18
         version: 18.3.1
@@ -806,6 +800,9 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^11.1.6
         version: 11.1.6(rollup@4.20.0)(tslib@2.6.3)(typescript@5.5.4)
+      '@shjeon0730/svg-table-core':
+        specifier: link:../svg-table-core-repo
+        version: link:../svg-table-core-repo
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.14.14)(typescript@5.5.4)
@@ -3529,8 +3526,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.4:
-    resolution: {integrity: sha512-orzA81VqLyIGUEA77YkVA1D+N+nNfl2isJVjjmOyrlxuooZ19ynb+dOlaDTqd/idKRS9lDCSBmtzM+kyCsMnkA==}
+  electron-to-chromium@1.5.5:
+    resolution: {integrity: sha512-QR7/A7ZkMS8tZuoftC/jfqNkZLQO779SSW3YuZHP4eXpj3EffGLFcB/Xu9AAZQzLccTiCV+EmUo3ha4mQ9wnlA==}
 
   emmet@2.4.7:
     resolution: {integrity: sha512-O5O5QNqtdlnQM2bmKHtJgyChcrFMgQuulI+WdiOw2NArzprUqqxUW6bgYtKvzKgrsYpuLWalOkdhNP+1jluhCA==}
@@ -8651,7 +8648,7 @@ snapshots:
   browserslist@4.23.3:
     dependencies:
       caniuse-lite: 1.0.30001649
-      electron-to-chromium: 1.5.4
+      electron-to-chromium: 1.5.5
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
@@ -9014,7 +9011,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.4: {}
+  electron-to-chromium@1.5.5: {}
 
   emmet@2.4.7:
     dependencies:

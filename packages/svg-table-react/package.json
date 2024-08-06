@@ -38,7 +38,6 @@
 		"@rollup/plugin-node-resolve": "^15.2.3",
 		"@rollup/plugin-terser": "^0.4.4",
 		"@rollup/plugin-typescript": "^11.1.6",
-		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
 		"@types/node": "^20.14.14",
@@ -56,8 +55,7 @@
 		"react-dom": "^18"
 	},
 	"dependencies": {
-		"@shjeon0730/svg-table-core": "latest",
-		"dot-prop": "^9.0.0"
+		"@shjeon0730/svg-table-core": "link:../svg-table-core"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React. this library is the successor of @shjeon0730/svg-table.",
 	"repository": {

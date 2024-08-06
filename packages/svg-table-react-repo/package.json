@@ -26,9 +26,11 @@
 		"rollup": "^4.20.0",
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"@shjeon0730/svg-table-core": "link:../svg-table-core-repo",
 		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
+		"@shjeon0730/svg-table-core": "*",
 		"react": "^18",
 		"react-dom": "^18"
 	},

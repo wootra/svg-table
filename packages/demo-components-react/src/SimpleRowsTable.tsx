@@ -1,6 +1,6 @@
 import SVGTable, { CellStyle, SVGTableCell, SVGTableRow } from '@shjeon0730/svg-table-react';
 
-const defaultCellStyle: Partial<CellStyle> = {
+const defaultCellStyle: CellStyle = {
 	borderWidths: [1, 0],
 	borderColors: 'gray',
 };

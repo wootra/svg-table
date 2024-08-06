@@ -1,5 +1,5 @@
 {
-	"name": "@shjeon0730/svg-table-core-repo",
+	"name": "@repo/svg-table-core",
 	"version": "0.1.1-0",
 	"private": false,
 	"main": "src/index.ts",
