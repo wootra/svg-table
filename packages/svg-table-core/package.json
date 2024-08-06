@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table-core",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
@@ -60,7 +60,9 @@
 		"svg",
 		"table",
 		"react",
-		"svg-table"
+		"svg-table",
+		"svg table",
+		"svg-table-core"
 	],
 	"author": "Songhyeon Jun (shjeon0730@gmail.com)",
 	"license": "MIT",

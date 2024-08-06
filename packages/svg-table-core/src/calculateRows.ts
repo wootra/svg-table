@@ -69,8 +69,8 @@ export const calculateRows = <NODE extends PrimitiveNode>(
 		const row = Array.isArray(aRow) ? { cells: aRow } : aRow;
 		return {
 			...row,
-			x: -1,
-			y: -1,
+			x: 0,
+			y: currentY,
 			height: -1,
 			width: -1,
 			cells: [
@@ -143,6 +143,8 @@ export const calculateRows = <NODE extends PrimitiveNode>(
 			idx += 1;
 		}
 		currentY += (rowHeights[ri] ?? 0) + (style?.rowGaps ?? 0);
+		row.height = currentY;
+		row.width = currentX;
 	}
 
 	return calcRows;

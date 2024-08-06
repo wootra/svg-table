@@ -19,6 +19,8 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 			<li><a href='#license'>License</a></li>
 		</ul>)}
 		
+		<li><a {...linkOrSelected('/fine-level-control')}>Fine-Level Control</a></li>
+
 		<li><a {...linkOrSelected('/examples')}>Examples</a></li>
 		{selected.includes('/examples') && (<ul class="sub" transition:name="opened-nav" transition:animate="slide">
 			<li><a {...linkOrSelected('/examples/react')}>React Examples</a></li>
@@ -74,8 +76,10 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 			<li><a {...linkOrSelected('/responsive/solid')}>Solid.js Responsive Example</a></li>
 			<li><a {...linkOrSelected('/responsive/vanilla')}>Vanilla JS Responsive Example</a></li>
 		</ul>)}
-		<li><a {...linkOrSelected('/fine-level-control')}>Fine-Level Control</a></li>
 		
+		<li><a {...linkOrSelected('/use-cases')}>Use Cases</a></li>
+		
+
 
 	</ul>
 </nav>

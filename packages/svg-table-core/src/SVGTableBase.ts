@@ -146,7 +146,19 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 
 	const rowsContent = calculatedRows.map((row, rowIndex) => {
 		const rowContent = [] as SVGTableElement<NODE>[];
-
+		console.warn('row.style - no color', row.style);
+		if (row.style?.bgColor) {
+			console.warn('row.style', row.style);
+			rowContent.push(
+				element<NODE>('rect', {
+					x: row.x,
+					y: row.y,
+					width: row.width,
+					height: row.height,
+					fill: row.style.bgColor,
+				})
+			);
+		}
 		for (const cell of row.cells) {
 			rowContent.push(
 				ACell<NODE>({
@@ -162,6 +174,7 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 				role: 'row',
 				className: className ? `${className}-row-${rowIndex}` : undefined,
 			},
+
 			...rowContent
 		);
 	});
