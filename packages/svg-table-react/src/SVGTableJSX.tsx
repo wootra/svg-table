@@ -2,7 +2,10 @@ import { CellPropsWithChildren, TableWithChildren, RowPropsWithChildren, TablePr
 import { FC, Children, ReactElement } from 'react';
 import { SVGTableRaw } from './SVGTableRaw';
 
-const DataTransfer = (_props: { data: any }) => {
+const DataTransfer = (props: { data: any }) => {
+	if (!props.data) {
+		throw new Error('Data Transfoer need data props');
+	}
 	return null;
 };
 

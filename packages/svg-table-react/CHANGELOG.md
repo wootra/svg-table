@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 3.1.3
+- remove: dot-prop dependency
+
 ## 3.1.2
 - fix: update svg-table-core to 3.0.2
 
