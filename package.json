@@ -5,6 +5,7 @@
 		"build": "turbo build",
 		"dev": "turbo dev",
 		"update-all": "sh update-all-deps.sh",
+		"install-all": "sh install-all-deps.sh",
 		"lint": "turbo lint",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},

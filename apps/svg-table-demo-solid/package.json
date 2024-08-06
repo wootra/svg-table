@@ -13,14 +13,14 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"solid-devtools": "^0.29.2",
-		"vite": "^5.0.11",
-		"vite-plugin-solid": "^2.8.2"
+		"solid-devtools": "^0.29.3",
+		"vite": "^5.3.5",
+		"vite-plugin-solid": "^2.10.2"
 	},
 	"dependencies": {
 		"@repo/demo-components-solid": "workspace:*",
 		"@shjeon0730/svg-table-solid": "latest",
 		"react-icons": "^5.2.1",
-		"solid-js": "^1.8.11"
+		"solid-js": "^1.8.19"
 	}
 }

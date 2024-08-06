@@ -8,8 +8,8 @@
 		"build": "echo 'do not build this package. -- build svg-table-react package instead'"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.24.7",
-		"@babel/preset-env": "^7.24.7",
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.3",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
 		"@rollup/plugin-babel": "^6.0.4",
@@ -17,16 +17,16 @@
 		"@rollup/plugin-node-resolve": "^15.2.3",
 		"@rollup/plugin-terser": "^0.4.4",
 		"@rollup/plugin-typescript": "^11.1.6",
-		"@turbo/gen": "^1.12.4",
-		"@types/eslint": "^8.56.5",
-		"@types/node": "^20.11.24",
-		"@types/react": "^18.2.61",
-		"@types/react-dom": "^18.2.19",
+		"@turbo/gen": "^1.13.4",
+		"@types/eslint": "^8.56.11",
+		"@types/node": "^20.14.14",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
 		"eslint": "^8.57.0",
-		"rollup": "^4.18.0",
+		"rollup": "^4.20.0",
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
-		"typescript": "^5.4.5"
+		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
 		"react": "^18",
