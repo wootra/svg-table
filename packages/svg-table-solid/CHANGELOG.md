@@ -1,4 +1,8 @@
 # CHANGELOG
+## 3.1.3
+- fix: row's bgColor was not working.
+- update: svg-table-core version 3.0.3
+
 ## 3.1.2
 - includes svg-table-core as bundle
 - svg-table-core version 3.0.2
