@@ -29,6 +29,8 @@ import { LogoDemo } from './LogoDemo';
 import { Standalone } from './Standalone';
 import { AutoColSpan } from './AutoColSpan';
 import { Rotate } from './Rotate';
+import { SimpleRowsTable } from './SimpleRowsTable';
+import { SimpleRowsTableObj } from './SimpleRowsTableObj';
 
 export const AllDemo = ({ width, useclass = false }: { width: number; useclass?: boolean }) => {
 	return (
@@ -495,6 +497,8 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 				</h2>
 				<TableStyles width={width} />
 			</section>
+			<SimpleRowsTable width={width} />
+			<SimpleRowsTableObj width={width} />
 		</div>
 	);
 };

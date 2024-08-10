@@ -38,5 +38,5 @@ const tableProps: TableProps = {
 };
 
 export const EmbeddedTable = ({ standalone = false }: { standalone?: boolean }) => {
-	return SVGTable({ ...tableProps, standalone });
+	return <SVGTable {...tableProps} standalone={standalone} />;
 };

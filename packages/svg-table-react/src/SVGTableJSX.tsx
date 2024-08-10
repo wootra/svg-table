@@ -22,6 +22,7 @@ export const SVGTableJSX: FC<TableWithChildren> = tablePropsWithChildren => {
 			const rendered = row;
 			const { type: rowFunc } = rendered;
 			if (typeof rowFunc !== 'function' || rowFunc.name !== 'SVGTableRow') {
+				console.error('SVGTable: child should be SVGTableRow', (rowFunc as any)?.name ?? 'undefined');
 				throw new Error('SVGTable: child should be SVGTableRow');
 			}
 
