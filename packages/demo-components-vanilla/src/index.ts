@@ -27,4 +27,4 @@ export * from './Rotate';
 export * from './AllDemo';
 export * from './VerticalResponsive';
 export * from './HorizontalResponsive';
-export * from './SimpleRowsTableObj';
+export * from './SimpleRowsTable';

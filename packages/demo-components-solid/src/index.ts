@@ -31,4 +31,3 @@ export * from './AllDemo';
 export * from './HorizontalResponsive';
 export * from './VerticalResponsive';
 export * from './SimpleRowsTable';
-export * from './SimpleRowsTableObj';
