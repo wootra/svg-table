@@ -1,4 +1,9 @@
 # CHANGELOG
+## 3.0.2
+ - fix: row bgColor was not working.
+
+## 3.0.1
+- use core library
 ## 2.0.0
 - before/after API change.
 

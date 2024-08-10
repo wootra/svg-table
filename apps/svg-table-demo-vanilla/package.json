@@ -14,7 +14,7 @@
 	},
 	"dependencies": {
 		"@repo/demo-components-vanilla": "workspace:*",
-		"@shjeon0730/svg-table-vanilla": "latest",
+		"@shjeon0730/svg-table-vanilla": "workspace:*",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},

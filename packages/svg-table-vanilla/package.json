@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table-vanilla",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"private": false,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs.js",
@@ -29,7 +29,7 @@
 		"publish-now": "npm publish --access public"
 	},
 	"dependencies": {
-		"@shjeon0730/svg-table-core": "3.0.1-0"
+		"@shjeon0730/svg-table-core": "link:../svg-table-core"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.25.2",
@@ -43,7 +43,7 @@
 		"@rollup/plugin-typescript": "^11.1.6",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
-		"@types/node": "^20.14.14",
+		"@types/node": "^20.14.15",
 		"@types/react": "^18.3.3",
 		"eslint": "^8.57.0",
 		"rollup": "^4.20.0",
