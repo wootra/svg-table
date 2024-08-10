@@ -1,4 +1,7 @@
 # CHANGELOG
+## 3.0.3
+- fix: row bgColor was not working.
+
 ## 3.0.2
 - fix: package.json was exporting src which makes its consumer fails build the app.
 
