@@ -12,11 +12,7 @@
 	],
 	"scripts": {
 		"build": "echo this package should be just backup. not intended to build",
-		"build:disabled": "rm -rf dist;npm run lint; tsc --noEmit;npm run build:bundle",
-		"build:bundle": "npm run build:js && npm run build:types",
-		"build:js": "rollup -c rollup.config.mjs",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
-		"dev": "rollup -c rollup.config.mjs -w",
 		"type-check": "tsc --noEmit",
 		"pretest": "npm run build",
 		"lint": "eslint . --max-warnings 0",

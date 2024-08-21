@@ -8,7 +8,7 @@ import { babel } from '@rollup/plugin-babel';
 
 export default [
 	{
-		input: './dist/index.js',
+		input: './src/index.ts',
 		output: [
 			{
 				file: pkg.main,
@@ -35,6 +35,7 @@ export default [
 			resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx'] }),
 			babel({
 				exclude: 'node_modules/**',
+				extensions: ['.js', '.jsx', '.tsx', '.ts'],
 				presets: ['@babel/env', 'babel-preset-solid'],
 			}),
 			commonjs(),

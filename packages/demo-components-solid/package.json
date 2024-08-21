@@ -3,31 +3,47 @@
 	"version": "0.0.0",
 	"private": true,
 	"exports": {
-		".": "./src/index.ts"
+		".": {
+			"default": "./dist/index.js",
+			"types": "./src/index.ts"
+		}
 	},
-	"main": "./src/index.ts",
-	"types": "./src/index.ts",
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
-		"build": "echo 'do not need build'"
+		"build": "tsc",
+		"build:bundle": "npm run build:js",
+		"build:js": "rollup -c rollup.config.mjs",
+		"ready": "tsc",
+		"dev1": "tsc --watch && echo 'watching demo-components-solid'"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
-		"@shjeon0730/svg-table-solid": "link:../svg-table-solid-repo",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
 		"@types/node": "^20.14.14",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"babel-preset-solid": "^1.8.19",
+		"@babel/core": "^7.25.2",
+		"@babel/preset-env": "^7.25.3",
+		"@rollup/plugin-babel": "^6.0.4",
+		"@rollup/plugin-commonjs": "^26.0.1",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-terser": "^0.4.4",
+		"@rollup/plugin-typescript": "^11.1.6",
+		"rollup": "^4.20.0",
+		"rollup-plugin-dts": "^6.1.1",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"eslint": "^8.57.0",
 		"solid-js": "^1.8.19",
 		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
-		"@shjeon0730/svg-table-solid": "*",
 		"solid-js": "*"
+	},
+	"dependencies": {
+		"@shjeon0730/svg-table-solid": "*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {

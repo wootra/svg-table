@@ -20,7 +20,6 @@ import { EmbeddedTableAsProps } from './EmbeddedTableAsProps';
 import { TextPositionAdjustment } from './TextPositionAdjustment';
 import { TableHeight } from './TableHeight';
 import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
-import './all-demo.css';
 import { BasicSimpleArray } from './BasicSimpleArray';
 import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
 import { EmbeddedTableAsPropsWithHeightJSX } from './EmbeddedTableAsPropsWithHeightJSX';
@@ -29,8 +28,7 @@ import { LogoDemo } from './LogoDemo';
 import { Standalone } from './Standalone';
 import { AutoColSpan } from './AutoColSpan';
 import { Rotate } from './Rotate';
-import { SimpleRowsTable } from './SimpleRowsTable';
-import { SimpleRowsTableObj } from './SimpleRowsTableObj';
+import { SimpleRowsTable, SimpleRowsTableObj } from './SimpleRowsTable';
 
 export const AllDemo = ({ width, useclass = false }: { width: number; useclass?: boolean }) => {
 	return (
@@ -69,7 +67,7 @@ export const AllDemo = ({ width, useclass = false }: { width: number; useclass?:
 			</section>
 			<section>
 				<h2>
-					Standalone
+					Standalone6
 					<a
 						class='demo-code-link'
 						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-solid/src/BasicDemo.tsx'

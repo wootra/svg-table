@@ -9,12 +9,13 @@
 		"build:now": "pnpm i;pnpm update;tsc -b && vite build",
 		"build:prod": "sh switch-env.sh prod && pnpm build:now",
 		"build:dev": "sh switch-env.sh dev && pnpm build:now",
+		"ready": "",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@repo/demo-components-react": "workspace:*",
-		"@shjeon0730/svg-table-react": "link:../../packages/svg-table-react-repo",
+		"@shjeon0730/svg-table-react": "*",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},

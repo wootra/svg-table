@@ -1,14 +1,15 @@
 {
 	"extends": "@repo/typescript-config/react-library.json",
 	"compilerOptions": {
-		"target": "es2015",
+		"target": "esnext",
 		"module": "esnext",
-		"lib": ["es2015", "dom"],
+		"lib": ["ESNext", "dom"],
 		"declaration": true,
 		"declarationDir": "dist/types",
 		"outDir": "dist",
+		"rootDir": "src",
 		"strict": true,
-		"moduleResolution": "node",
+		"moduleResolution": "Bundler",
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true

@@ -1,9 +1,9 @@
 {
 	"extends": "@repo/typescript-config/react-library.json",
 	"compilerOptions": {
-		"target": "es2015",
+		"target": "ESNext",
 		"module": "esnext",
-		"lib": ["es2015", "dom"],
+		"lib": ["ESNext", "dom"],
 		"declaration": true,
 		"declarationDir": "dist/types",
 		"outDir": "dist",

@@ -7,7 +7,7 @@
 		"allowJs": true,
 		"target": "ESNext",
 		"module": "ESNext",
-		"moduleResolution": "node",
+		"moduleResolution": "Bundler",
 		"allowSyntheticDefaultImports": true,
 		"allowArbitraryExtensions": false,
 		"esModuleInterop": true,

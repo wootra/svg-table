@@ -2,22 +2,20 @@
 	"name": "@shjeon0730/svg-table-core",
 	"version": "3.0.3",
 	"private": false,
-	"main": "dist/index.js",
-	"module": "dist/index.mjs.js",
-	"browser": "dist/index.umd.js",
-	"types": "dist/types/index.d.js",
-	"files": [
-		"dist"
-	],
+	"exports": {
+		".": {
+			"default": "./dist/index.js",
+			"types": "./dist/types/index.d.ts"
+		}
+	},
 	"scripts": {
 		"test": "vitest",
 		"lint": "eslint . --max-warnings 0",
-		"build": "npm run lint; tsc;npm run build:bundle; npm run build:sync",
+		"build": "npm run lint; tsc",
 		"build:sync": "sh ./sync-dist.sh ../svg-table-core-repo",
 		"build:bundle": "npm run build:js && npm run build:types",
 		"build:js": "rollup -c rollup.config.mjs",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
-		"dev": "rollup -c rollup.config.mjs -w",
 		"type-check": "tsc --noEmit",
 		"pre-patch": "sh ./publish.sh prepatch",
 		"pre-minor": "sh ./publish.sh preminor",
@@ -38,6 +36,9 @@
 		"@rollup/plugin-node-resolve": "^15.2.3",
 		"@rollup/plugin-terser": "^0.4.4",
 		"@rollup/plugin-typescript": "^11.1.6",
+		"rollup": "^4.20.0",
+		"rollup-plugin-dts": "^6.1.1",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"@turbo/gen": "^1.13.4",
 		"@types/eslint": "^8.56.11",
 		"@types/node": "^20.14.14",
@@ -45,9 +46,6 @@
 		"@types/react-dom": "^18.3.0",
 		"eslint": "^8.57.0",
 		"react": "^18.3.1",
-		"rollup": "^4.20.0",
-		"rollup-plugin-dts": "^6.1.1",
-		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.4"
 	},

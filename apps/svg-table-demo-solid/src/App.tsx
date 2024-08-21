@@ -27,13 +27,13 @@ function App() {
 				{/* {renderTable()() as JSXElement} */}
 				{/* {renderTable() as JSXElement} */}
 				{/* <LogoDemo width={width} bgColor={null} className={'logo-demo'} /> */}
-				{/* {AllDemo({ width: width() })} */}
+				{AllDemo({ width: width() })}
 				{/* <AllDemo width={width} /> */}
 				{/* {embeddedTable} */}
 				{/* <Dynamic component={EmbeddedTableAsPropsWithHeightJSX} width={width()} /> */}
 				{/* {el()} */}
-				{SimpleRowsTable({ width: width() })}
-				{SimpleRowsTableObj({ width: width() })}
+				{/* {SimpleRowsTable({ width: width() })}
+				{SimpleRowsTableObj({ width: width() })} */}
 			</div>
 		</div>
 	);
