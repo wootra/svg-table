@@ -2,8 +2,10 @@
 	"name": "svg-table",
 	"private": true,
 	"scripts": {
-		"build": "turbo build",
+		"build": "turbo build --ui stream",
+		"build:ui": "turbo build",
 		"dev": "turbo dev",
+		"dev:doc": "turbo dev:doc",
 		"update-all": "sh update-all-deps.sh",
 		"install-all": "sh install-all-deps.sh",
 		"lint": "turbo lint",

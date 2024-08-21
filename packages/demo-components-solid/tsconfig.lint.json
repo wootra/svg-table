@@ -1,8 +1,10 @@
 {
-  "extends": "@repo/typescript-config/react-library.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["src", "turbo"],
-  "exclude": ["node_modules", "dist"]
+	"extends": "@repo/typescript-config/ui-library.json",
+	"include": ["src"],
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js"
+	},
+	"exclude": ["node_modules", "dist"]
 }

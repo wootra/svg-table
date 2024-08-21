@@ -1,19 +1,11 @@
 {
-	"extends": "@repo/typescript-config/react-library.json",
+	"extends": "@repo/typescript-config/ui-library.json",
 	"compilerOptions": {
-		"outDir": "dist",
-		"declarationDir": "dist/types",
-		"strict": true,
-		"allowJs": true,
-		"target": "ESNext",
-		"module": "ESNext",
-		"moduleResolution": "Bundler",
 		"allowSyntheticDefaultImports": true,
 		"allowArbitraryExtensions": false,
-		"esModuleInterop": true,
+		"allowJs": true,
 		"jsx": "preserve",
-		"jsxImportSource": "solid-js",
-		"isolatedModules": true
+		"jsxImportSource": "solid-js"
 	},
 	"paths": {
 		"tslib": ["node_modules/tslib/tslib.d.ts"]

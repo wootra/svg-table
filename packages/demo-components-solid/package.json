@@ -10,11 +10,7 @@
 	},
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
-		"build": "tsc",
-		"build:bundle": "npm run build:js",
-		"build:js": "rollup -c rollup.config.mjs",
-		"ready": "tsc",
-		"dev1": "tsc --watch && echo 'watching demo-components-solid'"
+		"build": "tsc"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",

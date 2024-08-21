@@ -1,16 +1,10 @@
 {
-	"extends": "@repo/typescript-config/react-library.json",
+	"extends": "@repo/typescript-config/ui-library.json",
 	"compilerOptions": {
-		"outDir": "dist",
-		"strict": true,
-		"target": "ESNext",
-		"module": "ESNext",
-		"moduleResolution": "Bundler",
 		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
 		"jsx": "preserve",
-		"jsxImportSource": "solid-js",
-		"isolatedModules": true
+		"allowJs": true,
+		"jsxImportSource": "solid-js"
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist"]

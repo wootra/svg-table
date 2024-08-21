@@ -40,17 +40,17 @@ const embeddedTableProps = (color: string, columns: number, fontSize = 12): Cell
 		content: (
 			<NestedSVGTable {...tableProps}>
 				<SVGTableRow>
-					{cellStore.slice(0, columns).map(({ content, ...cell }, idx) => (
+					{cellStore.slice(0, columns).map(({ content, ...cell }) => (
 						<SVGTableCell {...cell}>{content as Node}</SVGTableCell>
 					))}
 				</SVGTableRow>
 				<SVGTableRow>
-					{cellStore.slice(1, columns + 1).map(({ content, ...cell }, idx) => (
+					{cellStore.slice(1, columns + 1).map(({ content, ...cell }) => (
 						<SVGTableCell {...cell}>{content as Node}</SVGTableCell>
 					))}
 				</SVGTableRow>
 				<SVGTableRow>
-					{cellStore.slice(0, columns).map(({ content, ...cell }, idx) => (
+					{cellStore.slice(0, columns).map(({ content, ...cell }) => (
 						<SVGTableCell {...cell}>{content as Node}</SVGTableCell>
 					))}
 				</SVGTableRow>
@@ -111,16 +111,20 @@ export const EmbeddedTableAsPropsWithHeightJSX = ({
 						</SVGTableRow>
 					</NestedSVGTable>
 				</SVGTableCell>
-				<SVGTableCell>{embeddedTableProps('#111150', 3).content as JSX.Element}</SVGTableCell>
-				<SVGTableCell>{embeddedTableProps('#0b310b', 4).content as JSX.Element}</SVGTableCell>
+				<SVGTableCell>{embeddedTableProps('#111150', 3).content as unknown as JSX.Element}</SVGTableCell>
+				<SVGTableCell>{embeddedTableProps('#0b310b', 4).content as unknown as JSX.Element}</SVGTableCell>
 			</SVGTableRow>
 			<SVGTableRow>
-				<SVGTableCell rowSpan={2}>{embeddedTableProps('#836268', 3).content as JSX.Element}</SVGTableCell>
-				<SVGTableCell colSpan={2}>{embeddedTableProps('#275454', 4).content as JSX.Element}</SVGTableCell>
+				<SVGTableCell rowSpan={2}>
+					{embeddedTableProps('#836268', 3).content as unknown as JSX.Element}
+				</SVGTableCell>
+				<SVGTableCell colSpan={2}>
+					{embeddedTableProps('#275454', 4).content as unknown as JSX.Element}
+				</SVGTableCell>
 			</SVGTableRow>
 			<SVGTableRow>
-				<SVGTableCell>{embeddedTableProps('#550255', 3).content as JSX.Element}</SVGTableCell>
-				<SVGTableCell>{embeddedTableProps('#296541', 1).content as JSX.Element}</SVGTableCell>
+				<SVGTableCell>{embeddedTableProps('#550255', 3).content as unknown as JSX.Element}</SVGTableCell>
+				<SVGTableCell>{embeddedTableProps('#296541', 1).content as unknown as JSX.Element}</SVGTableCell>
 			</SVGTableRow>
 		</SVGTable>
 	);

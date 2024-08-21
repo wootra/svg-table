@@ -1,5 +1,7 @@
 {
-	"extends": "@repo/typescript-config/ui-library.json",
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "UI Library",
+	"extends": "./base.json",
 	"compilerOptions": {
 		"target": "ESNext",
 		"module": "ESNext",
@@ -14,8 +16,9 @@
 		"isolatedModules": true,
 		"forceConsistentCasingInFileNames": true,
 		"removeComments": true,
-		"alwaysStrict": true
-	},
-	"include": ["src"],
-	"exclude": ["node_modules", "dist", "eslintrc.js", "**/*.mjs", "tagging.js"]
+		"alwaysStrict": true,
+		"incremental": true,
+		"composite": true,
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo"
+	}
 }

@@ -19,7 +19,7 @@ export default defineConfig({
 		}),
 	],
 	server: {
-		port: 3000,
+		port: 3900,
 	},
 	build: {
 		target: 'esnext',

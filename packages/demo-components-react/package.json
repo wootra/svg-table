@@ -10,7 +10,7 @@
 	"types": "./src/index.ts",
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
-		"build": "echo 'no-build'"
+		"build": "tsc"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",

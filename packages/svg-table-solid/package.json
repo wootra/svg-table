@@ -9,7 +9,7 @@
 		}
 	},
 	"scripts": {
-		"build": "pnpm update;npm run lint; tsc",
+		"build": "npm run lint; tsc",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
 		"type-check": "tsc --noEmit",
 		"pretest": "npm run build",

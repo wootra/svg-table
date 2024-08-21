@@ -1,4 +1,4 @@
-import SVGTable, { CellStyle, SVGTableCell, SVGTableRow, TableProps, TableStyle } from '@shjeon0730/svg-table-solid';
+import SVGTable, { CellStyle, SVGTableCell, SVGTableRow, TableProps } from '@shjeon0730/svg-table-solid';
 
 const defaultCellStyle: CellStyle = {
 	borderWidths: [1, 0],
