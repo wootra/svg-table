@@ -14,7 +14,8 @@
 		"isolatedModules": true,
 		"forceConsistentCasingInFileNames": true,
 		"removeComments": true,
-		"alwaysStrict": true
+		"alwaysStrict": true,
+		"rootDir": "./src"
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist", "eslintrc.js", "**/*.mjs", "tagging.js"]

@@ -9,10 +9,10 @@
 		}
 	},
 	"scripts": {
-		"build": "npm run lint; tsc",
+		"build": "pnpm run lint; tsc",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
 		"type-check": "tsc --noEmit",
-		"pretest": "npm run build",
+		"pretest": "pnpm run build",
 		"watch": "tsc --watch & rollup -c rollup.config.mjs -w",
 		"lint": "eslint . --max-warnings 0",
 		"pre-patch": "sh ./publish.sh prepatch",
