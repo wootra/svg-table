@@ -1,4 +1,7 @@
 # CHANGELOG
+## 3.0.4
+- update package.json to simpler
+
 ## 3.0.3
 - fix: row bgColor was not working.
 

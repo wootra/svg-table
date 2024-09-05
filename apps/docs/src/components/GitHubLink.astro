@@ -23,7 +23,7 @@ const isVanilla = sitesArr.includes('vanilla');
 
 ---
 
-<div>
+<div class="links">
 	{isReact && (
 		<a
 			class='code-link'
@@ -59,4 +59,10 @@ const isVanilla = sitesArr.includes('vanilla');
 	)}
 		</div>
 
-
+<style>
+	.links {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+</style>

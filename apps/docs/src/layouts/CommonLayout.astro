@@ -52,9 +52,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<ViewTransitions />
 	</head>
 	<body>
-		<TopNav />
-
-        <SideNav selected={selected} />
+		<TopNav >
+			<SideNav selected={selected} />
+		</TopNav>
 		<div class="main-wrapper" transition:name="content-wrapper"  transition:animate="none">
 			<div class="perspective-wrapper" transition:name="backdrop" transition:animate="none">
 				<div class="grid-background"></div>
@@ -65,6 +65,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		</div>
 	</body>
 </html>
+
 <style is:global>
 	:root {
 		--color-primary: #087ea4;
@@ -95,11 +96,40 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		line-height: 1.6;
 	}
 
+	.side-nav-toggle {
+		display: none;
+		padding-inline: 10px;
+		padding-block: 5px;
+		border: none;
+		background-color:#149eca;
+		border-radius: 0 0 0.3rem 0.3rem;
+		height: auto;
+		z-index: 99999;
+		position: fixed;
+		left: 50%;
+		transform: translate(-50%);
+	}
+
+	@media screen and (max-width: 600px) {
+
+		.side-nav-toggle {
+			position: absolute;
+			display: block;
+			top: 100%;
+		}
+		:has(.side-nav.open) {
+			.side-nav-toggle {
+				background-color: transparent;
+			}
+		}
+
+	}
+
     .content-container {
         width: calc(100vw - var(--side-nav-width));
         height: calc(100vh - var(--top-nav-height));
         overflow-y: auto;
-        margin-top: var(--top-nav-height);
+        margin-top: 0; 
         margin-left: var(--side-nav-width);
 		scroll-behavior: smooth;
     }
@@ -150,6 +180,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         height: calc(100vh - var(--top-nav-height));
         margin-top: var(--top-nav-height)
     }
+
+	@media screen and (max-width: 600px) {
+		.main-wrapper {
+			height: calc(calc(100vh - var(--top-nav-height)) - 2rem);
+			margin-top: calc(var(--top-nav-height) + 2rem)
+		}
+	}
+	
 
 	a {
 		color: var(--color-secondary);

@@ -82,12 +82,20 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 
 
 	</ul>
+	
 </nav>
+
 
 <style is:global>
 	
 	:root{
 		--side-nav-width: 16rem;
+	}
+	@media screen and (max-width: 600px) {
+		:root {
+
+			--side-nav-width: 0;
+		}
 	}
 	.side-nav {
 		z-index: 2;
@@ -111,16 +119,46 @@ const linkOrSelected = (link: string) => selected === link || (selected+hash) ==
 	.side-nav a:active, .side-nav a:hover {
 		box-shadow: 0 2px 0 0 rgb(219, 249, 159);
 	}
+
 	.side-nav {
 		width: 250px;
 		padding: 2rem;
 		background-image: linear-gradient(to bottom, #149eca, #149cca5d);
-		position: fixed;
-		top: var(--top-nav-height);
+		position: absolute;
+		left: 0;
+		height: calc(100vh);
+		top: 100%; 
 		bottom: 0;
 		overflow-y: auto;
 	}
+	
+	@media screen and (max-width: 600px) {
+		.side-nav {
+			width: 100%;
+			height: fit-content;
+			background-image: linear-gradient(to bottom, #149eca, #149cca);
+			transform: translateY(-100%);
+			user-select: none;
+			pointer-events: none;
+			transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+			opacity: 0;
+		}
 
+		
+		:has(.side-nav.open) {
+			.side-nav-toggle {
+				background-color: transparent;
+			}
+		}
+
+		.side-nav.open {
+			transform: translateY(0);
+			user-select: all;
+			pointer-events: all;
+			opacity: 1;
+		}
+		
+	}
 	.side-nav ul {
 		list-style-type: none;
 	}
