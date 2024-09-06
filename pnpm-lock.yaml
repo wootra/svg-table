@@ -322,10 +322,6 @@ importers:
         version: 5.5.4
 
   packages/demo-components-solid:
-    dependencies:
-      '@shjeon0730/svg-table-solid':
-        specifier: workspace:*
-        version: link:../svg-table-solid
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -339,6 +335,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@shjeon0730/svg-table-solid':
+        specifier: workspace:*
+        version: link:../svg-table-solid
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.14.14)(typescript@5.5.4)
