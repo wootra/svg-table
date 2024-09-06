@@ -3,13 +3,15 @@
 	"version": "0.0.0",
 	"private": true,
 	"exports": {
-		".": "./src/index.ts"
+		".": {
+			"default": "./dist/index.js",
+			"types": "./dist/types/index.d.ts"
+		}
 	},
-	"main": "./src/index.ts",
-	"types": "./src/index.ts",
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
-		"build": "tsc"
+		"build": "tsc",
+		"rebuild": "rm -rf dist;rm -rf ./node_modules/.tmp;tsc"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
@@ -21,12 +23,14 @@
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"eslint": "^8.57.0",
-		"typescript": "^5.5.4"
+		"typescript": "^5.5.4",
+		"react": "^18",
+		"react-dom": "^18"
 	},
 	"peerDependencies": {
 		"react": "^18",
 		"react-dom": "^18",
-		"@shjeon0730/svg-table-vanilla": "*"
+		"@shjeon0730/svg-table-vanilla": "workspace:*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {

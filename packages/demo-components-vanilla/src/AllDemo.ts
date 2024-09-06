@@ -18,7 +18,6 @@ import { EmbeddedTableAsProps } from './EmbeddedTableAsProps';
 import { TextPositionAdjustment } from './TextPositionAdjustment';
 import { TableHeight } from './TableHeight';
 import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
-import './all-demo.css';
 import { BasicSimpleArray } from './BasicSimpleArray';
 import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
 import { Paddings } from './Paddings';

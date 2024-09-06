@@ -23,23 +23,13 @@
 		"babel-preset-solid": "^1.8.19",
 		"@babel/core": "^7.25.2",
 		"@babel/preset-env": "^7.25.3",
-		"@rollup/plugin-babel": "^6.0.4",
-		"@rollup/plugin-commonjs": "^26.0.1",
-		"@rollup/plugin-node-resolve": "^15.2.3",
-		"@rollup/plugin-terser": "^0.4.4",
-		"@rollup/plugin-typescript": "^11.1.6",
-		"rollup": "^4.20.0",
-		"rollup-plugin-dts": "^6.1.1",
-		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"eslint": "^8.57.0",
 		"solid-js": "^1.8.19",
 		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
-		"solid-js": "*"
-	},
-	"dependencies": {
-		"@shjeon0730/svg-table-solid": "*"
+		"solid-js": "^1.8.19",
+		"@shjeon0730/svg-table-solid": "workspace:*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {
