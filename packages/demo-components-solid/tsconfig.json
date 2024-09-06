@@ -7,7 +7,7 @@
 		"declaration": true,
 		"declarationDir": "dist/types",
 		"outDir": "dist",
-		"strict": true,
+		"strict": false,
 		"moduleResolution": "Bundler",
 		"esModuleInterop": true,
 		"skipLibCheck": true,
@@ -22,7 +22,8 @@
 		"allowSyntheticDefaultImports": true,
 		"jsx": "preserve",
 		"allowJs": true,
-		"jsxImportSource": "solid-js"
+		"jsxImportSource": "solid-js",
+		"sourceMap": true
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist"]

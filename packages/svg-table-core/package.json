@@ -11,7 +11,7 @@
 	"scripts": {
 		"test": "vitest",
 		"lint": "eslint . --max-warnings 0",
-		"rebuild": "rm -rf ./node_modules/.tmp;pnpm run build",
+		"rebuild": "rm -rf ./dist;rm -rf ./node_modules/.tmp;pnpm run build",
 		"build": "pnpm run lint && pnpm run build:ts && echo 'done'",
 		"build:ts": "tsc",
 		"type-check": "tsc --noEmit",

@@ -10,7 +10,8 @@
 	"types": "./src/index.ts",
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
-		"build": "tsc"
+		"build": "tsc",
+		"rebuild": "rm -rf ./dist;rm -rf ./node_modules/.tmp;pnpm run build"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",

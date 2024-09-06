@@ -10,6 +10,7 @@
 	},
 	"scripts": {
 		"build": "npm run lint; tsc",
+		"rebuild": "rm -rf ./dist;rm -rf ./node_modules/.tmp;pnpm run build",
 		"build:types": "tsc --emitDeclarationOnly",
 		"type-check": "tsc --noEmit",
 		"pretest": "npm run build",

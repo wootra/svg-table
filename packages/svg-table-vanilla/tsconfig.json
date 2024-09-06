@@ -15,7 +15,9 @@
 		"forceConsistentCasingInFileNames": true,
 		"removeComments": true,
 		"alwaysStrict": true,
-		"rootDir": "./src"
+		"rootDir": "./src",
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+		"sourceMap": true
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist", "eslintrc.js", "**/*.mjs", "tagging.js"]

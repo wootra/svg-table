@@ -10,6 +10,7 @@
 	},
 	"scripts": {
 		"build": "pnpm run lint; tsc",
+		"rebuild": "rm -rf ./dist;rm -rf ./node_modules/.tmp;pnpm run build",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
 		"type-check": "tsc --noEmit",
 		"pretest": "pnpm run build",

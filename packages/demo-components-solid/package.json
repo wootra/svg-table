@@ -10,6 +10,7 @@
 	},
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
+		"rebuild": "rm -rf ./dist;rm -rf ./node_modules/.tmp;pnpm run build",
 		"build": "tsc"
 	},
 	"devDependencies": {
