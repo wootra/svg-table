@@ -1,5 +1,25 @@
 {
 	"extends": "@repo/typescript-config/ui-library.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"lib": ["ESNext", "dom"],
+		"declaration": true,
+		"declarationDir": "dist/types",
+		"outDir": "dist",
+		"strict": true,
+		"moduleResolution": "Bundler",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"isolatedModules": true,
+		"forceConsistentCasingInFileNames": true,
+		"removeComments": true,
+		"alwaysStrict": true,
+		"incremental": true,
+		"composite": true,
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+		"rootDir": "src"
+	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist"]
 }
