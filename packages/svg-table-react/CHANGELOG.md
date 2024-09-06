@@ -1,4 +1,6 @@
 # CHANGELOG
+## 3.1.4
+- tsc build config update
 
 ## 3.1.3
 - remove: dot-prop dependency

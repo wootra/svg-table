@@ -1,4 +1,7 @@
 # CHANGELOG
+## 3.0.3
+- tsc build config update
+
 ## 3.0.2
  - fix: row bgColor was not working.
 
