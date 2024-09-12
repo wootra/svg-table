@@ -221,7 +221,7 @@ const FilledAreaInCell = <NODE extends PrimitiveNode>({
 }): SVGTableElement<NODE> => {
 	const { width, height, className } = cellOpt;
 
-	let { bgColor, borderWidths, borderColors, borderPatterns, borderShapes } = styleToUse;
+	let { bgColor, borderWidths, borderColors, borderPatterns, borderShapes, rx, ry } = styleToUse;
 
 	return FilledArea({
 		className: className ? `${className}-filled-back` : undefined,
@@ -231,6 +231,8 @@ const FilledAreaInCell = <NODE extends PrimitiveNode>({
 		borderColors: borderColors,
 		borderPatterns: borderPatterns,
 		borderShapes: borderShapes,
+		rx,
+		ry,
 		...(bgColor ? { bgColor } : {}),
 	});
 };

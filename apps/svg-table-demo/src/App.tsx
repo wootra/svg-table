@@ -6,6 +6,7 @@ import {
 	EmbeddedTableAsPropsWithHeightJSX,
 } from '@repo/demo-components-react';
 import { ChangeEvent, useState } from 'react';
+import styles from './App.module.css';
 
 const App = () => {
 	const [width, setWidth] = useState(500);
@@ -13,7 +14,7 @@ const App = () => {
 		setWidth(parseInt(e.target.value));
 	};
 	return (
-		<div className='main'>
+		<div className={styles.main}>
 			<div
 				style={{
 					position: 'sticky',

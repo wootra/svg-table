@@ -1,4 +1,5 @@
 export * from './BasicDemo';
+export * from './BasicDemoWithRadius';
 export * from './BasicDemoJSX';
 export * from './Standalone';
 export * from './LogoDemo';
@@ -16,6 +17,7 @@ export * from './TableHeightOverrideHeight';
 export * from './BgColorAndTextColor';
 export * from './Gaps';
 export * from './Margins';
+export * from './AutoColSpan';
 export * from './Paddings';
 export * from './EmbeddedTableAsProps';
 export * from './EmbeddedTableAsPropsWithHeight';

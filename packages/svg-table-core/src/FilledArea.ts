@@ -7,12 +7,14 @@ type Props = {
 	width: number;
 	height: number;
 	bgColor?: string;
-
+	rx?: number;
+	ry?: number;
 	className?: string;
 } & Partial<BorderStyles>;
 
 const FilledArea = <NODE extends PrimitiveNode>(props: Props) => {
-	const { bgColor, width, height, borderWidths, borderColors, borderPatterns, borderShapes, className } = props;
+	const { bgColor, width, height, borderWidths, borderColors, borderPatterns, borderShapes, className, rx, ry } =
+		props;
 	const isBgColorVisible = bgColor && bgColor !== 'transparent';
 	const isBorderOnRect = isBgColorVisible && isBorderRect(props);
 	const rectStyleProps = isBorderOnRect ? getRectStyle(props) : { fill: bgColor };
@@ -36,6 +38,8 @@ const FilledArea = <NODE extends PrimitiveNode>(props: Props) => {
 				borderColors: borderColors,
 				borderPatterns: borderPatterns,
 				borderShapes: borderShapes,
+				rx,
+				ry,
 			})
 	);
 };

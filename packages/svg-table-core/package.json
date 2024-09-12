@@ -4,8 +4,8 @@
 	"private": false,
 	"exports": {
 		".": {
-			"default": "./dist/index.js",
-			"types": "./dist/types/index.d.ts"
+			"types": "./dist/types/index.d.ts",
+			"default": "./dist/index.js"
 		}
 	},
 	"scripts": {
@@ -29,11 +29,15 @@
 		"@babel/preset-env": "^7.25.3",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
+		"@size-limit/preset-app": "^11.1.5",
+		"@size-limit/preset-big-lib": "^11.1.5",
+		"@size-limit/preset-small-lib": "^11.1.5",
 		"@types/eslint": "^8.56.11",
 		"@types/node": "^20.14.14",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"eslint": "^8.57.0",
+		"size-limit": "^11.1.5",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.4"
 	},
@@ -55,5 +59,12 @@
 	"bugs": {
 		"url": "https://github.com/wootra/svg-table/issues"
 	},
+	"size-limit": [
+		{
+			"path": "./dist/index.js",
+			"import": "*",
+			"limit": "500 ms"
+		}
+	],
 	"homepage": "https://svg-table.com/"
 }

@@ -48,6 +48,10 @@ export type BorderStyles = {
 	borderPatterns: PatternArrays;
 	/** Specifies the shape of the stroke caps for the border on different sides. */
 	borderShapes: PatternShapes;
+	/** Specifies the radius for rounded corners on different sides. */
+	rx?: number;
+	/** Specifies the radius for rounded corners on different sides. */
+	ry?: number;
 };
 
 /**
@@ -87,7 +91,7 @@ export type RowStyle = {
 	height: number;
 	/** Optional background color of the row. */
 	bgColor?: string;
-};
+} & Partial<BorderStyles>;
 
 export type WidthPos = 'left' | 'right' | 'top' | 'bottom';
 
@@ -106,6 +110,27 @@ export type TableStyle = {
 	/** Optional CSS styles for the SVG element representing the table. */
 	svgStyle: HTMLAttributes<'svg'>['style'];
 } & Partial<BorderStyles>; /** Optionally includes border styles defined in BorderStyles. */
+
+/**
+ * style for background or border of table or cell or row
+ */
+export type RectStyleOption = Partial<{
+	bgColor: string;
+	borderWidths: Widths;
+	borderColors: ColorsOnWidth;
+	borderPatterns: PatternArrays;
+	rx: number;
+	ry: number;
+}>;
+
+export type RectStyle = {
+	fill?: string;
+	stroke?: string;
+	strokeWidth?: number;
+	strokeDasharray?: string;
+	rx?: number;
+	ry?: number;
+};
 
 export type SVGElementName = keyof ReactSVG;
 

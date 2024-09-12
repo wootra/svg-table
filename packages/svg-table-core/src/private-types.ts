@@ -97,6 +97,10 @@ export type CellStyleBase = {
 	 * Optional CSS styles for the SVG element representing the cell.
 	 */
 	svgStyle?: HTMLAttributes<SVGType>['style'];
+	/**
+	 * automatically draw borders only inner lines. if table has rx && ry, this option will be automatically set to true
+	 */
+	onlyInnerBorders?: boolean;
 } & Partial<BorderStyles>;
 
 export type ContentAsFuncRetTypes<NODE extends PrimitiveNode> =

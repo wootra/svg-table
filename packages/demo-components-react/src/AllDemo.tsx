@@ -1,34 +1,69 @@
-import { BasicDemo } from './BasicDemo';
-import { BasicWithElement } from './BasicWithElement';
-import { BasicWithProps } from './BasicWithProps';
-import { BasicWithPropsAllowingOverflow } from './BasicWithPropsAllowingOverflow';
-import { BasicWithPropsAllowingOverflowOnlyOneCell } from './BasicWithPropsAllowingOverflowOnlyOneCell';
-import { NoBorderTableDemo } from './NoBorderTableDemo';
-import { EmbeddedTable } from './EmbeddedTable';
-import { TextStyleOverride } from './TextStyleOverride';
-import { OnlyTableBolder } from './OnlyTableBolder';
-import { TableBolderWithMargin } from './TableBolderWithMargin';
-import { TableBorderStyles } from './TableBorderStyles';
-import { BgColorAndTextColor } from './BgColorAndTextColor';
-import { Gaps } from './Gaps';
-import { OutboundLabels } from './OutboundLabels';
-import { TableStyles } from './TableStyles';
-import { Margins } from './Margins';
-import { EmbeddedTableAsProps } from './EmbeddedTableAsProps';
-import { TextPositionAdjustment } from './TextPositionAdjustment';
-import { TableHeight } from './TableHeight';
-import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
+// import { BasicDemo } from './BasicDemo';
+// import { BasicDemoWithRadius } from './BasicDemoWithRadius';
+// import { BasicWithElement } from './BasicWithElement';
+// import { BasicWithProps } from './BasicWithProps';
+// import { BasicWithPropsAllowingOverflow } from './BasicWithPropsAllowingOverflow';
+// import { BasicWithPropsAllowingOverflowOnlyOneCell } from './BasicWithPropsAllowingOverflowOnlyOneCell';
+// import { NoBorderTableDemo } from './NoBorderTableDemo';
+// import { EmbeddedTable } from './EmbeddedTable';
+// import { TextStyleOverride } from './TextStyleOverride';
+// import { OnlyTableBolder } from './OnlyTableBolder';
+// import { TableBolderWithMargin } from './TableBolderWithMargin';
+// import { TableBorderStyles } from './TableBorderStyles';
+// import { BgColorAndTextColor } from './BgColorAndTextColor';
+// import { Gaps } from './Gaps';
+// import { OutboundLabels } from './OutboundLabels';
+// import { TableStyles } from './TableStyles';
+// import { Margins } from './Margins';
+// import { EmbeddedTableAsProps } from './EmbeddedTableAsProps';
+// import { TextPositionAdjustment } from './TextPositionAdjustment';
+// import { TableHeight } from './TableHeight';
+// import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
+// import { BasicSimpleArray } from './BasicSimpleArray';
+// import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
+// import { Paddings } from './Paddings';
+// import { LogoDemo } from './LogoDemo';
+// import { Standalone } from './Standalone';
+// import { AutoColSpan } from './AutoColSpan';
+// import { Rotate } from './Rotate';
+// import { BasicDemoJSX } from './BasicDemoJSX';
+// import { EmbeddedTableJSX } from './EmbeddedTableJSX';
+// import { EmbeddedTableAsPropsWithHeightJSX } from './EmbeddedTableAsPropsWithHeightJSX';
+import {
+	BasicDemo,
+	BasicDemoWithRadius,
+	BasicWithElement,
+	BasicWithProps,
+	BasicWithPropsAllowingOverflow,
+	BasicWithPropsAllowingOverflowOnlyOneCell,
+	NoBorderTableDemo,
+	EmbeddedTable,
+	TextStyleOverride,
+	OnlyTableBolder,
+	TableBolderWithMargin,
+	TableBorderStyles,
+	BgColorAndTextColor,
+	Gaps,
+	OutboundLabels,
+	TableStyles,
+	Margins,
+	EmbeddedTableAsProps,
+	TextPositionAdjustment,
+	TableHeight,
+	TableHeightOverrideHeight,
+	BasicSimpleArray,
+	EmbeddedTableAsPropsWithHeight,
+	Paddings,
+	LogoDemo,
+	Standalone,
+	AutoColSpan,
+	Rotate,
+	BasicDemoJSX,
+	EmbeddedTableJSX,
+	EmbeddedTableAsPropsWithHeightJSX,
+} from '.';
+
 import './all-demo.css';
-import { BasicSimpleArray } from './BasicSimpleArray';
-import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
-import { Paddings } from './Paddings';
-import { LogoDemo } from './LogoDemo';
-import { Standalone } from './Standalone';
-import { AutoColSpan } from './AutoColSpan';
-import { Rotate } from './Rotate';
-import { BasicDemoJSX } from './BasicDemoJSX';
-import { EmbeddedTableJSX } from './EmbeddedTableJSX';
-import { EmbeddedTableAsPropsWithHeightJSX } from './EmbeddedTableAsPropsWithHeightJSX';
 
 export const AllDemo = ({ width, useClassName = false }: { width: number; useClassName?: boolean }) => {
 	return (
@@ -109,6 +144,23 @@ export const AllDemo = ({ width, useClassName = false }: { width: number; useCla
 				<div>
 					<p>This example demonstrates HTML table structure</p>
 					<BasicDemoJSX width={width} />
+				</div>
+			</section>
+			<section>
+				<h2>
+					basic demo with radius
+					<a
+						className='demo-code-link'
+						href='https://github.com/wootra/svg-table/blob/main/packages/demo-components-react/src/BasicDemoJSX.tsx'
+						target='_blank'
+						rel='noopener noreferrer'
+					>
+						code
+					</a>
+				</h2>
+				<div>
+					<p>This example demonstrates HTML table structure</p>
+					<BasicDemoWithRadius width={width} />
 				</div>
 			</section>
 

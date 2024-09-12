@@ -4,8 +4,8 @@
 	"private": false,
 	"exports": {
 		".": {
-			"default": "./dist/index.js",
-			"types": "./dist/types/index.d.ts"
+			"types": "./dist/types/index.d.ts",
+			"default": "./dist/index.js"
 		}
 	},
 	"scripts": {
@@ -13,6 +13,7 @@
 		"rebuild": "rm -rf ./dist;rm -rf ./node_modules/.tmp;pnpm run build",
 		"build:types": "tsc --emitDeclarationOnly",
 		"type-check": "tsc --noEmit",
+		"size-limit": "size-limit",
 		"pretest": "npm run build",
 		"lint": "eslint . --max-warnings 0",
 		"pre-patch": "sh ./publish.sh prepatch",
@@ -44,6 +45,10 @@
 		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"tslib": "^2.6.3",
+		"@size-limit/preset-app": "^11.1.5",
+		"@size-limit/preset-big-lib": "^11.1.5",
+		"@size-limit/preset-small-lib": "^11.1.5",
+		"size-limit": "^11.1.5",
 		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
@@ -63,6 +68,13 @@
 		"table",
 		"react",
 		"svg-table"
+	],
+	"size-limit": [
+		{
+			"path": "./dist/index.js",
+			"import": "*",
+			"limit": "500 ms"
+		}
 	],
 	"author": "Songhyeon Jun (shjeon0730@gmail.com)",
 	"license": "MIT",

@@ -47,8 +47,11 @@ const parseDefaultCellStyleBase = (defaultCellStyleBase?: Partial<CellStyleBase>
 		borderShapes: undefined,
 		paddings: [1, 1, 1, 1],
 		textColor: `var(${INTERNAL_CSS_VARS.textColor}, #000)`,
-
 		...defaultCellStyleBase,
+		onlyInnerBorders:
+			defaultCellStyleBase?.rx && defaultCellStyleBase?.ry
+				? true
+				: (defaultCellStyleBase?.onlyInnerBorders ?? false),
 	};
 };
 
@@ -97,7 +100,7 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 	);
 
 	const tableStyle: TableStyle = parsedTableStyle(style);
-
+	const isRoundedCorner = !!(tableStyle.rx && tableStyle.ry);
 	const allColGaps =
 		(maxColumns - 1) * tableStyle.colGaps +
 		getWid(tableStyle.margins, 'left') +
@@ -148,13 +151,25 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 		const rowContent = [] as SVGTableElement<NODE>[];
 		if (row.style?.bgColor) {
 			rowContent.push(
-				element<NODE>('rect', {
-					x: row.x,
-					y: row.y,
-					width: row.width,
-					height: row.height,
-					fill: row.style.bgColor,
-				})
+				element<NODE>(
+					'g',
+					{
+						transform: `translate(${row.x}, ${row.y})`,
+						className: className ? `${className}-row-${rowIndex}-wrapper` : undefined,
+					},
+					FilledArea<NODE>({
+						className: className ? `${className}-filled-area-behind-table` : undefined,
+						width: row.width,
+						height: row.height,
+						bgColor: row.style.bgColor,
+						borderWidths: row.style.borderWidths,
+						borderColors: row.style.borderColors,
+						borderPatterns: row.style.borderPatterns,
+						borderShapes: row.style.borderShapes,
+						rx: row.style.rx,
+						ry: row.style.ry,
+					})
+				)
 			);
 		}
 		for (const cell of row.cells) {
@@ -185,6 +200,7 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 				width,
 				height,
 			};
+	const maskName = `svg-table-mask-${className}`;
 	return element<NODE>(
 		'svg',
 		{
@@ -196,6 +212,27 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 			style: { overflow: 'visible' },
 		},
 		defs && element<NODE>('defs', {}, defs),
+		isRoundedCorner &&
+			element<NODE>(
+				'mask',
+				{
+					id: maskName,
+				},
+				[
+					element<NODE>('rect', {
+						width: width,
+						height: height,
+						fill: 'black',
+					}),
+					element<NODE>('rect', {
+						width: width,
+						height: height,
+						rx: tableStyle.rx,
+						ry: tableStyle.ry,
+						fill: 'white',
+					}),
+				]
+			),
 		FilledArea<NODE>({
 			className: className ? `${className}-filled-area-behind-table` : undefined,
 			width: width,
@@ -205,6 +242,8 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 			borderColors: tableStyle.borderColors,
 			borderPatterns: tableStyle.borderPatterns,
 			borderShapes: tableStyle.borderShapes,
+			rx: tableStyle.rx,
+			ry: tableStyle.ry,
 		}),
 		element<NODE>(
 			'g',
@@ -212,6 +251,7 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 				role: 'table',
 				className: className ? `${className}-content-area` : undefined,
 				transform: `translate(${getWid(tableStyle.margins, 'left')} ${getWid(tableStyle.margins, 'top')})`,
+				...(isRoundedCorner ? { mask: `url(#${maskName})` } : {}),
 			},
 			...rowsContent
 		)
