@@ -4,19 +4,18 @@ const tableProps: Omit<TableProps, 'width'> = {
 	style: {
 		bgColor: 'none',
 		borderColors: 'gray',
-		borderWidths: 1,
+		borderWidths: 2,
 		rx: 20,
 		ry: 30,
 	},
 	defaultCellStyle: {
-		borderWidths: 2,
+		borderWidths: 1,
 		borderColors: 'gray',
 	},
 	rows: [
 		{
 			style: {
 				bgColor: '#beddbe',
-				borderWidths: [0, 0, 1, 0],
 				borderColors: 'gray',
 			},
 			cells: [
