@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table-vanilla",
-	"version": "3.0.3",
+	"version": "3.1.0",
 	"private": false,
 	"exports": {
 		".": {
