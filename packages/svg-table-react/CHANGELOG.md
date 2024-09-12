@@ -1,4 +1,8 @@
 # CHANGELOG
+## 3.2.0
+- add rounded border support
+- row's style support border style now. (border widths, colors, and patterns)
+
 ## 3.1.4
 - tsc build config update
 
