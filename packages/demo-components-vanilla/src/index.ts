@@ -1,4 +1,5 @@
 export * from './BasicDemo';
+export * from './BasicDemoWithRadius';
 export * from './Standalone';
 export * from './LogoDemo';
 export * from './BasicSimpleArray';
@@ -24,6 +25,7 @@ export * from './BasicWithPropsAllowingOverflow';
 export * from './BasicWithPropsAllowingOverflowOnlyOneCell';
 export * from './OutboundLabels';
 export * from './Rotate';
+export * from './AutoColSpan';
 export * from './AllDemo';
 export * from './VerticalResponsive';
 export * from './HorizontalResponsive';

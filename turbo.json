@@ -16,10 +16,12 @@
 			"dependsOn": ["^lint"]
 		},
 		"dev": {
+			"dependsOn": ["^build"],
 			"cache": false,
 			"persistent": true
 		},
 		"dev:doc": {
+			"dependsOn": ["^build"],
 			"cache": false,
 			"persistent": true
 		}
