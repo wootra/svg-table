@@ -133,52 +133,6 @@ importers:
         specifier: ^5.3.5
         version: 5.3.5(@types/node@20.16.1)(terser@5.31.6)
 
-  apps/svg-table-demo-installed:
-    dependencies:
-      '@repo/demo-components-react':
-        specifier: workspace:*
-        version: link:../../packages/demo-components-react
-      '@shjeon0730/svg-table-react':
-        specifier: latest
-        version: 3.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
-    devDependencies:
-      '@types/react':
-        specifier: ^18.3.3
-        version: 18.3.3
-      '@types/react-dom':
-        specifier: ^18.3.0
-        version: 18.3.0
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^7.18.0
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
-      '@typescript-eslint/parser':
-        specifier: ^7.18.0
-        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
-      '@vitejs/plugin-react':
-        specifier: ^4.3.1
-        version: 4.3.1(vite@5.3.5(@types/node@20.16.1)(terser@5.31.6))
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      eslint-plugin-react-hooks:
-        specifier: ^4.6.2
-        version: 4.6.2(eslint@8.57.0)
-      eslint-plugin-react-refresh:
-        specifier: ^0.4.9
-        version: 0.4.9(eslint@8.57.0)
-      typescript:
-        specifier: ^5.5.4
-        version: 5.5.4
-      vite:
-        specifier: ^5.3.5
-        version: 5.3.5(@types/node@20.16.1)(terser@5.31.6)
-
   apps/svg-table-demo-next:
     dependencies:
       '@repo/demo-components-react':
@@ -212,6 +166,52 @@ importers:
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
+
+  apps/svg-table-demo-react:
+    dependencies:
+      '@repo/demo-components-react':
+        specifier: workspace:*
+        version: link:../../packages/demo-components-react
+      '@shjeon0730/svg-table-react':
+        specifier: latest
+        version: 3.2.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.4
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^7.18.0
+        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
+      '@typescript-eslint/parser':
+        specifier: ^7.18.0
+        version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+      '@vitejs/plugin-react':
+        specifier: ^4.3.1
+        version: 4.3.1(vite@5.4.1(@types/node@20.16.1)(terser@5.31.6))
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.2
+        version: 4.6.2(eslint@8.57.0)
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.9
+        version: 0.4.9(eslint@8.57.0)
+      typescript:
+        specifier: ^5.5.4
+        version: 5.5.4
+      vite:
+        specifier: ^5.3.5
+        version: 5.4.1(@types/node@20.16.1)(terser@5.31.6)
 
   apps/svg-table-demo-solid:
     dependencies:
@@ -2425,8 +2425,8 @@ packages:
   '@shikijs/core@1.12.1':
     resolution: {integrity: sha512-biCz/mnkMktImI6hMfMX3H9kOeqsInxWEyCHbSlL8C/2TR1FqfmGxTLRNwYCKsyCyxWLbB8rEqXRVZuyxuLFmA==}
 
-  '@shjeon0730/svg-table-react@3.2.0':
-    resolution: {integrity: sha512-3NGIs8oV8TyA6BYFEOvlhNqKc/Yg7TDUBaP+IhorWgmolrvPAUgvGmh5qZMqFffcJUTmm59Jjo5piQXcWd9X7Q==}
+  '@shjeon0730/svg-table-react@3.2.1':
+    resolution: {integrity: sha512-AzzgXez5UIUFLKvQArikicmKddwu/fzux6IGrBrxIK/54DJa2LPVi0OrBEa5fbpa4qLzBXE3jmdAgZcehH4U7w==}
     peerDependencies:
       react: ^18
       react-dom: ^18
@@ -8220,7 +8220,7 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
 
-  '@shjeon0730/svg-table-react@3.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@shjeon0730/svg-table-react@3.2.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@shjeon0730/svg-table-core': link:packages/svg-table-core
       react: 18.3.1
