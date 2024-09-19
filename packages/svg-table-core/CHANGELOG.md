@@ -1,4 +1,7 @@
 # CHANGELOG
+## 3.1.1
+- fix: multiple rounded table had issue because mask-id was not unique.
+
 ## 3.1.0
 - add rounded border support
 - row's style support border style now. (border widths, colors, and patterns)
