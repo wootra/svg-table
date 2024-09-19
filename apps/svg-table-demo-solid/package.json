@@ -4,7 +4,7 @@
 	"description": "",
 	"scripts": {
 		"start": "vite",
-		"validate": "rm -rf node-modules && pnpm i && vite",
+		"validate": "rm -rf node_modules && pnpm i && vite",
 		"dev": "vite",
 		"build": "echo 'no build in turbo repo'",
 		"build:now": "pnpm i;vite build",

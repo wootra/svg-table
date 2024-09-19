@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
+		"validate": "rm -rf node_modules && pnpm i && vite",
 		"build": "echo 'no build in turbo repo'",
 		"build:now": "pnpm i;pnpm update;tsc -b && vite build",
 		"build:prod": "sh switch-env.sh prod && pnpm build:now",
@@ -14,7 +15,7 @@
 	},
 	"dependencies": {
 		"@repo/demo-components-vanilla": "workspace:*",
-		"@shjeon0730/svg-table-vanilla": "workspace:*",
+		"@shjeon0730/svg-table-vanilla": "latest",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},
