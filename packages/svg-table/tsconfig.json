@@ -2,19 +2,24 @@
 	"extends": "@repo/typescript-config/react-library.json",
 	"compilerOptions": {
 		"target": "ESNext",
-		"module": "esnext",
-		"lib": ["ESNext", "dom"],
+		"module": "ESNext",
+		"lib": ["ESNext"],
 		"declaration": true,
 		"declarationDir": "dist/types",
 		"outDir": "dist",
-		"strict": true,
+		"strict": false,
 		"moduleResolution": "Bundler",
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
-	},
-	"paths": {
-		"tslib": ["node_modules/tslib/tslib.d.ts"]
+		"isolatedModules": true,
+		"forceConsistentCasingInFileNames": true,
+		"removeComments": true,
+		"alwaysStrict": true,
+		"incremental": true,
+		"composite": true,
+		"rootDir": "./src",
+		"sourceMap": true,
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo"
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist", "out", "eslintrc.js", "**/*.mjs"]

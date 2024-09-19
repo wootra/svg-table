@@ -47,7 +47,7 @@ export const LogoDemo = ({
 		return {
 			table: {
 				style: {
-					bgColor: bgColor ?? bgColor === null ? undefined : DEFAULT_BG,
+					bgColor: (bgColor ?? bgColor === null) ? undefined : DEFAULT_BG,
 					rowGaps: 1,
 					colGaps: 1,
 				},
@@ -198,8 +198,10 @@ export const LogoDemo = ({
 
 	const tableProps: Omit<TableProps, 'width'> = {
 		style: {
+			rx: 20,
+			ry: 20,
 			rowGaps: 10,
-			bgColor: bgColor ?? bgColor === null ? undefined : DEFAULT_BG,
+			bgColor: (bgColor ?? bgColor === null) ? undefined : DEFAULT_BG,
 		},
 		defaultCellStyle: {
 			borderWidths: 0,

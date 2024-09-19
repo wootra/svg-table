@@ -1,34 +1,3 @@
-// import { BasicDemo } from './BasicDemo';
-// import { BasicDemoWithRadius } from './BasicDemoWithRadius';
-// import { BasicWithElement } from './BasicWithElement';
-// import { BasicWithProps } from './BasicWithProps';
-// import { BasicWithPropsAllowingOverflow } from './BasicWithPropsAllowingOverflow';
-// import { BasicWithPropsAllowingOverflowOnlyOneCell } from './BasicWithPropsAllowingOverflowOnlyOneCell';
-// import { NoBorderTableDemo } from './NoBorderTableDemo';
-// import { EmbeddedTable } from './EmbeddedTable';
-// import { TextStyleOverride } from './TextStyleOverride';
-// import { OnlyTableBolder } from './OnlyTableBolder';
-// import { TableBolderWithMargin } from './TableBolderWithMargin';
-// import { TableBorderStyles } from './TableBorderStyles';
-// import { BgColorAndTextColor } from './BgColorAndTextColor';
-// import { Gaps } from './Gaps';
-// import { OutboundLabels } from './OutboundLabels';
-// import { TableStyles } from './TableStyles';
-// import { Margins } from './Margins';
-// import { EmbeddedTableAsProps } from './EmbeddedTableAsProps';
-// import { TextPositionAdjustment } from './TextPositionAdjustment';
-// import { TableHeight } from './TableHeight';
-// import { TableHeightOverrideHeight } from './TableHeightOverrideHeight';
-// import { BasicSimpleArray } from './BasicSimpleArray';
-// import { EmbeddedTableAsPropsWithHeight } from './EmbeddedTableAsPropsWithHeight';
-// import { Paddings } from './Paddings';
-// import { LogoDemo } from './LogoDemo';
-// import { Standalone } from './Standalone';
-// import { AutoColSpan } from './AutoColSpan';
-// import { Rotate } from './Rotate';
-// import { BasicDemoJSX } from './BasicDemoJSX';
-// import { EmbeddedTableJSX } from './EmbeddedTableJSX';
-// import { EmbeddedTableAsPropsWithHeightJSX } from './EmbeddedTableAsPropsWithHeightJSX';
 import {
 	BasicDemo,
 	BasicDemoWithRadius,

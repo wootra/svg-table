@@ -31,7 +31,8 @@
 	},
 	"peerDependencies": {
 		"solid-js": "*",
-		"@shjeon0730/svg-table-solid": "workspace:*"
+		"@shjeon0730/svg-table-solid": "workspace:*",
+		"@shjeon0730/svg-table": "workspace:*"
 	},
 	"description": "table creating library using svg using React and typescript. no specific dependency is needed other than React.",
 	"repository": {

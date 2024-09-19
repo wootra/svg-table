@@ -21,6 +21,7 @@
 		"@repo/demo-components-solid": "workspace:*",
 		"@repo/demo-components-vanilla": "workspace:*",
 		"@shjeon0730/svg-table-react": "workspace:*",
+		"@shjeon0730/svg-table": "workspace:*",
 		"@shjeon0730/svg-table-solid": "workspace:*",
 		"@shjeon0730/svg-table-vanilla": "workspace:*",
 		"@types/react": "^18.3.3",

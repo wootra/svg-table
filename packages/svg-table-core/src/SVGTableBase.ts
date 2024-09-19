@@ -69,6 +69,7 @@ const adjustRowHeights = (rowHeights: number[], tableHeightWithoutGaps: number) 
 	return rowHeights.map(width => Math.max(simpleValue(width * ratio), 1));
 };
 
+let maskIdSrc = 0;
 export const SVGTableBase = <NODE extends PrimitiveNode>(
 	tablePropsWithStandalone: TablePropsBase<NODE>
 ): SVGTableElement<NODE> => {
@@ -200,7 +201,7 @@ export const SVGTableBase = <NODE extends PrimitiveNode>(
 				width,
 				height,
 			};
-	const maskName = `svg-table-mask-${className}`;
+	const maskName = `svg-table-mask-${className}-${maskIdSrc++ % 10000000}`;
 	return element<NODE>(
 		'svg',
 		{

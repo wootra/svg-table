@@ -11,7 +11,9 @@ export default defineConfig({
 			include: ['**/*.tsx', '**/*.ts'],
 			exclude: ['**/solid.*', '**/solid/*', '**/*-solid/**/*.*'],
 		}),
-		mdx(),
+		mdx({
+			
+		}),
 		solidJs({
 			include: ['**/solid.*', '**/solid/*', '**/*-solid/**/*.*'],
 		}),

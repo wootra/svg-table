@@ -13,7 +13,7 @@ importers:
         version: 3.3.3
       turbo:
         specifier: latest
-        version: 2.1.1
+        version: 2.1.2
       typescript:
         specifier: ^5.5.3
         version: 5.5.4
@@ -44,6 +44,9 @@ importers:
       '@repo/demo-components-vanilla':
         specifier: workspace:*
         version: link:../../packages/demo-components-vanilla
+      '@shjeon0730/svg-table':
+        specifier: workspace:*
+        version: link:../../packages/svg-table
       '@shjeon0730/svg-table-react':
         specifier: workspace:*
         version: link:../../packages/svg-table-react
@@ -89,9 +92,9 @@ importers:
       '@repo/demo-components-react':
         specifier: workspace:*
         version: link:../../packages/demo-components-react
-      '@shjeon0730/svg-table-react':
+      '@shjeon0730/svg-table':
         specifier: workspace:*
-        version: link:../../packages/svg-table-react
+        version: link:../../packages/svg-table
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -137,7 +140,7 @@ importers:
         version: link:../../packages/demo-components-react
       '@shjeon0730/svg-table-react':
         specifier: latest
-        version: 3.1.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 3.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -280,6 +283,9 @@ importers:
 
   packages/demo-components-react:
     dependencies:
+      '@shjeon0730/svg-table':
+        specifier: workspace:*
+        version: link:../svg-table
       react:
         specifier: ^18
         version: 18.3.1
@@ -322,6 +328,10 @@ importers:
         version: 5.5.4
 
   packages/demo-components-solid:
+    dependencies:
+      '@shjeon0730/svg-table':
+        specifier: workspace:*
+        version: link:../svg-table
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -437,6 +447,9 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
+      solid-js:
+        specifier: ^1.8.11
+        version: 1.8.21
     devDependencies:
       '@babel/core':
         specifier: ^7.25.2
@@ -465,9 +478,21 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^11.1.6
         version: 11.1.6(rollup@4.20.0)(tslib@2.6.3)(typescript@5.5.4)
+      '@shjeon0730/svg-table-core':
+        specifier: workspace:*
+        version: link:../svg-table-core
       '@shjeon0730/svg-table-react':
         specifier: workspace:*
         version: link:../svg-table-react
+      '@shjeon0730/svg-table-solid':
+        specifier: workspace:*
+        version: link:../svg-table-solid
+      '@shjeon0730/svg-table-vanilla':
+        specifier: workspace:*
+        version: link:../svg-table-vanilla
+      '@size-limit/preset-small-lib':
+        specifier: ^11.1.5
+        version: 11.1.5(size-limit@11.1.5)
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.14.14)(typescript@5.5.4)
@@ -495,6 +520,9 @@ importers:
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
         version: 2.2.4(rollup@4.20.0)
+      size-limit:
+        specifier: ^11.1.5
+        version: 11.1.5
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -741,6 +769,9 @@ importers:
       '@rollup/plugin-typescript':
         specifier: ^11.1.6
         version: 11.1.6(rollup@4.21.0)(tslib@2.6.3)(typescript@5.5.4)
+      '@size-limit/preset-small-lib':
+        specifier: ^11.1.5
+        version: 11.1.5(size-limit@11.1.5)
       '@turbo/gen':
         specifier: ^1.13.4
         version: 1.13.4(@types/node@20.16.1)(typescript@5.5.4)
@@ -768,6 +799,9 @@ importers:
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
         version: 2.2.4(rollup@4.21.0)
+      size-limit:
+        specifier: ^11.1.5
+        version: 11.1.5
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -2391,8 +2425,8 @@ packages:
   '@shikijs/core@1.12.1':
     resolution: {integrity: sha512-biCz/mnkMktImI6hMfMX3H9kOeqsInxWEyCHbSlL8C/2TR1FqfmGxTLRNwYCKsyCyxWLbB8rEqXRVZuyxuLFmA==}
 
-  '@shjeon0730/svg-table-react@3.1.4':
-    resolution: {integrity: sha512-O7JqcZcGVrvU63gBCllzecTGc8jBhayZa5g+iLorbdJSwhVk0yQjKs9n6K5nqZt7yOmtox59uWTFwE1RIRT0qw==}
+  '@shjeon0730/svg-table-react@3.2.0':
+    resolution: {integrity: sha512-3NGIs8oV8TyA6BYFEOvlhNqKc/Yg7TDUBaP+IhorWgmolrvPAUgvGmh5qZMqFffcJUTmm59Jjo5piQXcWd9X7Q==}
     peerDependencies:
       react: ^18
       react-dom: ^18
@@ -6062,38 +6096,38 @@ packages:
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
 
-  turbo-darwin-64@2.1.1:
-    resolution: {integrity: sha512-aYNuJpZlCoi0Htd79fl/2DywpewGKijdXeOfg9KzNuPVKzSMYlAXuAlNGh0MKjiOcyqxQGL7Mq9LFhwA0VpDpQ==}
+  turbo-darwin-64@2.1.2:
+    resolution: {integrity: sha512-3TEBxHWh99h2yIzkuIigMEOXt/ItYQp0aPiJjPd1xN4oDcsKK5AxiFKPH9pdtfIBzYsY59kQhZiFj0ELnSP7Bw==}
     cpu: [x64]
     os: [darwin]
 
-  turbo-darwin-arm64@2.1.1:
-    resolution: {integrity: sha512-tifJKD8yHY48rHXPMcM8o1jI/Jk2KCaXiNjTKvvy9Zsim61BZksNVLelIbrRoCGwAN6PUBZO2lGU5iL/TQJ5Pw==}
+  turbo-darwin-arm64@2.1.2:
+    resolution: {integrity: sha512-he0miWNq2WxJzsH82jS2Z4MXpnkzn9SH8a79iPXiJkq25QREImucscM4RPasXm8wARp91pyysJMq6aasD45CeA==}
     cpu: [arm64]
     os: [darwin]
 
-  turbo-linux-64@2.1.1:
-    resolution: {integrity: sha512-Js6d/bSQe9DuV9c7ITXYpsU/ADzFHABdz1UIHa7Oqjj9VOEbFeA9WpAn0c+mdJrVD+IXJFbbDZUjN7VYssmtcg==}
+  turbo-linux-64@2.1.2:
+    resolution: {integrity: sha512-fKUBcc0rK8Vdqv5a/E3CSpMBLG1bzwv+Q0Q83F8fG2ZfNCNKGbcEYABdonNZkkx141Rj03cZQFCgxu3MVEGU+A==}
     cpu: [x64]
     os: [linux]
 
-  turbo-linux-arm64@2.1.1:
-    resolution: {integrity: sha512-LidzTCq0yvQ+N8w8Qub9FmhQ/mmEIeoqFi7DSupekEV2EjvE9jw/zYc9Pk67X+g7dHVfgOnvVzmrjChdxpFePw==}
+  turbo-linux-arm64@2.1.2:
+    resolution: {integrity: sha512-sV8Bpmm0WiuxgbhxymcC7wSsuxfBBieI98GegSwbr/bs1ANAgzCg93urIrdKdQ3/b31zZxQwcaP4FBF1wx1Qdg==}
     cpu: [arm64]
     os: [linux]
 
-  turbo-windows-64@2.1.1:
-    resolution: {integrity: sha512-GKc9ZywKwy4xLDhwXd6H07yzl0TB52HjXMrFLyHGhCVnf/w0oq4sLJv2sjbvuarPjsyx4xnCBJ3m3oyL2XmFtA==}
+  turbo-windows-64@2.1.2:
+    resolution: {integrity: sha512-wcmIJZI9ORT9ykHGliFE6kWRQrlH930QGSjSgWC8uFChFFuOyUlvC7ttcxuSvU9VqC7NF4C+GVAcFJQ8lTjN7g==}
     cpu: [x64]
     os: [win32]
 
-  turbo-windows-arm64@2.1.1:
-    resolution: {integrity: sha512-oFKkMj11KKUv3xSK9/fhAEQTxLUp1Ol1EOktwc32+SFtEU0uls7kosAz0b+qe8k3pJGEMFdDPdqoEjyJidbxtQ==}
+  turbo-windows-arm64@2.1.2:
+    resolution: {integrity: sha512-zdnXjrhk7YO6CP+Q5wPueEvOCLH4lDa6C4rrwiakcWcPgcQGbVozJlo4uaQ6awo8HLWQEvOwu84RkWTdLAc/Hw==}
     cpu: [arm64]
     os: [win32]
 
-  turbo@2.1.1:
-    resolution: {integrity: sha512-u9gUDkmR9dFS8b5kAYqIETK4OnzsS4l2ragJ0+soSMHh6VEeNHjTfSjk1tKxCqLyziCrPogadxP680J+v6yGHw==}
+  turbo@2.1.2:
+    resolution: {integrity: sha512-Jb0rbU4iHEVQ18An/YfakdIv9rKnd3zUfSE117EngrfWXFHo3RndVH96US3GsT8VHpwTncPePDBT2t06PaFLrw==}
     hasBin: true
 
   type-check@0.4.0:
@@ -8186,7 +8220,7 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
 
-  '@shjeon0730/svg-table-react@3.1.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@shjeon0730/svg-table-react@3.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@shjeon0730/svg-table-core': link:packages/svg-table-core
       react: 18.3.1
@@ -8554,7 +8588,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 20.16.1
 
   '@types/semver@7.5.8': {}
 
@@ -13178,32 +13212,32 @@ snapshots:
       tslib: 1.14.1
       typescript: 5.5.4
 
-  turbo-darwin-64@2.1.1:
+  turbo-darwin-64@2.1.2:
     optional: true
 
-  turbo-darwin-arm64@2.1.1:
+  turbo-darwin-arm64@2.1.2:
     optional: true
 
-  turbo-linux-64@2.1.1:
+  turbo-linux-64@2.1.2:
     optional: true
 
-  turbo-linux-arm64@2.1.1:
+  turbo-linux-arm64@2.1.2:
     optional: true
 
-  turbo-windows-64@2.1.1:
+  turbo-windows-64@2.1.2:
     optional: true
 
-  turbo-windows-arm64@2.1.1:
+  turbo-windows-arm64@2.1.2:
     optional: true
 
-  turbo@2.1.1:
+  turbo@2.1.2:
     optionalDependencies:
-      turbo-darwin-64: 2.1.1
-      turbo-darwin-arm64: 2.1.1
-      turbo-linux-64: 2.1.1
-      turbo-linux-arm64: 2.1.1
-      turbo-windows-64: 2.1.1
-      turbo-windows-arm64: 2.1.1
+      turbo-darwin-64: 2.1.2
+      turbo-darwin-arm64: 2.1.2
+      turbo-linux-64: 2.1.2
+      turbo-linux-arm64: 2.1.2
+      turbo-windows-64: 2.1.2
+      turbo-windows-arm64: 2.1.2
 
   type-check@0.4.0:
     dependencies:

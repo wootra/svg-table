@@ -14,14 +14,14 @@ Please check out one of these libraries
 [@shjeon0730/svg-table-solid](https://www.npmjs.com/package/@shjeon0730/svg-table-solid)
 [@shjeon0730/svg-table-vanilla](https://www.npmjs.com/package/@shjeon0730/svg-table-vanilla)
 
-all of them has peer dependency with [@shjeon0730/svg-table-core](https://www.npmjs.com/package/@shjeon0730/svg-table-core)
+all of them are wrappers of [@shjeon0730/svg-table-core](https://www.npmjs.com/package/@shjeon0730/svg-table-core), but NO NEED TO install it since they are bundling with core library.
 
 ## Installation
 
-! From 2.1.X version, you should install `@shjeon0730/svg-table-core` `@shjeon0730/svg-table-react` as well. @shjeon0730/svg-table will be just wrapper of [@shjeon0730/svg-table-react](https://www.npmjs.com/package/@shjeon0730/svg-table-react) . So there is no difference except for importing name between them.
+Please install `@shjeon0730/svg-table-react` instead. Since SvgTable support multi-frameworks, svg-table does not continue upgrading the version.
 
 ```
-npm install @shjeon0730/svg-table-core @shjeon0730/svg-table-react @shjeon0730/svg-table
+npm install @shjeon0730/svg-table-react @shjeon0730/svg-table
 ```
 
 ## Introduction
