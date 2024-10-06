@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table-react",
-	"version": "3.2.3-0",
+	"version": "3.2.3",
 	"private": false,
 	"exports": {
 		".": {
