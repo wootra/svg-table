@@ -1,4 +1,4 @@
-import { AllDemo } from '@repo/demo-components-react';
+import { AllDemo } from './demo/AllDemo';
 import { ChangeEvent, useState } from 'react';
 
 const App = () => {
