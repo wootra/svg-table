@@ -55,6 +55,15 @@ export const getWid = (widths: Widths | undefined, pos?: WidthPos) => {
 	return 0;
 };
 
+export const getWidVisible = (widths: Widths | undefined) => {
+	if (widths === undefined) return false;
+	if (typeof widths === 'number') return widths > 0;
+	if (Array.isArray(widths)) {
+		return widths.some(w => w > 0);
+	}
+	return false;
+};
+
 export const getStrokeColor = (colors: ColorsOnWidth | undefined, pos?: WidthPos) => {
 	if (!colors) return undefined;
 	if (typeof colors === 'string') return colors;
