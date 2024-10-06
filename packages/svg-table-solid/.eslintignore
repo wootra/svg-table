@@ -3,3 +3,4 @@ out
 dist
 public
 *.js
+vite.config.mts

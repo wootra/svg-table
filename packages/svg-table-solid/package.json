@@ -1,15 +1,15 @@
 {
 	"name": "@shjeon0730/svg-table-solid",
-	"version": "3.2.2",
+	"version": "3.2.2-REL2",
 	"private": false,
 	"exports": {
 		".": {
 			"types": "./dist/types/index.d.ts",
-			"default": "./dist/index.js"
+			"default": "./dist/svg-table-solid.mjs"
 		}
 	},
 	"scripts": {
-		"build": "pnpm run lint; tsc",
+		"build": "pnpm run lint && vite build -m production && size-limit",
 		"size-limit": "size-limit",
 		"rebuild": "rm -rf ./dist;rm -rf ./node_modules/.tmp;pnpm run build",
 		"build:types": "tsc --emitDeclarationOnly && rollup -c rollup.config.dts.mjs",
@@ -47,10 +47,13 @@
 		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"size-limit": "^11.1.5",
 		"tslib": "^2.6.3",
-		"typescript": "^5.5.4"
+		"typescript": "^5.5.4",
+		"vite": "^5.4.8",
+		"vite-plugin-dts": "^4.2.3",
+		"vite-plugin-solid": "^2.10.2"
 	},
 	"dependencies": {
-		"@shjeon0730/svg-table-core": "workspace:*"
+		"@shjeon0730/svg-table-core": "latest"
 	},
 	"peerDependencies": {
 		"solid-js": "^1.8.11"
@@ -68,7 +71,7 @@
 	],
 	"size-limit": [
 		{
-			"path": "dist/index.js",
+			"path": "dist/svg-table-solid.mjs",
 			"limit": "10 kB"
 		}
 	],

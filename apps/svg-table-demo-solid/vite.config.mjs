@@ -18,6 +18,7 @@ export default defineConfig({
 			// },
 		}),
 	],
+	css: {},
 	server: {
 		port: 3900,
 	},

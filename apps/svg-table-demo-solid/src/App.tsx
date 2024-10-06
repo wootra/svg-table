@@ -1,13 +1,7 @@
 import { createComponent, createEffect, JSX, JSXElement, on } from 'solid-js';
 import { render } from 'solid-js/web';
 
-import {
-	AllDemo,
-	LogoDemo,
-	EmbeddedTableAsPropsWithHeightJSX,
-	SimpleRowsTable,
-	SimpleRowsTableObj,
-} from '@repo/demo-components-solid';
+import { AllDemo, LogoDemo, EmbeddedTableAsPropsWithHeightJSX, SimpleRowsTable, SimpleRowsTableObj } from './demo';
 import { createSignal } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import styles from './App.module.css';
@@ -27,6 +21,7 @@ function App() {
 				{/* {renderTable()() as JSXElement} */}
 				{/* {renderTable() as JSXElement} */}
 				{/* <LogoDemo width={width} bgColor={null} className={'logo-demo'} /> */}
+				{/* <AllDemo width={width()} /> */}
 				{AllDemo({ width: width() })}
 				{/* <AllDemo width={width} /> */}
 				{/* {embeddedTable} */}
