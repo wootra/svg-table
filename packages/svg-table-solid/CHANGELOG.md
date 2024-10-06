@@ -1,4 +1,7 @@
 # CHANGELOG
+## 3.2.2
+- fix: does not render empty g from empty fill area (performance improvement)
+
 ## 3.2.1
 - fix: multiple rounded table had issue because mask-id was not unique.
 
