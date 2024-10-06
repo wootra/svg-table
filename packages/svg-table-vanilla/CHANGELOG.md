@@ -1,4 +1,7 @@
 # CHANGELOG
+## 3.1.3
+- fix: npm install was not working
+ 
 ## 3.1.2
 - fix: does not render empty g from empty fill area (performance improvement)
 

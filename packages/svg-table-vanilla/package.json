@@ -24,7 +24,7 @@
 		"publish-now": "npm publish --access public"
 	},
 	"dependencies": {
-		"@shjeon0730/svg-table-core": "workspace:*"
+		"@shjeon0730/svg-table-core": "latest"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.25.2",
