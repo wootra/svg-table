@@ -1,4 +1,7 @@
 # CHANGELOG
+## 3.2.3
+- fix: change bundler to vite lib mode, confirm npm works.
+
 ## 3.2.2
 - fix: does not render empty g from empty fill area (performance improvement)
 

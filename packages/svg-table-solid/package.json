@@ -1,6 +1,6 @@
 {
 	"name": "@shjeon0730/svg-table-solid",
-	"version": "3.2.2-REL2",
+	"version": "3.2.3",
 	"private": false,
 	"exports": {
 		".": {
